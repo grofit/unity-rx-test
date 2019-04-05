@@ -28,13 +28,13 @@ namespace ReactiveTests.Tests
         [Test]
         public void FirstOrDefault_Empty()
         {
-            Assert.AreEqual(default, Observable.Empty<int>().FirstOrDefault());
+            Assert.AreEqual(default(int), Observable.Empty<int>().FirstOrDefault());
         }
 
         [Test]
         public void FirstOrDefaultPredicate_Empty()
         {
-            Assert.AreEqual(default, Observable.Empty<int>().FirstOrDefault(_ => true));
+            Assert.AreEqual(default(int), Observable.Empty<int>().FirstOrDefault(_ => true));
         }
 
         [Test]

@@ -49,7 +49,8 @@ namespace Tests.System.Reactive.Tests
         [Test]
         public async Task Basics()
         {
-            Assert.AreEqual(45, await ManOrBoy_Basics());
+            var result = await ManOrBoy_Basics();
+            Assert.AreEqual(45, result);
         }
 
 #pragma warning disable 1998
