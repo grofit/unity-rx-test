@@ -58,7 +58,7 @@ namespace ReactiveTests.Tests
             var sch = new ControlScheduler(lbl);
             
             sch.Schedule(() => { lbl.Text = "Okay"; Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); });
-            sch.Schedule(() => { Assert.Equals("Okay", lbl.Text); Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
+            sch.Schedule(() => { Assert.AreEqual("Okay", lbl.Text); Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
 
             evt.WaitOne();
             Application.Exit();
@@ -111,7 +111,7 @@ namespace ReactiveTests.Tests
                 
                 sch.Schedule(() =>
                 {
-                    Assert.Equals("Okay", lbl.Text);
+                    Assert.AreEqual("Okay", lbl.Text);
                     Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
                     evt.Set();
                 });
@@ -140,7 +140,7 @@ namespace ReactiveTests.Tests
 
                     sch.Schedule(() =>
                     {
-                        Assert.Equals("Okay", lbl.Text);
+                        Assert.AreEqual("Okay", lbl.Text);
                         Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
                         evt.Set();
                     });
@@ -178,7 +178,7 @@ namespace ReactiveTests.Tests
 
                 sch.Schedule(TimeSpan.FromSeconds(0.2), () =>
                 {
-                    Assert.Equals("Okay", lbl.Text);
+                    Assert.AreEqual("Okay", lbl.Text);
                     Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
                     evt.Set();
                 });
@@ -220,7 +220,7 @@ namespace ReactiveTests.Tests
 
                     sch.Schedule(TimeSpan.FromSeconds(0.2), () =>
                     {
-                        Assert.Equals("Okay 3", lbl.Text);
+                        Assert.AreEqual("Okay 3", lbl.Text);
                         Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
                         evt.Set();
                     });
@@ -265,7 +265,7 @@ namespace ReactiveTests.Tests
 
                         sch.Schedule(TimeSpan.FromSeconds(0.2), () =>
                         {
-                            Assert.Equals("Okay 3", lbl.Text);
+                            Assert.AreEqual("Okay 3", lbl.Text);
                             Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
                             evt.Set();
                         });

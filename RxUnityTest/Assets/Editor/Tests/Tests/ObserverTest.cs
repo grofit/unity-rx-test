@@ -29,10 +29,10 @@ namespace ReactiveTests.Tests
             var i = 0;
             Action<Notification<int>> next = n =>
             {
-                Assert.Equals(i++, 0);
-                Assert.Equals(n.Kind, NotificationKind.OnNext);
-                Assert.Equals(n.Value, 42);
-                Assert.Equals(n.Exception, null);
+                Assert.AreEqual(i++, 0);
+                Assert.AreEqual(n.Kind, NotificationKind.OnNext);
+                Assert.AreEqual(n.Value, 42);
+                Assert.AreEqual(n.Exception, null);
                 Assert.True(n.HasValue);
             };
             next.ToObserver().OnNext(42);
@@ -45,8 +45,8 @@ namespace ReactiveTests.Tests
             var i = 0;
             Action<Notification<int>> next = n =>
             {
-                Assert.Equals(i++, 0);
-                Assert.Equals(n.Kind, NotificationKind.OnError);
+                Assert.AreEqual(i++, 0);
+                Assert.AreEqual(n.Kind, NotificationKind.OnError);
                 Assert.AreSame(n.Exception, ex);
                 Assert.False(n.HasValue);
             };
@@ -60,8 +60,8 @@ namespace ReactiveTests.Tests
             var i = 0;
             Action<Notification<int>> next = n =>
             {
-                Assert.Equals(i++, 0);
-                Assert.Equals(n.Kind, NotificationKind.OnCompleted);
+                Assert.AreEqual(i++, 0);
+                Assert.AreEqual(n.Kind, NotificationKind.OnCompleted);
                 Assert.False(n.HasValue);
             };
             next.ToObserver().OnCompleted();
@@ -78,7 +78,7 @@ namespace ReactiveTests.Tests
         {
             var obsn = new MyObserver();
             obsn.ToNotifier()(Notification.CreateOnNext(42));
-            Assert.Equals(obsn.HasOnNext, 42);
+            Assert.AreEqual(obsn.HasOnNext, 42);
 
             var ex = new Exception();
             var obse = new MyObserver();
@@ -107,7 +107,7 @@ namespace ReactiveTests.Tests
         public void Create_OnNext()
         {
             var next = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; });
             res.OnNext(42);
             Assert.True(next);
             res.OnCompleted();
@@ -120,7 +120,7 @@ namespace ReactiveTests.Tests
             var e_ = default(Exception);
 
             var next = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; });
             res.OnNext(42);
             Assert.True(next);
 
@@ -141,7 +141,7 @@ namespace ReactiveTests.Tests
         {
             var next = false;
             var completed = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; }, () => { completed = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; }, () => { completed = true; });
             res.OnNext(42);
             Assert.True(next);
             Assert.False(completed);
@@ -157,7 +157,7 @@ namespace ReactiveTests.Tests
 
             var next = false;
             var completed = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; }, () => { completed = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; }, () => { completed = true; });
             res.OnNext(42);
             Assert.True(next);
             Assert.False(completed);
@@ -180,7 +180,7 @@ namespace ReactiveTests.Tests
             var ex = new Exception();
             var next = true;
             var error = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; });
             res.OnNext(42);
             Assert.True(next);
             Assert.False(error);
@@ -194,7 +194,7 @@ namespace ReactiveTests.Tests
             var ex = new Exception();
             var next = true;
             var error = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; });
             res.OnNext(42);
             Assert.True(next);
             Assert.False(error);
@@ -209,7 +209,7 @@ namespace ReactiveTests.Tests
             var next = true;
             var error = false;
             var completed = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; }, () => { completed = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; }, () => { completed = true; });
             res.OnNext(42);
             Assert.True(next);
             Assert.False(error);
@@ -226,7 +226,7 @@ namespace ReactiveTests.Tests
             var next = true;
             var error = false;
             var completed = false;
-            var res = Observer.Create<int>(x => { Assert.Equals(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; }, () => { completed = true; });
+            var res = Observer.Create<int>(x => { Assert.AreEqual(42, x); next = true; }, e => { Assert.AreSame(ex, e); error = true; }, () => { completed = true; });
             res.OnNext(42);
             Assert.True(next);
             Assert.False(error);
@@ -256,7 +256,7 @@ namespace ReactiveTests.Tests
         {
             var obsn = new MyObserver();
             obsn.AsObserver().OnNext(42);
-            Assert.Equals(obsn.HasOnNext, 42);
+            Assert.AreEqual(obsn.HasOnNext, 42);
 
             var ex = new Exception();
             var obse = new MyObserver();
@@ -311,8 +311,8 @@ namespace ReactiveTests.Tests
             ReactiveAssert.Throws<InvalidOperationException>(() => o.OnCompleted());
             ReactiveAssert.Throws<InvalidOperationException>(() => o.OnError(new Exception()));
 
-            Assert.Equals(2, m);
-            Assert.Equals(1, n);
+            Assert.AreEqual(2, m);
+            Assert.AreEqual(1, n);
         }
 
         [Test]
@@ -330,8 +330,8 @@ namespace ReactiveTests.Tests
             ReactiveAssert.Throws<InvalidOperationException>(() => o.OnCompleted());
             ReactiveAssert.Throws<InvalidOperationException>(() => o.OnError(new Exception()));
 
-            Assert.Equals(2, m);
-            Assert.Equals(1, n);
+            Assert.AreEqual(2, m);
+            Assert.AreEqual(1, n);
         }
 
         [Test]
@@ -361,7 +361,7 @@ namespace ReactiveTests.Tests
 
             o.OnNext(1);
 
-            Assert.Equals(1, n);
+            Assert.AreEqual(1, n);
         }
 
         [Test]
@@ -391,7 +391,7 @@ namespace ReactiveTests.Tests
 
             o.OnError(new Exception());
 
-            Assert.Equals(1, n);
+            Assert.AreEqual(1, n);
         }
 
         [Test]
@@ -421,7 +421,7 @@ namespace ReactiveTests.Tests
 
             o.OnCompleted();
 
-            Assert.Equals(1, n);
+            Assert.AreEqual(1, n);
         }
 
         [Test]
@@ -720,7 +720,7 @@ namespace ReactiveTests.Tests
                 Assert.AreSame(err, ex);
             }
 
-            Assert.Equals(n, N * M);
+            Assert.AreEqual(n, N * M);
         }
 
         [Test]
@@ -795,7 +795,7 @@ namespace ReactiveTests.Tests
             }).Start();
 
             e.WaitOne();
-            Assert.Equals(N, c);
+            Assert.AreEqual(N, c);
         }
 #endif
 

@@ -74,14 +74,14 @@ namespace ReactiveTests.Tests
                 Subscribe(250, 900)
             );
 
-            Assert.Equals(7, res.Count);
-            Assert.Equals(res[0], new int[] { }.Sum());
-            Assert.Equals(res[1], new int[] { 3 }.Sum());
-            Assert.Equals(res[2], new int[] { 4 }.Sum());
-            Assert.Equals(res[3], new int[] { }.Sum());
-            Assert.Equals(res[4], new int[] { 5, 6, 7 }.Sum());
-            Assert.Equals(res[5], new int[] { 8 }.Sum());
-            Assert.Equals(res[6], new int[] { }.Sum());
+            Assert.AreEqual(7, res.Count);
+            Assert.AreEqual(res[0], new int[] { }.Sum());
+            Assert.AreEqual(res[1], new int[] { 3 }.Sum());
+            Assert.AreEqual(res[2], new int[] { 4 }.Sum());
+            Assert.AreEqual(res[3], new int[] { }.Sum());
+            Assert.AreEqual(res[4], new int[] { 5, 6, 7 }.Sum());
+            Assert.AreEqual(res[5], new int[] { 8 }.Sum());
+            Assert.AreEqual(res[6], new int[] { }.Sum());
         }
 
         [Test]
@@ -123,9 +123,9 @@ namespace ReactiveTests.Tests
                 Subscribe(250, 900)
             );
 
-            Assert.Equals(2, res.Count);
-            Assert.Equals(res[0], new int[] { 3, 4, 5 }.Sum());
-            Assert.Equals(res[1], new int[] { 6, 7, 8 }.Sum());
+            Assert.AreEqual(2, res.Count);
+            Assert.AreEqual(res[0], new int[] { 3, 4, 5 }.Sum());
+            Assert.AreEqual(res[1], new int[] { 6, 7, 8 }.Sum());
         }
 
         [Test]

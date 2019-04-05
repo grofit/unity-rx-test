@@ -53,11 +53,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => n);
             });
 
-            Assert.Equals(n, xs.Single());
-            Assert.Equals(1, i);
+            Assert.AreEqual(n, xs.Single());
+            Assert.AreEqual(1, i);
 
-            Assert.Equals(n, xs.Single());
-            Assert.Equals(2, i);
+            Assert.AreEqual(n, xs.Single());
+            Assert.AreEqual(2, i);
         }
 
         [Test]
@@ -97,11 +97,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => n);
             });
 
-            Assert.Equals(n, xs.Single());
-            Assert.Equals(1, i);
+            Assert.AreEqual(n, xs.Single());
+            Assert.AreEqual(1, i);
 
-            Assert.Equals(n, xs.Single());
-            Assert.Equals(2, i);
+            Assert.AreEqual(n, xs.Single());
+            Assert.AreEqual(2, i);
         }
 
         [Test]
@@ -187,8 +187,8 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.Equals(42, x);
-            Assert.Equals(Thread.CurrentThread.ManagedThreadId, t);
+            Assert.AreEqual(42, x);
+            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
         }
 
         [Test]
@@ -212,8 +212,8 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.Equals(42, x);
-            Assert.Equals(Thread.CurrentThread.ManagedThreadId, t);
+            Assert.AreEqual(42, x);
+            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 
@@ -245,11 +245,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => { });
             });
 
-            Assert.Equals(Unit.Default, xs.Single());
-            Assert.Equals(1, i);
+            Assert.AreEqual(Unit.Default, xs.Single());
+            Assert.AreEqual(1, i);
 
-            Assert.Equals(Unit.Default, xs.Single());
-            Assert.Equals(2, i);
+            Assert.AreEqual(Unit.Default, xs.Single());
+            Assert.AreEqual(2, i);
         }
 
         [Test]
@@ -287,11 +287,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => { });
             });
 
-            Assert.Equals(Unit.Default, xs.Single());
-            Assert.Equals(1, i);
+            Assert.AreEqual(Unit.Default, xs.Single());
+            Assert.AreEqual(1, i);
 
-            Assert.Equals(Unit.Default, xs.Single());
-            Assert.Equals(2, i);
+            Assert.AreEqual(Unit.Default, xs.Single());
+            Assert.AreEqual(2, i);
         }
 
         [Test]
@@ -375,7 +375,7 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.Equals(Thread.CurrentThread.ManagedThreadId, t);
+            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
         }
 
         [Test]
@@ -397,7 +397,7 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.Equals(Thread.CurrentThread.ManagedThreadId, t);
+            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 

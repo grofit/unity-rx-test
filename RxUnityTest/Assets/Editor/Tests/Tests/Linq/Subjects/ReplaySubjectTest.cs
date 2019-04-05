@@ -1657,11 +1657,11 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(3, observer.Messages.Count);
+            Assert.AreEqual(3, observer.Messages.Count);
 
-            Assert.Equals(1, observer.Messages[0].Value.Value);
-            Assert.Equals(2, observer.Messages[1].Value.Value);
-            Assert.Equals(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
+            Assert.AreEqual(1, observer.Messages[0].Value.Value);
+            Assert.AreEqual(2, observer.Messages[1].Value.Value);
+            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
         }
 
         [Test]
@@ -1676,10 +1676,10 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(2, observer.Messages.Count);
+            Assert.AreEqual(2, observer.Messages.Count);
 
-            Assert.Equals(2, observer.Messages[0].Value.Value);
-            Assert.Equals(NotificationKind.OnCompleted, observer.Messages[1].Value.Kind);
+            Assert.AreEqual(2, observer.Messages[0].Value.Value);
+            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[1].Value.Kind);
         }
 
         [Test]
@@ -1695,11 +1695,11 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(3, observer.Messages.Count);
+            Assert.AreEqual(3, observer.Messages.Count);
 
-            Assert.Equals(2, observer.Messages[0].Value.Value);
-            Assert.Equals(3, observer.Messages[1].Value.Value);
-            Assert.Equals(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
+            Assert.AreEqual(2, observer.Messages[0].Value.Value);
+            Assert.AreEqual(3, observer.Messages[1].Value.Value);
+            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
         }
 
         [Test]
@@ -1715,12 +1715,12 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(4, observer.Messages.Count);
+            Assert.AreEqual(4, observer.Messages.Count);
 
-            Assert.Equals(1, observer.Messages[0].Value.Value);
-            Assert.Equals(2, observer.Messages[1].Value.Value);
-            Assert.Equals(3, observer.Messages[2].Value.Value);
-            Assert.Equals(NotificationKind.OnCompleted, observer.Messages[3].Value.Kind);
+            Assert.AreEqual(1, observer.Messages[0].Value.Value);
+            Assert.AreEqual(2, observer.Messages[1].Value.Value);
+            Assert.AreEqual(3, observer.Messages[2].Value.Value);
+            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[3].Value.Kind);
         }
 
         [Test]
@@ -1736,12 +1736,12 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(3, observer.Messages.Count);
+            Assert.AreEqual(3, observer.Messages.Count);
 
-            Assert.Equals(1, observer.Messages[0].Value.Value);
-            Assert.Equals(2, observer.Messages[1].Value.Value);
-            Assert.Equals(NotificationKind.OnError, observer.Messages[2].Value.Kind);
-            Assert.Equals(expectedException, observer.Messages[2].Value.Exception);
+            Assert.AreEqual(1, observer.Messages[0].Value.Value);
+            Assert.AreEqual(2, observer.Messages[1].Value.Value);
+            Assert.AreEqual(NotificationKind.OnError, observer.Messages[2].Value.Kind);
+            Assert.AreEqual(expectedException, observer.Messages[2].Value.Exception);
         }
 
         [Test]
@@ -1757,11 +1757,11 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(2, observer.Messages.Count);
+            Assert.AreEqual(2, observer.Messages.Count);
 
-            Assert.Equals(2, observer.Messages[0].Value.Value);
-            Assert.Equals(NotificationKind.OnError, observer.Messages[1].Value.Kind);
-            Assert.Equals(expectedException, observer.Messages[1].Value.Exception);
+            Assert.AreEqual(2, observer.Messages[0].Value.Value);
+            Assert.AreEqual(NotificationKind.OnError, observer.Messages[1].Value.Kind);
+            Assert.AreEqual(expectedException, observer.Messages[1].Value.Exception);
         }
 
         [Test]
@@ -1778,12 +1778,12 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(3, observer.Messages.Count);
+            Assert.AreEqual(3, observer.Messages.Count);
 
-            Assert.Equals(2, observer.Messages[0].Value.Value);
-            Assert.Equals(3, observer.Messages[1].Value.Value);
-            Assert.Equals(NotificationKind.OnError, observer.Messages[2].Value.Kind);
-            Assert.Equals(expectedException, observer.Messages[2].Value.Exception);
+            Assert.AreEqual(2, observer.Messages[0].Value.Value);
+            Assert.AreEqual(3, observer.Messages[1].Value.Value);
+            Assert.AreEqual(NotificationKind.OnError, observer.Messages[2].Value.Kind);
+            Assert.AreEqual(expectedException, observer.Messages[2].Value.Exception);
         }
 
         [Test]
@@ -1800,13 +1800,13 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.Equals(4, observer.Messages.Count);
+            Assert.AreEqual(4, observer.Messages.Count);
 
-            Assert.Equals(1, observer.Messages[0].Value.Value);
-            Assert.Equals(2, observer.Messages[1].Value.Value);
-            Assert.Equals(3, observer.Messages[2].Value.Value);
-            Assert.Equals(NotificationKind.OnError, observer.Messages[3].Value.Kind);
-            Assert.Equals(expectedException, observer.Messages[3].Value.Exception);
+            Assert.AreEqual(1, observer.Messages[0].Value.Value);
+            Assert.AreEqual(2, observer.Messages[1].Value.Value);
+            Assert.AreEqual(3, observer.Messages[2].Value.Value);
+            Assert.AreEqual(NotificationKind.OnError, observer.Messages[3].Value.Kind);
+            Assert.AreEqual(expectedException, observer.Messages[3].Value.Exception);
         }
 
         [Test]

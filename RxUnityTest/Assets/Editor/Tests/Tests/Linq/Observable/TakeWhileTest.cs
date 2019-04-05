@@ -67,7 +67,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 330)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -113,7 +113,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 390)
             );
 
-            Assert.Equals(6, invoked);
+            Assert.AreEqual(6, invoked);
         }
 
         [Test]
@@ -158,7 +158,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 270)
             );
 
-            Assert.Equals(2, invoked);
+            Assert.AreEqual(2, invoked);
         }
 
         [Test]
@@ -204,7 +204,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 390)
             );
 
-            Assert.Equals(6, invoked);
+            Assert.AreEqual(6, invoked);
         }
 
         [Test]
@@ -248,7 +248,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 300)
             );
 
-            Assert.Equals(3, invoked);
+            Assert.AreEqual(3, invoked);
         }
 
         [Test]
@@ -295,7 +295,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 390)
             );
 
-            Assert.Equals(6, invoked);
+            Assert.AreEqual(6, invoked);
         }
 
         [Test]
@@ -338,7 +338,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 205)
             );
 
-            Assert.Equals(1, invoked);
+            Assert.AreEqual(1, invoked);
         }
 
         [Test]
@@ -387,7 +387,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 290)
             );
 
-            Assert.Equals(3, invoked);
+            Assert.AreEqual(3, invoked);
         }
 
         [Test]

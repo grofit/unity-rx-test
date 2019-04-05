@@ -496,10 +496,10 @@ namespace ReactiveTests.Tests
                     OnNext(600, 4)
                 );
 
-                Assert.Equals(5, res.Messages.Count);
+                Assert.AreEqual(5, res.Messages.Count);
 
-                Assert.Equals(700, res.Messages[4].Time);
-                Assert.Equals(NotificationKind.OnError, res.Messages[4].Value.Kind);
+                Assert.AreEqual(700, res.Messages[4].Time);
+                Assert.AreEqual(NotificationKind.OnError, res.Messages[4].Value.Kind);
                 Assert.True(res.Messages[4].Value.Exception is OperationCanceledException);
             });
         }

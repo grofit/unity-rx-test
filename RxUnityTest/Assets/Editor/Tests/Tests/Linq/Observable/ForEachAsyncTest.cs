@@ -63,7 +63,7 @@ namespace ReactiveTests.Tests
                 new Recorded<int>(500, 5)
             );
 
-            Assert.Equals(TaskStatus.WaitingForActivation, task.Status);
+            Assert.AreEqual(TaskStatus.WaitingForActivation, task.Status);
         }
 
         [Test]
@@ -99,7 +99,7 @@ namespace ReactiveTests.Tests
                 new Recorded<int>(500, 5)
             );
 
-            Assert.Equals(TaskStatus.RanToCompletion, task.Status);
+            Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
         }
 
         [Test]
@@ -137,7 +137,7 @@ namespace ReactiveTests.Tests
                 new Recorded<int>(500, 5)
             );
 
-            Assert.Equals(TaskStatus.Faulted, task.Status);
+            Assert.AreEqual(TaskStatus.Faulted, task.Status);
             Assert.AreSame(exception, task.Exception.InnerException);
         }
 
@@ -183,7 +183,7 @@ namespace ReactiveTests.Tests
                 new Recorded<int>(400, 4)
             );
 
-            Assert.Equals(TaskStatus.Faulted, task.Status);
+            Assert.AreEqual(TaskStatus.Faulted, task.Status);
             Assert.AreSame(exception, task.Exception.InnerException);
         }
 
@@ -219,7 +219,7 @@ namespace ReactiveTests.Tests
                 new Recorded<int>(300, 3)
             );
 
-            Assert.Equals(TaskStatus.Canceled, task.Status);
+            Assert.AreEqual(TaskStatus.Canceled, task.Status);
         }
 
         [Test]
@@ -252,7 +252,7 @@ namespace ReactiveTests.Tests
             list.AssertEqual(
             );
 
-            Assert.Equals(TaskStatus.Canceled, task.Status);
+            Assert.AreEqual(TaskStatus.Canceled, task.Status);
         }
 
         [Test]
@@ -289,7 +289,7 @@ namespace ReactiveTests.Tests
                 new Recorded<int>(500, 5)
             );
 
-            Assert.Equals(TaskStatus.RanToCompletion, task.Status);
+            Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
         }
 
         [Test]
@@ -359,7 +359,7 @@ namespace ReactiveTests.Tests
 
                 for (var i = 0; i < 10; i++)
                 {
-                    Assert.Equals(42, lst[i]);
+                    Assert.AreEqual(42, lst[i]);
                 }
 
                 Assert.True(done);
@@ -418,7 +418,7 @@ namespace ReactiveTests.Tests
 
                 for (var i = 0; i < 10; i++)
                 {
-                    Assert.Equals(i * 42, lst[i]);
+                    Assert.AreEqual(i * 42, lst[i]);
                 }
 
                 Assert.True(done);
@@ -501,7 +501,7 @@ namespace ReactiveTests.Tests
             }
             catch (AggregateException err)
             {
-                Assert.Equals(1, err.InnerExceptions.Count);
+                Assert.AreEqual(1, err.InnerExceptions.Count);
                 Assert.AreSame(ex, err.InnerExceptions[0]);
             }
         }
@@ -554,7 +554,7 @@ namespace ReactiveTests.Tests
                 }
                 catch (AggregateException err)
                 {
-                    Assert.Equals(1, err.InnerExceptions.Count);
+                    Assert.AreEqual(1, err.InnerExceptions.Count);
                     Assert.AreSame(ex, err.InnerExceptions[0]);
                 }
             }
@@ -585,7 +585,7 @@ namespace ReactiveTests.Tests
             }
             catch (AggregateException err)
             {
-                Assert.Equals(1, err.InnerExceptions.Count);
+                Assert.AreEqual(1, err.InnerExceptions.Count);
                 Assert.AreSame(ex, err.InnerExceptions[0]);
             }
         }

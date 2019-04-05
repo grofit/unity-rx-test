@@ -38,18 +38,18 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(1, num);
+            Assert.AreEqual(1, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
 
             evt.OnNext -= hnd;
 
             src.OnNext(new Unit());
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
         }
 
         [Test]

@@ -647,12 +647,12 @@ namespace ReactiveTests.Tests
 
                 if (i == 0)
                 {
-                    Assert.Equals(0, result.Count);
+                    Assert.AreEqual(0, result.Count);
                 }
                 else
                 {
-                    Assert.Equals(1, result.Count);
-                    Assert.Equals(0, result[0]);
+                    Assert.AreEqual(1, result.Count);
+                    Assert.AreEqual(0, result[0]);
                 }
             }
         }
@@ -679,12 +679,12 @@ namespace ReactiveTests.Tests
 
                 if (i == 0)
                 {
-                    Assert.Equals(0, result.Count);
+                    Assert.AreEqual(0, result.Count);
                 }
                 else
                 {
-                    Assert.Equals(1, result.Count);
-                    Assert.Equals(i - 1, result[0]);
+                    Assert.AreEqual(1, result.Count);
+                    Assert.AreEqual(i - 1, result[0]);
                 }
             }
         }

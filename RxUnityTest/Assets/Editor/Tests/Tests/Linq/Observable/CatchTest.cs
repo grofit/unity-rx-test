@@ -417,7 +417,7 @@ namespace ReactiveTests.Tests
                 o1.Catch((ArgumentException ex_) => { handlerCalled = scheduler.Clock; return o2; })
             );
 
-            Assert.Equals(230, handlerCalled);
+            Assert.AreEqual(230, handlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -460,7 +460,7 @@ namespace ReactiveTests.Tests
                 o1.Catch((ArgumentException ex_) => { handlerCalled = scheduler.Clock; return o2; })
             );
 
-            Assert.Equals(null, handlerCalled);
+            Assert.AreEqual(null, handlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -497,7 +497,7 @@ namespace ReactiveTests.Tests
                 o1.Catch((ArgumentException ex_) => { handlerCalled = scheduler.Clock; throw ex2; })
             );
 
-            Assert.Equals(230, handlerCalled);
+            Assert.AreEqual(230, handlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -542,8 +542,8 @@ namespace ReactiveTests.Tests
                 .Catch((ArgumentException ex_) => { secondHandlerCalled = scheduler.Clock; return o3; })
             );
 
-            Assert.Equals(null, firstHandlerCalled);
-            Assert.Equals(215, secondHandlerCalled);
+            Assert.AreEqual(null, firstHandlerCalled);
+            Assert.AreEqual(215, secondHandlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -595,8 +595,8 @@ namespace ReactiveTests.Tests
                 .Catch((InvalidOperationException ex_) => { secondHandlerCalled = scheduler.Clock; return o3; })
             );
 
-            Assert.Equals(215, firstHandlerCalled);
-            Assert.Equals(null, secondHandlerCalled);
+            Assert.AreEqual(215, firstHandlerCalled);
+            Assert.AreEqual(null, secondHandlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -649,8 +649,8 @@ namespace ReactiveTests.Tests
                 .Catch((ArgumentException ex_) => { secondHandlerCalled = scheduler.Clock; Assert.True(ex2 == ex_, "Expected ex2"); return o3; })
             );
 
-            Assert.Equals(215, firstHandlerCalled);
-            Assert.Equals(225, secondHandlerCalled);
+            Assert.AreEqual(215, firstHandlerCalled);
+            Assert.AreEqual(225, secondHandlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -685,7 +685,7 @@ namespace ReactiveTests.Tests
             });
 
             evt.WaitOne();
-            Assert.Equals(1, res);
+            Assert.AreEqual(1, res);
         }
 
         [Test]
@@ -701,7 +701,7 @@ namespace ReactiveTests.Tests
             });
 
             evt.WaitOne();
-            Assert.Equals(1, res);
+            Assert.AreEqual(1, res);
         }
 
         [Test]
@@ -719,7 +719,7 @@ namespace ReactiveTests.Tests
             });
 
             evt.WaitOne();
-            Assert.Equals(1, res);
+            Assert.AreEqual(1, res);
         }
 
         [Test]
@@ -997,7 +997,7 @@ namespace ReactiveTests.Tests
                     Observable.Return(42)
                 );
 
-            Assert.Equals(42, res.Wait());
+            Assert.AreEqual(42, res.Wait());
         }
 #endif
 

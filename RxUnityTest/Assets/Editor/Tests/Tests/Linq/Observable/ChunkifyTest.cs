@@ -65,7 +65,7 @@ namespace ReactiveTests.Tests
                 Subscribe(250, 900)
             );
 
-            Assert.Equals(7, res.Count);
+            Assert.AreEqual(7, res.Count);
             Assert.True(res[0].SequenceEqual(new int[] { }));
             Assert.True(res[1].SequenceEqual(new int[] { 3 }));
             Assert.True(res[2].SequenceEqual(new int[] { 4 }));
@@ -114,7 +114,7 @@ namespace ReactiveTests.Tests
                 Subscribe(250, 900)
             );
 
-            Assert.Equals(2, res.Count);
+            Assert.AreEqual(2, res.Count);
             Assert.True(res[0].SequenceEqual(new int[] { 3, 4, 5 }));
             Assert.True(res[1].SequenceEqual(new int[] { 6, 7, 8 }));
         }
@@ -171,7 +171,7 @@ namespace ReactiveTests.Tests
                 Subscribe(250, 700)
             );
 
-            Assert.Equals(4, res.Count);
+            Assert.AreEqual(4, res.Count);
             Assert.True(res[0].SequenceEqual(new int[] { }));
             Assert.True(res[1].SequenceEqual(new int[] { 3 }));
             Assert.True(res[2].SequenceEqual(new int[] { 4 }));

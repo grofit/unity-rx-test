@@ -919,7 +919,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(5, observers.Count);
+            Assert.AreEqual(5, observers.Count);
 
             observers[0].Messages.AssertEqual(
                 OnNext(210, 2),
@@ -1008,7 +1008,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(windowCreationTimes.Last() < 400);
 
-            Assert.Equals(4, observers.Count);
+            Assert.AreEqual(4, observers.Count);
 
             observers[0].Messages.AssertEqual(
                 OnNext(210, 2),
@@ -1097,7 +1097,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(windowCreationTimes.Last() < 400);
 
-            Assert.Equals(4, observers.Count);
+            Assert.AreEqual(4, observers.Count);
 
             observers[0].Messages.AssertEqual(
                 OnNext(210, 2),

@@ -49,18 +49,18 @@ namespace ReactiveTests.Tests
             var res = src.MostRecent(42).GetEnumerator();
 
             Assert.True(res.MoveNext());
-            Assert.Equals(42, res.Current);
+            Assert.AreEqual(42, res.Current);
             Assert.True(res.MoveNext());
-            Assert.Equals(42, res.Current);
+            Assert.AreEqual(42, res.Current);
 
             for (var i = 1; i <= 2; i++)
             {
                 evt.Set();
                 nxt.WaitOne();
                 Assert.True(res.MoveNext());
-                Assert.Equals(i, res.Current);
+                Assert.AreEqual(i, res.Current);
                 Assert.True(res.MoveNext());
-                Assert.Equals(i, res.Current);
+                Assert.AreEqual(i, res.Current);
             }
 
             evt.Set();
@@ -182,16 +182,16 @@ namespace ReactiveTests.Tests
             var res = src.MostRecent(42).GetEnumerator();
 
             Assert.True(res.MoveNext());
-            Assert.Equals(42, res.Current);
+            Assert.AreEqual(42, res.Current);
             Assert.True(res.MoveNext());
-            Assert.Equals(42, res.Current);
+            Assert.AreEqual(42, res.Current);
 
             evt.Set();
             nxt.WaitOne();
             Assert.True(res.MoveNext());
-            Assert.Equals(1, res.Current);
+            Assert.AreEqual(1, res.Current);
             Assert.True(res.MoveNext());
-            Assert.Equals(1, res.Current);
+            Assert.AreEqual(1, res.Current);
 
             evt.Set();
             nxt.WaitOne();

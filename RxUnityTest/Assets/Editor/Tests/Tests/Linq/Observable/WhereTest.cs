@@ -88,7 +88,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -138,7 +138,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -179,7 +179,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -223,7 +223,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.Equals(5, invoked);
+            Assert.AreEqual(5, invoked);
         }
 
         [Test]
@@ -273,7 +273,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -325,7 +325,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 380)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -385,7 +385,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 450)
             );
 
-            Assert.Equals(6, invoked);
+            Assert.AreEqual(6, invoked);
         }
 
         [Test]
@@ -513,7 +513,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -563,7 +563,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -604,7 +604,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -647,7 +647,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.Equals(5, invoked);
+            Assert.AreEqual(5, invoked);
         }
 
         [Test]
@@ -694,7 +694,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.Equals(9, invoked);
+            Assert.AreEqual(9, invoked);
         }
 
         [Test]
@@ -745,7 +745,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 380)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -805,7 +805,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 450)
             );
 
-            Assert.Equals(6, invoked);
+            Assert.AreEqual(6, invoked);
         }
 
         [Test]

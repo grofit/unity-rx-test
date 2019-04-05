@@ -223,7 +223,7 @@ namespace ReactiveTests.Tests
         {
             var _x = -1;
             Observable.Return(42, Scheduler.Immediate).Subscribe((int x) => { _x = x; });
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
         }
 
         [Test]
@@ -248,7 +248,7 @@ namespace ReactiveTests.Tests
             var finished = false;
             var _x = -1;
             Observable.Return(42, Scheduler.Immediate).Subscribe((int x) => { _x = x; }, () => { finished = true; });
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
             Assert.True(finished);
         }
 
@@ -500,10 +500,10 @@ namespace ReactiveTests.Tests
             xs.Subscribe(_ => { n++; }, ex => { e++; }, () => { c++; }, CancellationToken.None);
             xs.Subscribe(Observer.Create<int>(_ => { n++; }, ex => { e++; }, () => { c++; }), CancellationToken.None);
 
-            Assert.Equals(6, i);
-            Assert.Equals(5, n);
-            Assert.Equals(0, e);
-            Assert.Equals(3, c);
+            Assert.AreEqual(6, i);
+            Assert.AreEqual(5, n);
+            Assert.AreEqual(0, e);
+            Assert.AreEqual(3, c);
         }
 
         [Test]
@@ -534,7 +534,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(2, n);
+            Assert.AreEqual(2, n);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 220)

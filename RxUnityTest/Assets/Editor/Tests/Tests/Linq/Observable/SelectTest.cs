@@ -92,7 +92,7 @@ namespace ReactiveTests.Tests
                 Subscribe(0, 500)
             );
 
-            Assert.Equals(3, invoked);
+            Assert.AreEqual(3, invoked);
         }
 
         [Test]
@@ -134,7 +134,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -171,7 +171,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 1000)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -215,7 +215,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -262,7 +262,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 290)
             );
 
-            Assert.Equals(3, invoked);
+            Assert.AreEqual(3, invoked);
         }
 
         [Test]
@@ -341,7 +341,7 @@ namespace ReactiveTests.Tests
                 Subscribe(0, 500)
             );
 
-            Assert.Equals(3, invoked);
+            Assert.AreEqual(3, invoked);
         }
 
         [Test]
@@ -383,7 +383,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -420,7 +420,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 1000)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -463,7 +463,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.Equals(4, invoked);
+            Assert.AreEqual(4, invoked);
         }
 
         [Test]
@@ -510,7 +510,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 290)
             );
 
-            Assert.Equals(3, invoked);
+            Assert.AreEqual(3, invoked);
         }
 
         [Test]

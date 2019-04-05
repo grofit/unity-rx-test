@@ -93,13 +93,13 @@ namespace ReactiveTests.Tests
             var refd = conn.RefCount();
 
             var dis1 = refd.Subscribe();
-            Assert.Equals(1, count);
-            Assert.Equals(1, subject.SubscribeCount);
+            Assert.AreEqual(1, count);
+            Assert.AreEqual(1, subject.SubscribeCount);
             Assert.False(disconnected);
 
             var dis2 = refd.Subscribe();
-            Assert.Equals(1, count);
-            Assert.Equals(2, subject.SubscribeCount);
+            Assert.AreEqual(1, count);
+            Assert.AreEqual(2, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis1.Dispose();
@@ -109,8 +109,8 @@ namespace ReactiveTests.Tests
             disconnected = false;
 
             var dis3 = refd.Subscribe();
-            Assert.Equals(2, count);
-            Assert.Equals(3, subject.SubscribeCount);
+            Assert.AreEqual(2, count);
+            Assert.AreEqual(3, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis3.Dispose();
@@ -213,7 +213,7 @@ namespace ReactiveTests.Tests
 
             using (refCount.Subscribe(value => seen = value, () => terminated = true))
             {
-                Assert.Equals(36, seen);
+                Assert.AreEqual(36, seen);
             }
 
             seen = 0;
@@ -222,7 +222,7 @@ namespace ReactiveTests.Tests
 
             using (refCount.Subscribe(value => seen = value, () => terminated = true))
             {
-                Assert.Equals(0, seen);
+                Assert.AreEqual(0, seen);
                 Assert.True(terminated);
             }
 
@@ -232,7 +232,7 @@ namespace ReactiveTests.Tests
 
             using (refCount.Subscribe(value => seen = value, () => terminated = true))
             {
-                Assert.Equals(36, seen);
+                Assert.AreEqual(36, seen);
                 Assert.False(terminated);
             }
         }
@@ -296,13 +296,13 @@ namespace ReactiveTests.Tests
             var refd = conn.RefCount(TimeSpan.FromTicks(20), scheduler);
 
             var dis1 = refd.Subscribe();
-            Assert.Equals(1, count);
-            Assert.Equals(1, subject.SubscribeCount);
+            Assert.AreEqual(1, count);
+            Assert.AreEqual(1, subject.SubscribeCount);
             Assert.False(disconnected);
 
             var dis2 = refd.Subscribe();
-            Assert.Equals(1, count);
-            Assert.Equals(2, subject.SubscribeCount);
+            Assert.AreEqual(1, count);
+            Assert.AreEqual(2, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis1.Dispose();
@@ -318,8 +318,8 @@ namespace ReactiveTests.Tests
             disconnected = false;
 
             var dis3 = refd.Subscribe();
-            Assert.Equals(2, count);
-            Assert.Equals(3, subject.SubscribeCount);
+            Assert.AreEqual(2, count);
+            Assert.AreEqual(3, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis3.Dispose();
@@ -429,12 +429,12 @@ namespace ReactiveTests.Tests
             var o2 = o1.Publish().RefCount();
 
             var s1 = o2.Subscribe();
-            Assert.Equals(1, subscribed);
-            Assert.Equals(1, unsubscribed);
+            Assert.AreEqual(1, subscribed);
+            Assert.AreEqual(1, unsubscribed);
 
             var s2 = o2.Subscribe();
-            Assert.Equals(1, subscribed);
-            Assert.Equals(1, unsubscribed);
+            Assert.AreEqual(1, subscribed);
+            Assert.AreEqual(1, unsubscribed);
         }
     }
 }

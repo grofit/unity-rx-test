@@ -27,17 +27,17 @@ namespace ReactiveTests.Tests
             .Replay()
             .AutoConnect();
 
-            Assert.Equals(0, called);
+            Assert.AreEqual(0, called);
 
             var list = source.ToList().First();
 
-            Assert.Equals(1, called);
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            Assert.AreEqual(1, called);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
 
             list = source.ToList().First();
 
-            Assert.Equals(1, called);
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            Assert.AreEqual(1, called);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -53,17 +53,17 @@ namespace ReactiveTests.Tests
             .Replay()
             .AutoConnect(0);
 
-            Assert.Equals(1, called);
+            Assert.AreEqual(1, called);
 
             var list = source.ToList().First();
 
-            Assert.Equals(1, called);
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            Assert.AreEqual(1, called);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
 
             list = source.ToList().First();
 
-            Assert.Equals(1, called);
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            Assert.AreEqual(1, called);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -79,26 +79,26 @@ namespace ReactiveTests.Tests
             .Replay()
             .AutoConnect(2);
 
-            Assert.Equals(0, called);
+            Assert.AreEqual(0, called);
 
             var list0 = new List<int>();
 
             source.Subscribe(v => list0.Add(v));
 
-            Assert.Equals(0, called);
-            Assert.Equals(0, list0.Count);
+            Assert.AreEqual(0, called);
+            Assert.AreEqual(0, list0.Count);
 
             var list = source.ToList().First();
 
-            Assert.Equals(1, called);
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            Assert.AreEqual(1, called);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
 
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list0);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list0);
 
             list = source.ToList().First();
 
-            Assert.Equals(1, called);
-            Assert.Equals(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            Assert.AreEqual(1, called);
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -129,7 +129,7 @@ namespace ReactiveTests.Tests
             subject.OnNext(4);
             subject.OnNext(5);
 
-            Assert.Equals(new List<int>() { 1, 2, 3 }, list);
+            Assert.AreEqual(new List<int>() { 1, 2, 3 }, list);
 
         }
     }

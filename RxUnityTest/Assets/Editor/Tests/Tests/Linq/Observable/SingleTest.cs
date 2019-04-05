@@ -38,7 +38,7 @@ namespace ReactiveTests.Tests
         public void Single_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).Single());
+            Assert.AreEqual(value, Observable.Return(value).Single());
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace ReactiveTests.Tests
         public void SinglePredicate_Range_ReducesToSingle()
         {
             var value = 42;
-            Assert.Equals(45, Observable.Range(value, 10).Single(i => i == 45));
+            Assert.AreEqual(45, Observable.Range(value, 10).Single(i => i == 45));
         }
 
 

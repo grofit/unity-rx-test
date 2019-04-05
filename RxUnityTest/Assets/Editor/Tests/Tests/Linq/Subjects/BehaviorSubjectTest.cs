@@ -448,89 +448,89 @@ namespace ReactiveTests.Tests
         public void Value_Initial()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.Equals(42, s.Value);
+            Assert.AreEqual(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.Equals(42, x);
+            Assert.AreEqual(42, x);
         }
 
         [Test]
         public void Value_First()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.Equals(42, s.Value);
+            Assert.AreEqual(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.Equals(42, x);
+            Assert.AreEqual(42, x);
 
             s.OnNext(43);
-            Assert.Equals(43, s.Value);
+            Assert.AreEqual(43, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(43, x);
+            Assert.AreEqual(43, x);
         }
 
         [Test]
         public void Value_Second()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.Equals(42, s.Value);
+            Assert.AreEqual(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.Equals(42, x);
+            Assert.AreEqual(42, x);
 
             s.OnNext(43);
-            Assert.Equals(43, s.Value);
+            Assert.AreEqual(43, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(43, x);
+            Assert.AreEqual(43, x);
 
             s.OnNext(44);
-            Assert.Equals(44, s.Value);
+            Assert.AreEqual(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(44, x);
+            Assert.AreEqual(44, x);
         }
 
         [Test]
         public void Value_FrozenAfterOnCompleted()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.Equals(42, s.Value);
+            Assert.AreEqual(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.Equals(42, x);
+            Assert.AreEqual(42, x);
 
             s.OnNext(43);
-            Assert.Equals(43, s.Value);
+            Assert.AreEqual(43, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(43, x);
+            Assert.AreEqual(43, x);
 
             s.OnNext(44);
-            Assert.Equals(44, s.Value);
+            Assert.AreEqual(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(44, x);
+            Assert.AreEqual(44, x);
 
             s.OnCompleted();
-            Assert.Equals(44, s.Value);
+            Assert.AreEqual(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(44, x);
+            Assert.AreEqual(44, x);
 
             s.OnNext(1234);
-            Assert.Equals(44, s.Value);
+            Assert.AreEqual(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.Equals(44, x);
+            Assert.AreEqual(44, x);
         }
 
         [Test]
         public void Value_ThrowsAfterOnError()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.Equals(42, s.Value);
+            Assert.AreEqual(42, s.Value);
 
             s.OnError(new InvalidOperationException());
 
@@ -549,7 +549,7 @@ namespace ReactiveTests.Tests
         public void Value_ThrowsOnDispose()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.Equals(42, s.Value);
+            Assert.AreEqual(42, s.Value);
 
             s.Dispose();
 

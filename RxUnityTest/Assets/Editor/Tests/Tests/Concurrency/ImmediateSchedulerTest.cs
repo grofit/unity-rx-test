@@ -27,7 +27,7 @@ namespace ReactiveTests.Tests
         {
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
-            Scheduler.Immediate.Schedule(() => { Assert.Equals(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            Scheduler.Immediate.Schedule(() => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             Assert.True(ran);
         }
 #endif
@@ -61,7 +61,7 @@ namespace ReactiveTests.Tests
         {
             var _x = 0;
             Scheduler.Immediate.Schedule(42, (self, x) => { _x = x; return Disposable.Empty; });
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace ReactiveTests.Tests
         {
             var _x = 0;
             Scheduler.Immediate.Schedule(42, DateTimeOffset.Now, (self, x) => { _x = x; return Disposable.Empty; });
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace ReactiveTests.Tests
         {
             var _x = 0;
             Scheduler.Immediate.Schedule(42, TimeSpan.Zero, (self, x) => { _x = x; return Disposable.Empty; });
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
         }
 
         [Test]
@@ -86,8 +86,8 @@ namespace ReactiveTests.Tests
             var _x = 0;
             var _y = 0;
             Scheduler.Immediate.Schedule(42, (self, x) => { _x = x; return self.Schedule(43, (self2, y) => { _y = y; return Disposable.Empty; }); });
-            Assert.Equals(42, _x);
-            Assert.Equals(43, _y);
+            Assert.AreEqual(42, _x);
+            Assert.AreEqual(43, _y);
         }
 
         [Test]
@@ -96,8 +96,8 @@ namespace ReactiveTests.Tests
             var _x = 0;
             var _y = 0;
             Scheduler.Immediate.Schedule(42, (self, x) => { _x = x; return self.Schedule(43, DateTimeOffset.Now, (self2, y) => { _y = y; return Disposable.Empty; }); });
-            Assert.Equals(42, _x);
-            Assert.Equals(43, _y);
+            Assert.AreEqual(42, _x);
+            Assert.AreEqual(43, _y);
         }
 
         [Test]
@@ -106,8 +106,8 @@ namespace ReactiveTests.Tests
             var _x = 0;
             var _y = 0;
             Scheduler.Immediate.Schedule(42, (self, x) => { _x = x; return self.Schedule(43, TimeSpan.FromMilliseconds(100), (self2, y) => { _y = y; return Disposable.Empty; }); });
-            Assert.Equals(42, _x);
-            Assert.Equals(43, _y);
+            Assert.AreEqual(42, _x);
+            Assert.AreEqual(43, _y);
         }
 
         [Test]

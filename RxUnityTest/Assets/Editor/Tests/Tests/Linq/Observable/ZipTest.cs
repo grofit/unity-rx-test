@@ -4365,7 +4365,7 @@ namespace ReactiveTests.Tests
                 Observable.Zip(xss)
             );
 
-            Assert.Equals(200, started);
+            Assert.AreEqual(200, started);
 
             res.Messages.AssertEqual(
                 OnNext<IList<int>>(230, l => l.SequenceEqual(new[] { 1, 2, 3 })),
@@ -4472,7 +4472,7 @@ namespace ReactiveTests.Tests
             )
             .Subscribe(v => result = v);
 
-            Assert.Equals(7, result);
+            Assert.AreEqual(7, result);
         }
 
         [Test]

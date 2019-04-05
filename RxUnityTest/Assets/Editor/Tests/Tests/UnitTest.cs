@@ -20,8 +20,8 @@ namespace ReactiveTests.Tests
             Assert.False(u1.Equals(null));
             Assert.True(u1 == u2);
             Assert.False(u1 != u2);
-            Assert.Equals(0, u1.GetHashCode());
-            Assert.Equals("()", u1.ToString());
+            Assert.AreEqual(0, u1.GetHashCode());
+            Assert.AreEqual("()", u1.ToString());
         }
     }
 }

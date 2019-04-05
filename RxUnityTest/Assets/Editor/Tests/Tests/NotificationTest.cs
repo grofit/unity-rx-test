@@ -105,9 +105,9 @@ namespace ReactiveTests.Tests
         public void OnNext_CtorAndProps()
         {
             var n = Notification.CreateOnNext(42);
-            Assert.Equals(NotificationKind.OnNext, n.Kind);
+            Assert.AreEqual(NotificationKind.OnNext, n.Kind);
             Assert.True(n.HasValue);
-            Assert.Equals(42, n.Value);
+            Assert.AreEqual(42, n.Value);
             Assert.Null(n.Exception);
         }
 
@@ -148,7 +148,7 @@ namespace ReactiveTests.Tests
             var n2 = Notification.CreateOnNext(42);
 
             Assert.AreNotEqual(0, n1.GetHashCode());
-            Assert.Equals(n1.GetHashCode(), n2.GetHashCode());
+            Assert.AreEqual(n1.GetHashCode(), n2.GetHashCode());
         }
 
         [Test]
@@ -166,7 +166,7 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnNext(42);
             n1.Accept(con);
 
-            Assert.Equals(42, con.Value);
+            Assert.AreEqual(42, con.Value);
         }
 
         private class CheckOnNextObserver : IObserver<int>
@@ -195,7 +195,7 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnNext(42);
             var res = n1.Accept(new AcceptObserver(x => "OK", _ => { Assert.True(false); return null; }, () => { Assert.True(false); return null; }));
 
-            Assert.Equals("OK", res);
+            Assert.AreEqual("OK", res);
         }
 
         [Test]
@@ -238,7 +238,7 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnNext(42);
             var res = n1.Accept(x => "OK", _ => { Assert.True(false); return null; }, () => { Assert.True(false); return null; });
 
-            Assert.Equals("OK", res);
+            Assert.AreEqual("OK", res);
         }
 
         [Test]
@@ -268,7 +268,7 @@ namespace ReactiveTests.Tests
         {
             var e = new Exception();
             var n = Notification.CreateOnError<int>(e);
-            Assert.Equals(NotificationKind.OnError, n.Kind);
+            Assert.AreEqual(NotificationKind.OnError, n.Kind);
             Assert.False(n.HasValue);
             Assert.AreSame(e, n.Exception);
 
@@ -325,7 +325,7 @@ namespace ReactiveTests.Tests
             var n2 = Notification.CreateOnError<int>(ex);
 
             Assert.AreNotEqual(0, n1.GetHashCode());
-            Assert.Equals(n1.GetHashCode(), n2.GetHashCode());
+            Assert.AreEqual(n1.GetHashCode(), n2.GetHashCode());
         }
 
         [Test]
@@ -379,7 +379,7 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnError<int>(ex);
             var res = n1.Accept(new AcceptObserver(x => { Assert.True(false); return null; }, _ => { Assert.AreSame(ex, _); return "OK"; }, () => { Assert.True(false); return null; }));
 
-            Assert.Equals("OK", res);
+            Assert.AreEqual("OK", res);
         }
 
         [Test]
@@ -410,14 +410,14 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnError<int>(ex);
             var res = n1.Accept(x => { Assert.True(false); return null; }, x => "OK", () => { Assert.True(false); return null; });
 
-            Assert.Equals("OK", res);
+            Assert.AreEqual("OK", res);
         }
 
         [Test]
         public void OnCompleted_CtorAndProps()
         {
             var n = Notification.CreateOnCompleted<int>();
-            Assert.Equals(NotificationKind.OnCompleted, n.Kind);
+            Assert.AreEqual(NotificationKind.OnCompleted, n.Kind);
             Assert.False(n.HasValue);
             Assert.Null(n.Exception);
 
@@ -485,7 +485,7 @@ namespace ReactiveTests.Tests
             var n2 = Notification.CreateOnCompleted<int>();
 
             Assert.AreNotEqual(0, n1.GetHashCode());
-            Assert.Equals(n1.GetHashCode(), n2.GetHashCode());
+            Assert.AreEqual(n1.GetHashCode(), n2.GetHashCode());
         }
 
         [Test]
@@ -532,7 +532,7 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnCompleted<int>();
             var res = n1.Accept(new AcceptObserver(x => { Assert.True(false); return null; }, _ => { Assert.True(false); return null; }, () => "OK"));
 
-            Assert.Equals("OK", res);
+            Assert.AreEqual("OK", res);
         }
 
         [Test]
@@ -559,7 +559,7 @@ namespace ReactiveTests.Tests
             var n1 = Notification.CreateOnCompleted<int>();
             var res = n1.Accept(x => { Assert.True(false); return null; }, _ => { Assert.True(false); return null; }, () => "OK");
 
-            Assert.Equals("OK", res);
+            Assert.AreEqual("OK", res);
         }
 
         private class AcceptObserver : IObserver<int, string>

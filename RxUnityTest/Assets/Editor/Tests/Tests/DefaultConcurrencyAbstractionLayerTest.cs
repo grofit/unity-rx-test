@@ -205,7 +205,7 @@ namespace ReactiveTests.Tests
 
             value = (int)_domain.GetData("value");
 
-            Assert.Equals(newValue, value);
+            Assert.AreEqual(newValue, value);
         }
 
         [Test]

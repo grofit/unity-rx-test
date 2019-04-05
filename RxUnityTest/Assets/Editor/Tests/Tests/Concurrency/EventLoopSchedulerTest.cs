@@ -135,7 +135,7 @@ namespace ReactiveTests.Tests
 
             results.AssertEqual(0, 1);
 
-            Assert.Equals(2, d);
+            Assert.AreEqual(2, d);
         }
 
         [Test]
@@ -448,7 +448,7 @@ namespace ReactiveTests.Tests
                 countdown.Wait();
             }
 
-            Assert.Equals(0, failureCount);
+            Assert.AreEqual(0, failureCount);
         }
 #endif
     }

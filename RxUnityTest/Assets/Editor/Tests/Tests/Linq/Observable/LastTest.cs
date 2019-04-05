@@ -38,7 +38,7 @@ namespace ReactiveTests.Tests
         public void Last_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).Last());
+            Assert.AreEqual(value, Observable.Return(value).Last());
         }
 
         [Test]
@@ -55,14 +55,14 @@ namespace ReactiveTests.Tests
         public void Last_Range()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Range(value - 9, 10).Last());
+            Assert.AreEqual(value, Observable.Range(value - 9, 10).Last());
         }
 
         [Test]
         public void LastPredicate_Range()
         {
             var value = 42;
-            Assert.Equals(50, Observable.Range(value, 10).Last(i => i % 2 == 0));
+            Assert.AreEqual(50, Observable.Range(value, 10).Last(i => i % 2 == 0));
         }
 
     }

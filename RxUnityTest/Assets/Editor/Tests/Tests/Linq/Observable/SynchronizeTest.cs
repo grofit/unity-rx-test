@@ -38,7 +38,7 @@ namespace ReactiveTests.Tests
                 outsideLock = false;
                 Observable.Range(0, 100, NewThreadScheduler.Default).Synchronize(gate).Subscribe(x => i++, () => { Assert.True(outsideLock); });
                 Thread.Sleep(100);
-                Assert.Equals(0, i);
+                Assert.AreEqual(0, i);
                 outsideLock = true;
             }
 
@@ -49,7 +49,7 @@ namespace ReactiveTests.Tests
                 {
                     var start = i;
                     Thread.Sleep(100);
-                    Assert.Equals(start, i);
+                    Assert.AreEqual(start, i);
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace ReactiveTests.Tests
 
             evt.WaitOne();
 
-            Assert.Equals(Enumerable.Range(0, 200).Sum(), sum);
+            Assert.AreEqual(Enumerable.Range(0, 200).Sum(), sum);
         }
 #endif
 

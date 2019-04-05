@@ -25,20 +25,20 @@ namespace ReactiveTests.Tests
         [Test]
         public void SingleOrDefault_Empty()
         {
-            Assert.Equals(default, Observable.Empty<int>().SingleOrDefault());
+            Assert.AreEqual(default, Observable.Empty<int>().SingleOrDefault());
         }
 
         [Test]
         public void SingleOrDefaultPredicate_Empty()
         {
-            Assert.Equals(default, Observable.Empty<int>().SingleOrDefault(_ => true));
+            Assert.AreEqual(default, Observable.Empty<int>().SingleOrDefault(_ => true));
         }
 
         [Test]
         public void SingleOrDefault_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).SingleOrDefault());
+            Assert.AreEqual(value, Observable.Return(value).SingleOrDefault());
         }
 
         [Test]
@@ -69,14 +69,14 @@ namespace ReactiveTests.Tests
         public void SingleOrDefault_Range_ReducesToSingle()
         {
             var value = 42;
-            Assert.Equals(45, Observable.Range(value, 10).SingleOrDefault(i => i == 45));
+            Assert.AreEqual(45, Observable.Range(value, 10).SingleOrDefault(i => i == 45));
         }
 
         [Test]
         public void SingleOrDefault_Range_ReducesToNone()
         {
             var value = 42;
-            Assert.Equals(0, Observable.Range(value, 10).SingleOrDefault(i => i > 100));
+            Assert.AreEqual(0, Observable.Range(value, 10).SingleOrDefault(i => i > 100));
         }
 
     }

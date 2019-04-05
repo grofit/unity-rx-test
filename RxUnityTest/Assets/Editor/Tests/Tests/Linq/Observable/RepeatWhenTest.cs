@@ -135,9 +135,9 @@ namespace ReactiveTests.Tests
             Assert.False(main.HasObservers);
             Assert.False(inner.HasObservers);
 
-            Assert.Equals(0, items);
-            Assert.Equals(0, errors);
-            Assert.Equals(1, end);
+            Assert.AreEqual(0, items);
+            Assert.AreEqual(0, errors);
+            Assert.AreEqual(1, end);
         }
 
         [Test]
@@ -163,9 +163,9 @@ namespace ReactiveTests.Tests
             Assert.False(main.HasObservers);
             Assert.False(inner.HasObservers);
 
-            Assert.Equals(0, items);
-            Assert.Equals(1, errors);
-            Assert.Equals(0, end);
+            Assert.AreEqual(0, items);
+            Assert.AreEqual(1, errors);
+            Assert.AreEqual(0, end);
         }
 
         [Test]

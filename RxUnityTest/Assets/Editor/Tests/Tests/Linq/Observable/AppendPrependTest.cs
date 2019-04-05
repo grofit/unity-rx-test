@@ -324,12 +324,12 @@ namespace ReactiveTests.Tests
                 .Timeout(TimeSpan.FromSeconds(5))
                 .ToList().First();
 
-            Assert.Equals(1002, result.Count);
+            Assert.AreEqual(1002, result.Count);
 
             var j = 0;
             for (var i = -1; i <= 1000; i++)
             {
-                Assert.Equals(i, result[j++]);
+                Assert.AreEqual(i, result[j++]);
             }
         }
 
@@ -345,12 +345,12 @@ namespace ReactiveTests.Tests
                 .Timeout(TimeSpan.FromSeconds(5))
                 .ToList().First();
 
-            Assert.Equals(1002, result.Count);
+            Assert.AreEqual(1002, result.Count);
 
             var j = 0;
             for (var i = -1; i <= 1000; i++)
             {
-                Assert.Equals(i, result[j++]);
+                Assert.AreEqual(i, result[j++]);
             }
         }
     }

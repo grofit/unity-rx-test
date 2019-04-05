@@ -75,7 +75,7 @@ namespace ReactiveTests.Tests
 
             completed.WaitOne();
 
-            Assert.Equals(1, observer.Messages.Count);
+            Assert.AreEqual(1, observer.Messages.Count);
         }
 
         [Test]
@@ -206,7 +206,7 @@ namespace ReactiveTests.Tests
 
             completed.WaitOne();
 
-            Assert.Equals(10, observer.Messages.Count);
+            Assert.AreEqual(10, observer.Messages.Count);
         }
 
         [Test]
@@ -489,7 +489,7 @@ namespace ReactiveTests.Tests
             }
             catch (Exception e)
             {
-                Assert.Equals(201, scheduler.Clock);
+                Assert.AreEqual(201, scheduler.Clock);
                 Assert.AreSame(ex, e);
             }
         }
@@ -533,7 +533,7 @@ namespace ReactiveTests.Tests
             }
             catch (Exception e)
             {
-                Assert.Equals(701, scheduler.Clock);
+                Assert.AreEqual(701, scheduler.Clock);
                 Assert.AreSame(ex, e);
             }
 

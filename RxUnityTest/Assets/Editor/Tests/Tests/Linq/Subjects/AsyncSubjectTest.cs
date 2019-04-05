@@ -354,7 +354,7 @@ namespace ReactiveTests.Tests
             e.Set();
             t.Join();
 
-            Assert.Equals(42, y);
+            Assert.AreEqual(42, y);
             Assert.True(s.IsCompleted);
         }
 

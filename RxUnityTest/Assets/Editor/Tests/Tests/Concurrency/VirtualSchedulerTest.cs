@@ -57,7 +57,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
             var scheduler = new VirtualSchedulerTestScheduler();
-            scheduler.Schedule(() => { Assert.Equals(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            scheduler.Schedule(() => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             scheduler.Start();
             Assert.True(ran);
         }
@@ -85,7 +85,7 @@ namespace ReactiveTests.Tests
         public void Virtual_InitialAndComparer_Now()
         {
             var s = new VirtualSchedulerTestScheduler("Bar", Comparer<string>.Default);
-            Assert.Equals(3, s.Now.Ticks);
+            Assert.AreEqual(3, s.Now.Ticks);
         }
 
         [Test]

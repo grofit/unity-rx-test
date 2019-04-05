@@ -333,14 +333,14 @@ namespace ReactiveTests.Tests
         public void Sample_DefaultScheduler_Periodic()
         {
             var res = Observable.Return(42).Sample(TimeSpan.FromMilliseconds(1)).ToEnumerable().Single();
-            Assert.Equals(42, res);
+            Assert.AreEqual(42, res);
         }
 
         [Test]
         public void Sample_DefaultScheduler_PeriodicDisabled()
         {
             var res = Observable.Return(42).Sample(TimeSpan.FromMilliseconds(1), Scheduler.Default.DisableOptimizations()).ToEnumerable().Single();
-            Assert.Equals(42, res);
+            Assert.AreEqual(42, res);
         }
 
         [Test]

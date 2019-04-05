@@ -283,8 +283,8 @@ namespace ReactiveTests.Tests
             results.Messages.AssertEqual(
             );
 
-            Assert.Equals(201, s);
-            Assert.Equals(1001, d);
+            Assert.AreEqual(201, s);
+            Assert.AreEqual(1001, d);
         }
 
         [Test]

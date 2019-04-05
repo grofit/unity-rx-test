@@ -16,7 +16,7 @@ namespace Tests.System.Reactive.Tests
         [Test]
         public async Task Return()
         {
-            Assert.Equals(42, await ManOrBoy_Return());
+            Assert.AreEqual(42, await ManOrBoy_Return());
         }
 
 #pragma warning disable 1998
@@ -49,7 +49,7 @@ namespace Tests.System.Reactive.Tests
         [Test]
         public async Task Basics()
         {
-            Assert.Equals(45, await ManOrBoy_Basics());
+            Assert.AreEqual(45, await ManOrBoy_Basics());
         }
 
 #pragma warning disable 1998

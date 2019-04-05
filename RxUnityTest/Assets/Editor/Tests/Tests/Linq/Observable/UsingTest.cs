@@ -62,8 +62,8 @@ namespace ReactiveTests.Tests
                 OnCompleted<long>(400)
             );
 
-            Assert.Equals(1, createInvoked);
-            Assert.Equals(1, disposeInvoked);
+            Assert.AreEqual(1, createInvoked);
+            Assert.AreEqual(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -110,8 +110,8 @@ namespace ReactiveTests.Tests
                 OnCompleted<long>(400)
             );
 
-            Assert.Equals(1, createInvoked);
-            Assert.Equals(1, disposeInvoked);
+            Assert.AreEqual(1, createInvoked);
+            Assert.AreEqual(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -162,8 +162,8 @@ namespace ReactiveTests.Tests
                 OnError<long>(400, ex)
             );
 
-            Assert.Equals(1, createInvoked);
-            Assert.Equals(1, disposeInvoked);
+            Assert.AreEqual(1, createInvoked);
+            Assert.AreEqual(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -212,8 +212,8 @@ namespace ReactiveTests.Tests
                 OnNext(300, 200L)
             );
 
-            Assert.Equals(1, createInvoked);
-            Assert.Equals(1, disposeInvoked);
+            Assert.AreEqual(1, createInvoked);
+            Assert.AreEqual(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 1000)
@@ -253,8 +253,8 @@ namespace ReactiveTests.Tests
                 OnError<int>(200, ex)
             );
 
-            Assert.Equals(0, createInvoked);
-            Assert.Equals(1, disposeInvoked);
+            Assert.AreEqual(0, createInvoked);
+            Assert.AreEqual(1, disposeInvoked);
         }
 
         [Test]
@@ -288,8 +288,8 @@ namespace ReactiveTests.Tests
                 OnError<int>(200, ex)
             );
 
-            Assert.Equals(1, createInvoked);
-            Assert.Equals(1, disposeInvoked);
+            Assert.AreEqual(1, createInvoked);
+            Assert.AreEqual(1, disposeInvoked);
 
             disposable.AssertEqual(
                 200,
@@ -309,7 +309,7 @@ namespace ReactiveTests.Tests
                 .Finally(() => order += "4")
                 .Subscribe();
 
-            Assert.Equals("1234", order);
+            Assert.AreEqual("1234", order);
         }
 
         [Test]
@@ -325,7 +325,7 @@ namespace ReactiveTests.Tests
                 .Subscribe()
                 .Dispose();
 
-            Assert.Equals("1234", order);
+            Assert.AreEqual("1234", order);
         }
     }
 }

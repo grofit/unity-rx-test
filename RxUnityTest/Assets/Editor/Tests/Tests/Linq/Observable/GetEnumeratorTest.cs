@@ -63,11 +63,11 @@ namespace ReactiveTests.Tests
                 Subscribe(100, 150)
             );
 
-            Assert.Equals(6, hasNext.Count);
+            Assert.AreEqual(6, hasNext.Count);
             Assert.True(hasNext.Take(4).All(_ => _));
             Assert.True(hasNext.Skip(4).All(_ => !_));
 
-            Assert.Equals(4, vals.Count);
+            Assert.AreEqual(4, vals.Count);
             Assert.True(vals[0].Item1 == 200 && vals[0].Item2 == 2);
             Assert.True(vals[1].Item1 == 210 && vals[1].Item2 == 3);
             Assert.True(vals[2].Item1 == 220 && vals[2].Item2 == 5);
@@ -115,11 +115,11 @@ namespace ReactiveTests.Tests
                 Subscribe(100, 190)
             );
 
-            Assert.Equals(6, hasNext.Count);
+            Assert.AreEqual(6, hasNext.Count);
             Assert.True(hasNext.Take(4).All(_ => _));
             Assert.True(hasNext.Skip(4).All(_ => !_));
 
-            Assert.Equals(4, vals.Count);
+            Assert.AreEqual(4, vals.Count);
             Assert.True(vals[0].Item1 == 120 && vals[0].Item2 == 2);
             Assert.True(vals[1].Item1 == 140 && vals[1].Item2 == 3);
             Assert.True(vals[2].Item1 == 160 && vals[2].Item2 == 5);
@@ -146,10 +146,10 @@ namespace ReactiveTests.Tests
             scheduler.ScheduleAbsolute(default(object), 140, (self, _) =>
             {
                 Assert.True(res.MoveNext());
-                Assert.Equals(2, res.Current);
+                Assert.AreEqual(2, res.Current);
 
                 Assert.True(res.MoveNext());
-                Assert.Equals(3, res.Current);
+                Assert.AreEqual(3, res.Current);
 
                 res.Dispose();
 

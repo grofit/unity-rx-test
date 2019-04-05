@@ -39,28 +39,28 @@ namespace ReactiveTests.Tests
         public void Value_Some()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(9, o.Value);
+            Assert.AreEqual(9, o.Value);
         }
 
         [Test]
         public void IndexOf_None()
         {
             var o = new ListObservable<int>(Observable.Empty<int>());
-            Assert.Equals(-1, o.IndexOf(0));
+            Assert.AreEqual(-1, o.IndexOf(0));
         }
 
         [Test]
         public void IndexOf_Some_NotFound()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(-1, o.IndexOf(100));
+            Assert.AreEqual(-1, o.IndexOf(100));
         }
 
         [Test]
         public void IndexOf_Some_Found()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(3, o.IndexOf(3));
+            Assert.AreEqual(3, o.IndexOf(3));
         }
 
         [Test]
@@ -160,21 +160,21 @@ namespace ReactiveTests.Tests
         public void Contains_None()
         {
             var o = new ListObservable<int>(Observable.Empty<int>());
-            Assert.Equals(false, o.Contains(0));
+            Assert.AreEqual(false, o.Contains(0));
         }
 
         [Test]
         public void Contains_Some_NotFound()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(false, o.Contains(100));
+            Assert.AreEqual(false, o.Contains(100));
         }
 
         [Test]
         public void Contains_Some_Found()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(true, o.Contains(3));
+            Assert.AreEqual(true, o.Contains(3));
         }
 
         [Test]
@@ -189,7 +189,7 @@ namespace ReactiveTests.Tests
         public void IsReadOnly()
         {
             var o = new ListObservable<int>(Observable.Never<int>());
-            Assert.Equals(false, o.IsReadOnly);
+            Assert.AreEqual(false, o.IsReadOnly);
         }
 
         [Test]
@@ -210,7 +210,7 @@ namespace ReactiveTests.Tests
         public void This_Some_Found()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(5, o[5]);
+            Assert.AreEqual(5, o[5]);
         }
 
         [Test]
@@ -288,7 +288,7 @@ namespace ReactiveTests.Tests
         public void Remove_None()
         {
             var o = new ListObservable<int>(Observable.Empty<int>());
-            Assert.Equals(false, o.Remove(0));
+            Assert.AreEqual(false, o.Remove(0));
             o.AssertEqual();
         }
 
@@ -296,7 +296,7 @@ namespace ReactiveTests.Tests
         public void Remove_Some_NotFound()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(false, o.Remove(100));
+            Assert.AreEqual(false, o.Remove(100));
             o.AssertEqual(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
         }
 
@@ -304,7 +304,7 @@ namespace ReactiveTests.Tests
         public void Remove_Some_Found()
         {
             var o = new ListObservable<int>(Observable.Range(0, 10));
-            Assert.Equals(true, o.Remove(3));
+            Assert.AreEqual(true, o.Remove(3));
             o.AssertEqual(0, 1, 2, 4, 5, 6, 7, 8, 9);
         }
 

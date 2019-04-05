@@ -52,11 +52,11 @@ namespace ReactiveTests.Tests
             });
 
             Assert.True(res.MoveNext());
-            Assert.Equals(1, res.Current);
+            Assert.AreEqual(1, res.Current);
 
             evt.Set();
             Assert.True(res.MoveNext());
-            Assert.Equals(2, ((IEnumerator)res).Current);
+            Assert.AreEqual(2, ((IEnumerator)res).Current);
 
             evt.Set();
             Assert.False(res.MoveNext());
@@ -167,7 +167,7 @@ namespace ReactiveTests.Tests
             });
 
             Assert.True(res.MoveNext());
-            Assert.Equals(1, res.Current);
+            Assert.AreEqual(1, res.Current);
 
             evt.Set();
 

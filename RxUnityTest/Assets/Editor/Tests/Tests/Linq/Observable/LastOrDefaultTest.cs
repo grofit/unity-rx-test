@@ -25,20 +25,20 @@ namespace ReactiveTests.Tests
         [Test]
         public void LastOrDefault_Empty()
         {
-            Assert.Equals(default, Observable.Empty<int>().LastOrDefault());
+            Assert.AreEqual(default, Observable.Empty<int>().LastOrDefault());
         }
 
         [Test]
         public void LastOrDefaultPredicate_Empty()
         {
-            Assert.Equals(default, Observable.Empty<int>().LastOrDefault(_ => true));
+            Assert.AreEqual(default, Observable.Empty<int>().LastOrDefault(_ => true));
         }
 
         [Test]
         public void LastOrDefault_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).LastOrDefault());
+            Assert.AreEqual(value, Observable.Return(value).LastOrDefault());
         }
 
         [Test]
@@ -55,14 +55,14 @@ namespace ReactiveTests.Tests
         public void LastOrDefault_Range()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Range(value - 9, 10).LastOrDefault());
+            Assert.AreEqual(value, Observable.Range(value - 9, 10).LastOrDefault());
         }
 
         [Test]
         public void LastOrDefaultPredicate_Range()
         {
             var value = 42;
-            Assert.Equals(50, Observable.Range(value, 10).LastOrDefault(i => i % 2 == 0));
+            Assert.AreEqual(50, Observable.Range(value, 10).LastOrDefault(i => i % 2 == 0));
         }
 
     }

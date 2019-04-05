@@ -35,7 +35,7 @@ namespace ReactiveTests.Tests
         {
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
-            Scheduler.CurrentThread.Schedule(() => { Assert.Equals(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            Scheduler.CurrentThread.Schedule(() => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             Assert.True(ran);
         }
 #endif
@@ -63,7 +63,7 @@ namespace ReactiveTests.Tests
             var ran = false;
             Scheduler.CurrentThread.Schedule(() =>
             {
-                Assert.Equals(id, Thread.CurrentThread.ManagedThreadId);
+                Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
                 Scheduler.CurrentThread.Schedule(() => { ran = true; });
             });
             Assert.True(ran);
@@ -76,7 +76,7 @@ namespace ReactiveTests.Tests
             var ran = false;
             Scheduler.CurrentThread.Schedule(() =>
             {
-                Assert.Equals(id, Thread.CurrentThread.ManagedThreadId);
+                Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
                 Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(1), () => { ran = true; });
             });
             Assert.True(ran);
@@ -89,7 +89,7 @@ namespace ReactiveTests.Tests
             var ran = false;
             var sw = new Stopwatch();
             sw.Start();
-            Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () => { sw.Stop(); Assert.Equals(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () => { sw.Stop(); Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             Assert.True(ran, "ran");
             Assert.True(sw.ElapsedMilliseconds > 180, "due " + sw.ElapsedMilliseconds);
         }
@@ -104,7 +104,7 @@ namespace ReactiveTests.Tests
             Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () =>
             {
                 sw.Stop();
-                Assert.Equals(id, Thread.CurrentThread.ManagedThreadId);
+                Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
                 sw.Start();
                 Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () =>
                 {

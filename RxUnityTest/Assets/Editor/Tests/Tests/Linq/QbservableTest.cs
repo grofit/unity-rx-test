@@ -1630,17 +1630,17 @@ namespace ReactiveTests.Tests
         {
             var xs = Observable.Return(1);
             var ys = xs.AsQbservable();
-            Assert.Equals(ys.ToString(), xs.ToString());
+            Assert.AreEqual(ys.ToString(), xs.ToString());
 
             var ex = Expression.Constant(xs);
             var zs = ys.Provider.CreateQuery<int>(ex);
-            Assert.Equals(zs.ToString(), ex.ToString());
+            Assert.AreEqual(zs.ToString(), ex.ToString());
 
             var ns = ys.Provider.CreateQuery<int>(Expression.Constant(null, typeof(IObservable<int>)));
-            Assert.Equals(ns.ToString(), "null");
+            Assert.AreEqual(ns.ToString(), "null");
 
             var ws = ys.Where(x => true);
-            Assert.Equals(ws.Expression.ToString(), ws.ToString());
+            Assert.AreEqual(ws.Expression.ToString(), ws.ToString());
         }
 
         [Test]
@@ -1649,7 +1649,7 @@ namespace ReactiveTests.Tests
             var xs = Observable.Return(1).AsQbservable();
             var _x = 0;
             xs.ForEach(x => _x = x);
-            Assert.Equals(_x, 1);
+            Assert.AreEqual(_x, 1);
         }
 
         [Test]
@@ -1864,10 +1864,10 @@ namespace ReactiveTests.Tests
         public void Qbservable_Extensibility_Combinator()
         {
             var res1 = Observable.Return(42).AsQbservable().Foo(x => x / 2).AsObservable().Single();
-            Assert.Equals(21, res1);
+            Assert.AreEqual(21, res1);
 
             var res2 = Observable.Return(3).AsQbservable().Bar().AsObservable().Single();
-            Assert.Equals("***", res2);
+            Assert.AreEqual("***", res2);
         }
 
 #if !CRIPPLED_REFLECTION
@@ -1875,7 +1875,7 @@ namespace ReactiveTests.Tests
         public void Qbservable_Extensibility_Constructor()
         {
             var res1 = Qbservable.Provider.Qux(42).AsObservable().Single();
-            Assert.Equals(42, res1);
+            Assert.AreEqual(42, res1);
         }
 
         [Test]
@@ -1898,7 +1898,7 @@ namespace ReactiveTests.Tests
         public void Qbservable_HigherOrder()
         {
             var res = Qbservable.Return(Qbservable.Provider, 42).Select(_ => Qbservable.Return(Qbservable.Provider, 42)).Switch().Single();
-            Assert.Equals(42, res);
+            Assert.AreEqual(42, res);
         }
     }
 

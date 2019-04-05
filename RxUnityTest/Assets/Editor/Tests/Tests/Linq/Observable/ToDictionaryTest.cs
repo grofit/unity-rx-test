@@ -210,13 +210,13 @@ namespace ReactiveTests.Tests
         public void ToDictionary_Default()
         {
             var d1 = Observable.Range(1, 10).ToDictionary(x => x.ToString()).First();
-            Assert.Equals(7, d1["7"]);
+            Assert.AreEqual(7, d1["7"]);
 
             var d2 = Observable.Range(1, 10).ToDictionary(x => x.ToString(), x => x * 2).First();
-            Assert.Equals(18, d2["9"]);
+            Assert.AreEqual(18, d2["9"]);
 
             var d3 = Observable.Range(1, 10).ToDictionary(x => x.ToString(), EqualityComparer<string>.Default).First();
-            Assert.Equals(7, d3["7"]);
+            Assert.AreEqual(7, d3["7"]);
         }
 
     }

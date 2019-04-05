@@ -96,7 +96,7 @@ namespace ReactiveTests.Tests
                 OnCompleted<object>(600)
             );
 
-            Assert.Equals(3, s.Value);
+            Assert.AreEqual(3, s.Value);
         }
 
         [Test]

@@ -47,7 +47,7 @@ namespace ReactiveTests.Tests
             d.Dispose();
             d.Dispose();
 
-            Assert.Equals(1, invokeCount);
+            Assert.AreEqual(1, invokeCount);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace ReactiveTests.Tests
             d.Dispose();
             d.Dispose();
 
-            Assert.Equals(1, invokeCount);
+            Assert.AreEqual(1, invokeCount);
         }
 
         [Test]
@@ -154,7 +154,7 @@ namespace ReactiveTests.Tests
                 .Finally(() => order += "3")
                 .Subscribe();
 
-            Assert.Equals("123", order);
+            Assert.AreEqual("123", order);
         }
 
         [Test]
@@ -168,7 +168,7 @@ namespace ReactiveTests.Tests
                 .Finally(() => order += "3")
                 .Subscribe();
 
-            Assert.Equals("123", order);
+            Assert.AreEqual("123", order);
         }
 
         [Test]
@@ -184,7 +184,7 @@ namespace ReactiveTests.Tests
 
             d.Dispose();
 
-            Assert.Equals("123", order);
+            Assert.AreEqual("123", order);
         }
     }
 }

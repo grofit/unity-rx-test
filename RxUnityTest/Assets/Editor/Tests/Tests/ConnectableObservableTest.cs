@@ -27,7 +27,7 @@ namespace ReactiveTests.Tests
             Assert.AreNotEqual(1, y);
 
             co2.Connect();
-            Assert.Equals(1, y);
+            Assert.AreEqual(1, y);
         }
 
         [Test]

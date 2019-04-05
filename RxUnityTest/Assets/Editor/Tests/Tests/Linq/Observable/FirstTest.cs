@@ -38,14 +38,14 @@ namespace ReactiveTests.Tests
         public void First_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).First());
+            Assert.AreEqual(value, Observable.Return(value).First());
         }
 
         [Test]
         public void FirstPredicate_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).First(i => i % 2 == 0));
+            Assert.AreEqual(value, Observable.Return(value).First(i => i % 2 == 0));
         }
 
         [Test]
@@ -79,14 +79,14 @@ namespace ReactiveTests.Tests
         public void First_Range()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Range(value, 10).First());
+            Assert.AreEqual(value, Observable.Range(value, 10).First());
         }
 
         [Test]
         public void FirstPredicate_Range()
         {
             var value = 42;
-            Assert.Equals(46, Observable.Range(value, 10).First(i => i > 45));
+            Assert.AreEqual(46, Observable.Range(value, 10).First(i => i > 45));
         }
 
     }

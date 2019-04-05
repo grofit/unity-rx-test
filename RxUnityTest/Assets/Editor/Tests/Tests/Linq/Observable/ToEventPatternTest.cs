@@ -162,25 +162,25 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(1, num);
+            Assert.AreEqual(1, num);
 
             evt.OnNext += hnd;
 
             src.OnNext(new Unit());
-            Assert.Equals(3, num);
+            Assert.AreEqual(3, num);
 
             evt.OnNext -= hnd;
 
             src.OnNext(new Unit());
-            Assert.Equals(4, num);
+            Assert.AreEqual(4, num);
 
             evt.OnNext -= hnd;
 
             src.OnNext(new Unit());
-            Assert.Equals(4, num);
+            Assert.AreEqual(4, num);
         }
 
         [Test]
@@ -194,16 +194,16 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(1, num);
+            Assert.AreEqual(1, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
 
             src.OnCompleted();
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
 
             var tbl = GetSubscriptionTable(evt);
             Assert.True(tbl.Count == 0);
@@ -220,13 +220,13 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(1, num);
+            Assert.AreEqual(1, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
 
             var ex = new Exception();
 
@@ -249,7 +249,7 @@ namespace ReactiveTests.Tests
             {
                 evt.OnNext += hnd;
 
-                Assert.Equals(0, num);
+                Assert.AreEqual(0, num);
 
                 var tbl = GetSubscriptionTable(evt);
                 Assert.True(tbl.Count == 0);
@@ -266,28 +266,28 @@ namespace ReactiveTests.Tests
             var hnd = new Action<Unit>(e => num++);
 
             evt.OnNext += hnd;
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             evt.OnNext -= hnd;
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             evt.OnNext -= hnd;
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             evt.OnNext += hnd;
-            Assert.Equals(0, num);
+            Assert.AreEqual(0, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(1, num);
+            Assert.AreEqual(1, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
 
             evt.OnNext -= hnd;
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
 
             src.OnNext(new Unit());
-            Assert.Equals(2, num);
+            Assert.AreEqual(2, num);
         }
 
         private static Dictionary<Delegate, Stack<IDisposable>> GetSubscriptionTable(object evt)

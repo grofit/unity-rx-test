@@ -45,7 +45,7 @@ namespace ReactiveTests.Tests
             var left = xs.ManySelect(f).First();
             var right = f(xs);
 
-            Assert.Equals(left, right);
+            Assert.AreEqual(left, right);
         }
 
         [Test]

@@ -48,7 +48,7 @@ namespace ReactiveTests.Tests
 
             evt.WaitOne();
 
-            Assert.Equals(6, sum);
+            Assert.AreEqual(6, sum);
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace ReactiveTests.Tests
 
             evt.WaitOne();
 
-            Assert.Equals(6, sum);
+            Assert.AreEqual(6, sum);
         }
 
         [Test]
@@ -846,7 +846,7 @@ namespace ReactiveTests.Tests
                 Subscribe(230, 270)
             );
 
-            Assert.Equals(230, invoked);
+            Assert.AreEqual(230, invoked);
         }
 
         [Test]
@@ -879,7 +879,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 220)
             );
 
-            Assert.Equals(220, invoked);
+            Assert.AreEqual(220, invoked);
         }
 
 #if !NO_PERF

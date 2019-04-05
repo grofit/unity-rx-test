@@ -54,11 +54,11 @@ namespace ReactiveTests.Tests
 
             release();
             Assert.True(res.MoveNext());
-            Assert.Equals(1, res.Current);
+            Assert.AreEqual(1, res.Current);
 
             release();
             Assert.True(res.MoveNext());
-            Assert.Equals(2, res.Current);
+            Assert.AreEqual(2, res.Current);
 
             release();
             Assert.False(res.MoveNext());
@@ -162,7 +162,7 @@ namespace ReactiveTests.Tests
 
             release();
             Assert.True(res.MoveNext());
-            Assert.Equals(1, res.Current);
+            Assert.AreEqual(1, res.Current);
 
             release();
 

@@ -117,7 +117,7 @@ namespace ReactiveTests.Tests
             var ms = new MyScheduler();
             var i = 0;
             Scheduler.Schedule(ms, a => { if (++i < 10) { a(); } });
-            Assert.Equals(10, i);
+            Assert.AreEqual(10, i);
         }
 
         [Test]
@@ -139,7 +139,7 @@ namespace ReactiveTests.Tests
             var ms = new MyScheduler(now) { Check = (a, s, t) => { Assert.True(t == TimeSpan.Zero); } };
             Scheduler.Schedule(ms, now, a => { if (++i < 10) { a(now); } });
             Assert.True(ms.WaitCycles == 0);
-            Assert.Equals(10, i);
+            Assert.AreEqual(10, i);
         }
 
         [Test]
@@ -161,7 +161,7 @@ namespace ReactiveTests.Tests
             var i = 0;
             Scheduler.Schedule(ms, TimeSpan.Zero, a => { if (++i < 10) { a(TimeSpan.FromTicks(i)); } });
             Assert.True(ms.WaitCycles == Enumerable.Range(1, 9).Sum());
-            Assert.Equals(10, i);
+            Assert.AreEqual(10, i);
         }
 
         [Test]
@@ -995,7 +995,7 @@ namespace ReactiveTests.Tests
                     { typeof(ISchedulerLongRunning), x }
                 });
 
-                Assert.Equals(x, Scheduler.AsLongRunning(s));
+                Assert.AreEqual(x, Scheduler.AsLongRunning(s));
             }
 
             {
@@ -1006,7 +1006,7 @@ namespace ReactiveTests.Tests
                     { typeof(IStopwatchProvider), x }
                 });
 
-                Assert.Equals(x, Scheduler.AsStopwatchProvider(s));
+                Assert.AreEqual(x, Scheduler.AsStopwatchProvider(s));
             }
 
             {
@@ -1017,7 +1017,7 @@ namespace ReactiveTests.Tests
                     { typeof(ISchedulerPeriodic), x }
                 });
 
-                Assert.Equals(x, Scheduler.AsPeriodic(s));
+                Assert.AreEqual(x, Scheduler.AsPeriodic(s));
             }
         }
 

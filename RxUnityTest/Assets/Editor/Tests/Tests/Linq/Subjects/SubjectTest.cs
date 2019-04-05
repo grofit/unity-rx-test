@@ -388,10 +388,10 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.Subscribe(null));
             s.Subscribe(x => _x = x);
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
 
             s.OnNext(21);
-            Assert.Equals(21, _x);
+            Assert.AreEqual(21, _x);
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.OnError(null));
             var e = new Exception();
@@ -416,10 +416,10 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.Subscribe(null));
             s.Subscribe(x => _x = x);
-            Assert.Equals(42, _x);
+            Assert.AreEqual(42, _x);
 
             s.OnNext(21);
-            Assert.Equals(21, _x);
+            Assert.AreEqual(21, _x);
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.OnError(null));
             var e = new Exception();
@@ -469,7 +469,7 @@ namespace ReactiveTests.Tests
                 u.Join();
             }
 
-            Assert.Equals(Enumerable.Range(0, N).Sum(), y);
+            Assert.AreEqual(Enumerable.Range(0, N).Sum(), y);
         }
 
         [Test]
@@ -497,7 +497,7 @@ namespace ReactiveTests.Tests
                 u.Join();
             }
 
-            Assert.Equals(Enumerable.Range(0, N).Sum(), y);
+            Assert.AreEqual(Enumerable.Range(0, N).Sum(), y);
         }
 #endif
 

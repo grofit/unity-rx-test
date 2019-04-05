@@ -200,7 +200,7 @@ namespace ReactiveTests.Tests
                 Assert.AreSame(ex, err);
             }
 
-            Assert.Equals(225, scheduler.Clock);
+            Assert.AreEqual(225, scheduler.Clock);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 225)
@@ -247,7 +247,7 @@ namespace ReactiveTests.Tests
                 Assert.AreSame(ex, err);
             }
 
-            Assert.Equals(225, scheduler.Clock);
+            Assert.AreEqual(225, scheduler.Clock);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 225)

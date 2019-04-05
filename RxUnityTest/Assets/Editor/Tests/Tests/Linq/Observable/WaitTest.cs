@@ -26,7 +26,7 @@ namespace ReactiveTests.Tests
             var x = 42;
             var xs = Observable.Return(x, ThreadPoolScheduler.Instance);
             var res = xs.Wait();
-            Assert.Equals(x, res);
+            Assert.AreEqual(x, res);
         }
 #endif
 
@@ -53,7 +53,7 @@ namespace ReactiveTests.Tests
             var n = 42;
             var xs = Observable.Range(1, n, ThreadPoolScheduler.Instance);
             var res = xs.Wait();
-            Assert.Equals(n, res);
+            Assert.AreEqual(n, res);
         }
 #endif
 

@@ -224,7 +224,7 @@ namespace ReactiveTests.Tests
             var list = Observable.When(source.And(source).Then((a, b) => a + b))
                 .ToList().First();
 
-            Assert.Equals(new List<int>() { 2, 4, 6, 8, 10 }, list);
+            Assert.AreEqual(new List<int>() { 2, 4, 6, 8, 10 }, list);
         }
     }
 }

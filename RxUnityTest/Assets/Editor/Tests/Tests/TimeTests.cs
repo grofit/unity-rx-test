@@ -15,8 +15,8 @@ namespace ReactiveTests.Tests
         public void TimeInterval_Ctor_Properties()
         {
             var ti = new TimeInterval<int>(42, TimeSpan.FromSeconds(123.45));
-            Assert.Equals(42, ti.Value);
-            Assert.Equals(TimeSpan.FromSeconds(123.45), ti.Interval);
+            Assert.AreEqual(42, ti.Value);
+            Assert.AreEqual(TimeSpan.FromSeconds(123.45), ti.Interval);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace ReactiveTests.Tests
         {
             var ti = new TimeInterval<string>(null, TimeSpan.FromSeconds(123.45));
             Assert.True(ti.GetHashCode() != 0);
-            Assert.Equals(ti.GetHashCode(), ti.GetHashCode());
+            Assert.AreEqual(ti.GetHashCode(), ti.GetHashCode());
 
             var t2 = new TimeInterval<string>("", TimeSpan.FromSeconds(123.45));
             Assert.AreNotEqual(ti.GetHashCode(), t2.GetHashCode());
@@ -88,8 +88,8 @@ namespace ReactiveTests.Tests
         {
             var o = DateTimeOffset.UtcNow;
             var ti = Timestamped.Create(42, o);
-            Assert.Equals(42, ti.Value);
-            Assert.Equals(o, ti.Timestamp);
+            Assert.AreEqual(42, ti.Value);
+            Assert.AreEqual(o, ti.Timestamp);
         }
 
         [Test]
@@ -97,8 +97,8 @@ namespace ReactiveTests.Tests
         {
             var o = new DateTimeOffset();
             var ti = new Timestamped<int>(42, o);
-            Assert.Equals(42, ti.Value);
-            Assert.Equals(o, ti.Timestamp);
+            Assert.AreEqual(42, ti.Value);
+            Assert.AreEqual(o, ti.Timestamp);
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace ReactiveTests.Tests
         {
             var ti = new Timestamped<string>(null, new DateTimeOffset());
             Assert.True(ti.GetHashCode() != 0);
-            Assert.Equals(ti.GetHashCode(), ti.GetHashCode());
+            Assert.AreEqual(ti.GetHashCode(), ti.GetHashCode());
 
             var t2 = new Timestamped<string>("", new DateTimeOffset());
             Assert.AreNotEqual(ti.GetHashCode(), t2.GetHashCode());

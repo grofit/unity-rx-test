@@ -987,10 +987,10 @@ namespace ReactiveTests.Tests
 
             var obs = scheduler.Start(() => ObservableEx.Create(() => { throw new InvalidOperationException(); }));
 
-            Assert.Equals(1, obs.Messages.Count);
+            Assert.AreEqual(1, obs.Messages.Count);
 
             var notification = obs.Messages[0].Value;
-            Assert.Equals(NotificationKind.OnError, notification.Kind);
+            Assert.AreEqual(NotificationKind.OnError, notification.Kind);
             Assert.IsInstanceOf<InvalidOperationException>(notification.Exception);
         }
 

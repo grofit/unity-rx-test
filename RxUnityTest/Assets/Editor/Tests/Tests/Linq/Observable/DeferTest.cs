@@ -45,7 +45,7 @@ namespace ReactiveTests.Tests
                 OnCompleted<long>(400)
             );
 
-            Assert.Equals(1, invoked);
+            Assert.AreEqual(1, invoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -77,7 +77,7 @@ namespace ReactiveTests.Tests
                 OnError<long>(400, ex)
             );
 
-            Assert.Equals(1, invoked);
+            Assert.AreEqual(1, invoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -109,7 +109,7 @@ namespace ReactiveTests.Tests
                 OnNext(400, 1L)
             );
 
-            Assert.Equals(1, invoked);
+            Assert.AreEqual(1, invoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 1000)
@@ -136,7 +136,7 @@ namespace ReactiveTests.Tests
                 OnError<int>(200, ex)
             );
 
-            Assert.Equals(1, invoked);
+            Assert.AreEqual(1, invoked);
         }
 
     }

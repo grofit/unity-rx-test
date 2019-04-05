@@ -49,8 +49,8 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(410, t);
-            Assert.Equals(3, result);
+            Assert.AreEqual(410, t);
+            Assert.AreEqual(3, result);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)
@@ -87,9 +87,9 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(100, s);
-            Assert.Equals(260, t);
-            Assert.Equals(42, result);
+            Assert.AreEqual(100, s);
+            Assert.AreEqual(260, t);
+            Assert.AreEqual(42, result);
         }
 
         [Test]
@@ -118,7 +118,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(410, t);
+            Assert.AreEqual(410, t);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)
@@ -149,7 +149,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(long.MaxValue, t);
+            Assert.AreEqual(long.MaxValue, t);
             Assert.False(hasValue);
 
             xs.Subscriptions.AssertEqual(
@@ -176,7 +176,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.Equals(300, t);
+            Assert.AreEqual(300, t);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)

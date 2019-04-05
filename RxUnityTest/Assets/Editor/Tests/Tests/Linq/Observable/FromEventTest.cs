@@ -69,7 +69,7 @@ namespace ReactiveTests.Tests
 
             fe.OnA();
 
-            Assert.Equals(2, n);
+            Assert.AreEqual(2, n);
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace ReactiveTests.Tests
 
             fe.OnB(4);
 
-            Assert.Equals(2 + 3, n);
+            Assert.AreEqual(2 + 3, n);
         }
 
         [Test]
@@ -113,7 +113,7 @@ namespace ReactiveTests.Tests
 
             fe.OnB(4);
 
-            Assert.Equals(2 + 3, n);
+            Assert.AreEqual(2 + 3, n);
         }
 
         [Test]
@@ -135,7 +135,7 @@ namespace ReactiveTests.Tests
 
             fe.OnB(4);
 
-            Assert.Equals(2 + 3, n);
+            Assert.AreEqual(2 + 3, n);
         }
 
         [Test]
@@ -157,7 +157,7 @@ namespace ReactiveTests.Tests
 
             fe.OnC(4);
 
-            Assert.Equals(2 + 3, n);
+            Assert.AreEqual(2 + 3, n);
         }
 
         #region Rx v2.0 behavior
@@ -172,16 +172,16 @@ namespace ReactiveTests.Tests
 
             var xs = Observable.FromEventPattern<MyEventArgs>(h => { addCount++; src.Bar += h; }, h => { src.Bar -= h; remCount++; }, Scheduler.Immediate);
 
-            Assert.Equals(0, addCount);
-            Assert.Equals(0, remCount);
+            Assert.AreEqual(0, addCount);
+            Assert.AreEqual(0, remCount);
 
             src.OnBar(41);
 
             var fst = new List<int>();
             var d1 = xs.Subscribe(e => fst.Add(e.EventArgs.Value));
 
-            Assert.Equals(1, addCount);
-            Assert.Equals(0, remCount);
+            Assert.AreEqual(1, addCount);
+            Assert.AreEqual(0, remCount);
 
             src.OnBar(42);
 
@@ -189,14 +189,14 @@ namespace ReactiveTests.Tests
 
             d1.Dispose();
 
-            Assert.Equals(1, addCount);
-            Assert.Equals(1, remCount);
+            Assert.AreEqual(1, addCount);
+            Assert.AreEqual(1, remCount);
 
             var snd = new List<int>();
             var d2 = xs.Subscribe(e => snd.Add(e.EventArgs.Value));
 
-            Assert.Equals(2, addCount);
-            Assert.Equals(1, remCount);
+            Assert.AreEqual(2, addCount);
+            Assert.AreEqual(1, remCount);
 
             src.OnBar(43);
 
@@ -206,8 +206,8 @@ namespace ReactiveTests.Tests
             var thd = new List<int>();
             var d3 = xs.Subscribe(e => thd.Add(e.EventArgs.Value));
 
-            Assert.Equals(2, addCount);
-            Assert.Equals(1, remCount);
+            Assert.AreEqual(2, addCount);
+            Assert.AreEqual(1, remCount);
 
             src.OnBar(44);
 
@@ -217,8 +217,8 @@ namespace ReactiveTests.Tests
 
             d2.Dispose();
 
-            Assert.Equals(2, addCount);
-            Assert.Equals(1, remCount);
+            Assert.AreEqual(2, addCount);
+            Assert.AreEqual(1, remCount);
 
             src.OnBar(45);
 
@@ -228,8 +228,8 @@ namespace ReactiveTests.Tests
 
             d3.Dispose();
 
-            Assert.Equals(2, addCount);
-            Assert.Equals(2, remCount);
+            Assert.AreEqual(2, addCount);
+            Assert.AreEqual(2, remCount);
 
             src.OnBar(46);
 
@@ -373,29 +373,29 @@ namespace ReactiveTests.Tests
 
             var xs = run(s, add, rem);
 
-            Assert.Equals(0, n);
-            Assert.Equals(0, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(0, n);
+            Assert.AreEqual(0, a);
+            Assert.AreEqual(0, r);
 
             var d1 = xs.Subscribe();
-            Assert.Equals(1, n);
-            Assert.Equals(1, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(1, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(0, r);
 
             var d2 = xs.Subscribe();
-            Assert.Equals(1, n);
-            Assert.Equals(1, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(1, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(0, r);
 
             d1.Dispose();
-            Assert.Equals(1, n);
-            Assert.Equals(1, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(1, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(0, r);
 
             d2.Dispose();
-            Assert.Equals(2, n);
-            Assert.Equals(1, a);
-            Assert.Equals(1, r);
+            Assert.AreEqual(2, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(1, r);
         }
 
         #endregion

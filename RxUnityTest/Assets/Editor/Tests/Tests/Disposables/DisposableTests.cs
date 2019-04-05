@@ -140,7 +140,7 @@ namespace ReactiveTests.Tests
             var d2 = Disposable.Create(() => { });
 
             var g = new CompositeDisposable(d1, d2);
-            Assert.Equals(2, g.Count);
+            Assert.AreEqual(2, g.Count);
             Assert.True(g.Contains(d1));
             Assert.True(g.Contains(d2));
 
@@ -190,7 +190,7 @@ namespace ReactiveTests.Tests
             var d1 = Disposable.Create(() => { });
             var d2 = Disposable.Create(() => { });
             var g = new CompositeDisposable(d1, d2);
-            Assert.Equals(2, g.Count);
+            Assert.AreEqual(2, g.Count);
             var x = Enumerable.ToArray(g);
             Assert.True(g.ToArray().SequenceEqual(new[] { d1, d2 }));
         }
@@ -231,7 +231,7 @@ namespace ReactiveTests.Tests
             var d1 = Disposable.Create(() => { });
             var d2 = Disposable.Create(() => { });
             var g = new CompositeDisposable { d1, d2 };
-            Assert.Equals(2, g.Count);
+            Assert.AreEqual(2, g.Count);
             Assert.True(g.Contains(d1));
             Assert.True(g.Contains(d2));
         }
@@ -262,10 +262,10 @@ namespace ReactiveTests.Tests
             var d1 = Disposable.Create(() => { });
             var d2 = Disposable.Create(() => { });
             var g = new CompositeDisposable(d1);
-            Assert.Equals(1, g.Count);
+            Assert.AreEqual(1, g.Count);
             Assert.True(g.Contains(d1));
             g.Add(d2);
-            Assert.Equals(2, g.Count);
+            Assert.AreEqual(2, g.Count);
             Assert.True(g.Contains(d2));
         }
 
@@ -278,15 +278,15 @@ namespace ReactiveTests.Tests
             var d1 = Disposable.Create(() => { disp1 = true; });
             var d2 = Disposable.Create(() => { disp2 = true; });
             var g = new CompositeDisposable(d1);
-            Assert.Equals(1, g.Count);
+            Assert.AreEqual(1, g.Count);
 
             g.Dispose();
             Assert.True(disp1);
-            Assert.Equals(0, g.Count); // CHECK
+            Assert.AreEqual(0, g.Count); // CHECK
 
             g.Add(d2);
             Assert.True(disp2);
-            Assert.Equals(0, g.Count); // CHECK
+            Assert.AreEqual(0, g.Count); // CHECK
 
             Assert.True(g.IsDisposed);
         }
@@ -301,12 +301,12 @@ namespace ReactiveTests.Tests
             var d2 = Disposable.Create(() => { disp2 = true; });
             var g = new CompositeDisposable(d1, d2);
 
-            Assert.Equals(2, g.Count);
+            Assert.AreEqual(2, g.Count);
             Assert.True(g.Contains(d1));
             Assert.True(g.Contains(d2));
 
             Assert.True(g.Remove(d1));
-            Assert.Equals(1, g.Count);
+            Assert.AreEqual(1, g.Count);
             Assert.False(g.Contains(d1));
             Assert.True(g.Contains(d2));
             Assert.True(disp1);
@@ -331,18 +331,18 @@ namespace ReactiveTests.Tests
             var d1 = Disposable.Create(() => { disp1 = true; });
             var d2 = Disposable.Create(() => { disp2 = true; });
             var g = new CompositeDisposable(d1, d2);
-            Assert.Equals(2, g.Count);
+            Assert.AreEqual(2, g.Count);
 
             g.Clear();
             Assert.True(disp1);
             Assert.True(disp2);
-            Assert.Equals(0, g.Count);
+            Assert.AreEqual(0, g.Count);
 
             var disp3 = false;
             var d3 = Disposable.Create(() => { disp3 = true; });
             g.Add(d3);
             Assert.False(disp3);
-            Assert.Equals(1, g.Count);
+            Assert.AreEqual(1, g.Count);
         }
 
         [Test]
@@ -475,13 +475,13 @@ namespace ReactiveTests.Tests
             var enumerator = composite.GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
-            Assert.Equals(d, enumerator.Current);
+            Assert.AreEqual(d, enumerator.Current);
             Assert.False(enumerator.MoveNext());
 
             enumerator.Reset();
 
             Assert.True(enumerator.MoveNext());
-            Assert.Equals(d, enumerator.Current);
+            Assert.AreEqual(d, enumerator.Current);
         }
 
         [Test]
@@ -498,10 +498,10 @@ namespace ReactiveTests.Tests
             var enumerator = composite.GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
-            Assert.Equals(d1, enumerator.Current);
+            Assert.AreEqual(d1, enumerator.Current);
 
             Assert.True(enumerator.MoveNext());
-            Assert.Equals(d3, enumerator.Current);
+            Assert.AreEqual(d3, enumerator.Current);
 
             Assert.False(enumerator.MoveNext());
         }

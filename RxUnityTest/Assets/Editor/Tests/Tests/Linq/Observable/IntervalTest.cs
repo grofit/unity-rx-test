@@ -79,7 +79,7 @@ namespace ReactiveTests.Tests
 
             completed.WaitOne();
 
-            Assert.Equals(10, observer.Messages.Count);
+            Assert.AreEqual(10, observer.Messages.Count);
         }
 
         [Test]

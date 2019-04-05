@@ -102,7 +102,7 @@ namespace ReactiveTests
             Assert.False(si1 == null);
             Assert.False(null == si1);
 
-            Assert.Equals(si1.GetHashCode(), si1.GetHashCode());
+            Assert.AreEqual(si1.GetHashCode(), si1.GetHashCode());
             Assert.AreNotEqual(si1.GetHashCode(), si2.GetHashCode());
             Assert.AreNotEqual(si1.GetHashCode(), si3.GetHashCode());
         }

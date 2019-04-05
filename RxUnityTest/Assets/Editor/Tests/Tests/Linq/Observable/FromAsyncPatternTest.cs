@@ -147,7 +147,7 @@ namespace ReactiveTests.Tests
 
             Func<int, AsyncCallback, object, IAsyncResult> begin = (a, cb, _) =>
             {
-                Assert.Equals(a, 2);
+                Assert.AreEqual(a, 2);
                 cb(x);
                 return x;
             };
@@ -164,7 +164,7 @@ namespace ReactiveTests.Tests
 
             Func<int, AsyncCallback, object, IAsyncResult> begin = (a, cb, _) =>
             {
-                Assert.Equals(a, 2);
+                Assert.AreEqual(a, 2);
                 cb(x);
                 return x;
             };
@@ -207,8 +207,8 @@ namespace ReactiveTests.Tests
 
             Func<int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
                 cb(x);
                 return x;
             };
@@ -225,8 +225,8 @@ namespace ReactiveTests.Tests
 
             Func<int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
                 cb(x);
                 return x;
             };
@@ -269,9 +269,9 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
                 cb(x);
                 return x;
             };
@@ -287,9 +287,9 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
                 cb(x);
                 return x;
             };
@@ -332,10 +332,10 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
                 cb(x);
                 return x;
             };
@@ -352,10 +352,10 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
                 cb(x);
                 return x;
             };
@@ -398,11 +398,11 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
                 cb(x);
                 return x;
             };
@@ -419,11 +419,11 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
                 cb(x);
                 return x;
             };
@@ -466,12 +466,12 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
                 cb(x);
                 return x;
             };
@@ -488,12 +488,12 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
                 cb(x);
                 return x;
             };
@@ -536,13 +536,13 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
                 cb(x);
                 return x;
             };
@@ -559,13 +559,13 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
                 cb(x);
                 return x;
             };
@@ -608,14 +608,14 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
                 cb(x);
                 return x;
             };
@@ -632,14 +632,14 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
                 cb(x);
                 return x;
             };
@@ -682,15 +682,15 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
                 cb(x);
                 return x;
             };
@@ -707,15 +707,15 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
                 cb(x);
                 return x;
             };
@@ -758,16 +758,16 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
                 cb(x);
                 return x;
             };
@@ -784,16 +784,16 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
                 cb(x);
                 return x;
             };
@@ -836,17 +836,17 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
                 cb(x);
                 return x;
             };
@@ -863,17 +863,17 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
                 cb(x);
                 return x;
             };
@@ -916,18 +916,18 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
-                Assert.Equals(l, 13);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
+                Assert.AreEqual(l, 13);
                 cb(x);
                 return x;
             };
@@ -944,18 +944,18 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
-                Assert.Equals(l, 13);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
+                Assert.AreEqual(l, 13);
                 cb(x);
                 return x;
             };
@@ -998,19 +998,19 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
-                Assert.Equals(l, 13);
-                Assert.Equals(m, 14);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
+                Assert.AreEqual(l, 13);
+                Assert.AreEqual(m, 14);
                 cb(x);
                 return x;
             };
@@ -1027,19 +1027,19 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
-                Assert.Equals(l, 13);
-                Assert.Equals(m, 14);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
+                Assert.AreEqual(l, 13);
+                Assert.AreEqual(m, 14);
                 cb(x);
                 return x;
             };
@@ -1082,20 +1082,20 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, n, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
-                Assert.Equals(l, 13);
-                Assert.Equals(m, 14);
-                Assert.Equals(n, 15);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
+                Assert.AreEqual(l, 13);
+                Assert.AreEqual(m, 14);
+                Assert.AreEqual(n, 15);
                 cb(x);
                 return x;
             };
@@ -1112,20 +1112,20 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, n, cb, _) =>
             {
-                Assert.Equals(a, 2);
-                Assert.Equals(b, 3);
-                Assert.Equals(c, 4);
-                Assert.Equals(d, 5);
-                Assert.Equals(e, 6);
-                Assert.Equals(f, 7);
-                Assert.Equals(g, 8);
-                Assert.Equals(h, 9);
-                Assert.Equals(i, 10);
-                Assert.Equals(j, 11);
-                Assert.Equals(k, 12);
-                Assert.Equals(l, 13);
-                Assert.Equals(m, 14);
-                Assert.Equals(n, 15);
+                Assert.AreEqual(a, 2);
+                Assert.AreEqual(b, 3);
+                Assert.AreEqual(c, 4);
+                Assert.AreEqual(d, 5);
+                Assert.AreEqual(e, 6);
+                Assert.AreEqual(f, 7);
+                Assert.AreEqual(g, 8);
+                Assert.AreEqual(h, 9);
+                Assert.AreEqual(i, 10);
+                Assert.AreEqual(j, 11);
+                Assert.AreEqual(k, 12);
+                Assert.AreEqual(l, 13);
+                Assert.AreEqual(m, 14);
+                Assert.AreEqual(n, 15);
                 cb(x);
                 return x;
             };

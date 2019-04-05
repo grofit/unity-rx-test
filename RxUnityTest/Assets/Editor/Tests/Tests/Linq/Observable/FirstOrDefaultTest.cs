@@ -28,20 +28,20 @@ namespace ReactiveTests.Tests
         [Test]
         public void FirstOrDefault_Empty()
         {
-            Assert.Equals(default, Observable.Empty<int>().FirstOrDefault());
+            Assert.AreEqual(default, Observable.Empty<int>().FirstOrDefault());
         }
 
         [Test]
         public void FirstOrDefaultPredicate_Empty()
         {
-            Assert.Equals(default, Observable.Empty<int>().FirstOrDefault(_ => true));
+            Assert.AreEqual(default, Observable.Empty<int>().FirstOrDefault(_ => true));
         }
 
         [Test]
         public void FirstOrDefault_Return()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Return(value).FirstOrDefault());
+            Assert.AreEqual(value, Observable.Return(value).FirstOrDefault());
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace ReactiveTests.Tests
         public void FirstOrDefault_Range()
         {
             var value = 42;
-            Assert.Equals(value, Observable.Range(value, 10).FirstOrDefault());
+            Assert.AreEqual(value, Observable.Range(value, 10).FirstOrDefault());
         }
 
 #if !NO_THREAD

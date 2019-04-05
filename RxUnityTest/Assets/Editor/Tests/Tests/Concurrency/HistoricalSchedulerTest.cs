@@ -25,9 +25,9 @@ namespace ReactiveTests.Tests
         {
             var s = new HistoricalScheduler();
 
-            Assert.Equals(DateTimeOffset.MinValue, s.Clock);
-            Assert.Equals(DateTimeOffset.MinValue, s.Now);
-            Assert.Equals(false, s.IsEnabled);
+            Assert.AreEqual(DateTimeOffset.MinValue, s.Clock);
+            Assert.AreEqual(DateTimeOffset.MinValue, s.Now);
+            Assert.AreEqual(false, s.IsEnabled);
         }
 
         [Test]
@@ -49,23 +49,23 @@ namespace ReactiveTests.Tests
 
             s.Start();
 
-            Assert.Equals(Time(2), s.Now);
-            Assert.Equals(Time(2), s.Clock);
+            Assert.AreEqual(Time(2), s.Now);
+            Assert.AreEqual(Time(2), s.Clock);
 
             s.Start();
 
-            Assert.Equals(Time(4), s.Now);
-            Assert.Equals(Time(4), s.Clock);
+            Assert.AreEqual(Time(4), s.Now);
+            Assert.AreEqual(Time(4), s.Clock);
 
             s.Start();
 
-            Assert.Equals(Time(6), s.Now);
-            Assert.Equals(Time(6), s.Clock);
+            Assert.AreEqual(Time(6), s.Now);
+            Assert.AreEqual(Time(6), s.Clock);
 
             s.Start();
 
-            Assert.Equals(Time(6), s.Now);
-            Assert.Equals(Time(6), s.Clock);
+            Assert.AreEqual(Time(6), s.Now);
+            Assert.AreEqual(Time(6), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(1, Time(0)),
@@ -146,8 +146,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(8));
 
-            Assert.Equals(Time(8), s.Now);
-            Assert.Equals(Time(8), s.Clock);
+            Assert.AreEqual(Time(8), s.Now);
+            Assert.AreEqual(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -157,8 +157,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(8));
 
-            Assert.Equals(Time(8), s.Now);
-            Assert.Equals(Time(8), s.Clock);
+            Assert.AreEqual(Time(8), s.Now);
+            Assert.AreEqual(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -171,8 +171,8 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => s.AdvanceTo(Time(4)));
 
-            Assert.Equals(Time(8), s.Now);
-            Assert.Equals(Time(8), s.Clock);
+            Assert.AreEqual(Time(8), s.Now);
+            Assert.AreEqual(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -182,8 +182,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(10));
 
-            Assert.Equals(Time(10), s.Now);
-            Assert.Equals(Time(10), s.Clock);
+            Assert.AreEqual(Time(10), s.Now);
+            Assert.AreEqual(Time(10), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -196,8 +196,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(100));
 
-            Assert.Equals(Time(100), s.Now);
-            Assert.Equals(Time(100), s.Clock);
+            Assert.AreEqual(Time(100), s.Now);
+            Assert.AreEqual(Time(100), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -233,8 +233,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(Time(8) - s.Now);
 
-            Assert.Equals(Time(8), s.Now);
-            Assert.Equals(Time(8), s.Clock);
+            Assert.AreEqual(Time(8), s.Now);
+            Assert.AreEqual(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -247,8 +247,8 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => s.AdvanceBy(TimeSpan.FromDays(-4)));
 
-            Assert.Equals(Time(8), s.Now);
-            Assert.Equals(Time(8), s.Clock);
+            Assert.AreEqual(Time(8), s.Now);
+            Assert.AreEqual(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -258,8 +258,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(TimeSpan.Zero);
 
-            Assert.Equals(Time(8), s.Now);
-            Assert.Equals(Time(8), s.Clock);
+            Assert.AreEqual(Time(8), s.Now);
+            Assert.AreEqual(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -269,8 +269,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(TimeSpan.FromDays(2));
 
-            Assert.Equals(Time(10), s.Now);
-            Assert.Equals(Time(10), s.Clock);
+            Assert.AreEqual(Time(10), s.Now);
+            Assert.AreEqual(Time(10), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -283,8 +283,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(TimeSpan.FromDays(90));
 
-            Assert.Equals(Time(100), s.Now);
-            Assert.Equals(Time(100), s.Clock);
+            Assert.AreEqual(Time(100), s.Now);
+            Assert.AreEqual(Time(100), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -302,20 +302,20 @@ namespace ReactiveTests.Tests
         {
             var s = new HistoricalScheduler();
 
-            Assert.Equals(false, s.IsEnabled);
+            Assert.AreEqual(false, s.IsEnabled);
 
             s.Schedule(() =>
             {
-                Assert.Equals(true, s.IsEnabled);
+                Assert.AreEqual(true, s.IsEnabled);
                 s.Stop();
-                Assert.Equals(false, s.IsEnabled);
+                Assert.AreEqual(false, s.IsEnabled);
             });
 
-            Assert.Equals(false, s.IsEnabled);
+            Assert.AreEqual(false, s.IsEnabled);
 
             s.Start();
 
-            Assert.Equals(false, s.IsEnabled);
+            Assert.AreEqual(false, s.IsEnabled);
         }
 
         [Test]
@@ -355,7 +355,7 @@ namespace ReactiveTests.Tests
 
             s.Sleep(TimeSpan.FromDays(1));
 
-            Assert.Equals(now + TimeSpan.FromDays(1), s.Clock);
+            Assert.AreEqual(now + TimeSpan.FromDays(1), s.Clock);
         }
 
         [Test]
@@ -375,7 +375,7 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(s.Now + TimeSpan.FromMinutes(5));
 
-            Assert.Equals(2, n);
+            Assert.AreEqual(2, n);
         }
 
         [Test]

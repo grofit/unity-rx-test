@@ -721,29 +721,29 @@ namespace ReactiveTests.Tests
 
             var xs = run(s, add, rem);
 
-            Assert.Equals(0, n);
-            Assert.Equals(0, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(0, n);
+            Assert.AreEqual(0, a);
+            Assert.AreEqual(0, r);
 
             var d1 = xs.Subscribe();
-            Assert.Equals(1, n);
-            Assert.Equals(1, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(1, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(0, r);
 
             var d2 = xs.Subscribe();
-            Assert.Equals(1, n);
-            Assert.Equals(1, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(1, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(0, r);
 
             d1.Dispose();
-            Assert.Equals(1, n);
-            Assert.Equals(1, a);
-            Assert.Equals(0, r);
+            Assert.AreEqual(1, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(0, r);
 
             d2.Dispose();
-            Assert.Equals(2, n);
-            Assert.Equals(1, a);
-            Assert.Equals(1, r);
+            Assert.AreEqual(2, n);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(1, r);
         }
 
         #endregion

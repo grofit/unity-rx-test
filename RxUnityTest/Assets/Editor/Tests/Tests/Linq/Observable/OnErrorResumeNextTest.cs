@@ -421,7 +421,7 @@ namespace ReactiveTests.Tests
             }, () => evt.Set());
 
             evt.WaitOne();
-            Assert.Equals(3, sum);
+            Assert.AreEqual(3, sum);
         }
 
         [Test]
@@ -436,7 +436,7 @@ namespace ReactiveTests.Tests
             }, () => evt.Set());
 
             evt.WaitOne();
-            Assert.Equals(6, sum);
+            Assert.AreEqual(6, sum);
         }
 
         [Test]
@@ -453,7 +453,7 @@ namespace ReactiveTests.Tests
             }, () => evt.Set());
 
             evt.WaitOne();
-            Assert.Equals(6, sum);
+            Assert.AreEqual(6, sum);
         }
 
         [Test]

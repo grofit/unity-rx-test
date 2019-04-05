@@ -383,8 +383,8 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.Equals(42, x);
-            Assert.Equals(Thread.CurrentThread.ManagedThreadId, t);
+            Assert.AreEqual(42, x);
+            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 
@@ -741,7 +741,7 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.Equals(Thread.CurrentThread.ManagedThreadId, t);
+            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 
@@ -771,7 +771,7 @@ namespace ReactiveTests.Tests
             Assert.True(continuation.IsFaulted);
             Assert.True(continuation.Exception.InnerExceptions.Count == 1 && continuation.Exception.InnerExceptions[0] is InvalidOperationException);
 
-            Assert.Equals(1, scheduler.Clock);
+            Assert.AreEqual(1, scheduler.Clock);
         }
 
         [Test]
@@ -785,9 +785,9 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.True(continuation.IsCompleted);
-            Assert.Equals(5, continuation.Result);
+            Assert.AreEqual(5, continuation.Result);
 
-            Assert.Equals(1, scheduler.Clock);
+            Assert.AreEqual(1, scheduler.Clock);
         }
 
         [Test]
@@ -806,7 +806,7 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.True(continuation.IsCompleted);
-            Assert.Equals(3, continuation.Result);
+            Assert.AreEqual(3, continuation.Result);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(0, 200)
@@ -832,8 +832,8 @@ namespace ReactiveTests.Tests
             Assert.True(continuation.IsFaulted);
             var ag = continuation.Exception;
             Assert.NotNull(ag);
-            Assert.Equals(1, ag.InnerExceptions.Count);
-            Assert.Equals(ex, ag.InnerExceptions[0]);
+            Assert.AreEqual(1, ag.InnerExceptions.Count);
+            Assert.AreEqual(ex, ag.InnerExceptions[0]);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(0, 200)
@@ -879,9 +879,9 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.True(continuation.IsCompleted);
-            Assert.Equals(5, continuation.Result);
+            Assert.AreEqual(5, continuation.Result);
 
-            Assert.Equals(1, scheduler.Clock);
+            Assert.AreEqual(1, scheduler.Clock);
         }
 
         #endregion

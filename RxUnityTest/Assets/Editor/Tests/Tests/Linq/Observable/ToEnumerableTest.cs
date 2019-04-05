@@ -40,7 +40,7 @@ namespace ReactiveTests.Tests
             for (var i = 0; i < 10; i++)
             {
                 Assert.True(ieg.MoveNext());
-                Assert.Equals(i, ieg.Current);
+                Assert.AreEqual(i, ieg.Current);
             }
             Assert.False(ieg.MoveNext());
         }
@@ -53,7 +53,7 @@ namespace ReactiveTests.Tests
             for (var i = 0; i < 10; i++)
             {
                 Assert.True(ien.MoveNext());
-                Assert.Equals(i, ien.Current);
+                Assert.AreEqual(i, ien.Current);
             }
             Assert.False(ien.MoveNext());
         }
