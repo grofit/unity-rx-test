@@ -296,36 +296,5 @@ namespace ReactiveTests.Tests
                 200
             );
         }
-
-        [Test]
-        public void Using_NestedCompleted()
-        {
-            var order = "";
-
-            Observable.Using(() => Disposable.Create(() => order += "3"),
-                _ => Observable.Using(() => Disposable.Create(() => order += "2"),
-                    __ => Observable.Using(() => Disposable.Create(() => order += "1"),
-                        ___ => Observable.Return(Unit.Default))))
-                .Finally(() => order += "4")
-                .Subscribe();
-
-            Assert.AreEqual("1234", order);
-        }
-
-        [Test]
-        public void Using_NestedDisposed()
-        {
-            var order = "";
-
-            Observable.Using(() => Disposable.Create(() => order += "3"),
-                _ => Observable.Using(() => Disposable.Create(() => order += "2"),
-                    __ => Observable.Using(() => Disposable.Create(() => order += "1"),
-                        ___ => Observable.Never<Unit>())))
-                .Finally(() => order += "4")
-                .Subscribe()
-                .Dispose();
-
-            Assert.AreEqual("1234", order);
-        }
     }
 }

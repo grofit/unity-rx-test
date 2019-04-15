@@ -144,34 +144,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        public void Finally_DisposeOrder_Empty()
-        {
-            var order = "";
-            Observable
-                .Empty<Unit>()
-                .Finally(() => order += "1")
-                .Finally(() => order += "2")
-                .Finally(() => order += "3")
-                .Subscribe();
-
-            Assert.AreEqual("123", order);
-        }
-
-        [Test]
-        public void Finally_DisposeOrder_Return()
-        {
-            var order = "";
-            Observable
-                .Return(Unit.Default)
-                .Finally(() => order += "1")
-                .Finally(() => order += "2")
-                .Finally(() => order += "3")
-                .Subscribe();
-
-            Assert.AreEqual("123", order);
-        }
-
-        [Test]
         public void Finally_DisposeOrder_Never()
         {
             var order = "";

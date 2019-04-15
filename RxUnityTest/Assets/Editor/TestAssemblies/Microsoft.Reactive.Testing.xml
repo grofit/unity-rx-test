@@ -15,7 +15,7 @@
             Initializes a new instance of the <see cref="T:Xunit.Assert"/> class.
             </summary>
         </member>
-        <member name="M:Xunit.Assert.AreEquals(System.Object,System.Object)">
+        <member name="M:Xunit.Assert.Equals(System.Object,System.Object)">
             <summary>Do not call this method.</summary>
         </member>
         <member name="M:Xunit.Assert.ReferenceEquals(System.Object,System.Object)">
@@ -207,7 +207,7 @@
             <exception cref="T:System.ArgumentNullException">Thrown when the collection is null</exception>
             <exception cref="T:Xunit.Sdk.EmptyException">Thrown when the collection is not empty</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:Xunit.Assert.Equal``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Verifies that two sequences are equivalent, using a default comparer.
             </summary>
@@ -216,7 +216,7 @@
             <param name="actual">The value to be compared against</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the objects are not equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+        <member name="M:Xunit.Assert.Equal``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
             <summary>
             Verifies that two sequences are equivalent, using a custom equatable comparer.
             </summary>
@@ -234,16 +234,16 @@
             <exception cref="T:System.ArgumentNullException">Thrown when a null collection is passed</exception>
             <exception cref="T:Xunit.Sdk.NotEmptyException">Thrown when the collection is empty</exception>
         </member>
-        <member name="M:Xunit.Assert.AreNotEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:Xunit.Assert.NotEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Verifies that two sequences are not equivalent, using a default comparer.
             </summary>
             <typeparam name="T">The type of the objects to be compared</typeparam>
             <param name="expected">The expected object</param>
             <param name="actual">The actual object</param>
-            <exception cref="T:Xunit.Sdk.AreNotEqualException">Thrown when the objects are equal</exception>
+            <exception cref="T:Xunit.Sdk.NotEqualException">Thrown when the objects are equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreNotEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+        <member name="M:Xunit.Assert.NotEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
             <summary>
             Verifies that two sequences are not equivalent, using a custom equality comparer.
             </summary>
@@ -251,7 +251,7 @@
             <param name="expected">The expected object</param>
             <param name="actual">The actual object</param>
             <param name="comparer">The comparer used to compare the two objects</param>
-            <exception cref="T:Xunit.Sdk.AreNotEqualException">Thrown when the objects are equal</exception>
+            <exception cref="T:Xunit.Sdk.NotEqualException">Thrown when the objects are equal</exception>
         </member>
         <member name="M:Xunit.Assert.Single(System.Collections.IEnumerable)">
             <summary>
@@ -300,7 +300,7 @@
             <exception cref="T:Xunit.Sdk.SingleException">Thrown when the filtered collection does
             not contain exactly one element.</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual``1(``0,``0)">
+        <member name="M:Xunit.Assert.Equal``1(``0,``0)">
             <summary>
             Verifies that two objects are equal, using a default comparer.
             </summary>
@@ -309,7 +309,7 @@
             <param name="actual">The value to be compared against</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the objects are not equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual``1(``0,``0,System.Collections.Generic.IEqualityComparer{``0})">
+        <member name="M:Xunit.Assert.Equal``1(``0,``0,System.Collections.Generic.IEqualityComparer{``0})">
             <summary>
             Verifies that two objects are equal, using a custom equatable comparer.
             </summary>
@@ -319,7 +319,7 @@
             <param name="comparer">The comparer used to compare the two objects</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the objects are not equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual(System.Double,System.Double,System.Int32)">
+        <member name="M:Xunit.Assert.Equal(System.Double,System.Double,System.Int32)">
             <summary>
             Verifies that two <see cref="T:System.Double"/> values are equal, within the number of decimal
             places given by <paramref name="precision"/>. The values are rounded before comparison.
@@ -329,7 +329,7 @@
             <param name="precision">The number of decimal places (valid values: 0-15)</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the values are not equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual(System.Decimal,System.Decimal,System.Int32)">
+        <member name="M:Xunit.Assert.Equal(System.Decimal,System.Decimal,System.Int32)">
             <summary>
             Verifies that two <see cref="T:System.Decimal"/> values are equal, within the number of decimal
             places given by <paramref name="precision"/>. The values are rounded before comparison.
@@ -339,7 +339,7 @@
             <param name="precision">The number of decimal places (valid values: 0-28)</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the values are not equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual(System.DateTime,System.DateTime,System.TimeSpan)">
+        <member name="M:Xunit.Assert.Equal(System.DateTime,System.DateTime,System.TimeSpan)">
             <summary>
             Verifies that two <see cref="T:System.DateTime"/> values are equal, within the precision 
             given by <paramref name="precision"/>.
@@ -358,16 +358,16 @@
             <param name="actual">The value to be compared against</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the objects are not equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreNotEqual``1(``0,``0)">
+        <member name="M:Xunit.Assert.NotEqual``1(``0,``0)">
             <summary>
             Verifies that two objects are not equal, using a default comparer.
             </summary>
             <typeparam name="T">The type of the objects to be compared</typeparam>
             <param name="expected">The expected object</param>
             <param name="actual">The actual object</param>
-            <exception cref="T:Xunit.Sdk.AreNotEqualException">Thrown when the objects are equal</exception>
+            <exception cref="T:Xunit.Sdk.NotEqualException">Thrown when the objects are equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreNotEqual``1(``0,``0,System.Collections.Generic.IEqualityComparer{``0})">
+        <member name="M:Xunit.Assert.NotEqual``1(``0,``0,System.Collections.Generic.IEqualityComparer{``0})">
             <summary>
             Verifies that two objects are not equal, using a custom equality comparer.
             </summary>
@@ -375,9 +375,9 @@
             <param name="expected">The expected object</param>
             <param name="actual">The actual object</param>
             <param name="comparer">The comparer used to examine the objects</param>
-            <exception cref="T:Xunit.Sdk.AreNotEqualException">Thrown when the objects are equal</exception>
+            <exception cref="T:Xunit.Sdk.NotEqualException">Thrown when the objects are equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreNotEqual(System.Double,System.Double,System.Int32)">
+        <member name="M:Xunit.Assert.NotEqual(System.Double,System.Double,System.Int32)">
             <summary>
             Verifies that two <see cref="T:System.Double"/> values are not equal, within the number of decimal
             places given by <paramref name="precision"/>.
@@ -387,7 +387,7 @@
             <param name="precision">The number of decimal places (valid values: 0-15)</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the values are equal</exception>
         </member>
-        <member name="M:Xunit.Assert.AreNotEqual(System.Decimal,System.Decimal,System.Int32)">
+        <member name="M:Xunit.Assert.NotEqual(System.Decimal,System.Decimal,System.Int32)">
             <summary>
             Verifies that two <see cref="T:System.Decimal"/> values are not equal, within the number of decimal
             places given by <paramref name="precision"/>.
@@ -404,7 +404,7 @@
             <typeparam name="T">The type of the objects to be compared</typeparam>
             <param name="expected">The expected object</param>
             <param name="actual">The actual object</param>
-            <exception cref="T:Xunit.Sdk.AreNotEqualException">Thrown when the objects are equal</exception>
+            <exception cref="T:Xunit.Sdk.NotEqualException">Thrown when the objects are equal</exception>
         </member>
         <member name="M:Xunit.Assert.Raises``1(System.Action{System.EventHandler{``0}},System.Action{System.EventHandler{``0}},System.Action)">
             <summary>
@@ -596,21 +596,21 @@
         <member name="M:Xunit.Assert.GuardArgumentNotNull(System.String,System.Object)">
             <summary/>
         </member>
-        <member name="M:Xunit.Assert.AreNotSame(System.Object,System.Object)">
+        <member name="M:Xunit.Assert.NotSame(System.Object,System.Object)">
             <summary>
             Verifies that two objects are not the same instance.
             </summary>
             <param name="expected">The expected object instance</param>
             <param name="actual">The actual object instance</param>
-            <exception cref="T:Xunit.Sdk.AreNotSameException">Thrown when the objects are the same instance</exception>
+            <exception cref="T:Xunit.Sdk.NotSameException">Thrown when the objects are the same instance</exception>
         </member>
-        <member name="M:Xunit.Assert.AreSame(System.Object,System.Object)">
+        <member name="M:Xunit.Assert.Same(System.Object,System.Object)">
             <summary>
             Verifies that two objects are the same instance.
             </summary>
             <param name="expected">The expected object instance</param>
             <param name="actual">The actual object instance</param>
-            <exception cref="T:Xunit.Sdk.AreSameException">Thrown when the objects are not the same instance</exception>
+            <exception cref="T:Xunit.Sdk.SameException">Thrown when the objects are not the same instance</exception>
         </member>
         <member name="M:Xunit.Assert.NotNull(System.Object)">
             <summary>
@@ -852,7 +852,7 @@
             <param name="actualString">The string to be inspected</param>
             <exception cref="T:Xunit.Sdk.DoesNotMatchException">Thrown when the string matches the regex</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual(System.String,System.String)">
+        <member name="M:Xunit.Assert.Equal(System.String,System.String)">
             <summary>
             Verifies that two strings are equivalent.
             </summary>
@@ -860,7 +860,7 @@
             <param name="actual">The actual string value.</param>
             <exception cref="T:Xunit.Sdk.EqualException">Thrown when the strings are not equivalent.</exception>
         </member>
-        <member name="M:Xunit.Assert.AreEqual(System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
+        <member name="M:Xunit.Assert.Equal(System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Verifies that two strings are equivalent.
             </summary>
@@ -1311,14 +1311,14 @@
             Creates a new instance of the <see cref="T:Xunit.Sdk.NotEmptyException"/> class.
             </summary>
         </member>
-        <member name="T:Xunit.Sdk.AreNotEqualException">
+        <member name="T:Xunit.Sdk.NotEqualException">
             <summary>
             Exception thrown when two values are unexpectedly equal.
             </summary>
         </member>
-        <member name="M:Xunit.Sdk.AreNotEqualException.#ctor(System.String,System.String)">
+        <member name="M:Xunit.Sdk.NotEqualException.#ctor(System.String,System.String)">
             <summary>
-            Creates a new instance of the <see cref="T:Xunit.Sdk.AreNotEqualException"/> class.
+            Creates a new instance of the <see cref="T:Xunit.Sdk.NotEqualException"/> class.
             </summary>
         </member>
         <member name="T:Xunit.Sdk.NotInRangeException">
@@ -1365,14 +1365,14 @@
             Creates a new instance of the <see cref="T:Xunit.Sdk.NotNullException"/> class.
             </summary>
         </member>
-        <member name="T:Xunit.Sdk.AreNotSameException">
+        <member name="T:Xunit.Sdk.NotSameException">
             <summary>
             Exception thrown when two values are unexpected the same instance.
             </summary>
         </member>
-        <member name="M:Xunit.Sdk.AreNotSameException.#ctor">
+        <member name="M:Xunit.Sdk.NotSameException.#ctor">
             <summary>
-            Creates a new instance of the <see cref="T:Xunit.Sdk.AreNotSameException"/> class.
+            Creates a new instance of the <see cref="T:Xunit.Sdk.NotSameException"/> class.
             </summary>
         </member>
         <member name="T:Xunit.Sdk.NullException">
@@ -1467,14 +1467,14 @@
             </summary>
             <returns>A string that describes the contents of the call stack, with the most recent method call appearing first.</returns>
         </member>
-        <member name="T:Xunit.Sdk.AreSameException">
+        <member name="T:Xunit.Sdk.SameException">
             <summary>
             Exception thrown when two object references are unexpectedly not the same instance.
             </summary>
         </member>
-        <member name="M:Xunit.Sdk.AreSameException.#ctor(System.Object,System.Object)">
+        <member name="M:Xunit.Sdk.SameException.#ctor(System.Object,System.Object)">
             <summary>
-            Creates a new instance of the <see cref="T:Xunit.Sdk.AreSameException"/> class.
+            Creates a new instance of the <see cref="T:Xunit.Sdk.SameException"/> class.
             </summary>
             <param name="expected">The expected object reference</param>
             <param name="actual">The actual object reference</param>
