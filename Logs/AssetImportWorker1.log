@@ -1,0 +1,247 @@
+Using pre-set license
+Built from '2021.2/staging' branch; Version is '2021.2.0b16 (edbc0738c91b) revision 15580167'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19043.1288; Version 2009; 64bit' Language: 'en' Physical Memory: 32678 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.2.0b16\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/Projects/OpenSource/System.Reactive.Unity
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+62149
+Successfully changed project path to: C:/Projects/OpenSource/System.Reactive.Unity
+C:/Projects/OpenSource/System.Reactive.Unity
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 16.94 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.2.0b16 (edbc0738c91b)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Projects/OpenSource/System.Reactive.Unity/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
+    Vendor:   NVIDIA
+    VRAM:     8043 MB
+    Driver:   30.0.14.9613
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56664
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0b16/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.011330 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 15.85 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.061 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1061ms)
+		BeginReloadAssembly (78ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (442ms)
+			LoadAssemblies (75ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (75ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (280ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (14ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (16ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (187ms)
+				ProcessInitializeOnLoadMethodAttributes (60ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000664 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.22 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.940 seconds
+Domain Reload Profiling:
+	ReloadAssembly (941ms)
+		BeginReloadAssembly (163ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (20ms)
+		EndReloadAssembly (684ms)
+			LoadAssemblies (73ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (96ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (33ms)
+			SetupLoadedEditorAssemblies (379ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (50ms)
+				ProcessInitializeOnLoadAttributes (265ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.23 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1455 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 14 unused Assets / (55.6 KB). Loaded Objects now: 1933.
+Memory consumption went from 71.2 MB to 71.2 MB.
+Total: 2.596070 ms (FindLiveObjects: 0.120686 ms CreateObjectMapping: 0.062927 ms MarkObjects: 2.352813 ms  DeleteObjects: 0.053010 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 145618.963232 seconds.
+  path: Assets
+  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31858aa9811287a817ef9c584839beb1') in 0.008888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 586.715332 seconds.
+  path: Packages/com.unity.ide.visualstudio/Editor/com.unity.ide.visualstudio.asmdef
+  artifactKey: Guid(b93f844d45cfcc44fa2b0eed5c9ec6bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ide.visualstudio/Editor/com.unity.ide.visualstudio.asmdef using Guid(b93f844d45cfcc44fa2b0eed5c9ec6bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28d5449b1bccf22a52addfbb0b28fb31') in 0.021997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Packages/com.unity.timeline/Runtime/Unity.Timeline.asmdef
+  artifactKey: Guid(f06555f75b070af458a003d92f9efb00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.timeline/Runtime/Unity.Timeline.asmdef using Guid(f06555f75b070af458a003d92f9efb00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f093524bb1ab9de45da9225bec6e2fd2') in 0.006419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Packages/com.unity.ide.vscode/Editor/Unity.com.unity.vscode.Editor.asmdef
+  artifactKey: Guid(8b845b123ab418448a8be2935fa804e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ide.vscode/Editor/Unity.com.unity.vscode.Editor.asmdef using Guid(8b845b123ab418448a8be2935fa804e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f07a61cd4b03cd40a3fe8e28bdcf3264') in 0.006524 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Packages/com.unity.ugui/Tests/Runtime/UnityEngine.UI.Tests.asmdef
+  artifactKey: Guid(e9745f6a32442194c8dc5a43e9ab86f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ugui/Tests/Runtime/UnityEngine.UI.Tests.asmdef using Guid(e9745f6a32442194c8dc5a43e9ab86f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e858b5530f848249d6f19b135f81117') in 0.006876 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Packages/com.unity.sysroot.linux-x86_64/Editor/Unity.Sysroot.Linux-x86_64.asmdef
+  artifactKey: Guid(7bb4ea1d3f6d64e25ac0b0dd565b23aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.sysroot.linux-x86_64/Editor/Unity.Sysroot.Linux-x86_64.asmdef using Guid(7bb4ea1d3f6d64e25ac0b0dd565b23aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000249 seconds  code(4) message(Build asset version error: packages/com.unity.sysroot.linux-x86_64/editor/unity.sysroot.linux-x86_64.asmdef in SourceAssetDB has modification time of '2021-01-12T17:40:41Z' while content on disk has modification time of '0001-01-01T00:00:00Z')
+  ERROR: Build asset version error: packages/com.unity.sysroot.linux-x86_64/editor/unity.sysroot.linux-x86_64.asmdef in SourceAssetDB has modification time of '2021-01-12T17:40:41Z' while content on disk has modification time of '0001-01-01T00:00:00Z'
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Packages/com.unity.xr.legacyinputhelpers/Runtime/TrackedPoseDriver/UnityEngine.SpatialTracking.asmdef
+  artifactKey: Guid(ba171b3dd2a51234ab864770f99741a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.xr.legacyinputhelpers/Runtime/TrackedPoseDriver/UnityEngine.SpatialTracking.asmdef using Guid(ba171b3dd2a51234ab864770f99741a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ac34537ad3a45c625c8f2c1041f76ef') in 0.006057 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Packages/com.unity.xr.legacyinputhelpers/Editor/TrackedPoseDriver/UnityEditor.SpatialTracking.asmdef
+  artifactKey: Guid(b13a1d1dfb13f1b489a0ff5612f36f29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.xr.legacyinputhelpers/Editor/TrackedPoseDriver/UnityEditor.SpatialTracking.asmdef using Guid(b13a1d1dfb13f1b489a0ff5612f36f29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eecfce056c94ea21c99239db905665f') in 0.007758 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Packages/com.unity.xr.legacyinputhelpers/Tests/Editor/LegacyInputHelpersEditorTests.asmdef
+  artifactKey: Guid(559bcbd55c770ea4d959cfdb857c39a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.xr.legacyinputhelpers/Tests/Editor/LegacyInputHelpersEditorTests.asmdef using Guid(559bcbd55c770ea4d959cfdb857c39a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '805ee35979916423627f8bca8d5537c2') in 0.006650 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Packages/com.unity.ugui/Runtime/UnityEngine.UI.asmdef
+  artifactKey: Guid(2bafac87e7f4b9b418d9448d219b01ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ugui/Runtime/UnityEngine.UI.asmdef using Guid(2bafac87e7f4b9b418d9448d219b01ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66d0280e98930cc7545479ac84d6a965') in 0.018458 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Packages/com.unity.sysroot.linux-x86_64/Tests/Editor/Unity.Sysroot.Linux-x86_64.EditorTests.asmdef
+  artifactKey: Guid(1ac444c25ae4642a2b37c1c9156d384f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.sysroot.linux-x86_64/Tests/Editor/Unity.Sysroot.Linux-x86_64.EditorTests.asmdef using Guid(1ac444c25ae4642a2b37c1c9156d384f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000226 seconds  code(4) message(Build asset version error: packages/com.unity.sysroot.linux-x86_64/tests/editor/unity.sysroot.linux-x86_64.editortests.asmdef in SourceAssetDB has modification time of '2021-01-12T17:40:41Z' while content on disk has modification time of '0001-01-01T00:00:00Z')
+  ERROR: Build asset version error: packages/com.unity.sysroot.linux-x86_64/tests/editor/unity.sysroot.linux-x86_64.editortests.asmdef in SourceAssetDB has modification time of '2021-01-12T17:40:41Z' while content on disk has modification time of '0001-01-01T00:00:00Z'
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Packages/com.unity.xr.legacyinputhelpers/Runtime/LegacyInputHelpers.asmdef
+  artifactKey: Guid(28c5e819ece8a0746abb16dc5aa91f44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.xr.legacyinputhelpers/Runtime/LegacyInputHelpers.asmdef using Guid(28c5e819ece8a0746abb16dc5aa91f44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a3996d019886ec0e1edb275b5f623cf') in 0.006275 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Packages/com.unity.2d.sprite/Tests/Editor/Unity.2D.Sprite.Package.EditorTests.asmdef
+  artifactKey: Guid(52648b72c7bef2040bf0cfa8dd0f74da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Tests/Editor/Unity.2D.Sprite.Package.EditorTests.asmdef using Guid(52648b72c7bef2040bf0cfa8dd0f74da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8dbd695f4440417e304bb2808283f43') in 0.007486 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
