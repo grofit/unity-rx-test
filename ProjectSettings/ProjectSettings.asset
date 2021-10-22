@@ -135,7 +135,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -671,7 +672,11 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
+    Android: NO_NULLABLE_ATTRIBUTES;HAS_WINRT
+    Server: NO_NULLABLE_ATTRIBUTES;HAS_WINRT
     Standalone: NO_NULLABLE_ATTRIBUTES;HAS_WINRT
+    WebGL: NO_NULLABLE_ATTRIBUTES;HAS_WINRT
+    Windows Store Apps: NO_NULLABLE_ATTRIBUTES;HAS_WINRT
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -760,7 +765,7 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 1
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
