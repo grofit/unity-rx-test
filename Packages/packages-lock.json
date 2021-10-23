@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.runtimeunittesttoolkit": {
+      "version": "2.5.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.reactive.unity.deps": {
       "version": "file:../Dependencies/bin/Debug/netstandard2.1",
       "depth": 0,

@@ -1,0 +1,1 @@
+The test assembly cannot be named System* because otherwise com.cysharp.runtimeunittesttoolkit will not list them.

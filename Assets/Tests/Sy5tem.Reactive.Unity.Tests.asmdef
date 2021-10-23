@@ -1,5 +1,5 @@
 {
-    "name": "System.Reactive.Unity.Tests",
+    "name": "Sy5tem.Reactive.Unity.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
