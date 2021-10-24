@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive;
+using System.Reactive.Unity;
 
 namespace UniRx.Tests
 {
@@ -13,13 +14,13 @@ namespace UniRx.Tests
         [SetUp]
         public void Init()
         {
-            // TestUtil.SetScehdulerForImport();
+            TestUtil.SetScehdulerForImport();
         }
 
         [TearDown]
         public void Dispose()
         {
-            // UniRx.Scheduler.SetDefaultForUnity();
+            ReactiveUnity.SetupPatches();
         }
 
         [Test]

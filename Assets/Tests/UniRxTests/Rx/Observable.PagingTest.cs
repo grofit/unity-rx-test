@@ -6,6 +6,7 @@ using System.Reactive.Subjects;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Data.Linq;
+using System.Reactive.Unity;
 
 namespace UniRx.Tests {
 
@@ -14,13 +15,12 @@ namespace UniRx.Tests {
         [SetUp]
         public void Init()
         {
-            // TestUtil.SetScehdulerForImport();
+            TestUtil.SetScehdulerForImport();
         }
 
         [TearDown]
-        public void Dispose()
-        {
-            // UniRx.Scheduler.SetDefaultForUnity();
+        public void Dispose() {
+            ReactiveUnity.SetupPatches();
         }
 
         [Test]

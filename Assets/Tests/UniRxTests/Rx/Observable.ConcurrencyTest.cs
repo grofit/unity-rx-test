@@ -2,27 +2,26 @@
 using System.Linq;
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.Threading;
 using System.Reactive.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Subjects;
 using System.Reactive;
+using System.Reactive.Unity;
 
-namespace UniRx.Tests
-{
+namespace UniRx.Tests {
 
     public class ObservableConcurrencyTest
     {
         [SetUp]
         public void Init()
         {
-            // TestUtil.SetScehdulerForImport();
+            TestUtil.SetScehdulerForImport();
         }
 
         [TearDown]
         public void Dispose()
         {
-            // UniRx.Scheduler.SetDefaultForUnity();
+            ReactiveUnity.SetupPatches();
         }
 
         [Test]

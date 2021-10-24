@@ -36,6 +36,7 @@ namespace UniRx.Tests
             var hoge = ScheduleTasks(Scheduler.CurrentThread);
             hoge.Is("outer start.", "outer end.", "--innerAction start.", "--innerAction end.", "----leafAction.");
         }
+
         [Test]
         public void CurrentThread2()
         {

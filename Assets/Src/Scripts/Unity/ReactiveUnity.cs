@@ -23,11 +23,11 @@ namespace System.Reactive.Unity {
         }
 
         private static void InitSchedulerDefaults() {
-            // SchedulerDefaults.TimeBasedOperations = UnityMainThreadScheduler.Instance;
+            SchedulerDefaults.TimeBasedOperations = UnityMainThreadScheduler.Instance;
 #if WEB_GL
             SchedulerDefaults.AsyncConversions = UnityMainThreadScheduler.Instance;
 #else
-            // SchedulerDefaults.AsyncConversions = ThreadPoolScheduler.Instance;
+            SchedulerDefaults.AsyncConversions = ThreadPoolScheduler.Instance;
 #endif
         }
 
