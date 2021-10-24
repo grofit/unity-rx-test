@@ -1,9 +1,4 @@
-﻿#if CSHARP_7_OR_LATER || (UNITY_2018_3_OR_NEWER && (NET_STANDARD_2_0 || NET_4_6))
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-#endif
-
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace System.Reactive.Unity.InternalUtil
@@ -28,7 +23,6 @@ namespace System.Reactive.Unity.InternalUtil
         static readonly RuntimeTypeHandle boundsType = typeof(Bounds).TypeHandle;
         static readonly RuntimeTypeHandle quaternionType = typeof(Quaternion).TypeHandle;
 
-#if UNITY_2017_2_OR_NEWER
 
         public static readonly IEqualityComparer<Vector2Int> Vector2Int = new Vector2IntEqualityComparer();
         public static readonly IEqualityComparer<Vector3Int> Vector3Int = new Vector3IntEqualityComparer();
@@ -42,8 +36,6 @@ namespace System.Reactive.Unity.InternalUtil
         static readonly RuntimeTypeHandle rectIntType = typeof(RectInt).TypeHandle;
         static readonly RuntimeTypeHandle boundsIntType = typeof(BoundsInt).TypeHandle;
 
-#endif
-
         static class Cache<T>
         {
             public static readonly IEqualityComparer<T> Comparer;
@@ -51,43 +43,31 @@ namespace System.Reactive.Unity.InternalUtil
             static Cache()
             {
                 var comparer = GetDefaultHelper(typeof(T));
-                if (comparer == null)
-                {
-                    Comparer = EqualityComparer<T>.Default;
-                }
-                else
-                {
-                    Comparer = (IEqualityComparer<T>)comparer;
-                }
+                Comparer = comparer == null
+                    ? EqualityComparer<T>.Default
+                    : (IEqualityComparer<T>)comparer;
             }
         }
 
-        public static IEqualityComparer<T> GetDefault<T>()
-        {
-            return Cache<T>.Comparer;
-        }
+        public static IEqualityComparer<T> GetDefault<T>() => Cache<T>.Comparer;
 
         static object GetDefaultHelper(Type type)
         {
             var t = type.TypeHandle;
 
-            if (t.Equals(vector2Type)) return (object)UnityEqualityComparer.Vector2;
-            if (t.Equals(vector3Type)) return (object)UnityEqualityComparer.Vector3;
-            if (t.Equals(vector4Type)) return (object)UnityEqualityComparer.Vector4;
-            if (t.Equals(colorType)) return (object)UnityEqualityComparer.Color;
-            if (t.Equals(color32Type)) return (object)UnityEqualityComparer.Color32;
-            if (t.Equals(rectType)) return (object)UnityEqualityComparer.Rect;
-            if (t.Equals(boundsType)) return (object)UnityEqualityComparer.Bounds;
-            if (t.Equals(quaternionType)) return (object)UnityEqualityComparer.Quaternion;
-
-#if UNITY_2017_2_OR_NEWER
-
-            if (t.Equals(vector2IntType)) return (object)UnityEqualityComparer.Vector2Int;
-            if (t.Equals(vector3IntType)) return (object)UnityEqualityComparer.Vector3Int;
-            if (t.Equals(rangeIntType)) return (object)UnityEqualityComparer.RangeInt;
-            if (t.Equals(rectIntType)) return (object)UnityEqualityComparer.RectInt;
-            if (t.Equals(boundsIntType)) return (object)UnityEqualityComparer.BoundsInt;
-#endif
+            if (t.Equals(vector2Type)) return Vector2;
+            if (t.Equals(vector3Type)) return Vector3;
+            if (t.Equals(vector4Type)) return Vector4;
+            if (t.Equals(colorType)) return Color;
+            if (t.Equals(color32Type)) return Color32;
+            if (t.Equals(rectType)) return Rect;
+            if (t.Equals(boundsType)) return Bounds;
+            if (t.Equals(quaternionType)) return Quaternion;
+            if (t.Equals(vector2IntType)) return Vector2Int;
+            if (t.Equals(vector3IntType)) return Vector3Int;
+            if (t.Equals(rangeIntType)) return RangeInt;
+            if (t.Equals(rectIntType)) return RectInt;
+            if (t.Equals(boundsIntType)) return BoundsInt;
 
             return null;
         }
@@ -196,8 +176,6 @@ namespace System.Reactive.Unity.InternalUtil
             }
         }
 
-#if UNITY_2017_2_OR_NEWER
-
         sealed class Vector2IntEqualityComparer : IEqualityComparer<Vector2Int>
         {
             public bool Equals(Vector2Int self, Vector2Int vector)
@@ -265,7 +243,5 @@ namespace System.Reactive.Unity.InternalUtil
                 return Vector3IntEqualityComparer.Default.GetHashCode(obj.position) ^ Vector3IntEqualityComparer.Default.GetHashCode(obj.size) << 2;
             }
         }
-
-#endif
     }
 }

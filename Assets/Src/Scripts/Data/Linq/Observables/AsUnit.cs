@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reactive;
 
-namespace System.Reactive.Data.Operators {
+namespace System.Reactive.Data.Linq.Observables {
     internal sealed class AsUnit<T> : Producer<Unit, AsUnit<T>._> {
         private readonly IObservable<T> _source;
 

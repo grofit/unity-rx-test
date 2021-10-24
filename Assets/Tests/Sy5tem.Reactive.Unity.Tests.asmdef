@@ -3,7 +3,9 @@
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "System.Reactive.Data",
+        "System.Reactive.Unity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

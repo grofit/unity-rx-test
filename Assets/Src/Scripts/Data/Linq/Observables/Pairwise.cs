@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reactive;
 
-namespace System.Reactive.Data.Operators {
+namespace System.Reactive.Data.Linq.Observables {
     internal sealed class Pairwise<T> : Producer<Pair<T>, Pairwise<T>._> {
         private readonly IObservable<T> _source;
 

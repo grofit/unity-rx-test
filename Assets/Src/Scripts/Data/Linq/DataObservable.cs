@@ -1,7 +1,10 @@
-﻿using System.Reactive.Data.Operators;
+﻿using System.Reactive.Data.Linq.Observables;
+using System.Reactive.Linq;
 
-namespace System.Reactive.Data {
-    public static class ObservableExtensions {
+namespace System.Reactive.Data.Linq {
+    public static class DataObservable {
+        public static IObservable<Unit> ReturnUnit() => Observable.Return(Unit.Default);
+
         /// <summary>
         /// Converting .Select(_ => Unit.Default) sequence.
         /// </summary>

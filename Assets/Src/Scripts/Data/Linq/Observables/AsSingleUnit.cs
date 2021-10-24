@@ -1,4 +1,4 @@
-﻿namespace System.Reactive.Data.Operators {
+﻿namespace System.Reactive.Data.Linq.Observables {
     internal sealed class AsSingleUnit<T> : Producer<Unit, AsSingleUnit<T>._> {
         private readonly IObservable<T> _source;
 
