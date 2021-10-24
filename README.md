@@ -14,7 +14,7 @@ Other than the basic scheduling these are the features I moved over from UniRx:
 Assembly: System.Reactive.Data
 - AsUnitObservable()
 - AsSingleUnitObservable()
-- .Pairwise() without overloads
+- .Pairwise() (without overloads)
 - ReactiveProperty
 - ReactiveCollection
 - ReactiveDictionary
@@ -25,7 +25,7 @@ Assembly: System.Reactive.Unity
 - Observable.ReturnUnit()
 - Observable.EveryUpdate()
 - Observable.EveryFixedUpdate()
-- .UpdateAsObservable() (if easy)
+- .UpdateAsObservable()
 - .OnDestroyAsObservable()
 - .ObserveOnMainThread() (without overloads)
 - .SubscribeOnMainThread() (without overloads)
