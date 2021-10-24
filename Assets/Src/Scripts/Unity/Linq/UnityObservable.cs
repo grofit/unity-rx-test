@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reactive.Unity.Linq.Observables;
+using System.Reactive.Unity.Triggers;
 using System.Threading;
+using UnityEngine;
 
 namespace System.Reactive.Unity.Linq {
     public static class UnityObservable {
@@ -53,6 +55,14 @@ namespace System.Reactive.Unity.Linq {
             if (source is null) throw new ArgumentNullException(nameof(source));
             if (frameCount < 0) throw new ArgumentException("frameCount must be >= 0, frameCount:" + frameCount, nameof(frameCount));
             return new DelayFrame<T>(source, frameCount, frameCountType);
+        }
+
+        public static IObservable<T> TakeUntilDestroy<T>(this IObservable<T> source, Component target) {
+            return source.TakeUntil(target.OnDestroyAsObservable());
+        }
+
+        public static IObservable<T> TakeUntilDestroy<T>(this IObservable<T> source, GameObject target) {
+            return source.TakeUntil(target.OnDestroyAsObservable());
         }
     }
 }
