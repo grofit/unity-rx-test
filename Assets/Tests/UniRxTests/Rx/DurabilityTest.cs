@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Text;
 using NUnit.Framework;
 
-namespace UniRx.Operators
-{
-    
+namespace UniRx.Operators {
     public class DurabilityTest
     {
         public delegate void LikeUnityAction();
