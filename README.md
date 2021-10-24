@@ -11,37 +11,37 @@ Part of the goal is to drop some legacy code from the UniRx code and start using
 This also means that older versions of unity won't be supported (Versions >= 2021 should work - testing is currently happening in the unity beta version)
 
 Other than the basic scheduling these are the features I moved over from UniRx:
-
-ObservableStateMachineTrigger
-
-Observable.ReturnUnit()
-Observable.EveryUpdate()
-Observable.EveryFixedUpdate()
-
-.UpdateAsObservable() (if easy)
-.OnDestroyAsObservable()
-
-.ObserveOnMainThread() (without overloads)
-.SubscribeOnMainThread() (without overloads)
-
-.TakeUntilDestroy()
-.DelayFrame()
-.BatchFrame()
-
----
-AsUnitObservable()
-AsSingleUnitObservable()
-.Pairwise() without overloads
-
-ReactiveProperty
-ReactiveCollection
-ReactiveDictionary
+Assembly: System.Reactive.Data
+- AsUnitObservable()
+- AsSingleUnitObservable()
+- .Pairwise() without overloads
+- ReactiveProperty
+- ReactiveCollection
+- ReactiveDictionary
 (all of those incl. readonly variants)
+
+Assembly: System.Reactive.Unity
+- ObservableStateMachineTrigger
+- Observable.ReturnUnit()
+- Observable.EveryUpdate()
+- Observable.EveryFixedUpdate()
+- .UpdateAsObservable() (if easy)
+- .OnDestroyAsObservable()
+- .ObserveOnMainThread() (without overloads)
+- .SubscribeOnMainThread() (without overloads)
+- .TakeUntilDestroy()
+- .DelayFrame()
+- .BatchFrame()
 
 ---
 changes:
 removed serialization support ReactiveProperty
 removed serialization support ReactiveDictionary
 removed IOptimizedObservable stuff
+
+---
+Important: when using System.Reactive.Unity it is crucial that
+`System.Reactive.Unity.ReactiveUnity.SetupPatches()`
+is executed before any other reactive code to ensure the environment is properly configured for unity.
 
 
