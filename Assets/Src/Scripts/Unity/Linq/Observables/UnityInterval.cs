@@ -11,9 +11,8 @@ namespace System.Reactive.Unity.Linq.Observables {
 
         protected override void Run(_ sink) => sink.Run();
 
-        internal sealed class _ : IdentitySink<long> {
+        internal sealed class _ : Sink<long, long> {
             private readonly FrameCountType _frameCountType;
-            private long _index;
 
             public _(IObserver<long> observer, FrameCountType frameCountType) : base(observer) {
                 _frameCountType = frameCountType;
@@ -48,6 +47,8 @@ namespace System.Reactive.Unity.Linq.Observables {
                     ForwardOnNext(unchecked(count++));
                 }
             }
+
+            public override void OnNext(long value) {}
         }
     }
 }

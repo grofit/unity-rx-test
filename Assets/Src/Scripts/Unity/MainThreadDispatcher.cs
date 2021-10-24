@@ -295,7 +295,7 @@ ENQUEUE:
         public static void RegisterUnhandledExceptionCallback(Action<Exception> exceptionCallback) {
             if (exceptionCallback == null) {
                 // do nothing
-                Instance.unhandledExceptionCallback = Stubs<Exception>.Ignore;
+                Instance.unhandledExceptionCallback = static _ => { };
             }
             else {
                 Instance.unhandledExceptionCallback = exceptionCallback;

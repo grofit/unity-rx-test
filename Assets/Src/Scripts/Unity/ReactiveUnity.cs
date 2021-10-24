@@ -2,6 +2,7 @@
 using System.Reactive.Unity.InternalUtil;
 using UnityEngine;
 using System.Reactive.Concurrency;
+using System.Reactive.Unity.Concurrency;
 
 namespace System.Reactive.Unity {
     public static class ReactiveUnity {

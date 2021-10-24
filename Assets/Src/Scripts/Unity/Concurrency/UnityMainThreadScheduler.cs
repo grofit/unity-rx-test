@@ -3,7 +3,7 @@ using System.Reactive.Disposables;
 using System.Collections;
 using UnityEngine;
 
-namespace System.Reactive.Unity {
+namespace System.Reactive.Unity.Concurrency {
     /// <summary>
     /// Represents an object that schedules units of work on the Unity main thread.
     /// </summary>
