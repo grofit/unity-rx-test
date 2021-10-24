@@ -35,18 +35,9 @@ namespace System.Reactive.Unity.Linq {
         }
 
         /// <summary>
-        /// Buffer elements in during target frame counts. Default raise same frame of end(frameCount = 0, frameCountType = EndOfFrame).
-        /// </summary>
-        public static IObservable<IList<T>> BatchFrame<T>(this IObservable<T> source) {
-            if (source is null) throw new ArgumentNullException(nameof(source));
-            // if use default argument, comiler errors ambiguous(Unity's limitation)
-            return new BatchFrame<T>(source, 0, FrameCountType.EndOfFrame);
-        }
-
-        /// <summary>
         /// Buffer elements in during target frame counts.
         /// </summary>
-        public static IObservable<IList<T>> BatchFrame<T>(this IObservable<T> source, int frameCount, FrameCountType frameCountType) {
+        public static IObservable<IList<T>> BatchFrame<T>(this IObservable<T> source, int frameCount = 0, FrameCountType frameCountType = FrameCountType.EndOfFrame) {
             if (source is null) throw new ArgumentNullException(nameof(source));
             if (frameCount < 0) throw new ArgumentException("frameCount must be >= 0, frameCount:" + frameCount, nameof(frameCount));
             return new BatchFrame<T>(source, frameCount, frameCountType);
