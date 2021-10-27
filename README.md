@@ -35,9 +35,9 @@ Assembly: System.Reactive.Unity
 
 ---
 changes:
-removed serialization support ReactiveProperty
-removed serialization support ReactiveDictionary
-removed IOptimizedObservable stuff
+- removed serialization support ReactiveProperty
+- removed serialization support ReactiveDictionary
+- removed IOptimizedObservable stuff
 
 ---
 Important: when using System.Reactive.Unity it is crucial that
