@@ -11,6 +11,9 @@ using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
 using UnityEngine.TestTools;
+using System.Reactive.Linq.ObservableImpl;
+using System.Reactive.Subjects;
+using System.Reactive.Disposables;
 
 namespace ReactiveTests.Tests
 {
@@ -831,6 +834,11 @@ namespace ReactiveTests.Tests
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 370)
             );
+
+            static void Aot() {
+                new TestScheduler().ScheduleAbsolute<((Buffer<int>.Ferry._, int), Action<(Buffer<int>.Ferry._, int)>)>(((null, default), null), 0L, null);
+                Aot();
+            }
         }
 
         [Test]
@@ -1168,6 +1176,12 @@ namespace ReactiveTests.Tests
                 new TimerRun(200, 480) { 300, 400 }
             );
 #endif
+
+            static void Aot() {
+                // TOOD invisible class!
+                // new TestScheduler().ScheduleAbsolute<((Action<Action<TimeSpan>>, SingleAssignmentDisposable, Scheduler.InvokeRec2State<Action<Action<TimeSpan>>>), Action<(Action<Action<TimeSpan>>, SingleAssignmentDisposable, Scheduler.InvokeRec2State<Action<Action<TimeSpan>>>)>)>(((null, null, null), null), 0L, null);
+                Aot();
+            }
         }
 
         [Test]
@@ -1317,6 +1331,11 @@ namespace ReactiveTests.Tests
                 {
                     scheduler.AdvanceBy(TimeSpan.FromMilliseconds(1).Ticks);
                 });
+
+            static void Aot() {
+                new TestScheduler().ScheduleAbsolute<((Window<int>.Ferry._, Subject<int>), Action<(Window<int>.Ferry._, Subject<int>)>)>(((null, null), null), 0L, null);
+                Aot();
+            }
         }
 
         #endregion

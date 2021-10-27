@@ -11,6 +11,7 @@ using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
 using UnityEngine.TestTools;
+using System.Reactive.Linq.ObservableImpl;
 
 namespace ReactiveTests.Tests
 {
@@ -266,6 +267,11 @@ namespace ReactiveTests.Tests
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 300)
             );
+
+            static void Aot() {
+                new TestScheduler().ScheduleAbsolute<((Throttle<int>._, ulong), Action<(Throttle<int>._, ulong)>)>(((null, default), null), 0L, null);
+                Aot();
+            }
         }
 
         [Test]

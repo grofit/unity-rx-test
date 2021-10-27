@@ -15,6 +15,8 @@ using UnityEngine.TestTools;
 #if STRESS
 using ReactiveTests.Stress.Schedulers;
 #endif
+using System.Reactive;
+using System.Reactive.Linq.ObservableImpl;
 
 namespace ReactiveTests.Tests
 {
@@ -252,8 +254,8 @@ namespace ReactiveTests.Tests
         }
 
         [Test, Explicit]
-        public void EventLoop_ScheduleActionDue()
-        {
+        public void EventLoop_ScheduleActionDue() {
+
             var ran = false;
             using var el = new EventLoopScheduler();
             var sw = new Stopwatch();
@@ -268,11 +270,16 @@ namespace ReactiveTests.Tests
             Assert.True(gate.WaitOne(MaxWaitTime), "Timeout!");
             Assert.True(ran, "ran");
             Assert.True(sw.ElapsedMilliseconds > 180, "due " + sw.ElapsedMilliseconds);
+
+            static void Aot() {
+                CurrentThreadScheduler.Instance.Schedule<(Func<(BasicProducer<int>, SingleAssignmentDisposable, IObserver<int>), IDisposable>, (BasicProducer<int>, SingleAssignmentDisposable, IObserver<int>))>(
+                    (null, (null, null, null)), TimeSpan.Zero, null);
+                Aot();
+            }
         }
 
         [Test, Explicit]
-        public void EventLoop_ScheduleActionDueNested()
-        {
+        public void EventLoop_ScheduleActionDueNested() {
             var ran = false;
             using var el = new EventLoopScheduler();
             var gate = new Semaphore(0, 1);
@@ -294,6 +301,12 @@ namespace ReactiveTests.Tests
             Assert.True(gate.WaitOne(MaxWaitTime), "Timeout!");
             Assert.True(ran, "ran");
             Assert.True(sw.ElapsedMilliseconds > 380, "due " + sw.ElapsedMilliseconds);
+
+            static void Aot() {
+                CurrentThreadScheduler.Instance.Schedule<(Action<(Producer<int, Where<int>.Predicate._>, Where<int>.Predicate._)>, (Producer<int, Where<int>.Predicate._>, Where<int>.Predicate._))>(
+                    (null, (null, null)), TimeSpan.Zero, null);
+                Aot();
+            }
         }
 
 #if !NO_PERF
