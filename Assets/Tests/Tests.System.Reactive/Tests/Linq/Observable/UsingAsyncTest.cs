@@ -18,14 +18,14 @@ namespace ReactiveTests.Tests {
     public class UsingAsyncTest : ReactiveTest
     {
 
-        //[Test]
+        [Test]
         public void UsingAsync_ArgumentChecking()
         {
             ReactiveAssert.Throws<ArgumentNullException>(() => Observable.Using<int, IDisposable>(null, (res, ct) => null));
             ReactiveAssert.Throws<ArgumentNullException>(() => Observable.Using<int, IDisposable>(ct => null, null));
         }
 
-        //[Test]
+        [Test]
         public void UsingAsync_Simple()
         {
             var done = new CountdownEvent(1);
@@ -41,7 +41,7 @@ namespace ReactiveTests.Tests {
             Assert.True(done.Wait(5000), "done.Wait(5000)");
         }
 
-        //[Test]
+        [Test]
         public void UsingAsync_CancelResource()
         {
             var N = 10;// 0000;
@@ -87,7 +87,7 @@ namespace ReactiveTests.Tests {
             }
         }
 
-        //[Test]
+        [Test]
         public void UsingAsync_CancelFactory()
         {
             var N = 10;// 0000;
