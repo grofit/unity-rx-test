@@ -1169,36 +1169,36 @@ namespace ReactiveTests.Tests
             }
         }
 
-        //[Test]
-        //[Category("Task")]
-        //public async Task ToTask_Scheduler_Dispose_Can_Propagate()
-        //{
-        //    async Task asyncMethod()
-        //    {
-        //        await Task.Delay(500);
-        //        Console.WriteLine("Done");
-        //    }
+        [Test]
+        [Category("Task")]
+        public void ToTask_Scheduler_Dispose_Can_Propagate() {
+            ToTask_Scheduler_Dispose_Can_PropagateAsync().Wait();
+        }
 
-        //    var count = 0;
+        private async Task ToTask_Scheduler_Dispose_Can_PropagateAsync() {
+            async Task asyncMethod() {
+                await Task.Delay(500);
+                Console.WriteLine("Done");
+            }
 
-        //    var observable = Observable.Create<long>(observer =>
-        //    {
-        //        var d = Observable.Interval(TimeSpan.FromMilliseconds(200)).Subscribe(observer);
-        //        return new CompositeDisposable(d, Disposable.Create(() =>
-        //        {
-        //            Interlocked.Increment(ref count);
-        //        }));
-        //    })
-        //    .Select(_ => Observable.FromAsync(asyncMethod))
-        //    .Concat()
-        //    .Take(1);
+            var count = 0;
 
-        //    await observable.ToTask(Scheduler.Default).ConfigureAwait(false);
+            var observable = Observable.Create<long>(observer => {
+                var d = Observable.Interval(TimeSpan.FromMilliseconds(200)).Subscribe(observer);
+                return new CompositeDisposable(d, Disposable.Create(() => {
+                    Interlocked.Increment(ref count);
+                }));
+            })
+            .Select(_ => Observable.FromAsync(asyncMethod))
+            .Concat()
+            .Take(1);
 
-        //    Thread.Sleep(500);
+            await observable.ToTask(Scheduler.Default).ConfigureAwait(false);
 
-        //    Assert.AreEqual(1, Volatile.Read(ref count));
-        //}
+            Thread.Sleep(500);
+
+            Assert.AreEqual(1, Volatile.Read(ref count));
+        }
 
         #endregion
     }

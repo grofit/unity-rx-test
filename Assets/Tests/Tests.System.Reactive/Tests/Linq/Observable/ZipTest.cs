@@ -3906,44 +3906,43 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
-        //public void ZipWithEnumerable_SomeDataBothSides()
-        //{
-        //    var scheduler = new TestScheduler();
+        [Test]
+        public void ZipWithEnumerable_SomeDataBothSides() {
+            var scheduler = new TestScheduler();
 
-        //    var ex = new Exception();
+            var ex = new Exception();
 
-        //    var o = new MockEnumerable<int>(scheduler,
-        //        new[] { 5, 4, 3, 2 }
-        //    );
+            var o = new MockEnumerable<int>(scheduler,
+                new[] { 5, 4, 3, 2 }
+            );
 
-        //    var e = scheduler.CreateHotObservable(
-        //        OnNext(150, 1),
-        //        OnNext(210, 2),
-        //        OnNext(220, 3),
-        //        OnNext(230, 4),
-        //        OnNext(240, 5)
-        //    );
+            var e = scheduler.CreateHotObservable(
+                OnNext(150, 1),
+                OnNext(210, 2),
+                OnNext(220, 3),
+                OnNext(230, 4),
+                OnNext(240, 5)
+            );
 
-        //    var res = scheduler.Start(() =>
-        //        e.Zip(o, (x, y) => x + y)
-        //    );
+            var res = scheduler.Start(() =>
+                e.Zip(o, (x, y) => x + y)
+            );
 
-        //    res.Messages.AssertEqual(
-        //        OnNext(210, 7),
-        //        OnNext(220, 7),
-        //        OnNext(230, 7),
-        //        OnNext(240, 7)
-        //    );
+            res.Messages.AssertEqual(
+                OnNext(210, 7),
+                OnNext(220, 7),
+                OnNext(230, 7),
+                OnNext(240, 7)
+            );
 
-        //    o.Subscriptions.AssertEqual(
-        //        Subscribe(200, 1000)
-        //    );
+            o.Subscriptions.AssertEqual(
+                Subscribe(200, 1000)
+            );
 
-        //    e.Subscriptions.AssertEqual(
-        //        Subscribe(200, 1000)
-        //    );
-        //}
+            e.Subscriptions.AssertEqual(
+                Subscribe(200, 1000)
+            );
+        }
 
         [Test]
         public void ZipWithEnumerable_EnumeratorThrowsMoveNext()
@@ -4015,49 +4014,46 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
-        //public void ZipWithEnumerable_SelectorThrows()
-        //{
-        //    var scheduler = new TestScheduler();
+        [Test]
+        public void ZipWithEnumerable_SelectorThrows() {
+            var scheduler = new TestScheduler();
 
-        //    var o1 = scheduler.CreateHotObservable(
-        //        OnNext(150, 1),
-        //        OnNext(215, 2),
-        //        OnNext(225, 4),
-        //        OnCompleted<int>(240)
-        //    );
+            var o1 = scheduler.CreateHotObservable(
+                OnNext(150, 1),
+                OnNext(215, 2),
+                OnNext(225, 4),
+                OnCompleted<int>(240)
+            );
 
-        //    var o2 = new MockEnumerable<int>(scheduler,
-        //        new[] { 3, 5 }
-        //    );
+            var o2 = new MockEnumerable<int>(scheduler,
+                new[] { 3, 5 }
+            );
 
-        //    var ex = new Exception();
+            var ex = new Exception();
 
-        //    var res = scheduler.Start(() =>
-        //        o1.Zip(o2, (x, y) =>
-        //        {
-        //            if (y == 5)
-        //            {
-        //                throw ex;
-        //            }
+            var res = scheduler.Start(() =>
+                o1.Zip(o2, (x, y) => {
+                    if (y == 5) {
+                        throw ex;
+                    }
 
-        //            return x + y;
-        //        })
-        //    );
+                    return x + y;
+                })
+            );
 
-        //    res.Messages.AssertEqual(
-        //        OnNext(215, 2 + 3),
-        //        OnError<int>(225, ex)
-        //    );
+            res.Messages.AssertEqual(
+                OnNext(215, 2 + 3),
+                OnError<int>(225, ex)
+            );
 
-        //    o1.Subscriptions.AssertEqual(
-        //        Subscribe(200, 225)
-        //    );
+            o1.Subscriptions.AssertEqual(
+                Subscribe(200, 225)
+            );
 
-        //    o2.Subscriptions.AssertEqual(
-        //        Subscribe(200, 225)
-        //    );
-        //}
+            o2.Subscriptions.AssertEqual(
+                Subscribe(200, 225)
+            );
+        }
 
         [Test]
         public void ZipWithEnumerable_NoAsyncDisposeOnMoveNext()

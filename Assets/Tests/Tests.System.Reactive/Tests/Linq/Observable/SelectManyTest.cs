@@ -16,7 +16,7 @@ using UnityEngine.TestTools;
 
 namespace ReactiveTests.Tests
 {
-    public class SelectManyTest : ReactiveTest
+    public class _ZSelectManyTest : ReactiveTest
     {
 
         [Test]
@@ -5172,7 +5172,7 @@ namespace ReactiveTests.Tests
             });
         }
 
-        //[Test]
+        [Test]
         [Category("async")]
         public void SelectMany_TaskWithCompletionSource_Simple_RanToCompletion_Async()
         {
