@@ -8,7 +8,7 @@ This is still work in progress.
 A few tests still need fixing and alot of AoT issues need to be fixed / added hacks to enforce generic type generation for.
 
 Part of the goal is to drop some legacy code from the UniRx code and start using a newer C# Syntax and framework versions.
-This also means that older versions of unity won't be supported (Versions >= 2021 should work - testing is currently happening in the unity beta version)
+This also means that older versions of unity won't be supported (Versions >= 2021 should work - testing is currently happening in the unity beta version only)
 
 Other than the basic scheduling these are the features I moved over from UniRx:
 
