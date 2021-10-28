@@ -10,11 +10,21 @@ using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
 using UnityEngine.TestTools;
+using UniRx.Tests;
+using System.Reactive.Unity;
 
 namespace ReactiveTests.Tests
 {
-    public class IntervalTest : ReactiveTest
-    {
+    public class IntervalTest : ReactiveTest {
+        [SetUp]
+        public void Init() {
+            TestUtil.SetSchedulerForImport();
+        }
+
+        [TearDown]
+        public void Dispose() {
+            ReactiveUnity.SetupPatches();
+        }
 
         [Test]
         public void Interval_TimeSpan_ArgumentChecking()

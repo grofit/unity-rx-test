@@ -1903,10 +1903,6 @@
 //        {
 //            var res = Qbservable.Return(Qbservable.Provider, 42).Select(_ => Qbservable.Return(Qbservable.Provider, 42)).Switch().Single();
 //            Assert.AreEqual(42, res);
-
-//            static void Aot() {
-//                _ = Expression.Lambda<Func<IObservable<TSource>>>(body);
-//            }
 //        }
 //    }
 

@@ -5,29 +5,40 @@
 using System;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Reactive.Unity;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using UniRx.Tests;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine.TestTools;
 
 namespace Tests.System.Reactive.Tests
 {
-    public class TaskLikeSupportTest
-    {
+    public class TaskLikeSupportTest {
+        [SetUp]
+        public void Init() {
+            TestUtil.SetSchedulerForImport();
+        }
+
+        [TearDown]
+        public void Dispose() {
+            ReactiveUnity.SetupPatches();
+        }
+
         // System.Reactive.Unity - not supported for unity:
         // async ITaskObservable<int> stuff
-//        [Test]
-//        [Category("Task")]
-//        public void Return() {
-//            Assert.AreEqual(42, ManOrBoy_Return().Wait());
-//        }
+        //        [Test]
+        //        [Category("Task")]
+        //        public void Return() {
+        //            Assert.AreEqual(42, ManOrBoy_Return().Wait());
+        //        }
 
-//#pragma warning disable 1998
-//        private async ITaskObservable<int> ManOrBoy_Return()
-//        {
-//            return 42;
-//        }
-//#pragma warning restore 1998
+        //#pragma warning disable 1998
+        //        private async ITaskObservable<int> ManOrBoy_Return()
+        //        {
+        //            return 42;
+        //        }
+        //#pragma warning restore 1998
 
         [Test]
         [Category("async")]

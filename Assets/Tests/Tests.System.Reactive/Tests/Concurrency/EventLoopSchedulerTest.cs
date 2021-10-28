@@ -272,9 +272,9 @@ namespace ReactiveTests.Tests
             Assert.True(sw.ElapsedMilliseconds > 180, "due " + sw.ElapsedMilliseconds);
 
             static void Aot() {
-                CurrentThreadScheduler.Instance.Schedule<(Func<(BasicProducer<int>, SingleAssignmentDisposable, IObserver<int>), IDisposable>, (BasicProducer<int>, SingleAssignmentDisposable, IObserver<int>))>(
+                _ = CurrentThreadScheduler.Instance.Schedule<(Func<(BasicProducer<int>, SingleAssignmentDisposable, IObserver<int>), IDisposable>, (BasicProducer<int>, SingleAssignmentDisposable, IObserver<int>))>(
                     (null, (null, null, null)), TimeSpan.Zero, null);
-                Aot();
+                _ = nameof(Aot);
             }
         }
 
@@ -303,9 +303,9 @@ namespace ReactiveTests.Tests
             Assert.True(sw.ElapsedMilliseconds > 380, "due " + sw.ElapsedMilliseconds);
 
             static void Aot() {
-                CurrentThreadScheduler.Instance.Schedule<(Action<(Producer<int, Where<int>.Predicate._>, Where<int>.Predicate._)>, (Producer<int, Where<int>.Predicate._>, Where<int>.Predicate._))>(
+                _ = CurrentThreadScheduler.Instance.Schedule<(Action<(Producer<int, Where<int>.Predicate._>, Where<int>.Predicate._)>, (Producer<int, Where<int>.Predicate._>, Where<int>.Predicate._))>(
                     (null, (null, null)), TimeSpan.Zero, null);
-                Aot();
+                _ = nameof(Aot);
             }
         }
 

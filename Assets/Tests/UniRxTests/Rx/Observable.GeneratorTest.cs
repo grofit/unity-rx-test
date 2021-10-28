@@ -14,7 +14,7 @@ namespace UniRx.Tests
         [SetUp]
         public void Init()
         {
-            TestUtil.SetScehdulerForImport();
+            TestUtil.SetSchedulerForImport();
         }
 
         [TearDown]

@@ -20,7 +20,7 @@ namespace UniRx.Tests {
             return observer;
         }
 
-        public static void SetScehdulerForImport() {
+        public static void SetSchedulerForImport() {
             SchedulerDefaults.TimeBasedOperations = DefaultScheduler.Instance;
             SchedulerDefaults.AsyncConversions = DefaultScheduler.Instance;
         }

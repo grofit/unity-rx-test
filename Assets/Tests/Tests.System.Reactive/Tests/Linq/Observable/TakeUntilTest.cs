@@ -659,8 +659,8 @@ namespace ReactiveTests.Tests
             );
 
             static void Aot() {
-                new TestScheduler().ScheduleAbsolute<(TakeUntil<int>._, Action<TakeUntil<int>._>)>((null, null), 0L, null);
-                Aot();
+                _ = new TestScheduler().ScheduleAbsolute<(TakeUntil<int>._, Action<TakeUntil<int>._>)>((null, null), 0L, null);
+                _ = nameof(Aot);
             }
         }
 

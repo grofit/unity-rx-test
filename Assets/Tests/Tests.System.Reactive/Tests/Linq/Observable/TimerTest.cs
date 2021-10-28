@@ -14,13 +14,24 @@ using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
 using UnityEngine.TestTools;
+using System.Reactive.Unity.Concurrency;
+using System.Reactive.Unity;
+using UniRx.Tests;
 
 namespace ReactiveTests.Tests
 {
-    public class TimerTest : ReactiveTest
-    {
+    public class TimerTest : ReactiveTest {
+        [SetUp]
+        public void Init() {
+            TestUtil.SetSchedulerForImport();
+        }
 
-        //[Test]
+        [TearDown]
+        public void Dispose() {
+            ReactiveUnity.SetupPatches();
+        }
+
+        [Test]
         public void OneShotTimer_TimeSpan_ArgumentChecking()
         {
             ReactiveAssert.Throws<ArgumentNullException>(() => Observable.Timer(TimeSpan.Zero, null));
@@ -35,7 +46,7 @@ namespace ReactiveTests.Tests
             ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Observable.Timer(DateTimeOffset.Now, TimeSpan.FromSeconds(-1), DummyScheduler.Instance));
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_Basic()
         {
             var scheduler = new TestScheduler();
@@ -50,7 +61,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_Zero()
         {
             var scheduler = new TestScheduler();
@@ -65,7 +76,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_Zero_DefaultScheduler()
         {
             var scheduler = new TestScheduler();
@@ -79,7 +90,7 @@ namespace ReactiveTests.Tests
             Assert.AreEqual(1, observer.Messages.Count);
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_Negative()
         {
             var scheduler = new TestScheduler();
@@ -94,7 +105,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_Disposed()
         {
             var scheduler = new TestScheduler();
@@ -107,7 +118,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_ObserverThrows()
         {
             var scheduler1 = new TestScheduler();
@@ -127,31 +138,31 @@ namespace ReactiveTests.Tests
             ReactiveAssert.Throws<InvalidOperationException>(() => scheduler2.Start());
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_DefaultScheduler()
         {
             Assert.True(Observable.Timer(TimeSpan.FromMilliseconds(1)).ToEnumerable().SequenceEqual(new[] { 0L }));
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_DateTimeOffset_DefaultScheduler()
         {
             Assert.True(Observable.Timer(DateTimeOffset.UtcNow + TimeSpan.FromSeconds(1)).ToEnumerable().SequenceEqual(new[] { 0L }));
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_TimeSpan_TimeSpan_DefaultScheduler()
         {
             Assert.True(Observable.Timer(TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1)).ToEnumerable().Take(2).SequenceEqual(new[] { 0L, 1L }));
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_DateTimeOffset_TimeSpan_DefaultScheduler()
         {
             Assert.True(Observable.Timer(DateTimeOffset.UtcNow + TimeSpan.FromSeconds(1), TimeSpan.FromMilliseconds(1)).ToEnumerable().Take(2).SequenceEqual(new[] { 0L, 1L }));
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_DateTimeOffset_Basic()
         {
             var scheduler = new TestScheduler();
@@ -166,7 +177,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_DateTimeOffset_Zero()
         {
             var scheduler = new TestScheduler();
@@ -181,7 +192,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void OneShotTimer_DateTimeOffset_Past()
         {
             var scheduler = new TestScheduler();
@@ -196,7 +207,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_TimeSpan_Zero_DefaultScheduler()
         {
             var scheduler = new TestScheduler();
@@ -210,7 +221,7 @@ namespace ReactiveTests.Tests
             Assert.AreEqual(10, observer.Messages.Count);
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_DateTimeOffset_TimeSpan_Simple()
         {
             var scheduler = new TestScheduler();
@@ -229,7 +240,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_TimeSpan_TimeSpan_Simple()
         {
             var scheduler = new TestScheduler();
@@ -248,7 +259,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_Periodic1()
         {
             var scheduler = new PeriodicTestScheduler();
@@ -273,7 +284,7 @@ namespace ReactiveTests.Tests
 #endif
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_Periodic2()
         {
             var scheduler = new PeriodicTestScheduler();
@@ -298,7 +309,7 @@ namespace ReactiveTests.Tests
 #endif
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_UsingStopwatch_Slippage1()
         {
             var scheduler = new TestScheduler();
@@ -360,7 +371,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_UsingStopwatch_Slippage2()
         {
             var scheduler = new TestScheduler();
@@ -421,7 +432,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_UsingStopwatch_Slippage3_CatchUpFromLongInvokeStart()
         {
             var scheduler = new TestScheduler();
@@ -461,7 +472,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_UsingStopwatch_Slippage3_CatchUpFromLongInvokeStart_ThrowsFirst()
         {
             var ex = new Exception();
@@ -495,7 +506,7 @@ namespace ReactiveTests.Tests
             }
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_UsingStopwatch_Slippage3_CatchUpFromLongInvokeStart_ThrowsBeyondFirst()
         {
             var ex = new Exception();
@@ -548,7 +559,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_NoStopwatch_Slippage1()
         {
             var scheduler = new TestScheduler();
@@ -610,7 +621,7 @@ namespace ReactiveTests.Tests
             );
         }
 
-        ////[Test]
+        [Test]
         public void RepeatingTimer_NoStopwatch_Slippage2()
         {
             var scheduler = new TestScheduler();
@@ -672,7 +683,7 @@ namespace ReactiveTests.Tests
         }
 
 #if !NO_THREAD
-        //[Test]
+        [Test]
         public void RepeatingTimer_Start_CatchUp()
         {
             var e = new ManualResetEvent(false);
@@ -697,7 +708,7 @@ namespace ReactiveTests.Tests
             e.WaitOne();
         }
 
-        //[Test]
+        [Test]
         public void RepeatingTimer_Start_CatchUp_Throws()
         {
             var end = new ManualResetEvent(false);
@@ -705,7 +716,7 @@ namespace ReactiveTests.Tests
             var err = new Exception();
             var ex = default(Exception);
 
-            var s = ThreadPoolScheduler.Instance.Catch<Exception>(e =>
+            var s = ThreadPoolOnlyScheduler.Instance.Catch<Exception>(e =>
             {
                 Interlocked.Exchange(ref ex, e);
                 end.Set();

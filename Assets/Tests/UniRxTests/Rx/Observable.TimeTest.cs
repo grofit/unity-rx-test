@@ -1,20 +1,17 @@
 ﻿using System;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive;
 using System.Reactive.Unity;
 
-namespace UniRx.Tests
-{
-    
-    public class ZzzObservableTimeTest
+namespace UniRx.Tests {
+    public class ZzzzObservableTimeTest
     {
         [SetUp]
         public void Init()
         {
-            TestUtil.SetScehdulerForImport();
+            TestUtil.SetSchedulerForImport();
         }
 
         [TearDown]
@@ -23,12 +20,12 @@ namespace UniRx.Tests
             ReactiveUnity.SetupPatches();
         }
 
-        //[Test]
+        [Test]
         public void TimerTest()
         {
             // periodic(Observable.Interval)
             {
-                var now = Scheduler.ThreadPool.Now;
+                var now = Scheduler.Now;
                 var xs = Observable.Timer(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1))
                     .Take(3)
                     .Timestamp()
@@ -47,7 +44,7 @@ namespace UniRx.Tests
 
             // dueTime + periodic
             {
-                var now = Scheduler.ThreadPool.Now;
+                var now = Scheduler.Now;
                 var xs = Observable.Timer(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(1))
                     .Take(3)
                     .Timestamp()
@@ -62,7 +59,7 @@ namespace UniRx.Tests
 
             // dueTime(DateTimeOffset)
             {
-                var now = Scheduler.ThreadPool.Now;
+                var now = Scheduler.Now;
                 var xs = Observable.Timer(now.AddSeconds(2), TimeSpan.FromSeconds(1))
                     .Take(3)
                     .Timestamp()
@@ -77,7 +74,7 @@ namespace UniRx.Tests
 
             // onetime
             {
-                var now = Scheduler.ThreadPool.Now;
+                var now = Scheduler.Now;
                 var xs = Observable.Timer(TimeSpan.FromSeconds(2))
                     .Timestamp()
                     .Select(x => Math.Round((x.Timestamp - now).TotalSeconds, 0))
@@ -89,7 +86,7 @@ namespace UniRx.Tests
 
             // non periodic scheduler
             {
-                var now = Scheduler.CurrentThread.Now;
+                var now = Scheduler.Now;
                 var xs = Observable.Timer(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(1), Scheduler.CurrentThread)
                     .Take(3)
                     .Timestamp()
@@ -103,10 +100,10 @@ namespace UniRx.Tests
             }
         }
 
-        //[Test]
+        [Test]
         public void DelayTest()
         {
-            var now = Scheduler.ThreadPool.Now;
+            var now = Scheduler.Now;
 
             var xs = Observable.Range(1, 3)
                 .Delay(TimeSpan.FromSeconds(1))
@@ -160,10 +157,10 @@ namespace UniRx.Tests
             xs[1].Exception.IsInstanceOf<TimeoutException>();
         }
 
-        //[Test]
+        [Test]
         public void TimeoutTestOffset()
         {
-            var now = Scheduler.ThreadPool.Now;
+            var now = Scheduler.Now;
             var xs = Observable.Concat(
                     Observable.Return(1).Delay(TimeSpan.FromSeconds(1)),
                     Observable.Return(5).Delay(TimeSpan.FromSeconds(2)),

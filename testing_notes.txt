@@ -23,5 +23,9 @@ PrimitiveTypeTests
 ObserveOnReactiveTest.ObserveOn_LongRunning_DisableOptimizations() => Timeout! Expected True but was False
 
 ---
+don't use ThreadPoolScheduler.Instance, use ThreadPoolOnlyScheduler.Instance instead!
+
+---
 not supported:
 IQbservable / IQueryable stuff
+async ITaskObservable<int> stuff

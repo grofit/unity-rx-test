@@ -269,8 +269,8 @@ namespace ReactiveTests.Tests
             );
 
             static void Aot() {
-                new TestScheduler().ScheduleAbsolute<((Throttle<int>._, ulong), Action<(Throttle<int>._, ulong)>)>(((null, default), null), 0L, null);
-                Aot();
+                _ = new TestScheduler().ScheduleAbsolute<((Throttle<int>._, ulong), Action<(Throttle<int>._, ulong)>)>(((null, default), null), 0L, null);
+                _ = nameof(Aot);
             }
         }
 

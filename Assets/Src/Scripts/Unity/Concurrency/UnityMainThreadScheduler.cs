@@ -17,7 +17,8 @@ namespace System.Reactive.Unity.Concurrency {
             _scheduleAction = new Action<object>(Schedule);
         }
 
-        /// Gets the singleton instance of the Windows Runtime thread pool scheduler.
+        /// <summary>
+        /// Gets the singleton instance of the Unity main thread scheduler.
         /// </summary>
         public static UnityMainThreadScheduler Instance => _lazyDefault.Value;
 

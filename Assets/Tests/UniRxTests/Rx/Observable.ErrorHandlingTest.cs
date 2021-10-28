@@ -5,11 +5,11 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Reactive.Unity.Concurrency;
 using System.Text;
 
 namespace UniRx.Tests
 {
-    
     public class ErrorHandlingTest
     {
         [Test]
@@ -32,10 +32,10 @@ namespace UniRx.Tests
             }
         }
 
-        //[Test]
+        [Test]
         public void Catch()
         {
-            var xs = Observable.Return(2, Scheduler.ThreadPool).Concat(Observable.Throw<int>(new InvalidOperationException()))
+            var xs = Observable.Return(2, ThreadPoolOnlyScheduler.Instance).Concat(Observable.Throw<int>(new InvalidOperationException()))
                 .Catch((InvalidOperationException ex) =>
                 {
                     return Observable.Range(1, 3);

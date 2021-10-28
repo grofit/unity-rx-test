@@ -1773,8 +1773,8 @@ namespace ReactiveTests.Tests
             );
 
             static void Aot() {
-                new TestScheduler().ScheduleAbsolute<((Buffer<int>.TimeSliding._, bool, bool), Action<(Buffer<int>.TimeSliding._, bool, bool)>)>(((null, default, default), null), 0L, null);
-                Aot();
+                _ = new TestScheduler().ScheduleAbsolute<((Buffer<int>.TimeSliding._, bool, bool), Action<(Buffer<int>.TimeSliding._, bool, bool)>)>(((null, default, default), null), 0L, null);
+                _ = nameof(Aot);
             }
         }
 

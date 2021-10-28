@@ -3,11 +3,13 @@ using System.Reactive.Unity.InternalUtil;
 using UnityEngine;
 using System.Reactive.Concurrency;
 using System.Reactive.Unity.Concurrency;
+using System.Reactive.PlatformServices;
 
 namespace System.Reactive.Unity {
     public static class ReactiveUnity {
         public static void SetupPatches() {
             InitSchedulerDefaults();
+            InitCurrentPlatformEnlightenmentProvider();
             AddUnityEqualityComparer<Vector2>();
             AddUnityEqualityComparer<Vector3>();
             AddUnityEqualityComparer<Vector4>();
@@ -28,9 +30,13 @@ namespace System.Reactive.Unity {
 #if WEB_GL
             SchedulerDefaults.AsyncConversions = UnityMainThreadScheduler.Instance;
 #else
-            // SchedulerDefaults.AsyncConversions = ThreadPoolScheduler.Instance;
-            SchedulerDefaults.AsyncConversions = DefaultScheduler.Instance;
+            // SchedulerDefaults.AsyncConversions = DefaultScheduler.Instance;
+            SchedulerDefaults.AsyncConversions = ThreadPoolOnlyScheduler.Instance;
 #endif
+        }
+
+        private static void InitCurrentPlatformEnlightenmentProvider() {
+            PlatformEnlightenmentProvider.Current = new UnityEnlightenmentProvider();
         }
 
         private static void AddUnityEqualityComparer<T>() {

@@ -8,10 +8,12 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
+using System.Reactive.Unity;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using UniRx.Tests;
 using UnityEngine.TestTools;
 
 namespace ReactiveTests.Tests
@@ -26,6 +28,16 @@ namespace ReactiveTests.Tests
             var tcs = new TaskCompletionSource<int>();
             tcs.SetResult(42);
             _doneTask = tcs.Task;
+        }
+
+        [SetUp]
+        public void Init() {
+            TestUtil.SetSchedulerForImport();
+        }
+
+        [TearDown]
+        public void Dispose() {
+            ReactiveUnity.SetupPatches();
         }
 
         #region ToObservable

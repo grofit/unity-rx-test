@@ -836,8 +836,8 @@ namespace ReactiveTests.Tests
             );
 
             static void Aot() {
-                new TestScheduler().ScheduleAbsolute<((Buffer<int>.Ferry._, int), Action<(Buffer<int>.Ferry._, int)>)>(((null, default), null), 0L, null);
-                Aot();
+                _ = new TestScheduler().ScheduleAbsolute<((Buffer<int>.Ferry._, int), Action<(Buffer<int>.Ferry._, int)>)>(((null, default), null), 0L, null);
+                _ = nameof(Aot);
             }
         }
 
@@ -1176,12 +1176,6 @@ namespace ReactiveTests.Tests
                 new TimerRun(200, 480) { 300, 400 }
             );
 #endif
-
-            static void Aot() {
-                // TOOD invisible class!
-                // new TestScheduler().ScheduleAbsolute<((Action<Action<TimeSpan>>, SingleAssignmentDisposable, Scheduler.InvokeRec2State<Action<Action<TimeSpan>>>), Action<(Action<Action<TimeSpan>>, SingleAssignmentDisposable, Scheduler.InvokeRec2State<Action<Action<TimeSpan>>>)>)>(((null, null, null), null), 0L, null);
-                Aot();
-            }
         }
 
         [Test]
@@ -1333,8 +1327,8 @@ namespace ReactiveTests.Tests
                 });
 
             static void Aot() {
-                new TestScheduler().ScheduleAbsolute<((Window<int>.Ferry._, Subject<int>), Action<(Window<int>.Ferry._, Subject<int>)>)>(((null, null), null), 0L, null);
-                Aot();
+                _ = new TestScheduler().ScheduleAbsolute<((Window<int>.Ferry._, Subject<int>), Action<(Window<int>.Ferry._, Subject<int>)>)>(((null, null), null), 0L, null);
+                _ = nameof(Aot);
             }
         }
 

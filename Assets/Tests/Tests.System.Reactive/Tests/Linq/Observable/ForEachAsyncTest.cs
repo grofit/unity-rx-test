@@ -508,6 +508,7 @@ namespace ReactiveTests.Tests {
         }
 
 #if !NO_THREAD
+        // hangs up at runtime (at least in unity)!
         //[Test]
         //[Trait("SkipCI", "true")]
         public void ForEachAsync_DisposeThrows()

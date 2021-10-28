@@ -30,6 +30,13 @@ namespace Microsoft.Reactive.Testing
         /// </summary>
         public const long Disposed = 1000;
 
+        [OneTimeSetUp]
+        public void SetupOnce() {
+            System.Threading.ThreadPool.GetAvailableThreads(out var availableWorker, out var availableIoCompletion);
+            System.Threading.ThreadPool.GetMaxThreads(out var maxWorker, out var maxIoCompletion);
+            UnityEngine.Debug.LogWarningFormat("Worker: {0} / {1} ; IoCompletion: {2} / {3}", availableWorker, maxWorker, availableIoCompletion, maxIoCompletion);
+        }
+
         /// <summary>
         /// Factory method for an OnNext notification record at a given time with a given value.
         /// </summary>
