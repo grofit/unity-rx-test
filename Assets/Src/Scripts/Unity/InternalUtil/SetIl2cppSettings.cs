@@ -8,7 +8,7 @@ namespace System.Reactive.Unity.InternalUtil {
         public int callbackOrder => 0;
 
         public void OnPreprocessBuild(BuildReport report) {
-            PlayerSettings.SetAdditionalIl2CppArgs("--maximum-recursive-generic-depth=9 --generic-virtual-method-iterations=2");
+            PlayerSettings.SetAdditionalIl2CppArgs("--maximum-recursive-generic-depth=9 --generic-virtual-method-iterations=3");
         }
     }
 }

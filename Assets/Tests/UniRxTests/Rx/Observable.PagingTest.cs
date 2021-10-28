@@ -10,7 +10,7 @@ using System.Reactive.Unity;
 
 namespace UniRx.Tests {
 
-    public class ObservablePagingTest
+    public class ZzzzObservablePagingTest
     {
         [SetUp]
         public void Init()

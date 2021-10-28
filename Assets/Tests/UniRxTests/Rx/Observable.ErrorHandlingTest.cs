@@ -32,7 +32,7 @@ namespace UniRx.Tests
             }
         }
 
-        [Test]
+        //[Test]
         public void Catch()
         {
             var xs = Observable.Return(2, Scheduler.ThreadPool).Concat(Observable.Throw<int>(new InvalidOperationException()))

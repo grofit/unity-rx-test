@@ -168,30 +168,45 @@ namespace ReactiveTests.Tests
     {
         public static Either<TLeft, TRight> CreateLeft(TLeft value)
         {
-            var tpe = typeof(Observable).GetTypeInfo().Assembly.GetTypes().Single(t => t.Name == "Either`2").MakeGenericType(typeof(TLeft), typeof(TRight));
-            var mth = tpe.GetMethod(nameof(CreateLeft));
-            var res = mth.Invoke(null, new object[] { value });
-            return new Left(res);
+            return new Left(System.Reactive.Either<TLeft, TRight>.CreateLeft(value));
         }
 
         public static Either<TLeft, TRight> CreateRight(TRight value)
         {
-            var tpe = typeof(Observable).GetTypeInfo().Assembly.GetTypes().Single(t => t.Name == "Either`2").MakeGenericType(typeof(TLeft), typeof(TRight));
-            var mth = tpe.GetMethod(nameof(CreateRight));
-            var res = mth.Invoke(null, new object[] { value });
-            return new Right(res);
+            return new Right(System.Reactive.Either<TLeft, TRight>.CreateRight(value));
         }
-
+        
         public TResult Switch<TResult>(Func<TLeft, TResult> caseLeft, Func<TRight, TResult> caseRight)
         {
-            var mth = _value.GetType().GetMethods().Where(m => m.Name == nameof(Switch) && m.ReturnType != typeof(void)).Single().MakeGenericMethod(typeof(TResult));
-            return (TResult)mth.Invoke(_value, new object[] { caseLeft, caseRight });
+            return _value switch
+            {
+                System.Reactive.Either<TLeft, TRight>.Left left => left.Switch(caseLeft, caseRight),
+                System.Reactive.Either<TLeft, TRight>.Right right => right.Switch(caseLeft, caseRight),
+                _ => throw new InvalidOperationException($"This instance was created using an unsupported type {_value.GetType()} for a {nameof(_value)}"),
+            };
+
+            //var mth = _value.GetType().GetMethods().Where(m => m.Name == nameof(Switch) && m.ReturnType != typeof(void)).Single().MakeGenericMethod(typeof(TResult));
+            //return (TResult)mth.Invoke(_value, new object[] { caseLeft, caseRight });
         }
 
         public void Switch(Action<TLeft> caseLeft, Action<TRight> caseRight)
         {
-            var mth = _value.GetType().GetMethods().Where(m => m.Name == nameof(Switch) && m.ReturnType == typeof(void)).Single();
-            mth.Invoke(_value, new object[] { caseLeft, caseRight });
+            switch (_value)
+            {
+                case System.Reactive.Either<TLeft, TRight>.Left left:
+                    left.Switch(caseLeft, caseRight);
+                    break;
+
+                case System.Reactive.Either<TLeft, TRight>.Right right:
+                    right.Switch(caseLeft, caseRight);
+                    break;
+
+                default:
+                    throw new InvalidOperationException($"This instance was created using an unsupported type {_value.GetType()} for a {nameof(_value)}");
+            }
+
+            //var mth = _value.GetType().GetMethods().Where(m => m.Name == nameof(Switch) && m.ReturnType == typeof(void)).Single();
+            //mth.Invoke(_value, new object[] { caseLeft, caseRight });
         }
 
         public sealed class Left : Either<TLeft, TRight>, IEquatable<Left>
@@ -204,7 +219,7 @@ namespace ReactiveTests.Tests
                 }
             }
 
-            public Left(object value)
+            public Left(System.Reactive.Either<TLeft, TRight> value)
             {
                 _value = value;
             }
@@ -226,7 +241,7 @@ namespace ReactiveTests.Tests
                 }
             }
 
-            public Right(object value)
+            public Right(System.Reactive.Either<TLeft, TRight> value)
             {
                 _value = value;
             }

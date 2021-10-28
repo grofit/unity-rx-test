@@ -16,7 +16,7 @@ namespace ReactiveTests.Tests {
     [Category("async")]
     public class RunAsyncTest : ReactiveTest
     {
-        [Test]
+        //[Test]
         public void RunAsync_ArgumentChecking()
         {
             var ct = CancellationToken.None;
@@ -25,7 +25,7 @@ namespace ReactiveTests.Tests {
             ReactiveAssert.Throws<ArgumentNullException>(() => Observable.RunAsync<int>(default, ct));
         }
 
-        [Test]
+        //[Test]
         public void RunAsync_Simple()
         {
             SynchronizationContext.SetSynchronizationContext(null);
@@ -54,7 +54,7 @@ namespace ReactiveTests.Tests {
             );
         }
 
-        [Test]
+        //[Test]
         public void RunAsync_Cancelled()
         {
             SynchronizationContext.SetSynchronizationContext(null);
@@ -92,7 +92,7 @@ namespace ReactiveTests.Tests {
             );
         }
 
-        [Test]
+        //[Test]
         public void RunAsync_Cancel()
         {
             SynchronizationContext.SetSynchronizationContext(null);
@@ -131,7 +131,7 @@ namespace ReactiveTests.Tests {
             );
         }
 
-        [Test]
+        //[Test]
         public void RunAsync_Connectable()
         {
             SynchronizationContext.SetSynchronizationContext(null);
@@ -166,7 +166,7 @@ namespace ReactiveTests.Tests {
             Assert.AreEqual(42, result);
         }
 
-        [Test]
+        //[Test]
         public void RunAsync_Connectable_Cancelled()
         {
             SynchronizationContext.SetSynchronizationContext(null);
@@ -211,7 +211,7 @@ namespace ReactiveTests.Tests {
             Assert.AreEqual(200, t);
         }
 
-        [Test]
+        //[Test]
         public void RunAsync_Connectable_Cancel()
         {
             SynchronizationContext.SetSynchronizationContext(null);

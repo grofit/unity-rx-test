@@ -84,3 +84,5 @@ crashlytics-build.properties
 System.Reactive.Unity.sln
 Assets/WSATestCertificate.pfx.meta
 Assets/WSATestCertificate.pfx
+Assets/TempRuntimeUnitTestScene_*.unity
+Assets/TempRuntimeUnitTestScene_*.unity.meta

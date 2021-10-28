@@ -5,6 +5,9 @@ using System.Reactive.Subjects;
 using System.Reactive.Linq;
 using System.Reactive;
 using System.Reactive.Unity;
+#if !UNITY_METRO
+using System.Threading;
+#endif
 
 namespace UniRx.Tests {
     public class ObservableTest

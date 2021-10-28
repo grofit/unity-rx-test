@@ -5172,7 +5172,7 @@ namespace ReactiveTests.Tests
             });
         }
 
-        [Test]
+        //[Test]
         [Category("async")]
         public void SelectMany_TaskWithCompletionSource_Simple_RanToCompletion_Async()
         {
@@ -5217,7 +5217,7 @@ namespace ReactiveTests.Tests
             lst.OrderBy(x => x).AssertEqual(new[] { 42, 43 });
         }
 
-        [Test]
+        //[Test]
         [Category("async")]
         public void SelectMany_TaskWithCompletionSource_Simple_Faulted_Async()
         {
@@ -5268,7 +5268,7 @@ namespace ReactiveTests.Tests
             Assert.AreSame(ex, err);
         }
 
-        [Test]
+        //[Test]
         [Category("async")]
         public void SelectMany_TaskWithCompletionSource_Simple_Canceled_Async()
         {
@@ -5664,7 +5664,7 @@ namespace ReactiveTests.Tests
             Assert.AreSame(ex, err);
         }
 
-        [Test]
+        //[Test]
         [Category("async")]
         public void SelectMany_TaskWithCompletionSource_WithResultSelector_Canceled_Async()
         {
@@ -6155,7 +6155,7 @@ namespace ReactiveTests.Tests
             lst.OrderBy(x => x).AssertEqual(new[] { 42, 43 });
         }
 
-        [Test]
+        //[Test]
         [Category("async")]
         public void SelectManyWithIndex_TaskWithCompletionSource_Simple_Faulted_Async()
         {
@@ -6551,7 +6551,7 @@ namespace ReactiveTests.Tests
             lst.OrderBy(x => x).AssertEqual(new[] { 42 + 0, 43 + 1 });
         }
 
-        [Test]
+        //[Test]
         [Category("async")]
         public void SelectManyWithIndex_TaskWithCompletionSource_WithResultSelector_Faulted_Async()
         {

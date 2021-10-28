@@ -508,7 +508,7 @@ namespace ReactiveTests.Tests {
         }
 
 #if !NO_THREAD
-        [Test]
+        //[Test]
         //[Trait("SkipCI", "true")]
         public void ForEachAsync_DisposeThrows()
         {

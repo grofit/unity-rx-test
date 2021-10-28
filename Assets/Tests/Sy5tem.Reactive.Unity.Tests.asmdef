@@ -5,7 +5,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "System.Reactive.Data",
-        "System.Reactive.Unity"
+        "System.Reactive.Unity",
+        "Unity.IL2CPP.CompilerServices"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

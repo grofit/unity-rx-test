@@ -5,13 +5,15 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.openupm",
-        "com.cysharp.runtimeunittesttoolkit"
+        "com.cysharp.runtimeunittesttoolkit",
+        "com.unity.il2cppsetoptionattribute"
       ]
     }
   ],
   "dependencies": {
     "com.reactive.unity.deps": "file:../Dependencies/bin/Debug/netstandard2.1",
     "com.cysharp.runtimeunittesttoolkit": "2.5.2",
+    "com.unity.il2cppsetoptionattribute": "1.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ext.nunit": "1.0.6",
     "com.unity.ide.rider": "3.0.7",

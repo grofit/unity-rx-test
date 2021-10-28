@@ -201,7 +201,7 @@ namespace ReactiveTests.Tests
 
     }
 
-    public class ObserveOnReactiveTest : ReactiveTest
+    public class ZzzObserveOnReactiveTest : ReactiveTest
     {
         private static TimeSpan MaxWaitTime = TimeSpan.FromSeconds(10);
 

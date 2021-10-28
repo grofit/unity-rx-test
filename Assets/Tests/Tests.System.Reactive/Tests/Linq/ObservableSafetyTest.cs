@@ -1,291 +1,294 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT License.
-// See the LICENSE file in the project root for more information. 
+﻿//// Licensed to the .NET Foundation under one or more agreements.
+//// The .NET Foundation licenses this file to you under the MIT License.
+//// See the LICENSE file in the project root for more information. 
 
-using System;
-using System.Reactive;
-using System.Reactive.Concurrency;
-using System.Reactive.Linq;
-using System.Threading;
-using Microsoft.Reactive.Testing;
-using NUnit.Framework;
-using UnityEngine.TestTools;
+// for System.Reactive.Unity not supported:
+// IQbservable / IQueryable stuff
 
-namespace ReactiveTests.Tests
-{
+//using System;
+//using System.Reactive;
+//using System.Reactive.Concurrency;
+//using System.Reactive.Linq;
+//using System.Threading;
+//using Microsoft.Reactive.Testing;
+//using NUnit.Framework;
+//using UnityEngine.TestTools;
 
-    public partial class ObservableSafetyTest : ReactiveTest
-    {
-        [Test]
-        public void SubscribeSafe_ArgumentChecking()
-        {
-            ReactiveAssert.Throws<ArgumentNullException>(() => ObservableExtensions.SubscribeSafe(default, Observer.Create<int>(_ => { })));
-            ReactiveAssert.Throws<ArgumentNullException>(() => ObservableExtensions.SubscribeSafe(Observable.Return(42), default));
-        }
+//namespace ReactiveTests.Tests
+//{
 
-        [Test]
-        public void Safety_Subscription1()
-        {
-            var ex = new Exception();
+//    public partial class ObservableSafetyTest : ReactiveTest
+//    {
+//        [Test]
+//        public void SubscribeSafe_ArgumentChecking()
+//        {
+//            ReactiveAssert.Throws<ArgumentNullException>(() => ObservableExtensions.SubscribeSafe(default, Observer.Create<int>(_ => { })));
+//            ReactiveAssert.Throws<ArgumentNullException>(() => ObservableExtensions.SubscribeSafe(Observable.Return(42), default));
+//        }
 
-            var xs = new RogueObservable(ex);
-            var res = xs.Where(x => true).Select(x => x);
+//        [Test]
+//        public void Safety_Subscription1()
+//        {
+//            var ex = new Exception();
 
-            var err = default(Exception);
-            var d = res.Subscribe(x => { Assert.True(false); }, ex_ => { err = ex_; }, () => { Assert.True(false); });
+//            var xs = new RogueObservable(ex);
+//            var res = xs.Where(x => true).Select(x => x);
 
-            Assert.AreSame(ex, err);
+//            var err = default(Exception);
+//            var d = res.Subscribe(x => { Assert.True(false); }, ex_ => { err = ex_; }, () => { Assert.True(false); });
 
-            d.Dispose();
-        }
+//            Assert.AreSame(ex, err);
 
-        [Test]
-        public void Safety_Subscription2()
-        {
-            var ex = new Exception();
+//            d.Dispose();
+//        }
 
-            var scheduler = new TestScheduler();
+//        [Test]
+//        public void Safety_Subscription2()
+//        {
+//            var ex = new Exception();
 
-            var xs = scheduler.CreateHotObservable(
-                OnNext(210, 42),
-                OnNext(220, 43),
-                OnNext(230, 44),
-                OnNext(240, 45),
-                OnCompleted<int>(250)
-            );
+//            var scheduler = new TestScheduler();
 
-            var ys = new RogueObservable(ex);
+//            var xs = scheduler.CreateHotObservable(
+//                OnNext(210, 42),
+//                OnNext(220, 43),
+//                OnNext(230, 44),
+//                OnNext(240, 45),
+//                OnCompleted<int>(250)
+//            );
 
-            var res = scheduler.Start(() =>
-                xs.Merge(ys)
-            );
+//            var ys = new RogueObservable(ex);
 
-            res.Messages.AssertEqual(
-                OnError<int>(200, ex)
-            );
+//            var res = scheduler.Start(() =>
+//                xs.Merge(ys)
+//            );
 
-            xs.Subscriptions.AssertEqual(
-                Subscribe(200, 200)
-            );
-        }
+//            res.Messages.AssertEqual(
+//                OnError<int>(200, ex)
+//            );
 
-        private class RogueObservable : IObservable<int>
-        {
-            private readonly Exception _ex;
+//            xs.Subscriptions.AssertEqual(
+//                Subscribe(200, 200)
+//            );
+//        }
 
-            public RogueObservable(Exception ex)
-            {
-                _ex = ex;
-            }
+//        private class RogueObservable : IObservable<int>
+//        {
+//            private readonly Exception _ex;
 
-            public IDisposable Subscribe(IObserver<int> observer)
-            {
-                throw _ex;
-            }
-        }
+//            public RogueObservable(Exception ex)
+//            {
+//                _ex = ex;
+//            }
 
-        [Test]
-        public void ObservableBase_ObserverThrows()
-        {
-            var ex = new Exception();
+//            public IDisposable Subscribe(IObserver<int> observer)
+//            {
+//                throw _ex;
+//            }
+//        }
 
-            var failed = new ManualResetEvent(false);
-            var disposed = new ManualResetEvent(false);
-            var err = default(Exception);
+//        [Test]
+//        public void ObservableBase_ObserverThrows()
+//        {
+//            var ex = new Exception();
 
-            var xs = Observable.Create<int>(observer =>
-            {
-                Scheduler.Default.Schedule(() =>
-                {
-                    try
-                    {
-                        observer.OnNext(42);
-                    }
-                    catch (Exception ex_)
-                    {
-                        err = ex_;
-                        failed.Set();
-                    }
-                });
+//            var failed = new ManualResetEvent(false);
+//            var disposed = new ManualResetEvent(false);
+//            var err = default(Exception);
 
-                return () => { disposed.Set(); };
-            });
+//            var xs = Observable.Create<int>(observer =>
+//            {
+//                Scheduler.Default.Schedule(() =>
+//                {
+//                    try
+//                    {
+//                        observer.OnNext(42);
+//                    }
+//                    catch (Exception ex_)
+//                    {
+//                        err = ex_;
+//                        failed.Set();
+//                    }
+//                });
 
-            xs.Subscribe(x =>
-            {
-                throw ex;
-            });
+//                return () => { disposed.Set(); };
+//            });
 
-            // Can't use WaitAll - we're on an STA thread.
-            disposed.WaitOne();
-            failed.WaitOne();
+//            xs.Subscribe(x =>
+//            {
+//                throw ex;
+//            });
 
-            Assert.AreSame(ex, err);
-        }
+//            // Can't use WaitAll - we're on an STA thread.
+//            disposed.WaitOne();
+//            failed.WaitOne();
 
-        [Test]
-        public void ObservableBase_ObserverThrows_CustomObserver()
-        {
-            var ex = new Exception();
+//            Assert.AreSame(ex, err);
+//        }
 
-            var failed = new ManualResetEvent(false);
-            var disposed = new ManualResetEvent(false);
-            var err = default(Exception);
+//        [Test]
+//        public void ObservableBase_ObserverThrows_CustomObserver()
+//        {
+//            var ex = new Exception();
 
-            var xs = Observable.Create<int>(observer =>
-            {
-                Scheduler.Default.Schedule(() =>
-                {
-                    try
-                    {
-                        observer.OnNext(42);
-                    }
-                    catch (Exception ex_)
-                    {
-                        err = ex_;
-                        failed.Set();
-                    }
-                });
+//            var failed = new ManualResetEvent(false);
+//            var disposed = new ManualResetEvent(false);
+//            var err = default(Exception);
 
-                return () => { disposed.Set(); };
-            });
+//            var xs = Observable.Create<int>(observer =>
+//            {
+//                Scheduler.Default.Schedule(() =>
+//                {
+//                    try
+//                    {
+//                        observer.OnNext(42);
+//                    }
+//                    catch (Exception ex_)
+//                    {
+//                        err = ex_;
+//                        failed.Set();
+//                    }
+//                });
 
-            xs.Subscribe(new MyObserver(_ => true, ex));
+//                return () => { disposed.Set(); };
+//            });
 
-            // Can't use WaitAll - we're on an STA thread.
-            disposed.WaitOne();
-            failed.WaitOne();
+//            xs.Subscribe(new MyObserver(_ => true, ex));
 
-            Assert.AreSame(ex, err);
-        }
+//            // Can't use WaitAll - we're on an STA thread.
+//            disposed.WaitOne();
+//            failed.WaitOne();
 
-        [Test]
-        public void Producer_ObserverThrows()
-        {
-            var ex = new Exception();
+//            Assert.AreSame(ex, err);
+//        }
 
-            var scheduler = new TestScheduler();
+//        [Test]
+//        public void Producer_ObserverThrows()
+//        {
+//            var ex = new Exception();
 
-            var xs = scheduler.CreateHotObservable(
-                OnNext(210, 1),
-                OnNext(220, 2),
-                OnNext(230, 3)
-            );
+//            var scheduler = new TestScheduler();
 
-            var ys = scheduler.CreateHotObservable(
-                OnNext(215, 1),
-                OnNext(225, 2),
-                OnNext(235, 3)
-            );
+//            var xs = scheduler.CreateHotObservable(
+//                OnNext(210, 1),
+//                OnNext(220, 2),
+//                OnNext(230, 3)
+//            );
 
-            var res = xs.CombineLatest(ys, (x, y) => x + y); // This creates a Producer object
+//            var ys = scheduler.CreateHotObservable(
+//                OnNext(215, 1),
+//                OnNext(225, 2),
+//                OnNext(235, 3)
+//            );
 
-            scheduler.ScheduleAbsolute(200, () =>
-            {
-                res.Subscribe(z =>
-                {
-                    if (z == 4)
-                    {
-                        throw ex;
-                    }
-                });
-            });
+//            var res = xs.CombineLatest(ys, (x, y) => x + y); // This creates a Producer object
 
-            try
-            {
-                scheduler.Start();
-                Assert.True(false);
-            }
-            catch (Exception err)
-            {
-                Assert.AreSame(ex, err);
-            }
+//            scheduler.ScheduleAbsolute(200, () =>
+//            {
+//                res.Subscribe(z =>
+//                {
+//                    if (z == 4)
+//                    {
+//                        throw ex;
+//                    }
+//                });
+//            });
 
-            Assert.AreEqual(225, scheduler.Clock);
+//            try
+//            {
+//                scheduler.Start();
+//                Assert.True(false);
+//            }
+//            catch (Exception err)
+//            {
+//                Assert.AreSame(ex, err);
+//            }
 
-            xs.Subscriptions.AssertEqual(
-                Subscribe(200, 225)
-            );
+//            Assert.AreEqual(225, scheduler.Clock);
 
-            ys.Subscriptions.AssertEqual(
-                Subscribe(200, 225)
-            );
-        }
+//            xs.Subscriptions.AssertEqual(
+//                Subscribe(200, 225)
+//            );
 
-        [Test]
-        public void Producer_ObserverThrows_CustomObserver()
-        {
-            var ex = new Exception();
+//            ys.Subscriptions.AssertEqual(
+//                Subscribe(200, 225)
+//            );
+//        }
 
-            var scheduler = new TestScheduler();
+//        [Test]
+//        public void Producer_ObserverThrows_CustomObserver()
+//        {
+//            var ex = new Exception();
 
-            var xs = scheduler.CreateHotObservable(
-                OnNext(210, 1),
-                OnNext(220, 2),
-                OnNext(230, 3)
-            );
+//            var scheduler = new TestScheduler();
 
-            var ys = scheduler.CreateHotObservable(
-                OnNext(215, 1),
-                OnNext(225, 2),
-                OnNext(235, 3)
-            );
+//            var xs = scheduler.CreateHotObservable(
+//                OnNext(210, 1),
+//                OnNext(220, 2),
+//                OnNext(230, 3)
+//            );
 
-            var res = xs.CombineLatest(ys, (x, y) => x + y); // This creates a Producer object
+//            var ys = scheduler.CreateHotObservable(
+//                OnNext(215, 1),
+//                OnNext(225, 2),
+//                OnNext(235, 3)
+//            );
 
-            scheduler.ScheduleAbsolute(200, () =>
-            {
-                res.Subscribe(new MyObserver(x => x == 4, ex));
-            });
+//            var res = xs.CombineLatest(ys, (x, y) => x + y); // This creates a Producer object
 
-            try
-            {
-                scheduler.Start();
-                Assert.True(false);
-            }
-            catch (Exception err)
-            {
-                Assert.AreSame(ex, err);
-            }
+//            scheduler.ScheduleAbsolute(200, () =>
+//            {
+//                res.Subscribe(new MyObserver(x => x == 4, ex));
+//            });
 
-            Assert.AreEqual(225, scheduler.Clock);
+//            try
+//            {
+//                scheduler.Start();
+//                Assert.True(false);
+//            }
+//            catch (Exception err)
+//            {
+//                Assert.AreSame(ex, err);
+//            }
 
-            xs.Subscriptions.AssertEqual(
-                Subscribe(200, 225)
-            );
+//            Assert.AreEqual(225, scheduler.Clock);
 
-            ys.Subscriptions.AssertEqual(
-                Subscribe(200, 225)
-            );
-        }
+//            xs.Subscriptions.AssertEqual(
+//                Subscribe(200, 225)
+//            );
 
-        private class MyObserver : ObserverBase<int>
-        {
-            private readonly Func<int, bool> _predicate;
-            private readonly Exception _exception;
+//            ys.Subscriptions.AssertEqual(
+//                Subscribe(200, 225)
+//            );
+//        }
 
-            public MyObserver(Func<int, bool> predicate, Exception exception)
-            {
-                _predicate = predicate;
-                _exception = exception;
-            }
+//        private class MyObserver : ObserverBase<int>
+//        {
+//            private readonly Func<int, bool> _predicate;
+//            private readonly Exception _exception;
 
-            protected override void OnNextCore(int value)
-            {
-                if (_predicate(value))
-                {
-                    throw _exception;
-                }
-            }
+//            public MyObserver(Func<int, bool> predicate, Exception exception)
+//            {
+//                _predicate = predicate;
+//                _exception = exception;
+//            }
 
-            protected override void OnErrorCore(Exception error)
-            {
-            }
+//            protected override void OnNextCore(int value)
+//            {
+//                if (_predicate(value))
+//                {
+//                    throw _exception;
+//                }
+//            }
 
-            protected override void OnCompletedCore()
-            {
-            }
-        }
+//            protected override void OnErrorCore(Exception error)
+//            {
+//            }
 
-    }
-}
+//            protected override void OnCompletedCore()
+//            {
+//            }
+//        }
+
+//    }
+//}

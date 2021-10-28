@@ -709,7 +709,6 @@ namespace ReactiveTests.Tests
 
 
         [Test]
-        [Category("async")]
         public void CreateWithTaskDisposable_NoPrematureTermination()
         {
             var obs = Observable.Create<int>(async o =>
@@ -729,7 +728,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void CreateWithTaskAction_NoPrematureTermination()
         {
             var obs = Observable.Create<int>(async o =>

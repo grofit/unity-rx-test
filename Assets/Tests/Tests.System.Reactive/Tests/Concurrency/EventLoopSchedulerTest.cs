@@ -21,7 +21,7 @@ using System.Reactive.Linq.ObservableImpl;
 namespace ReactiveTests.Tests
 {
 
-    public class EventLoopSchedulerTest
+    public class ZzzEventLoopSchedulerTest
     {
         private static readonly TimeSpan MaxWaitTime = TimeSpan.FromSeconds(10);
 
@@ -253,7 +253,7 @@ namespace ReactiveTests.Tests
             Assert.True(ran);
         }
 
-        [Test, Explicit]
+        //[Test, Explicit]
         public void EventLoop_ScheduleActionDue() {
 
             var ran = false;
@@ -278,7 +278,7 @@ namespace ReactiveTests.Tests
             }
         }
 
-        [Test, Explicit]
+        //[Test, Explicit]
         public void EventLoop_ScheduleActionDueNested() {
             var ran = false;
             using var el = new EventLoopScheduler();

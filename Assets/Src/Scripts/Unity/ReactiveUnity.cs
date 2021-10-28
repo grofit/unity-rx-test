@@ -28,7 +28,8 @@ namespace System.Reactive.Unity {
 #if WEB_GL
             SchedulerDefaults.AsyncConversions = UnityMainThreadScheduler.Instance;
 #else
-            SchedulerDefaults.AsyncConversions = ThreadPoolScheduler.Instance;
+            // SchedulerDefaults.AsyncConversions = ThreadPoolScheduler.Instance;
+            SchedulerDefaults.AsyncConversions = DefaultScheduler.Instance;
 #endif
         }
 

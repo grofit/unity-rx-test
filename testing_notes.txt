@@ -1,0 +1,27 @@
+observable time 
+timer tests (hangs up runtime testtest runs)
+
+Scheduler.ThreadPool seams to cause issues (tests hanging up after when being used too much)
+
+error handling test
+observablepaging test
+
+
+eventloopscheduler
+ObservableTimeTest
+ObserveOnReactiveTest (maybe)
+
+EventLoopScheduler (maybe)
+
+ObservableConcurrencyTest
+---
+Issuse with IL2CPP on UWP build
+(DurabilityTest)
+GenerateTest
+PrimitiveTypeTests
+
+ObserveOnReactiveTest.ObserveOn_LongRunning_DisableOptimizations() => Timeout! Expected True but was False
+
+---
+not supported:
+IQbservable / IQueryable stuff

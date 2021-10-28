@@ -7,6 +7,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Unity.IL2CPP.CompilerServices;
 using UnityEngine.TestTools;
 
 namespace Tests.System.Reactive.Tests
@@ -37,9 +38,12 @@ namespace Tests.System.Reactive.Tests
 #pragma warning disable 1998
         private async ITaskObservable<int> ManOrBoy_Throw(int n, int d)
         {
-            return n / d;
+            return ManOrBoy_ThrowNonAsync(n, d);
         }
 #pragma warning restore 1998
+
+        [Il2CppSetOption(Option.DivideByZeroChecks, true)]
+        private static int ManOrBoy_ThrowNonAsync(int n, int d) => n / d;
 
         //[Test]
         //[Category("Task")]
