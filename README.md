@@ -11,6 +11,7 @@ Part of the goal is to drop some legacy code from the UniRx code and start using
 This also means that older versions of unity won't be supported (Versions >= 2021 should work - testing is currently happening in the unity beta version)
 
 Other than the basic scheduling these are the features I moved over from UniRx:
+
 Assembly: System.Reactive.Data
 - AsUnitObservable()
 - AsSingleUnitObservable()
