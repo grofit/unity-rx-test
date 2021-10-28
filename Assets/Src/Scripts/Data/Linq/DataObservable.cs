@@ -1,5 +1,6 @@
 ﻿using System.Reactive.Data.Linq.Observables;
 using System.Reactive.Linq;
+using System.Linq;
 
 namespace System.Reactive.Data.Linq {
     public static class DataObservable {
@@ -28,6 +29,29 @@ namespace System.Reactive.Data.Linq {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
             return new Pairwise<T>(source);
+        }
+
+        /// <summary>
+        /// same as Publish().RefCount()
+        /// </summary>
+        public static IObservable<T> Share<T>(this IObservable<T> source) {
+            return source.Publish().RefCount();
+        }
+
+        public static IObservable<TSource> Concat<TSource>(this IObservable<TSource> first, params IObservable<TSource>[] seconds) {
+            if (first is null)
+                throw new ArgumentNullException(nameof(first));
+            if (seconds is null)
+                throw new ArgumentNullException(nameof(seconds));
+            return Observable.Concat(new[] { first }.Concat(seconds));
+        }
+
+        public static IObservable<T> Merge<T>(this IObservable<T> first, params IObservable<T>[] seconds) {
+            if (first is null)
+                throw new ArgumentNullException(nameof(first));
+            if (seconds is null)
+                throw new ArgumentNullException(nameof(seconds));
+            return Observable.Merge(new[] { first }.Concat(seconds));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace System.Reactive.Unity.Linq.Observables {
             private bool _isRunning;
             private bool _isCompleted;
             private bool _isDisposed;
-            private List<T> _list;
+            private List<T> _list = new List<T>();
 
             public _(IObserver<IList<T>> observer, int frameCount, FrameCountType frameCountType) : base(observer) {
                 _frameCount = frameCount;
