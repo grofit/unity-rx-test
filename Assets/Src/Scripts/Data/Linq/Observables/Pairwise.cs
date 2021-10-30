@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reactive;
+﻿using System.Reactive.Extendibility.Observables;
 
 namespace System.Reactive.Data.Linq.Observables {
-    internal sealed class Pairwise<T> : Producer<Pair<T>, Pairwise<T>._> {
+    internal sealed class Pairwise<T> : ObservableProducer<Pair<T>, Pairwise<T>._> {
         private readonly IObservable<T> _source;
 
         public Pairwise(IObservable<T> source) => _source = source;

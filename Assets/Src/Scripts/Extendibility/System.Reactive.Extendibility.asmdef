@@ -1,10 +1,7 @@
 {
-    "name": "System.Reactive.Unity",
+    "name": "System.Reactive.Extendibility",
     "rootNamespace": "",
-    "references": [
-        "GUID:1f337dc262e02754a96f0617d03119e8",
-        "GUID:84414202813270c4c90306e9043400ba"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -12,8 +9,8 @@
     "precompiledReferences": [
         "System.Reactive.dll"
     ],
-    "autoReferenced": true,
+    "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [],
-    "noEngineReferences": false
+    "noEngineReferences": true
 }

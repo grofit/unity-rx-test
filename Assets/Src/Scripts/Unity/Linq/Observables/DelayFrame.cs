@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reactive.Extendibility.Observables;
 
 namespace System.Reactive.Unity.Linq.Observables {
-    internal sealed class DelayFrame<T> : Producer<T, DelayFrame<T>._> {
+    internal sealed class DelayFrame<T> : ObservableProducer<T, DelayFrame<T>._> {
         private readonly IObservable<T> _source;
         private readonly int _frameCount;
         private readonly FrameCountType _frameCountType;

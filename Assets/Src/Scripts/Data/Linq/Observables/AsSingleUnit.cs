@@ -1,5 +1,7 @@
-﻿namespace System.Reactive.Data.Linq.Observables {
-    internal sealed class AsSingleUnit<T> : Producer<Unit, AsSingleUnit<T>._> {
+﻿using System.Reactive.Extendibility.Observables;
+
+namespace System.Reactive.Data.Linq.Observables {
+    internal sealed class AsSingleUnit<T> : ObservableProducer<Unit, AsSingleUnit<T>._> {
         private readonly IObservable<T> _source;
 
         public AsSingleUnit(IObservable<T> source) => _source = source;

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Reactive;
+using System.Reactive.Extendibility.Observables;
 
 namespace System.Reactive.Data.Linq.Observables {
-    internal sealed class AsUnit<T> : Producer<Unit, AsUnit<T>._> {
+    internal sealed class AsUnit<T> : ObservableProducer<Unit, AsUnit<T>._> {
         private readonly IObservable<T> _source;
 
         public AsUnit(IObservable<T> source) => _source = source;

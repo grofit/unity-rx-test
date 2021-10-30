@@ -16,7 +16,7 @@ namespace System.Reactive.Data.Linq {
         }
 
         /// <summary>
-        /// Same as LastOrDefault().AsUnitObservable().
+        /// Like .AsUnitObservable() but only emits once when the source observable was completed and only if it published at least one value before doing so.
         /// </summary>
         public static IObservable<Unit> AsSingleUnitObservable<T>(this IObservable<T> source) {
             if (source == null)

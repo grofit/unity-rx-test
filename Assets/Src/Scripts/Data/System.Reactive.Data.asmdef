@@ -1,7 +1,9 @@
 {
     "name": "System.Reactive.Data",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:1f337dc262e02754a96f0617d03119e8"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

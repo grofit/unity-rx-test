@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Reactive.Disposables;
+using System.Reactive.Extendibility.Observables;
 
 namespace System.Reactive.Unity.Linq.Observables {
-    internal sealed class UnityInterval : Producer<long, UnityInterval._> {
+    internal sealed class UnityInterval : ObservableProducer<long, UnityInterval._> {
         private readonly FrameCountType _frameCountType;
 
         public UnityInterval(FrameCountType frameCountType) => _frameCountType = frameCountType;
