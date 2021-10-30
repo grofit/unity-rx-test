@@ -12,7 +12,7 @@ This also means that older versions of unity won't be supported (Versions >= 202
 
 Other than the basic scheduling these are the features I moved over from UniRx:
 
-Assembly: System.Reactive.Data
+Assembly: Rx.Data
 - AsUnitObservable()
 - AsSingleUnitObservable()
 - .Pairwise() (without overloads)
@@ -21,7 +21,7 @@ Assembly: System.Reactive.Data
 - ReactiveDictionary
 (all of those incl. readonly variants)
 
-Assembly: System.Reactive.Unity
+Assembly: Rx.Unity
 - ObservableStateMachineTrigger
 - Observable.ReturnUnit()
 - Observable.EveryUpdate()
@@ -42,7 +42,7 @@ changes:
 
 ---
 Important: when using System.Reactive.Unity it is crucial that
-`System.Reactive.Unity.ReactiveUnity.SetupPatches()`
+`Rx.Unity.ReactiveUnity.SetupPatches()`
 is executed before any other reactive code to ensure the environment is properly configured for unity.
 
 
