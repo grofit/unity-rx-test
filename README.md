@@ -1,4 +1,4 @@
-# System.Reactive.Unity
+# Rx.Unity
 
 An attempt at building a lightweight layer on top of System.Reactive to add support for Unity in a similar fashion as one using UniRx is used to.
 
