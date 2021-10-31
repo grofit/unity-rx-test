@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using System.Reactive.Unity.Concurrency;
+using Rx.Unity.Concurrency;
 using System.Text;
 
 namespace UniRx.Tests

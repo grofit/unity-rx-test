@@ -5,7 +5,7 @@
 using System;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Reactive.Unity;
+using Rx.Unity;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using UniRx.Tests;
@@ -25,7 +25,7 @@ namespace Tests.System.Reactive.Tests
             ReactiveUnity.SetupPatches();
         }
 
-        // System.Reactive.Unity - not supported for unity:
+        // Rx.Unity - not supported for unity:
         // async ITaskObservable<int> stuff
         //        [Test]
         //        [Category("Task")]
@@ -57,7 +57,7 @@ namespace Tests.System.Reactive.Tests
         [Il2CppSetOption(Option.DivideByZeroChecks, true)]
         private static int ManOrBoy_ThrowNonAsync(int n, int d) => n / d;
 
-        // System.Reactive.Unity - not supported for unity:
+        // Rx.Unity - not supported for unity:
         // async ITaskObservable<int> stuff
 //        [Test]
 //        [Category("Task")]

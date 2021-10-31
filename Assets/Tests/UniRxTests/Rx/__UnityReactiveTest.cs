@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System.Reactive.Linq;
 using System.Reactive;
-using System.Reactive.Unity;
+using Rx.Unity;
 using System.Collections.Generic;
 
 namespace UniRx.Tests {

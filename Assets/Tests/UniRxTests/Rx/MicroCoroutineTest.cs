@@ -4,8 +4,8 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Reactive.Data.Linq;
-using System.Reactive.Unity.InternalUtil;
+using Rx.Data.Linq;
+using Rx.Unity.InternalUtil;
 
 namespace UniRx.Tests
 {

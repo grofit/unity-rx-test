@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive;
-using System.Reactive.Unity;
+using Rx.Unity;
 
 namespace UniRx.Tests {
     public class ZzzzObservableTimeTest

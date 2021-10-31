@@ -5,7 +5,7 @@ using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Reactive.Data.Linq;
+using Rx.Data.Linq;
 using NUnit.Framework;
 
 namespace UniRx.Tests.Operators

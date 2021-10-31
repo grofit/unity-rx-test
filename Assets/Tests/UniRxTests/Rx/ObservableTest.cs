@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reactive.Subjects;
 using System.Reactive.Linq;
 using System.Reactive;
-using System.Reactive.Unity;
+using Rx.Unity;
 #if !UNITY_METRO
 using System.Threading;
 #endif

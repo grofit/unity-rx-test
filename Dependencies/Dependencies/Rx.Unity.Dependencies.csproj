@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Rx.Data" Version="1.0.1" />
+    <PackageReference Include="Rx.Extendibility" Version="1.0.0" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

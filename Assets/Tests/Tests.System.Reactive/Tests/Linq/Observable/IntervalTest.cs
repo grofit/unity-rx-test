@@ -11,7 +11,7 @@ using ReactiveTests.Dummies;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 using UniRx.Tests;
-using System.Reactive.Unity;
+using Rx.Unity;
 
 namespace ReactiveTests.Tests
 {

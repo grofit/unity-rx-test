@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Rx.Unity.Dependency.Patcher
+build_property.ProjectDir = C:\Projects\OpenSource\System.Reactive.Unity\Dependencies\Patcher\

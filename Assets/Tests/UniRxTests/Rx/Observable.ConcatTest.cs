@@ -5,8 +5,8 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Reactive.Unity.Linq;
-using System.Reactive.Data.Linq;
+using Rx.Unity.Linq;
+using Rx.Data.Linq;
 using System.Reactive.Concurrency;
 
 namespace UniRx.Tests

@@ -14,8 +14,8 @@ using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
 using UnityEngine.TestTools;
-using System.Reactive.Unity.Concurrency;
-using System.Reactive.Unity;
+using Rx.Unity.Concurrency;
+using Rx.Unity;
 using UniRx.Tests;
 
 namespace ReactiveTests.Tests

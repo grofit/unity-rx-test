@@ -8,7 +8,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
-using System.Reactive.Unity;
+using Rx.Unity;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;

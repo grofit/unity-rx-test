@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using System.Reactive.Unity;
+using Rx.Unity;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
 using UniRx.Tests;

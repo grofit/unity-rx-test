@@ -8,7 +8,7 @@
       "url": "https://package.openupm.com"
     },
     "com.reactive.unity.deps": {
-      "version": "file:../Dependencies/bin/Debug/netstandard2.1",
+      "version": "file:../Dependencies/out",
       "depth": 0,
       "source": "local",
       "dependencies": {}

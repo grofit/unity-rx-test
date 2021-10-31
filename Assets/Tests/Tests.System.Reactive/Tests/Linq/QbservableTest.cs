@@ -3,7 +3,7 @@
 //// See the LICENSE file in the project root for more information. 
 //#define DEBUG // so that the Debug.WriteLines aren't compiled out
 
-// for System.Reactive.Unity not supported:
+// for Rx.Unity not supported:
 // IQbservable / IQueryable stuff
 
 //using System;

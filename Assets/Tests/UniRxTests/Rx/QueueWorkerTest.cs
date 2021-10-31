@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Reactive.Unity.InternalUtil;
+using Rx.Unity.InternalUtil;
 using NUnit.Framework;
 
 namespace UniRx.Tests {
