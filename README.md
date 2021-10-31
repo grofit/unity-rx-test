@@ -1,4 +1,4 @@
-# System.Reactive.Unity
+# Rx.Unity
 
 An attempt at building a lightweight layer on top of System.Reactive to add support for Unity in a similar fashion as one using UniRx is used to.
 
@@ -8,11 +8,11 @@ This is still work in progress.
 A few tests still need fixing and alot of AoT issues need to be fixed / added hacks to enforce generic type generation for.
 
 Part of the goal is to drop some legacy code from the UniRx code and start using a newer C# Syntax and framework versions.
-This also means that older versions of unity won't be supported (Versions >= 2021 should work - testing is currently happening in the unity beta version)
+This also means that older versions of unity won't be supported (Versions >= 2021 should work - testing is currently happening in the unity beta version only)
 
 Other than the basic scheduling these are the features I moved over from UniRx:
 
-Assembly: System.Reactive.Data
+Assembly: Rx.Data
 - AsUnitObservable()
 - AsSingleUnitObservable()
 - .Pairwise() (without overloads)
@@ -21,7 +21,7 @@ Assembly: System.Reactive.Data
 - ReactiveDictionary
 (all of those incl. readonly variants)
 
-Assembly: System.Reactive.Unity
+Assembly: Rx.Unity
 - ObservableStateMachineTrigger
 - Observable.ReturnUnit()
 - Observable.EveryUpdate()
@@ -42,7 +42,7 @@ changes:
 
 ---
 Important: when using System.Reactive.Unity it is crucial that
-`System.Reactive.Unity.ReactiveUnity.SetupPatches()`
+`Rx.Unity.ReactiveUnity.SetupPatches()`
 is executed before any other reactive code to ensure the environment is properly configured for unity.
 
 
