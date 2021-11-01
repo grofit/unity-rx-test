@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -38,18 +39,18 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(1, num);
+            XunitAssert.Equal(1, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
 
             evt.OnNext -= hnd;
 
             src.OnNext(new Unit());
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
         }
 
         [Test]

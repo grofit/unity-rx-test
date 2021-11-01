@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -8,11 +8,11 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
-    public class SingleOrDefaultTest : ReactiveTest
+    public partial class SingleOrDefaultTest : ReactiveTest
     {
 
         [Test]
@@ -26,20 +26,20 @@ namespace ReactiveTests.Tests
         [Test]
         public void SingleOrDefault_Empty()
         {
-            Assert.AreEqual(default(int), Observable.Empty<int>().SingleOrDefault());
+            XunitAssert.Equal(default, Observable.Empty<int>().SingleOrDefault());
         }
 
         [Test]
         public void SingleOrDefaultPredicate_Empty()
         {
-            Assert.AreEqual(default(int), Observable.Empty<int>().SingleOrDefault(_ => true));
+            XunitAssert.Equal(default, Observable.Empty<int>().SingleOrDefault(_ => true));
         }
 
         [Test]
         public void SingleOrDefault_Return()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Return(value).SingleOrDefault());
+            XunitAssert.Equal(value, Observable.Return(value).SingleOrDefault());
         }
 
         [Test]
@@ -70,14 +70,14 @@ namespace ReactiveTests.Tests
         public void SingleOrDefault_Range_ReducesToSingle()
         {
             var value = 42;
-            Assert.AreEqual(45, Observable.Range(value, 10).SingleOrDefault(i => i == 45));
+            XunitAssert.Equal(45, Observable.Range(value, 10).SingleOrDefault(i => i == 45));
         }
 
         [Test]
         public void SingleOrDefault_Range_ReducesToNone()
         {
             var value = 42;
-            Assert.AreEqual(0, Observable.Range(value, 10).SingleOrDefault(i => i > 100));
+            XunitAssert.Equal(0, Observable.Range(value, 10).SingleOrDefault(i => i > 100));
         }
 
     }

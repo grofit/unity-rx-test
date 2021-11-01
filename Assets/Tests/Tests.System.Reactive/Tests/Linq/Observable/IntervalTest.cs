@@ -9,6 +9,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -79,7 +80,7 @@ namespace ReactiveTests.Tests
 
             completed.WaitOne();
 
-            Assert.AreEqual(10, observer.Messages.Count);
+            XunitAssert.Equal(10, observer.Messages.Count);
         }
 
         [Test]

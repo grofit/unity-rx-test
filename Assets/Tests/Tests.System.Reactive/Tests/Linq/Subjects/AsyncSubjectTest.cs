@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -354,7 +355,7 @@ namespace ReactiveTests.Tests
             e.Set();
             t.Join();
 
-            Assert.AreEqual(42, y);
+            XunitAssert.Equal(42, y);
             Assert.True(s.IsCompleted);
         }
 

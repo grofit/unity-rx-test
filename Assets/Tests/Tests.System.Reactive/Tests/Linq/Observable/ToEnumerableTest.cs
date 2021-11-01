@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -40,7 +41,7 @@ namespace ReactiveTests.Tests
             for (var i = 0; i < 10; i++)
             {
                 Assert.True(ieg.MoveNext());
-                Assert.AreEqual(i, ieg.Current);
+                XunitAssert.Equal(i, ieg.Current);
             }
             Assert.False(ieg.MoveNext());
         }
@@ -53,7 +54,7 @@ namespace ReactiveTests.Tests
             for (var i = 0; i < 10; i++)
             {
                 Assert.True(ien.MoveNext());
-                Assert.AreEqual(i, ien.Current);
+                XunitAssert.Equal(i, ien.Current);
             }
             Assert.False(ien.MoveNext());
         }

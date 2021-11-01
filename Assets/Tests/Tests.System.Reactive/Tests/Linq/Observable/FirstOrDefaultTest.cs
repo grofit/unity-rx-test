@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -11,11 +11,11 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
-    public class FirstOrDefaultTest : ReactiveTest
+    public partial class FirstOrDefaultTest : ReactiveTest
     {
 
         [Test]
@@ -29,20 +29,20 @@ namespace ReactiveTests.Tests
         [Test]
         public void FirstOrDefault_Empty()
         {
-            Assert.AreEqual(default(int), Observable.Empty<int>().FirstOrDefault());
+            XunitAssert.Equal(default, Observable.Empty<int>().FirstOrDefault());
         }
 
         [Test]
         public void FirstOrDefaultPredicate_Empty()
         {
-            Assert.AreEqual(default(int), Observable.Empty<int>().FirstOrDefault(_ => true));
+            XunitAssert.Equal(default, Observable.Empty<int>().FirstOrDefault(_ => true));
         }
 
         [Test]
         public void FirstOrDefault_Return()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Return(value).FirstOrDefault());
+            XunitAssert.Equal(value, Observable.Return(value).FirstOrDefault());
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace ReactiveTests.Tests
         public void FirstOrDefault_Range()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Range(value, 10).FirstOrDefault());
+            XunitAssert.Equal(value, Observable.Range(value, 10).FirstOrDefault());
         }
 
 #if !NO_THREAD

@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -54,11 +55,11 @@ namespace ReactiveTests.Tests
 
             release();
             Assert.True(res.MoveNext());
-            Assert.AreEqual(1, res.Current);
+            XunitAssert.Equal(1, res.Current);
 
             release();
             Assert.True(res.MoveNext());
-            Assert.AreEqual(2, res.Current);
+            XunitAssert.Equal(2, res.Current);
 
             release();
             Assert.False(res.MoveNext());
@@ -162,7 +163,7 @@ namespace ReactiveTests.Tests
 
             release();
             Assert.True(res.MoveNext());
-            Assert.AreEqual(1, res.Current);
+            XunitAssert.Equal(1, res.Current);
 
             release();
 

@@ -8,6 +8,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -96,7 +97,7 @@ namespace ReactiveTests.Tests
                 OnCompleted<object>(600)
             );
 
-            Assert.AreEqual(3, s.Value);
+            XunitAssert.Equal(3, s.Value);
         }
 
         [Test]

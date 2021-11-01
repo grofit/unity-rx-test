@@ -9,6 +9,7 @@ using System.Reactive.Disposables;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {

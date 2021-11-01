@@ -7,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -26,7 +27,7 @@ namespace ReactiveTests.Tests
             var x = 42;
             var xs = Observable.Return(x, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
             var res = xs.Wait();
-            Assert.AreEqual(x, res);
+            XunitAssert.Equal(x, res);
         }
 #endif
 
@@ -53,7 +54,7 @@ namespace ReactiveTests.Tests
             var n = 42;
             var xs = Observable.Range(1, n, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
             var res = xs.Wait();
-            Assert.AreEqual(n, res);
+            XunitAssert.Equal(n, res);
         }
 #endif
 

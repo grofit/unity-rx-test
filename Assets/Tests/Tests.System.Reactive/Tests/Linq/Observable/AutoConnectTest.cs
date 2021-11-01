@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -27,17 +28,17 @@ namespace ReactiveTests.Tests
             .Replay()
             .AutoConnect();
 
-            Assert.AreEqual(0, called);
+            XunitAssert.Equal(0, called);
 
             var list = source.ToList().First();
 
-            Assert.AreEqual(1, called);
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(1, called);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
 
             list = source.ToList().First();
 
-            Assert.AreEqual(1, called);
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(1, called);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -53,17 +54,17 @@ namespace ReactiveTests.Tests
             .Replay()
             .AutoConnect(0);
 
-            Assert.AreEqual(1, called);
+            XunitAssert.Equal(1, called);
 
             var list = source.ToList().First();
 
-            Assert.AreEqual(1, called);
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(1, called);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
 
             list = source.ToList().First();
 
-            Assert.AreEqual(1, called);
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(1, called);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -79,26 +80,26 @@ namespace ReactiveTests.Tests
             .Replay()
             .AutoConnect(2);
 
-            Assert.AreEqual(0, called);
+            XunitAssert.Equal(0, called);
 
             var list0 = new List<int>();
 
             source.Subscribe(v => list0.Add(v));
 
-            Assert.AreEqual(0, called);
-            Assert.AreEqual(0, list0.Count);
+            XunitAssert.Equal(0, called);
+            XunitAssert.Equal(0, list0.Count);
 
             var list = source.ToList().First();
 
-            Assert.AreEqual(1, called);
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(1, called);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
 
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list0);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list0);
 
             list = source.ToList().First();
 
-            Assert.AreEqual(1, called);
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(1, called);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -129,7 +130,7 @@ namespace ReactiveTests.Tests
             subject.OnNext(4);
             subject.OnNext(5);
 
-            Assert.AreEqual(new List<int>() { 1, 2, 3 }, list);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3 }, list);
 
         }
     }

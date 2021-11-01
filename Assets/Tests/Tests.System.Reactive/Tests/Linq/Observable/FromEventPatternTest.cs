@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -721,29 +722,29 @@ namespace ReactiveTests.Tests
 
             var xs = run(s, add, rem);
 
-            Assert.AreEqual(0, n);
-            Assert.AreEqual(0, a);
-            Assert.AreEqual(0, r);
+            XunitAssert.Equal(0, n);
+            XunitAssert.Equal(0, a);
+            XunitAssert.Equal(0, r);
 
             var d1 = xs.Subscribe();
-            Assert.AreEqual(1, n);
-            Assert.AreEqual(1, a);
-            Assert.AreEqual(0, r);
+            XunitAssert.Equal(1, n);
+            XunitAssert.Equal(1, a);
+            XunitAssert.Equal(0, r);
 
             var d2 = xs.Subscribe();
-            Assert.AreEqual(1, n);
-            Assert.AreEqual(1, a);
-            Assert.AreEqual(0, r);
+            XunitAssert.Equal(1, n);
+            XunitAssert.Equal(1, a);
+            XunitAssert.Equal(0, r);
 
             d1.Dispose();
-            Assert.AreEqual(1, n);
-            Assert.AreEqual(1, a);
-            Assert.AreEqual(0, r);
+            XunitAssert.Equal(1, n);
+            XunitAssert.Equal(1, a);
+            XunitAssert.Equal(0, r);
 
             d2.Dispose();
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, a);
-            Assert.AreEqual(1, r);
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, a);
+            XunitAssert.Equal(1, r);
         }
 
         #endregion

@@ -10,6 +10,7 @@ using System.Reactive.Subjects;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -49,8 +50,8 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(410, t);
-            Assert.AreEqual(3, result);
+            XunitAssert.Equal(410, t);
+            XunitAssert.Equal(3, result);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)
@@ -87,9 +88,9 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(100, s);
-            Assert.AreEqual(260, t);
-            Assert.AreEqual(42, result);
+            XunitAssert.Equal(100, s);
+            XunitAssert.Equal(260, t);
+            XunitAssert.Equal(42, result);
         }
 
         [Test]
@@ -118,7 +119,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(410, t);
+            XunitAssert.Equal(410, t);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)
@@ -149,7 +150,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(long.MaxValue, t);
+            XunitAssert.Equal(long.MaxValue, t);
             Assert.False(hasValue);
 
             xs.Subscriptions.AssertEqual(
@@ -176,7 +177,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(300, t);
+            XunitAssert.Equal(300, t);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)

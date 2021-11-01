@@ -9,6 +9,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -383,8 +384,8 @@ namespace ReactiveTests.Tests
         public void ToAsyncAction1()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int>(a => { Assert.AreEqual(1, a); hasRun = true; })(1).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int>(a => { Assert.AreEqual(1, a); hasRun = true; }, Scheduler.Default)(1).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int>(a => { XunitAssert.Equal(1, a); hasRun = true; })(1).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int>(a => { XunitAssert.Equal(1, a); hasRun = true; }, Scheduler.Default)(1).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -392,15 +393,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError1()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int>(a => { Assert.AreEqual(1, a); throw ex; })(1).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int>(a => { XunitAssert.Equal(1, a); throw ex; })(1).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction2()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int>((a, b) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); hasRun = true; })(1, 2).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int>((a, b) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); hasRun = true; }, Scheduler.Default)(1, 2).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int>((a, b) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); hasRun = true; })(1, 2).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int>((a, b) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); hasRun = true; }, Scheduler.Default)(1, 2).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -408,15 +409,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError2()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int>((a, b) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); throw ex; })(1, 2).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int>((a, b) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); throw ex; })(1, 2).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction3()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int>((a, b, c) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); hasRun = true; })(1, 2, 3).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int>((a, b, c) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); hasRun = true; }, Scheduler.Default)(1, 2, 3).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int>((a, b, c) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); hasRun = true; })(1, 2, 3).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int>((a, b, c) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); hasRun = true; }, Scheduler.Default)(1, 2, 3).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -424,15 +425,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError3()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int>((a, b, c) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); throw ex; })(1, 2, 3).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int>((a, b, c) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); throw ex; })(1, 2, 3).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction4()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int>((a, b, c, d) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); hasRun = true; })(1, 2, 3, 4).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int>((a, b, c, d) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int>((a, b, c, d) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); hasRun = true; })(1, 2, 3, 4).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int>((a, b, c, d) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -440,15 +441,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError4()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int>((a, b, c, d) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); throw ex; })(1, 2, 3, 4).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int>((a, b, c, d) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); throw ex; })(1, 2, 3, 4).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction5()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int>((a, b, c, d, e) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); hasRun = true; })(1, 2, 3, 4, 5).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int>((a, b, c, d, e) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int>((a, b, c, d, e) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); hasRun = true; })(1, 2, 3, 4, 5).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int>((a, b, c, d, e) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -456,15 +457,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError5()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int>((a, b, c, d, e) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); throw ex; })(1, 2, 3, 4, 5).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int>((a, b, c, d, e) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); throw ex; })(1, 2, 3, 4, 5).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction6()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int>((a, b, c, d, e, f) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); hasRun = true; })(1, 2, 3, 4, 5, 6).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int>((a, b, c, d, e, f) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int>((a, b, c, d, e, f) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); hasRun = true; })(1, 2, 3, 4, 5, 6).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int>((a, b, c, d, e, f) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -472,15 +473,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError6()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int>((a, b, c, d, e, f) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); throw ex; })(1, 2, 3, 4, 5, 6).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int>((a, b, c, d, e, f) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); throw ex; })(1, 2, 3, 4, 5, 6).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction7()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int>((a, b, c, d, e, f, g) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); hasRun = true; })(1, 2, 3, 4, 5, 6, 7).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int>((a, b, c, d, e, f, g) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int>((a, b, c, d, e, f, g) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); hasRun = true; })(1, 2, 3, 4, 5, 6, 7).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int>((a, b, c, d, e, f, g) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -488,15 +489,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError7()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int>((a, b, c, d, e, f, g) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); throw ex; })(1, 2, 3, 4, 5, 6, 7).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int>((a, b, c, d, e, f, g) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); throw ex; })(1, 2, 3, 4, 5, 6, 7).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction8()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -504,15 +505,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError8()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction9()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -520,15 +521,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError9()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction10()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -536,15 +537,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError10()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction11()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -552,15 +553,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError11()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction12()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -568,15 +569,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError12()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction13()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -584,15 +585,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError13()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction14()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -600,15 +601,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError14()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction15()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); Assert.AreEqual(15, o); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); Assert.AreEqual(15, o); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); XunitAssert.Equal(15, o); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); XunitAssert.Equal(15, o); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -616,15 +617,15 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError15()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); Assert.AreEqual(15, o); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); XunitAssert.Equal(15, o); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
         [Test]
         public void ToAsyncAction16()
         {
             var hasRun = false;
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); Assert.AreEqual(15, o); Assert.AreEqual(16, p); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).ToEnumerable().SequenceEqual(new[] { new Unit() }));
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); Assert.AreEqual(15, o); Assert.AreEqual(16, p); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); XunitAssert.Equal(15, o); XunitAssert.Equal(16, p); hasRun = true; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).ToEnumerable().SequenceEqual(new[] { new Unit() }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); XunitAssert.Equal(15, o); XunitAssert.Equal(16, p); hasRun = true; }, Scheduler.Default)(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).ToEnumerable().SequenceEqual(new[] { new Unit() }));
             Assert.True(hasRun, "has run");
         }
 
@@ -632,7 +633,7 @@ namespace ReactiveTests.Tests
         public void ToAsyncActionError16()
         {
             var ex = new Exception();
-            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) => { Assert.AreEqual(1, a); Assert.AreEqual(2, b); Assert.AreEqual(3, c); Assert.AreEqual(4, d); Assert.AreEqual(5, e); Assert.AreEqual(6, f); Assert.AreEqual(7, g); Assert.AreEqual(8, h); Assert.AreEqual(9, i); Assert.AreEqual(10, j); Assert.AreEqual(11, k); Assert.AreEqual(12, l); Assert.AreEqual(13, m); Assert.AreEqual(14, n); Assert.AreEqual(15, o); Assert.AreEqual(16, p); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
+            Assert.True(Observable.ToAsync<int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int>((a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) => { XunitAssert.Equal(1, a); XunitAssert.Equal(2, b); XunitAssert.Equal(3, c); XunitAssert.Equal(4, d); XunitAssert.Equal(5, e); XunitAssert.Equal(6, f); XunitAssert.Equal(7, g); XunitAssert.Equal(8, h); XunitAssert.Equal(9, i); XunitAssert.Equal(10, j); XunitAssert.Equal(11, k); XunitAssert.Equal(12, l); XunitAssert.Equal(13, m); XunitAssert.Equal(14, n); XunitAssert.Equal(15, o); XunitAssert.Equal(16, p); throw ex; })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).Materialize().ToEnumerable().SequenceEqual(new[] { Notification.CreateOnError<Unit>(ex) }));
         }
 
     }

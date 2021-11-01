@@ -6,6 +6,7 @@
 using System.Linq;
 using System.Reactive;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 #endif
 
 namespace ReactiveTests.Tests

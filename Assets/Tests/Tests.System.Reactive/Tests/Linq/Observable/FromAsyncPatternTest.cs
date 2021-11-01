@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -147,7 +148,7 @@ namespace ReactiveTests.Tests
 
             Func<int, AsyncCallback, object, IAsyncResult> begin = (a, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
+                XunitAssert.Equal(a, 2);
                 cb(x);
                 return x;
             };
@@ -164,7 +165,7 @@ namespace ReactiveTests.Tests
 
             Func<int, AsyncCallback, object, IAsyncResult> begin = (a, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
+                XunitAssert.Equal(a, 2);
                 cb(x);
                 return x;
             };
@@ -207,8 +208,8 @@ namespace ReactiveTests.Tests
 
             Func<int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
                 cb(x);
                 return x;
             };
@@ -225,8 +226,8 @@ namespace ReactiveTests.Tests
 
             Func<int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
                 cb(x);
                 return x;
             };
@@ -269,9 +270,9 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
                 cb(x);
                 return x;
             };
@@ -287,9 +288,9 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
                 cb(x);
                 return x;
             };
@@ -332,10 +333,10 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
                 cb(x);
                 return x;
             };
@@ -352,10 +353,10 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
                 cb(x);
                 return x;
             };
@@ -398,11 +399,11 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
                 cb(x);
                 return x;
             };
@@ -419,11 +420,11 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
                 cb(x);
                 return x;
             };
@@ -466,12 +467,12 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
                 cb(x);
                 return x;
             };
@@ -488,12 +489,12 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
                 cb(x);
                 return x;
             };
@@ -536,13 +537,13 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
                 cb(x);
                 return x;
             };
@@ -559,13 +560,13 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
                 cb(x);
                 return x;
             };
@@ -608,14 +609,14 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
                 cb(x);
                 return x;
             };
@@ -632,14 +633,14 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
                 cb(x);
                 return x;
             };
@@ -682,15 +683,15 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
                 cb(x);
                 return x;
             };
@@ -707,15 +708,15 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
                 cb(x);
                 return x;
             };
@@ -758,16 +759,16 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
                 cb(x);
                 return x;
             };
@@ -784,16 +785,16 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
                 cb(x);
                 return x;
             };
@@ -836,17 +837,17 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
                 cb(x);
                 return x;
             };
@@ -863,17 +864,17 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
                 cb(x);
                 return x;
             };
@@ -916,18 +917,18 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
-                Assert.AreEqual(l, 13);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
+                XunitAssert.Equal(l, 13);
                 cb(x);
                 return x;
             };
@@ -944,18 +945,18 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
-                Assert.AreEqual(l, 13);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
+                XunitAssert.Equal(l, 13);
                 cb(x);
                 return x;
             };
@@ -998,19 +999,19 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
-                Assert.AreEqual(l, 13);
-                Assert.AreEqual(m, 14);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
+                XunitAssert.Equal(l, 13);
+                XunitAssert.Equal(m, 14);
                 cb(x);
                 return x;
             };
@@ -1027,19 +1028,19 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
-                Assert.AreEqual(l, 13);
-                Assert.AreEqual(m, 14);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
+                XunitAssert.Equal(l, 13);
+                XunitAssert.Equal(m, 14);
                 cb(x);
                 return x;
             };
@@ -1082,20 +1083,20 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, n, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
-                Assert.AreEqual(l, 13);
-                Assert.AreEqual(m, 14);
-                Assert.AreEqual(n, 15);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
+                XunitAssert.Equal(l, 13);
+                XunitAssert.Equal(m, 14);
+                XunitAssert.Equal(n, 15);
                 cb(x);
                 return x;
             };
@@ -1112,20 +1113,20 @@ namespace ReactiveTests.Tests
 
             Func<int, int, int, int, int, int, int, int, int, int, int, int, int, int, AsyncCallback, object, IAsyncResult> begin = (a, b, c, d, e, f, g, h, i, j, k, l, m, n, cb, _) =>
             {
-                Assert.AreEqual(a, 2);
-                Assert.AreEqual(b, 3);
-                Assert.AreEqual(c, 4);
-                Assert.AreEqual(d, 5);
-                Assert.AreEqual(e, 6);
-                Assert.AreEqual(f, 7);
-                Assert.AreEqual(g, 8);
-                Assert.AreEqual(h, 9);
-                Assert.AreEqual(i, 10);
-                Assert.AreEqual(j, 11);
-                Assert.AreEqual(k, 12);
-                Assert.AreEqual(l, 13);
-                Assert.AreEqual(m, 14);
-                Assert.AreEqual(n, 15);
+                XunitAssert.Equal(a, 2);
+                XunitAssert.Equal(b, 3);
+                XunitAssert.Equal(c, 4);
+                XunitAssert.Equal(d, 5);
+                XunitAssert.Equal(e, 6);
+                XunitAssert.Equal(f, 7);
+                XunitAssert.Equal(g, 8);
+                XunitAssert.Equal(h, 9);
+                XunitAssert.Equal(i, 10);
+                XunitAssert.Equal(j, 11);
+                XunitAssert.Equal(k, 12);
+                XunitAssert.Equal(l, 13);
+                XunitAssert.Equal(m, 14);
+                XunitAssert.Equal(n, 15);
                 cb(x);
                 return x;
             };

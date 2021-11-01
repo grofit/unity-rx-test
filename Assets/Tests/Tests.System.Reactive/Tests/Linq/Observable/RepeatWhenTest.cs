@@ -10,6 +10,7 @@ using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -135,9 +136,9 @@ namespace ReactiveTests.Tests
             Assert.False(main.HasObservers);
             Assert.False(inner.HasObservers);
 
-            Assert.AreEqual(0, items);
-            Assert.AreEqual(0, errors);
-            Assert.AreEqual(1, end);
+            XunitAssert.Equal(0, items);
+            XunitAssert.Equal(0, errors);
+            XunitAssert.Equal(1, end);
         }
 
         [Test]
@@ -163,9 +164,9 @@ namespace ReactiveTests.Tests
             Assert.False(main.HasObservers);
             Assert.False(inner.HasObservers);
 
-            Assert.AreEqual(0, items);
-            Assert.AreEqual(1, errors);
-            Assert.AreEqual(0, end);
+            XunitAssert.Equal(0, items);
+            XunitAssert.Equal(1, errors);
+            XunitAssert.Equal(0, end);
         }
 
         [Test]

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -1414,7 +1415,7 @@ namespace ReactiveTests.Tests
                 .Delay(_ => Observable.Return(1))
                 .Subscribe(list.Add);
 
-            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
+            XunitAssert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]
@@ -1833,7 +1834,7 @@ namespace ReactiveTests.Tests
             var delayed = source.Delay(_ => Observable.Return(2));
             delayed.Subscribe(v => result = v);
 
-            Assert.AreEqual(1, result);
+            XunitAssert.Equal(1, result);
         }
 
         private class MyLongRunning2 : LocalScheduler, ISchedulerLongRunning

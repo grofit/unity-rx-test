@@ -12,6 +12,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -417,7 +418,7 @@ namespace ReactiveTests.Tests
                 o1.Catch((ArgumentException ex_) => { handlerCalled = scheduler.Clock; return o2; })
             );
 
-            Assert.AreEqual(230, handlerCalled);
+            XunitAssert.Equal(230, handlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -460,7 +461,7 @@ namespace ReactiveTests.Tests
                 o1.Catch((ArgumentException ex_) => { handlerCalled = scheduler.Clock; return o2; })
             );
 
-            Assert.AreEqual(null, handlerCalled);
+            XunitAssert.Equal(null, handlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -497,7 +498,7 @@ namespace ReactiveTests.Tests
                 o1.Catch((ArgumentException ex_) => { handlerCalled = scheduler.Clock; throw ex2; })
             );
 
-            Assert.AreEqual(230, handlerCalled);
+            XunitAssert.Equal(230, handlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -542,8 +543,8 @@ namespace ReactiveTests.Tests
                 .Catch((ArgumentException ex_) => { secondHandlerCalled = scheduler.Clock; return o3; })
             );
 
-            Assert.AreEqual(null, firstHandlerCalled);
-            Assert.AreEqual(215, secondHandlerCalled);
+            XunitAssert.Equal(null, firstHandlerCalled);
+            XunitAssert.Equal(215, secondHandlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -595,8 +596,8 @@ namespace ReactiveTests.Tests
                 .Catch((InvalidOperationException ex_) => { secondHandlerCalled = scheduler.Clock; return o3; })
             );
 
-            Assert.AreEqual(215, firstHandlerCalled);
-            Assert.AreEqual(null, secondHandlerCalled);
+            XunitAssert.Equal(215, firstHandlerCalled);
+            XunitAssert.Equal(null, secondHandlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -649,8 +650,8 @@ namespace ReactiveTests.Tests
                 .Catch((ArgumentException ex_) => { secondHandlerCalled = scheduler.Clock; Assert.True(ex2 == ex_, "Expected ex2"); return o3; })
             );
 
-            Assert.AreEqual(215, firstHandlerCalled);
-            Assert.AreEqual(225, secondHandlerCalled);
+            XunitAssert.Equal(215, firstHandlerCalled);
+            XunitAssert.Equal(225, secondHandlerCalled);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -685,7 +686,7 @@ namespace ReactiveTests.Tests
             });
 
             evt.WaitOne();
-            Assert.AreEqual(1, res);
+            XunitAssert.Equal(1, res);
         }
 
         [Test]
@@ -701,7 +702,7 @@ namespace ReactiveTests.Tests
             });
 
             evt.WaitOne();
-            Assert.AreEqual(1, res);
+            XunitAssert.Equal(1, res);
         }
 
         [Test]
@@ -719,7 +720,7 @@ namespace ReactiveTests.Tests
             });
 
             evt.WaitOne();
-            Assert.AreEqual(1, res);
+            XunitAssert.Equal(1, res);
         }
 
         [Test]
@@ -997,7 +998,7 @@ namespace ReactiveTests.Tests
                     Observable.Return(42)
                 );
 
-            Assert.AreEqual(42, res.Wait());
+            XunitAssert.Equal(42, res.Wait());
         }
 #endif
 

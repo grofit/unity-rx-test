@@ -9,6 +9,7 @@ using System.Reactive.Joins;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -224,7 +225,7 @@ namespace ReactiveTests.Tests
             var list = Observable.When(source.And(source).Then((a, b) => a + b))
                 .ToList().First();
 
-            Assert.AreEqual(new List<int>() { 2, 4, 6, 8, 10 }, list);
+            XunitAssert.Equal(new List<int>() { 2, 4, 6, 8, 10 }, list);
         }
     }
 }

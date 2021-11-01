@@ -5,6 +5,7 @@
 using System;
 using System.Reactive;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -19,7 +20,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(ExceptionHelper.TrySetException(ref _errors, ex));
 
-            Assert.AreEqual(ex, _errors);
+            XunitAssert.Equal(ex, _errors);
         }
 
         [Test]
@@ -32,7 +33,7 @@ namespace ReactiveTests.Tests
 
             Assert.False(ExceptionHelper.TrySetException(ref _errors, ex2));
 
-            Assert.AreEqual(ex1, _errors);
+            XunitAssert.Equal(ex1, _errors);
         }
     }
 }

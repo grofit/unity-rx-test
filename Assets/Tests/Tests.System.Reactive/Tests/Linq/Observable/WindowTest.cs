@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -919,7 +920,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, observers.Count);
+            XunitAssert.Equal(5, observers.Count);
 
             observers[0].Messages.AssertEqual(
                 OnNext(210, 2),
@@ -1008,7 +1009,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(windowCreationTimes.Last() < 400);
 
-            Assert.AreEqual(4, observers.Count);
+            XunitAssert.Equal(4, observers.Count);
 
             observers[0].Messages.AssertEqual(
                 OnNext(210, 2),
@@ -1097,7 +1098,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(windowCreationTimes.Last() < 400);
 
-            Assert.AreEqual(4, observers.Count);
+            XunitAssert.Equal(4, observers.Count);
 
             observers[0].Messages.AssertEqual(
                 OnNext(210, 2),

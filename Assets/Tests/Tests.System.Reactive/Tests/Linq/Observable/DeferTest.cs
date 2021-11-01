@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -45,7 +46,7 @@ namespace ReactiveTests.Tests
                 OnCompleted<long>(400)
             );
 
-            Assert.AreEqual(1, invoked);
+            XunitAssert.Equal(1, invoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -77,7 +78,7 @@ namespace ReactiveTests.Tests
                 OnError<long>(400, ex)
             );
 
-            Assert.AreEqual(1, invoked);
+            XunitAssert.Equal(1, invoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -109,7 +110,7 @@ namespace ReactiveTests.Tests
                 OnNext(400, 1L)
             );
 
-            Assert.AreEqual(1, invoked);
+            XunitAssert.Equal(1, invoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 1000)
@@ -136,7 +137,7 @@ namespace ReactiveTests.Tests
                 OnError<int>(200, ex)
             );
 
-            Assert.AreEqual(1, invoked);
+            XunitAssert.Equal(1, invoked);
         }
 
     }

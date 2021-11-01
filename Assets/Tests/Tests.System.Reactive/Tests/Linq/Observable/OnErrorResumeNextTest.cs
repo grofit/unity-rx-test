@@ -11,6 +11,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -421,7 +422,7 @@ namespace ReactiveTests.Tests
             }, () => evt.Set());
 
             evt.WaitOne();
-            Assert.AreEqual(3, sum);
+            XunitAssert.Equal(3, sum);
         }
 
         [Test]
@@ -436,7 +437,7 @@ namespace ReactiveTests.Tests
             }, () => evt.Set());
 
             evt.WaitOne();
-            Assert.AreEqual(6, sum);
+            XunitAssert.Equal(6, sum);
         }
 
         [Test]
@@ -453,7 +454,7 @@ namespace ReactiveTests.Tests
             }, () => evt.Set());
 
             evt.WaitOne();
-            Assert.AreEqual(6, sum);
+            XunitAssert.Equal(6, sum);
         }
 
         [Test]

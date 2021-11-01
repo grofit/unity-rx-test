@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
-namespace ReactiveTests.Tests {
-    [Category("async")]
-    public class SingleAsyncTest : ReactiveTest
+namespace ReactiveTests.Tests
+{
+    public partial class SingleAsyncTest : ReactiveTest
     {
 
         [Test]
@@ -258,17 +258,16 @@ namespace ReactiveTests.Tests {
         }
 
         [Test] // https://github.com/dotnet/reactive/issues/1235
-        [Category("async")]
         public void MeaningfulStackTrace()
         {
             static async Task Core()
             {
                 static void AssertException(Exception e)
                 {
-                    Assert.AreEqual(typeof(InvalidOperationException), e.GetType());
+                    XunitAssert.IsType(typeof(InvalidOperationException), e);
 
                     Assert.NotNull(e.StackTrace);
-                    Assert.AreNotEqual("", e.StackTrace);
+                    XunitAssert.NotEqual("", e.StackTrace);
 
                     Assert.True(e.StackTrace.Contains("SingleAsync"));
                 }

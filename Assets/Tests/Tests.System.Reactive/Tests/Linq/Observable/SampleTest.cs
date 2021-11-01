@@ -8,6 +8,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -333,14 +334,14 @@ namespace ReactiveTests.Tests
         public void Sample_DefaultScheduler_Periodic()
         {
             var res = Observable.Return(42).Sample(TimeSpan.FromMilliseconds(1)).ToEnumerable().Single();
-            Assert.AreEqual(42, res);
+            XunitAssert.Equal(42, res);
         }
 
         [Test]
         public void Sample_DefaultScheduler_PeriodicDisabled()
         {
             var res = Observable.Return(42).Sample(TimeSpan.FromMilliseconds(1), Scheduler.Default.DisableOptimizations()).ToEnumerable().Single();
-            Assert.AreEqual(42, res);
+            XunitAssert.Equal(42, res);
         }
 
         [Test]

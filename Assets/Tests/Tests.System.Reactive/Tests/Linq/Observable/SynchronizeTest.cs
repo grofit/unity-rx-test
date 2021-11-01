@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -38,7 +39,7 @@ namespace ReactiveTests.Tests
                 outsideLock = false;
                 Observable.Range(0, 100, NewThreadScheduler.Default).Synchronize(gate).Subscribe(x => i++, () => { Assert.True(outsideLock); });
                 Thread.Sleep(100);
-                Assert.AreEqual(0, i);
+                XunitAssert.Equal(0, i);
                 outsideLock = true;
             }
 
@@ -49,7 +50,7 @@ namespace ReactiveTests.Tests
                 {
                     var start = i;
                     Thread.Sleep(100);
-                    Assert.AreEqual(start, i);
+                    XunitAssert.Equal(start, i);
                 }
             }
         }
@@ -122,7 +123,7 @@ namespace ReactiveTests.Tests
 
             evt.WaitOne();
 
-            Assert.AreEqual(Enumerable.Range(0, 200).Sum(), sum);
+            XunitAssert.Equal(Enumerable.Range(0, 200).Sum(), sum);
         }
 #endif
 

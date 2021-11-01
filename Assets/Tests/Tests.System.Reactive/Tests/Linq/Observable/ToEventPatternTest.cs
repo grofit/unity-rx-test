@@ -11,6 +11,7 @@ using System.Reactive.Subjects;
 using System.Reflection;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -162,25 +163,25 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(1, num);
+            XunitAssert.Equal(1, num);
 
             evt.OnNext += hnd;
 
             src.OnNext(new Unit());
-            Assert.AreEqual(3, num);
+            XunitAssert.Equal(3, num);
 
             evt.OnNext -= hnd;
 
             src.OnNext(new Unit());
-            Assert.AreEqual(4, num);
+            XunitAssert.Equal(4, num);
 
             evt.OnNext -= hnd;
 
             src.OnNext(new Unit());
-            Assert.AreEqual(4, num);
+            XunitAssert.Equal(4, num);
         }
 
         [Test]
@@ -194,16 +195,16 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(1, num);
+            XunitAssert.Equal(1, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
 
             src.OnCompleted();
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
 
             var tbl = GetSubscriptionTable(evt);
             Assert.True(tbl.Count == 0);
@@ -220,13 +221,13 @@ namespace ReactiveTests.Tests
 
             evt.OnNext += hnd;
 
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(1, num);
+            XunitAssert.Equal(1, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
 
             var ex = new Exception();
 
@@ -249,7 +250,7 @@ namespace ReactiveTests.Tests
             {
                 evt.OnNext += hnd;
 
-                Assert.AreEqual(0, num);
+                XunitAssert.Equal(0, num);
 
                 var tbl = GetSubscriptionTable(evt);
                 Assert.True(tbl.Count == 0);
@@ -266,28 +267,28 @@ namespace ReactiveTests.Tests
             var hnd = new Action<Unit>(e => num++);
 
             evt.OnNext += hnd;
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             evt.OnNext -= hnd;
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             evt.OnNext -= hnd;
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             evt.OnNext += hnd;
-            Assert.AreEqual(0, num);
+            XunitAssert.Equal(0, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(1, num);
+            XunitAssert.Equal(1, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
 
             evt.OnNext -= hnd;
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
 
             src.OnNext(new Unit());
-            Assert.AreEqual(2, num);
+            XunitAssert.Equal(2, num);
         }
 
         private static Dictionary<Delegate, Stack<IDisposable>> GetSubscriptionTable(object evt)

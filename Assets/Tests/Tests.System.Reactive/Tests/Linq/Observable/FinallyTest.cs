@@ -7,6 +7,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -47,7 +48,7 @@ namespace ReactiveTests.Tests
             d.Dispose();
             d.Dispose();
 
-            Assert.AreEqual(1, invokeCount);
+            XunitAssert.Equal(1, invokeCount);
         }
 
         [Test]
@@ -59,7 +60,7 @@ namespace ReactiveTests.Tests
             d.Dispose();
             d.Dispose();
 
-            Assert.AreEqual(1, invokeCount);
+            XunitAssert.Equal(1, invokeCount);
         }
 
         [Test]
@@ -154,7 +155,7 @@ namespace ReactiveTests.Tests
                 .Finally(() => order += "3")
                 .Subscribe();
 
-            Assert.AreEqual("123", order);
+            XunitAssert.Equal("123", order);
         }
 
         [Test]
@@ -168,7 +169,7 @@ namespace ReactiveTests.Tests
                 .Finally(() => order += "3")
                 .Subscribe();
 
-            Assert.AreEqual("123", order);
+            XunitAssert.Equal("123", order);
         }
 
         [Test]
@@ -184,7 +185,7 @@ namespace ReactiveTests.Tests
 
             d.Dispose();
 
-            Assert.AreEqual("123", order);
+            XunitAssert.Equal("123", order);
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -75,7 +76,7 @@ namespace ReactiveTests.Tests
 
             completed.WaitOne();
 
-            Assert.AreEqual(1, observer.Messages.Count);
+            XunitAssert.Equal(1, observer.Messages.Count);
         }
 
         [Test]
@@ -206,7 +207,7 @@ namespace ReactiveTests.Tests
 
             completed.WaitOne();
 
-            Assert.AreEqual(10, observer.Messages.Count);
+            XunitAssert.Equal(10, observer.Messages.Count);
         }
 
         [Test]
@@ -489,7 +490,7 @@ namespace ReactiveTests.Tests
             }
             catch (Exception e)
             {
-                Assert.AreEqual(201, scheduler.Clock);
+                XunitAssert.Equal(201, scheduler.Clock);
                 Assert.AreSame(ex, e);
             }
         }
@@ -533,7 +534,7 @@ namespace ReactiveTests.Tests
             }
             catch (Exception e)
             {
-                Assert.AreEqual(701, scheduler.Clock);
+                XunitAssert.Equal(701, scheduler.Clock);
                 Assert.AreSame(ex, e);
             }
 

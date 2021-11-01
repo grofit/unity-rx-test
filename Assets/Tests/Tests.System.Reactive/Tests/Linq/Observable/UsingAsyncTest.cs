@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -36,7 +37,7 @@ namespace ReactiveTests.Tests
 
             var res = xs.ToEnumerable().ToList();
 
-            Assert.AreEqual(new List<int> { 42 }, res);
+            XunitAssert.Equal(new List<int> { 42 }, res);
             Assert.True(done.Wait(5000), "done.Wait(5000)");
         }
 

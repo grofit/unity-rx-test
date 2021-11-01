@@ -8,6 +8,7 @@ using System.Reactive.Concurrency;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -35,7 +36,7 @@ namespace ReactiveTests.Tests
         {
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
-            Scheduler.CurrentThread.Schedule(() => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            Scheduler.CurrentThread.Schedule(() => { XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             Assert.True(ran);
         }
 #endif
@@ -63,7 +64,7 @@ namespace ReactiveTests.Tests
             var ran = false;
             Scheduler.CurrentThread.Schedule(() =>
             {
-                Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
+                XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId);
                 Scheduler.CurrentThread.Schedule(() => { ran = true; });
             });
             Assert.True(ran);
@@ -76,7 +77,7 @@ namespace ReactiveTests.Tests
             var ran = false;
             Scheduler.CurrentThread.Schedule(() =>
             {
-                Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
+                XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId);
                 Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(1), () => { ran = true; });
             });
             Assert.True(ran);
@@ -87,7 +88,7 @@ namespace ReactiveTests.Tests
         {
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
-            Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () => { XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             Assert.True(ran, "ran");
         }
 
@@ -98,11 +99,11 @@ namespace ReactiveTests.Tests
             var ran = false;
             Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () =>
             {
-                Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
+                XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId);
 
                 Scheduler.CurrentThread.Schedule(TimeSpan.FromSeconds(0.2), () =>
                 {
-                    Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId);
+                    XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId);
                     ran = true;
                 });
             });

@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -210,13 +211,13 @@ namespace ReactiveTests.Tests
         public void ToDictionary_Default()
         {
             var d1 = Observable.Range(1, 10).ToDictionary(x => x.ToString()).First();
-            Assert.AreEqual(7, d1["7"]);
+            XunitAssert.Equal(7, d1["7"]);
 
             var d2 = Observable.Range(1, 10).ToDictionary(x => x.ToString(), x => x * 2).First();
-            Assert.AreEqual(18, d2["9"]);
+            XunitAssert.Equal(18, d2["9"]);
 
             var d3 = Observable.Range(1, 10).ToDictionary(x => x.ToString(), EqualityComparer<string>.Default).First();
-            Assert.AreEqual(7, d3["7"]);
+            XunitAssert.Equal(7, d3["7"]);
         }
 
     }

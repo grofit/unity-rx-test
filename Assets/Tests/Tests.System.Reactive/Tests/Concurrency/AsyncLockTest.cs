@@ -5,6 +5,7 @@
 using System;
 using System.Reactive.Concurrency;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {

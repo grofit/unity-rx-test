@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -647,12 +648,12 @@ namespace ReactiveTests.Tests
 
                 if (i == 0)
                 {
-                    Assert.AreEqual(0, result.Count);
+                    XunitAssert.Equal(0, result.Count);
                 }
                 else
                 {
-                    Assert.AreEqual(1, result.Count);
-                    Assert.AreEqual(0, result[0]);
+                    XunitAssert.Equal(1, result.Count);
+                    XunitAssert.Equal(0, result[0]);
                 }
             }
         }
@@ -679,12 +680,12 @@ namespace ReactiveTests.Tests
 
                 if (i == 0)
                 {
-                    Assert.AreEqual(0, result.Count);
+                    XunitAssert.Equal(0, result.Count);
                 }
                 else
                 {
-                    Assert.AreEqual(1, result.Count);
-                    Assert.AreEqual(i - 1, result[0]);
+                    XunitAssert.Equal(1, result.Count);
+                    XunitAssert.Equal(i - 1, result[0]);
                 }
             }
         }

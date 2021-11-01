@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -57,7 +58,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
             var scheduler = new VirtualSchedulerTestScheduler();
-            scheduler.Schedule(() => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            scheduler.Schedule(() => { XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             scheduler.Start();
             Assert.True(ran);
         }
@@ -85,7 +86,7 @@ namespace ReactiveTests.Tests
         public void Virtual_InitialAndComparer_Now()
         {
             var s = new VirtualSchedulerTestScheduler("Bar", Comparer<string>.Default);
-            Assert.AreEqual(3, s.Now.Ticks);
+            XunitAssert.Equal(3, s.Now.Ticks);
         }
 
         [Test]
@@ -119,7 +120,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var ran = false;
             var scheduler = new VirtualSchedulerTestScheduler();
-            scheduler.Schedule(TimeSpan.FromSeconds(0.2), () => { Assert.AreEqual(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
+            scheduler.Schedule(TimeSpan.FromSeconds(0.2), () => { XunitAssert.Equal(id, Thread.CurrentThread.ManagedThreadId); ran = true; });
             scheduler.Start();
             Assert.True(ran, "ran");
         }

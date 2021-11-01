@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -8,11 +8,11 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
-    public class LastOrDefaultTest : ReactiveTest
+    public partial class LastOrDefaultTest : ReactiveTest
     {
 
         [Test]
@@ -26,20 +26,20 @@ namespace ReactiveTests.Tests
         [Test]
         public void LastOrDefault_Empty()
         {
-            Assert.AreEqual(default(int), Observable.Empty<int>().LastOrDefault());
+            XunitAssert.Equal(default, Observable.Empty<int>().LastOrDefault());
         }
 
         [Test]
         public void LastOrDefaultPredicate_Empty()
         {
-            Assert.AreEqual(default(int), Observable.Empty<int>().LastOrDefault(_ => true));
+            XunitAssert.Equal(default, Observable.Empty<int>().LastOrDefault(_ => true));
         }
 
         [Test]
         public void LastOrDefault_Return()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Return(value).LastOrDefault());
+            XunitAssert.Equal(value, Observable.Return(value).LastOrDefault());
         }
 
         [Test]
@@ -56,14 +56,14 @@ namespace ReactiveTests.Tests
         public void LastOrDefault_Range()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Range(value - 9, 10).LastOrDefault());
+            XunitAssert.Equal(value, Observable.Range(value - 9, 10).LastOrDefault());
         }
 
         [Test]
         public void LastOrDefaultPredicate_Range()
         {
             var value = 42;
-            Assert.AreEqual(50, Observable.Range(value, 10).LastOrDefault(i => i % 2 == 0));
+            XunitAssert.Equal(50, Observable.Range(value, 10).LastOrDefault(i => i % 2 == 0));
         }
 
     }

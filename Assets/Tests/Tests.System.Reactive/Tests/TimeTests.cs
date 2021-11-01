@@ -5,6 +5,7 @@
 using System;
 using System.Reactive;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -15,8 +16,8 @@ namespace ReactiveTests.Tests
         public void TimeInterval_Ctor_Properties()
         {
             var ti = new TimeInterval<int>(42, TimeSpan.FromSeconds(123.45));
-            Assert.AreEqual(42, ti.Value);
-            Assert.AreEqual(TimeSpan.FromSeconds(123.45), ti.Interval);
+            XunitAssert.Equal(42, ti.Value);
+            XunitAssert.Equal(TimeSpan.FromSeconds(123.45), ti.Interval);
         }
 
         [Test]
@@ -46,10 +47,10 @@ namespace ReactiveTests.Tests
         {
             var ti = new TimeInterval<string>(null, TimeSpan.FromSeconds(123.45));
             Assert.True(ti.GetHashCode() != 0);
-            Assert.AreEqual(ti.GetHashCode(), ti.GetHashCode());
+            XunitAssert.Equal(ti.GetHashCode(), ti.GetHashCode());
 
             var t2 = new TimeInterval<string>("", TimeSpan.FromSeconds(123.45));
-            Assert.AreNotEqual(ti.GetHashCode(), t2.GetHashCode());
+            XunitAssert.NotEqual(ti.GetHashCode(), t2.GetHashCode());
         }
 
         [Test]
@@ -88,8 +89,8 @@ namespace ReactiveTests.Tests
         {
             var o = DateTimeOffset.UtcNow;
             var ti = Timestamped.Create(42, o);
-            Assert.AreEqual(42, ti.Value);
-            Assert.AreEqual(o, ti.Timestamp);
+            XunitAssert.Equal(42, ti.Value);
+            XunitAssert.Equal(o, ti.Timestamp);
         }
 
         [Test]
@@ -97,8 +98,8 @@ namespace ReactiveTests.Tests
         {
             var o = new DateTimeOffset();
             var ti = new Timestamped<int>(42, o);
-            Assert.AreEqual(42, ti.Value);
-            Assert.AreEqual(o, ti.Timestamp);
+            XunitAssert.Equal(42, ti.Value);
+            XunitAssert.Equal(o, ti.Timestamp);
         }
 
         [Test]
@@ -128,10 +129,10 @@ namespace ReactiveTests.Tests
         {
             var ti = new Timestamped<string>(null, new DateTimeOffset());
             Assert.True(ti.GetHashCode() != 0);
-            Assert.AreEqual(ti.GetHashCode(), ti.GetHashCode());
+            XunitAssert.Equal(ti.GetHashCode(), ti.GetHashCode());
 
             var t2 = new Timestamped<string>("", new DateTimeOffset());
-            Assert.AreNotEqual(ti.GetHashCode(), t2.GetHashCode());
+            XunitAssert.NotEqual(ti.GetHashCode(), t2.GetHashCode());
         }
 
         [Test]

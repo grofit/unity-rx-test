@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -62,8 +63,8 @@ namespace ReactiveTests.Tests
                 OnCompleted<long>(400)
             );
 
-            Assert.AreEqual(1, createInvoked);
-            Assert.AreEqual(1, disposeInvoked);
+            XunitAssert.Equal(1, createInvoked);
+            XunitAssert.Equal(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -110,8 +111,8 @@ namespace ReactiveTests.Tests
                 OnCompleted<long>(400)
             );
 
-            Assert.AreEqual(1, createInvoked);
-            Assert.AreEqual(1, disposeInvoked);
+            XunitAssert.Equal(1, createInvoked);
+            XunitAssert.Equal(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -162,8 +163,8 @@ namespace ReactiveTests.Tests
                 OnError<long>(400, ex)
             );
 
-            Assert.AreEqual(1, createInvoked);
-            Assert.AreEqual(1, disposeInvoked);
+            XunitAssert.Equal(1, createInvoked);
+            XunitAssert.Equal(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 400)
@@ -212,8 +213,8 @@ namespace ReactiveTests.Tests
                 OnNext(300, 200L)
             );
 
-            Assert.AreEqual(1, createInvoked);
-            Assert.AreEqual(1, disposeInvoked);
+            XunitAssert.Equal(1, createInvoked);
+            XunitAssert.Equal(1, disposeInvoked);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 1000)
@@ -253,8 +254,8 @@ namespace ReactiveTests.Tests
                 OnError<int>(200, ex)
             );
 
-            Assert.AreEqual(0, createInvoked);
-            Assert.AreEqual(1, disposeInvoked);
+            XunitAssert.Equal(0, createInvoked);
+            XunitAssert.Equal(1, disposeInvoked);
         }
 
         [Test]
@@ -288,8 +289,8 @@ namespace ReactiveTests.Tests
                 OnError<int>(200, ex)
             );
 
-            Assert.AreEqual(1, createInvoked);
-            Assert.AreEqual(1, disposeInvoked);
+            XunitAssert.Equal(1, createInvoked);
+            XunitAssert.Equal(1, disposeInvoked);
 
             disposable.AssertEqual(
                 200,
@@ -309,7 +310,7 @@ namespace ReactiveTests.Tests
                 .Finally(() => order += "4")
                 .Subscribe();
 
-            Assert.AreEqual("1234", order);
+            XunitAssert.Equal("1234", order);
         }
 
         [Test]
@@ -325,7 +326,7 @@ namespace ReactiveTests.Tests
                 .Subscribe()
                 .Dispose();
 
-            Assert.AreEqual("1234", order);
+            XunitAssert.Equal("1234", order);
         }
     }
 }

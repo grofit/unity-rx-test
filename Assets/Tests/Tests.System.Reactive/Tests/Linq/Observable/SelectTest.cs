@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -92,7 +93,7 @@ namespace ReactiveTests.Tests
                 Subscribe(0, 500)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -134,7 +135,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.AreEqual(4, invoked);
+            XunitAssert.Equal(4, invoked);
         }
 
         [Test]
@@ -171,7 +172,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 1000)
             );
 
-            Assert.AreEqual(4, invoked);
+            XunitAssert.Equal(4, invoked);
         }
 
         [Test]
@@ -215,7 +216,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.AreEqual(4, invoked);
+            XunitAssert.Equal(4, invoked);
         }
 
         [Test]
@@ -262,7 +263,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 290)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -341,7 +342,7 @@ namespace ReactiveTests.Tests
                 Subscribe(0, 500)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -383,7 +384,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.AreEqual(4, invoked);
+            XunitAssert.Equal(4, invoked);
         }
 
         [Test]
@@ -420,7 +421,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 1000)
             );
 
-            Assert.AreEqual(4, invoked);
+            XunitAssert.Equal(4, invoked);
         }
 
         [Test]
@@ -463,7 +464,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 400)
             );
 
-            Assert.AreEqual(4, invoked);
+            XunitAssert.Equal(4, invoked);
         }
 
         [Test]
@@ -510,7 +511,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 290)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]

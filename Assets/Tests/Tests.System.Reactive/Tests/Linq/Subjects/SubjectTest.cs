@@ -11,6 +11,7 @@ using System.Reactive.Subjects;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -388,10 +389,10 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.Subscribe(null));
             s.Subscribe(x => _x = x);
-            Assert.AreEqual(42, _x);
+            XunitAssert.Equal(42, _x);
 
             s.OnNext(21);
-            Assert.AreEqual(21, _x);
+            XunitAssert.Equal(21, _x);
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.OnError(null));
             var e = new Exception();
@@ -416,10 +417,10 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.Subscribe(null));
             s.Subscribe(x => _x = x);
-            Assert.AreEqual(42, _x);
+            XunitAssert.Equal(42, _x);
 
             s.OnNext(21);
-            Assert.AreEqual(21, _x);
+            XunitAssert.Equal(21, _x);
 
             ReactiveAssert.Throws<ArgumentNullException>(() => s.OnError(null));
             var e = new Exception();
@@ -469,7 +470,7 @@ namespace ReactiveTests.Tests
                 u.Join();
             }
 
-            Assert.AreEqual(Enumerable.Range(0, N).Sum(), y);
+            XunitAssert.Equal(Enumerable.Range(0, N).Sum(), y);
         }
 
         [Test]
@@ -497,7 +498,7 @@ namespace ReactiveTests.Tests
                 u.Join();
             }
 
-            Assert.AreEqual(Enumerable.Range(0, N).Sum(), y);
+            XunitAssert.Equal(Enumerable.Range(0, N).Sum(), y);
         }
 #endif
 

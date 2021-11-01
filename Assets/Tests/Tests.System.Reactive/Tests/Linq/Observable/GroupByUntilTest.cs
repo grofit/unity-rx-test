@@ -12,6 +12,7 @@ using System.Text;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -99,7 +100,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
+            XunitAssert.Equal(12, keyInvoked);
         }
 
         [Test]
@@ -164,8 +165,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
-            Assert.AreEqual(12, eleInvoked);
+            XunitAssert.Equal(12, keyInvoked);
+            XunitAssert.Equal(12, eleInvoked);
         }
 
         [Test]
@@ -231,8 +232,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
-            Assert.AreEqual(12, eleInvoked);
+            XunitAssert.Equal(12, keyInvoked);
+            XunitAssert.Equal(12, eleInvoked);
         }
 
         [Test]
@@ -295,8 +296,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 355)
             );
 
-            Assert.AreEqual(5, keyInvoked);
-            Assert.AreEqual(5, eleInvoked);
+            XunitAssert.Equal(5, keyInvoked);
+            XunitAssert.Equal(5, eleInvoked);
         }
 
         [Test]
@@ -367,8 +368,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 480)
             );
 
-            Assert.AreEqual(10, keyInvoked);
-            Assert.AreEqual(9, eleInvoked);
+            XunitAssert.Equal(10, keyInvoked);
+            XunitAssert.Equal(9, eleInvoked);
         }
 
         [Test]
@@ -439,8 +440,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 480)
             );
 
-            Assert.AreEqual(10, keyInvoked);
-            Assert.AreEqual(10, eleInvoked);
+            XunitAssert.Equal(10, keyInvoked);
+            XunitAssert.Equal(10, eleInvoked);
         }
 
         [Test]
@@ -502,8 +503,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 310)
             );
 
-            Assert.AreEqual(4, keyInvoked);
-            Assert.AreEqual(3, eleInvoked);
+            XunitAssert.Equal(4, keyInvoked);
+            XunitAssert.Equal(3, eleInvoked);
         }
 
         [Test]
@@ -567,8 +568,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(8, keyInvoked);
-            Assert.AreEqual(7, eleInvoked);
+            XunitAssert.Equal(8, keyInvoked);
+            XunitAssert.Equal(7, eleInvoked);
         }
 
         [Test]
@@ -626,7 +627,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnCompleted<string>(320)
@@ -712,7 +713,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -808,7 +809,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnCompleted<string>(320)
@@ -894,7 +895,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -988,7 +989,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(3, inners.Count);
+            XunitAssert.Equal(3, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -1079,7 +1080,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -1162,7 +1163,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -1247,7 +1248,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -1336,7 +1337,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(2, inners.Count);
+            XunitAssert.Equal(2, inners.Count);
 
             outerResults.Messages.AssertEqual(
                 OnNext(220, "foo"),
@@ -1421,7 +1422,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -1522,7 +1523,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -1753,8 +1754,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
-            Assert.AreEqual(12, eleInvoked);
+            XunitAssert.Equal(12, keyInvoked);
+            XunitAssert.Equal(12, eleInvoked);
         }
 
         [Test]
@@ -1825,7 +1826,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var res = scheduler.Start(() => xs.GroupByUntil(x => x[0] == 'b' ? null : x.ToUpper(), g => { if (g.Key == null) { n++; } return Observable.Timer(TimeSpan.FromTicks(50), scheduler); }).SelectMany(g => g, (g, x) => (g.Key ?? "(null)") + x));
 
-            Assert.AreEqual(2, n);
+            XunitAssert.Equal(2, n);
 
             res.Messages.AssertEqual(
                 OnNext(220, "(null)bar"),
@@ -1856,7 +1857,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var res = scheduler.Start(() => xs.GroupByUntil(x => x[0] == 'b' ? null : x.ToUpper(), g => { if (g.Key == null) { n++; } return Observable.Timer(TimeSpan.FromTicks(50), scheduler).IgnoreElements(); }).SelectMany(g => g, (g, x) => (g.Key ?? "(null)") + x));
 
-            Assert.AreEqual(2, n);
+            XunitAssert.Equal(2, n);
 
             res.Messages.AssertEqual(
                 OnNext(220, "(null)bar"),
@@ -1997,7 +1998,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
+            XunitAssert.Equal(12, keyInvoked);
         }
 
         [Test]
@@ -2063,8 +2064,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
-            Assert.AreEqual(12, eleInvoked);
+            XunitAssert.Equal(12, keyInvoked);
+            XunitAssert.Equal(12, eleInvoked);
         }
 
         [Test]
@@ -2131,8 +2132,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
-            Assert.AreEqual(12, eleInvoked);
+            XunitAssert.Equal(12, keyInvoked);
+            XunitAssert.Equal(12, eleInvoked);
         }
 
         [Test]
@@ -2196,8 +2197,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 355)
             );
 
-            Assert.AreEqual(5, keyInvoked);
-            Assert.AreEqual(5, eleInvoked);
+            XunitAssert.Equal(5, keyInvoked);
+            XunitAssert.Equal(5, eleInvoked);
         }
 
         [Test]
@@ -2269,8 +2270,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 480)
             );
 
-            Assert.AreEqual(10, keyInvoked);
-            Assert.AreEqual(9, eleInvoked);
+            XunitAssert.Equal(10, keyInvoked);
+            XunitAssert.Equal(9, eleInvoked);
         }
 
         [Test]
@@ -2342,8 +2343,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 480)
             );
 
-            Assert.AreEqual(10, keyInvoked);
-            Assert.AreEqual(10, eleInvoked);
+            XunitAssert.Equal(10, keyInvoked);
+            XunitAssert.Equal(10, eleInvoked);
         }
 
         [Test]
@@ -2406,8 +2407,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 310)
             );
 
-            Assert.AreEqual(4, keyInvoked);
-            Assert.AreEqual(3, eleInvoked);
+            XunitAssert.Equal(4, keyInvoked);
+            XunitAssert.Equal(3, eleInvoked);
         }
 
         [Test]
@@ -2472,8 +2473,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(8, keyInvoked);
-            Assert.AreEqual(7, eleInvoked);
+            XunitAssert.Equal(8, keyInvoked);
+            XunitAssert.Equal(7, eleInvoked);
         }
 
         [Test]
@@ -2531,7 +2532,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnCompleted<string>(320)
@@ -2617,7 +2618,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -2713,7 +2714,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnCompleted<string>(320)
@@ -2799,7 +2800,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -2893,7 +2894,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(3, inners.Count);
+            XunitAssert.Equal(3, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -2984,7 +2985,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -3067,7 +3068,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -3152,7 +3153,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -3241,7 +3242,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(2, inners.Count);
+            XunitAssert.Equal(2, inners.Count);
 
             outerResults.Messages.AssertEqual(
                 OnNext(220, "foo"),
@@ -3326,7 +3327,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -3427,7 +3428,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(5, inners.Count);
+            XunitAssert.Equal(5, inners.Count);
 
             res["foo"].Messages.AssertEqual(
                 OnNext(220, "oof  "),
@@ -3659,8 +3660,8 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 570)
             );
 
-            Assert.AreEqual(12, keyInvoked);
-            Assert.AreEqual(12, eleInvoked);
+            XunitAssert.Equal(12, keyInvoked);
+            XunitAssert.Equal(12, eleInvoked);
         }
 
         [Test]
@@ -3731,7 +3732,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var res = scheduler.Start(() => xs.GroupByUntil(x => x[0] == 'b' ? null : x.ToUpper(), g => { if (g.Key == null) { n++; } return Observable.Timer(TimeSpan.FromTicks(50), scheduler); }, _groupByUntilCapacity).SelectMany(g => g, (g, x) => (g.Key ?? "(null)") + x));
 
-            Assert.AreEqual(2, n);
+            XunitAssert.Equal(2, n);
 
             res.Messages.AssertEqual(
                 OnNext(220, "(null)bar"),
@@ -3762,7 +3763,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var res = scheduler.Start(() => xs.GroupByUntil(x => x[0] == 'b' ? null : x.ToUpper(), g => { if (g.Key == null) { n++; } return Observable.Timer(TimeSpan.FromTicks(50), scheduler).IgnoreElements(); }, _groupByUntilCapacity).SelectMany(g => g, (g, x) => (g.Key ?? "(null)") + x));
 
-            Assert.AreEqual(2, n);
+            XunitAssert.Equal(2, n);
 
             res.Messages.AssertEqual(
                 OnNext(220, "(null)bar"),

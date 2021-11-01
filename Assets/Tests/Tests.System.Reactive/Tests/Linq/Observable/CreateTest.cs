@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -12,11 +12,11 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
-    public class CreateTest : ReactiveTest
+    public partial class CreateTest : ReactiveTest
     {
 
         [Test]
@@ -988,11 +988,11 @@ namespace ReactiveTests.Tests
 
             var obs = scheduler.Start(() => ObservableEx.Create(() => { throw new InvalidOperationException(); }));
 
-            Assert.AreEqual(1, obs.Messages.Count);
+            XunitAssert.Equal(1, obs.Messages.Count);
 
             var notification = obs.Messages[0].Value;
-            Assert.AreEqual(NotificationKind.OnError, notification.Kind);
-            Assert.AreEqual(typeof(InvalidOperationException), notification.Exception?.GetType());
+            XunitAssert.Equal(NotificationKind.OnError, notification.Kind);
+            XunitAssert.IsType<InvalidOperationException>(notification.Exception);
         }
 
         private static IEnumerable<IObservable<object>> _IteratorScenario_Void(int x, int y)

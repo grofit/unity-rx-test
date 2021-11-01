@@ -7,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -38,7 +39,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var nt = TaskPoolScheduler.Default;
             var evt = new ManualResetEvent(false);
-            nt.Schedule(() => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
+            nt.Schedule(() => { XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
         }
 
@@ -48,7 +49,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var nt = TaskPoolScheduler.Default;
             var evt = new ManualResetEvent(false);
-            nt.Schedule(TimeSpan.Zero, () => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
+            nt.Schedule(TimeSpan.Zero, () => { XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
         }
 
@@ -58,7 +59,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var nt = TaskPoolScheduler.Default;
             var evt = new ManualResetEvent(false);
-            nt.Schedule(TimeSpan.FromMilliseconds(1), () => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
+            nt.Schedule(TimeSpan.FromMilliseconds(1), () => { XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
         }
 

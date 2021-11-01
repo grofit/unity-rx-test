@@ -7,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -324,12 +325,12 @@ namespace ReactiveTests.Tests
                 .Timeout(TimeSpan.FromSeconds(5))
                 .ToList().First();
 
-            Assert.AreEqual(1002, result.Count);
+            XunitAssert.Equal(1002, result.Count);
 
             var j = 0;
             for (var i = -1; i <= 1000; i++)
             {
-                Assert.AreEqual(i, result[j++]);
+                XunitAssert.Equal(i, result[j++]);
             }
         }
 
@@ -345,12 +346,12 @@ namespace ReactiveTests.Tests
                 .Timeout(TimeSpan.FromSeconds(5))
                 .ToList().First();
 
-            Assert.AreEqual(1002, result.Count);
+            XunitAssert.Equal(1002, result.Count);
 
             var j = 0;
             for (var i = -1; i <= 1000; i++)
             {
-                Assert.AreEqual(i, result[j++]);
+                XunitAssert.Equal(i, result[j++]);
             }
         }
     }

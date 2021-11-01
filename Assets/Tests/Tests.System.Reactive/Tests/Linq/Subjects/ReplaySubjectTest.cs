@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -1657,11 +1658,11 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(3, observer.Messages.Count);
+            XunitAssert.Equal(3, observer.Messages.Count);
 
-            Assert.AreEqual(1, observer.Messages[0].Value.Value);
-            Assert.AreEqual(2, observer.Messages[1].Value.Value);
-            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
+            XunitAssert.Equal(1, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(2, observer.Messages[1].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
         }
 
         [Test]
@@ -1676,10 +1677,10 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(2, observer.Messages.Count);
+            XunitAssert.Equal(2, observer.Messages.Count);
 
-            Assert.AreEqual(2, observer.Messages[0].Value.Value);
-            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[1].Value.Kind);
+            XunitAssert.Equal(2, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnCompleted, observer.Messages[1].Value.Kind);
         }
 
         [Test]
@@ -1695,11 +1696,11 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(3, observer.Messages.Count);
+            XunitAssert.Equal(3, observer.Messages.Count);
 
-            Assert.AreEqual(2, observer.Messages[0].Value.Value);
-            Assert.AreEqual(3, observer.Messages[1].Value.Value);
-            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
+            XunitAssert.Equal(2, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(3, observer.Messages[1].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnCompleted, observer.Messages[2].Value.Kind);
         }
 
         [Test]
@@ -1715,12 +1716,12 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(4, observer.Messages.Count);
+            XunitAssert.Equal(4, observer.Messages.Count);
 
-            Assert.AreEqual(1, observer.Messages[0].Value.Value);
-            Assert.AreEqual(2, observer.Messages[1].Value.Value);
-            Assert.AreEqual(3, observer.Messages[2].Value.Value);
-            Assert.AreEqual(NotificationKind.OnCompleted, observer.Messages[3].Value.Kind);
+            XunitAssert.Equal(1, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(2, observer.Messages[1].Value.Value);
+            XunitAssert.Equal(3, observer.Messages[2].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnCompleted, observer.Messages[3].Value.Kind);
         }
 
         [Test]
@@ -1736,12 +1737,12 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(3, observer.Messages.Count);
+            XunitAssert.Equal(3, observer.Messages.Count);
 
-            Assert.AreEqual(1, observer.Messages[0].Value.Value);
-            Assert.AreEqual(2, observer.Messages[1].Value.Value);
-            Assert.AreEqual(NotificationKind.OnError, observer.Messages[2].Value.Kind);
-            Assert.AreEqual(expectedException, observer.Messages[2].Value.Exception);
+            XunitAssert.Equal(1, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(2, observer.Messages[1].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnError, observer.Messages[2].Value.Kind);
+            XunitAssert.Equal(expectedException, observer.Messages[2].Value.Exception);
         }
 
         [Test]
@@ -1757,11 +1758,11 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(2, observer.Messages.Count);
+            XunitAssert.Equal(2, observer.Messages.Count);
 
-            Assert.AreEqual(2, observer.Messages[0].Value.Value);
-            Assert.AreEqual(NotificationKind.OnError, observer.Messages[1].Value.Kind);
-            Assert.AreEqual(expectedException, observer.Messages[1].Value.Exception);
+            XunitAssert.Equal(2, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnError, observer.Messages[1].Value.Kind);
+            XunitAssert.Equal(expectedException, observer.Messages[1].Value.Exception);
         }
 
         [Test]
@@ -1778,12 +1779,12 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(3, observer.Messages.Count);
+            XunitAssert.Equal(3, observer.Messages.Count);
 
-            Assert.AreEqual(2, observer.Messages[0].Value.Value);
-            Assert.AreEqual(3, observer.Messages[1].Value.Value);
-            Assert.AreEqual(NotificationKind.OnError, observer.Messages[2].Value.Kind);
-            Assert.AreEqual(expectedException, observer.Messages[2].Value.Exception);
+            XunitAssert.Equal(2, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(3, observer.Messages[1].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnError, observer.Messages[2].Value.Kind);
+            XunitAssert.Equal(expectedException, observer.Messages[2].Value.Exception);
         }
 
         [Test]
@@ -1800,13 +1801,13 @@ namespace ReactiveTests.Tests
             var observer = scheduler.CreateObserver<int>();
             s.Subscribe(observer);
 
-            Assert.AreEqual(4, observer.Messages.Count);
+            XunitAssert.Equal(4, observer.Messages.Count);
 
-            Assert.AreEqual(1, observer.Messages[0].Value.Value);
-            Assert.AreEqual(2, observer.Messages[1].Value.Value);
-            Assert.AreEqual(3, observer.Messages[2].Value.Value);
-            Assert.AreEqual(NotificationKind.OnError, observer.Messages[3].Value.Kind);
-            Assert.AreEqual(expectedException, observer.Messages[3].Value.Exception);
+            XunitAssert.Equal(1, observer.Messages[0].Value.Value);
+            XunitAssert.Equal(2, observer.Messages[1].Value.Value);
+            XunitAssert.Equal(3, observer.Messages[2].Value.Value);
+            XunitAssert.Equal(NotificationKind.OnError, observer.Messages[3].Value.Kind);
+            XunitAssert.Equal(expectedException, observer.Messages[3].Value.Exception);
         }
 
         [Test]

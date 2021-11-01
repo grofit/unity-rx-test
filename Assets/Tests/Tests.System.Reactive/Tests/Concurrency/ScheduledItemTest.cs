@@ -8,6 +8,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests
 {
@@ -102,9 +103,9 @@ namespace ReactiveTests
             Assert.False(si1 == null);
             Assert.False(null == si1);
 
-            Assert.AreEqual(si1.GetHashCode(), si1.GetHashCode());
-            Assert.AreNotEqual(si1.GetHashCode(), si2.GetHashCode());
-            Assert.AreNotEqual(si1.GetHashCode(), si3.GetHashCode());
+            XunitAssert.Equal(si1.GetHashCode(), si1.GetHashCode());
+            XunitAssert.NotEqual(si1.GetHashCode(), si2.GetHashCode());
+            XunitAssert.NotEqual(si1.GetHashCode(), si3.GetHashCode());
         }
 
         private class SI : ScheduledItem<int>

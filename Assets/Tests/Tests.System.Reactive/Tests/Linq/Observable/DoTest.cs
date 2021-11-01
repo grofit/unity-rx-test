@@ -7,6 +7,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -54,8 +55,8 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; sum -= x; })
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -89,7 +90,7 @@ namespace ReactiveTests.Tests
                 xs.Do(_ => { i++; })
             );
 
-            Assert.AreEqual(4, i);
+            XunitAssert.Equal(4, i);
 
             res.Messages.AssertEqual(
                 OnNext(210, 2),
@@ -125,8 +126,8 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; sum -= x; }, () => { completed = true; })
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.True(completed);
 
             res.Messages.AssertEqual(
@@ -155,7 +156,7 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; }, () => { completed = true; })
             );
 
-            Assert.AreEqual(0, i);
+            XunitAssert.Equal(0, i);
             Assert.False(completed);
 
             res.Messages.AssertEqual(
@@ -189,8 +190,8 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; sum -= x; }, e => { sawError = e == ex; })
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.True(sawError);
 
             res.Messages.AssertEqual(
@@ -227,8 +228,8 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; sum -= x; }, _ => { sawError = true; })
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.False(sawError);
 
             res.Messages.AssertEqual(
@@ -266,8 +267,8 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; sum -= x; }, e => { sawError = true; }, () => { hasCompleted = true; })
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.False(sawError);
             Assert.True(hasCompleted);
 
@@ -308,8 +309,8 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; sum -= x; }, e => { sawError = e == ex; }, () => { hasCompleted = true; })
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.True(sawError);
             Assert.False(hasCompleted);
 
@@ -340,7 +341,7 @@ namespace ReactiveTests.Tests
                 xs.Do(x => { i++; }, e => { sawError = true; }, () => { hasCompleted = true; })
             );
 
-            Assert.AreEqual(0, i);
+            XunitAssert.Equal(0, i);
             Assert.False(sawError);
             Assert.False(hasCompleted);
 
@@ -376,8 +377,8 @@ namespace ReactiveTests.Tests
                 xs.Do(Observer.Create<int>(x => { i++; sum -= x; }, e => { sawError = e == ex; }, () => { hasCompleted = true; }))
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.True(sawError);
             Assert.False(hasCompleted);
 
@@ -416,8 +417,8 @@ namespace ReactiveTests.Tests
                 xs.Do(Observer.Create<int>(x => { i++; sum -= x; }, e => { sawError = true; }, () => { hasCompleted = true; }))
             );
 
-            Assert.AreEqual(4, i);
-            Assert.AreEqual(0, sum);
+            XunitAssert.Equal(4, i);
+            XunitAssert.Equal(0, sum);
             Assert.False(sawError);
             Assert.True(hasCompleted);
 

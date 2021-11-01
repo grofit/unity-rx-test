@@ -8,6 +8,7 @@ using System.Reactive.Concurrency;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -39,7 +40,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var nt = NewThreadScheduler.Default;
             var evt = new ManualResetEvent(false);
-            nt.Schedule(() => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
+            nt.Schedule(() => { XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
         }
 
@@ -49,7 +50,7 @@ namespace ReactiveTests.Tests
             var id = Thread.CurrentThread.ManagedThreadId;
             var nt = NewThreadScheduler.Default;
             var evt = new ManualResetEvent(false);
-            nt.Schedule(TimeSpan.FromSeconds(0.2), () => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
+            nt.Schedule(TimeSpan.FromSeconds(0.2), () => { XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
         }
 #endif

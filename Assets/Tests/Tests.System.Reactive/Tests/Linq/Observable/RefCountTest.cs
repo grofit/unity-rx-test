@@ -11,6 +11,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -98,13 +99,13 @@ namespace ReactiveTests.Tests
             var refd = conn.RefCount();
 
             var dis1 = refd.Subscribe();
-            Assert.AreEqual(1, count);
-            Assert.AreEqual(1, subject.SubscribeCount);
+            XunitAssert.Equal(1, count);
+            XunitAssert.Equal(1, subject.SubscribeCount);
             Assert.False(disconnected);
 
             var dis2 = refd.Subscribe();
-            Assert.AreEqual(1, count);
-            Assert.AreEqual(2, subject.SubscribeCount);
+            XunitAssert.Equal(1, count);
+            XunitAssert.Equal(2, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis1.Dispose();
@@ -114,8 +115,8 @@ namespace ReactiveTests.Tests
             disconnected = false;
 
             var dis3 = refd.Subscribe();
-            Assert.AreEqual(2, count);
-            Assert.AreEqual(3, subject.SubscribeCount);
+            XunitAssert.Equal(2, count);
+            XunitAssert.Equal(3, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis3.Dispose();
@@ -218,7 +219,7 @@ namespace ReactiveTests.Tests
 
             using (refCount.Subscribe(value => seen = value, () => terminated = true))
             {
-                Assert.AreEqual(36, seen);
+                XunitAssert.Equal(36, seen);
             }
 
             seen = 0;
@@ -227,7 +228,7 @@ namespace ReactiveTests.Tests
 
             using (refCount.Subscribe(value => seen = value, () => terminated = true))
             {
-                Assert.AreEqual(0, seen);
+                XunitAssert.Equal(0, seen);
                 Assert.True(terminated);
             }
 
@@ -237,7 +238,7 @@ namespace ReactiveTests.Tests
 
             using (refCount.Subscribe(value => seen = value, () => terminated = true))
             {
-                Assert.AreEqual(36, seen);
+                XunitAssert.Equal(36, seen);
                 Assert.False(terminated);
             }
         }
@@ -310,13 +311,13 @@ namespace ReactiveTests.Tests
             var refd = conn.RefCount(TimeSpan.FromTicks(20), scheduler);
 
             var dis1 = refd.Subscribe();
-            Assert.AreEqual(1, count);
-            Assert.AreEqual(1, subject.SubscribeCount);
+            XunitAssert.Equal(1, count);
+            XunitAssert.Equal(1, subject.SubscribeCount);
             Assert.False(disconnected);
 
             var dis2 = refd.Subscribe();
-            Assert.AreEqual(1, count);
-            Assert.AreEqual(2, subject.SubscribeCount);
+            XunitAssert.Equal(1, count);
+            XunitAssert.Equal(2, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis1.Dispose();
@@ -332,8 +333,8 @@ namespace ReactiveTests.Tests
             disconnected = false;
 
             var dis3 = refd.Subscribe();
-            Assert.AreEqual(2, count);
-            Assert.AreEqual(3, subject.SubscribeCount);
+            XunitAssert.Equal(2, count);
+            XunitAssert.Equal(3, subject.SubscribeCount);
             Assert.False(disconnected);
 
             dis3.Dispose();
@@ -443,12 +444,12 @@ namespace ReactiveTests.Tests
             var o2 = o1.Publish().RefCount();
 
             var s1 = o2.Subscribe();
-            Assert.AreEqual(1, subscribed);
-            Assert.AreEqual(1, unsubscribed);
+            XunitAssert.Equal(1, subscribed);
+            XunitAssert.Equal(1, unsubscribed);
 
             var s2 = o2.Subscribe();
-            Assert.AreEqual(1, subscribed);
-            Assert.AreEqual(1, unsubscribed);
+            XunitAssert.Equal(1, subscribed);
+            XunitAssert.Equal(1, unsubscribed);
         }
 
         [Test]
@@ -463,11 +464,11 @@ namespace ReactiveTests.Tests
             .Publish()
             .RefCount(2);
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
 
             source.Subscribe();
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
         }
 
         [Test]
@@ -482,23 +483,23 @@ namespace ReactiveTests.Tests
             .Publish()
             .RefCount(2);
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
 
             var list1 = new List<int>();
             source.Subscribe(list1.Add);
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
             CollectionAssert.IsEmpty(list1);
 
             var list2 = new List<int>();
             source.Subscribe(list2.Add);
 
-            Assert.AreEqual(1, connected);
+            XunitAssert.Equal(1, connected);
 
             var expected = new List<int>(new[] { 1, 2, 3, 4, 5 });
 
-            Assert.AreEqual(expected, list1);
-            Assert.AreEqual(expected, list2);
+            XunitAssert.Equal(expected, list1);
+            XunitAssert.Equal(expected, list2);
         }
 
         [Test]
@@ -513,11 +514,11 @@ namespace ReactiveTests.Tests
             .Publish()
             .RefCount(2, TimeSpan.FromMinutes(1));
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
 
             source.Subscribe();
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
         }
 
         [Test]
@@ -532,23 +533,23 @@ namespace ReactiveTests.Tests
             .Publish()
             .RefCount(2, TimeSpan.FromMinutes(1));
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
 
             var list1 = new List<int>();
             source.Subscribe(list1.Add);
 
-            Assert.AreEqual(0, connected);
+            XunitAssert.Equal(0, connected);
             CollectionAssert.IsEmpty(list1);
 
             var list2 = new List<int>();
             source.Subscribe(list2.Add);
 
-            Assert.AreEqual(1, connected);
+            XunitAssert.Equal(1, connected);
 
             var expected = new List<int>(new[] { 1, 2, 3, 4, 5 });
 
-            Assert.AreEqual(expected, list1);
-            Assert.AreEqual(expected, list2);
+            XunitAssert.Equal(expected, list1);
+            XunitAssert.Equal(expected, list2);
         }
     }
 }

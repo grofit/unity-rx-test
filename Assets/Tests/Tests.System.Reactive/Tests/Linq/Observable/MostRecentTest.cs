@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -49,18 +50,18 @@ namespace ReactiveTests.Tests
             var res = src.MostRecent(42).GetEnumerator();
 
             Assert.True(res.MoveNext());
-            Assert.AreEqual(42, res.Current);
+            XunitAssert.Equal(42, res.Current);
             Assert.True(res.MoveNext());
-            Assert.AreEqual(42, res.Current);
+            XunitAssert.Equal(42, res.Current);
 
             for (var i = 1; i <= 2; i++)
             {
                 evt.Set();
                 nxt.WaitOne();
                 Assert.True(res.MoveNext());
-                Assert.AreEqual(i, res.Current);
+                XunitAssert.Equal(i, res.Current);
                 Assert.True(res.MoveNext());
-                Assert.AreEqual(i, res.Current);
+                XunitAssert.Equal(i, res.Current);
             }
 
             evt.Set();
@@ -182,16 +183,16 @@ namespace ReactiveTests.Tests
             var res = src.MostRecent(42).GetEnumerator();
 
             Assert.True(res.MoveNext());
-            Assert.AreEqual(42, res.Current);
+            XunitAssert.Equal(42, res.Current);
             Assert.True(res.MoveNext());
-            Assert.AreEqual(42, res.Current);
+            XunitAssert.Equal(42, res.Current);
 
             evt.Set();
             nxt.WaitOne();
             Assert.True(res.MoveNext());
-            Assert.AreEqual(1, res.Current);
+            XunitAssert.Equal(1, res.Current);
             Assert.True(res.MoveNext());
-            Assert.AreEqual(1, res.Current);
+            XunitAssert.Equal(1, res.Current);
 
             evt.Set();
             nxt.WaitOne();

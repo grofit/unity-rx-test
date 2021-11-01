@@ -10,6 +10,7 @@ using System.Reactive.Subjects;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -45,8 +46,8 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(250, t);
-            Assert.AreEqual(42, result);
+            XunitAssert.Equal(250, t);
+            XunitAssert.Equal(42, result);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100)
@@ -85,7 +86,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(200, t);
+            XunitAssert.Equal(200, t);
 
             xs.Subscriptions.AssertEqual(
             );
@@ -123,7 +124,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(210, t);
+            XunitAssert.Equal(210, t);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(100, 210)
@@ -160,9 +161,9 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(100, s);
-            Assert.AreEqual(260, t);
-            Assert.AreEqual(42, result);
+            XunitAssert.Equal(100, s);
+            XunitAssert.Equal(260, t);
+            XunitAssert.Equal(42, result);
         }
 
         [Test]
@@ -207,7 +208,7 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.False(s.HasValue);
-            Assert.AreEqual(200, t);
+            XunitAssert.Equal(200, t);
         }
 
         [Test]
@@ -253,9 +254,9 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(100, s);
-            Assert.AreEqual(210, d);
-            Assert.AreEqual(210, t);
+            XunitAssert.Equal(100, s);
+            XunitAssert.Equal(210, d);
+            XunitAssert.Equal(210, t);
         }
     }
 }

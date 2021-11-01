@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -958,7 +959,7 @@ namespace ReactiveTests.Tests
             xs.Messages[6].Value.Value.Subscriptions.AssertEqual(
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -1577,7 +1578,7 @@ namespace ReactiveTests.Tests
             xs.Messages[6].Value.Value.Subscriptions.AssertEqual(
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -1674,7 +1675,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             inners[0].Subscriptions.AssertEqual(
                 Subscribe(210, 210)
@@ -1915,7 +1916,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -1969,7 +1970,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(3, inners.Count);
+            XunitAssert.Equal(3, inners.Count);
 
             inners[0].Subscriptions.AssertEqual(
                 Subscribe(210, 210)
@@ -2058,7 +2059,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         private class CurrentThrowsEnumerable<T> : IEnumerable<T>
@@ -2444,7 +2445,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 600)
             );
 
-            Assert.AreEqual(4, inners.Count);
+            XunitAssert.Equal(4, inners.Count);
 
             inners[0].Subscriptions.AssertEqual(
                 Subscribe(210, 210)
@@ -2685,7 +2686,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -2739,7 +2740,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(3, inners.Count);
+            XunitAssert.Equal(3, inners.Count);
 
             inners[0].Subscriptions.AssertEqual(
                 Subscribe(210, 210)
@@ -2828,7 +2829,7 @@ namespace ReactiveTests.Tests
                 Subscribe(200, 420)
             );
 
-            Assert.AreEqual(3, invoked);
+            XunitAssert.Equal(3, invoked);
         }
 
         [Test]
@@ -5459,8 +5460,8 @@ namespace ReactiveTests.Tests
 
             lst.AssertEqual(new[] { 42 });
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -5505,8 +5506,8 @@ namespace ReactiveTests.Tests
             lst.AssertEqual(new[] { 42 });
             Assert.AreSame(ex, err);
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -5560,8 +5561,8 @@ namespace ReactiveTests.Tests
 
             Assert.False(done);
             Assert.AreSame(ex, err);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(0, m);
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(0, m);
         }
 
         [Test]
@@ -5852,8 +5853,8 @@ namespace ReactiveTests.Tests
 
             lst.AssertEqual(new[] { 42 + 1 });
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -5898,8 +5899,8 @@ namespace ReactiveTests.Tests
             lst.AssertEqual(new[] { 42 + 1 });
             Assert.AreSame(ex, err);
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -5953,8 +5954,8 @@ namespace ReactiveTests.Tests
 
             Assert.False(done);
             Assert.AreSame(ex, err);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(0, m);
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(0, m);
         }
 
         [Test]
@@ -6391,8 +6392,8 @@ namespace ReactiveTests.Tests
 
             lst.AssertEqual(new[] { 42 });
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -6437,8 +6438,8 @@ namespace ReactiveTests.Tests
             lst.AssertEqual(new[] { 42 });
             Assert.AreSame(ex, err);
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -6492,8 +6493,8 @@ namespace ReactiveTests.Tests
 
             Assert.False(done);
             Assert.AreSame(ex, err);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(0, m);
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(0, m);
         }
 
         [Test]
@@ -6784,8 +6785,8 @@ namespace ReactiveTests.Tests
 
             lst.AssertEqual(new[] { 42 + 1 });
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -6830,8 +6831,8 @@ namespace ReactiveTests.Tests
             lst.AssertEqual(new[] { 42 + 1 });
             Assert.AreSame(ex, err);
             Assert.False(done);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(1, m); // tcss[1] was already finished
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(1, m); // tcss[1] was already finished
         }
 
         [Test]
@@ -6885,8 +6886,8 @@ namespace ReactiveTests.Tests
 
             Assert.False(done);
             Assert.AreSame(ex, err);
-            Assert.AreEqual(2, n);
-            Assert.AreEqual(0, m);
+            XunitAssert.Equal(2, n);
+            XunitAssert.Equal(0, m);
         }
 
     }

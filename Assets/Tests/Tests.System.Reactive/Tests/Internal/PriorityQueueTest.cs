@@ -4,6 +4,7 @@
 
 using System.Reactive;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -16,15 +17,15 @@ namespace ReactiveTests.Tests
 
             for (var i = 0; i < 16; i++)
             {
-                Assert.AreEqual(0, q.Count);
+                XunitAssert.Equal(0, q.Count);
 
                 q.Enqueue(i);
 
-                Assert.AreEqual(1, q.Count);
-                Assert.AreEqual(i, q.Peek());
-                Assert.AreEqual(1, q.Count);
-                Assert.AreEqual(i, q.Dequeue());
-                Assert.AreEqual(0, q.Count);
+                XunitAssert.Equal(1, q.Count);
+                XunitAssert.Equal(i, q.Peek());
+                XunitAssert.Equal(1, q.Count);
+                XunitAssert.Equal(i, q.Dequeue());
+                XunitAssert.Equal(0, q.Count);
             }
         }
 
@@ -36,19 +37,19 @@ namespace ReactiveTests.Tests
             for (var i = 0; i < 33; i++)
             {
                 q.Enqueue(i);
-                Assert.AreEqual(i + 1, q.Count);
+                XunitAssert.Equal(i + 1, q.Count);
             }
 
-            Assert.AreEqual(33, q.Count);
+            XunitAssert.Equal(33, q.Count);
 
             for (var i = 0; i < 33; i++)
             {
-                Assert.AreEqual(33 - i, q.Count);
-                Assert.AreEqual(i, q.Peek());
-                Assert.AreEqual(i, q.Dequeue());
+                XunitAssert.Equal(33 - i, q.Count);
+                XunitAssert.Equal(i, q.Peek());
+                XunitAssert.Equal(i, q.Dequeue());
             }
 
-            Assert.AreEqual(0, q.Count);
+            XunitAssert.Equal(0, q.Count);
         }
 
         [Test]
@@ -59,19 +60,19 @@ namespace ReactiveTests.Tests
             for (var i = 32; i >= 0; i--)
             {
                 q.Enqueue(i);
-                Assert.AreEqual(33 - i, q.Count);
+                XunitAssert.Equal(33 - i, q.Count);
             }
 
-            Assert.AreEqual(33, q.Count);
+            XunitAssert.Equal(33, q.Count);
 
             for (var i = 0; i < 33; i++)
             {
-                Assert.AreEqual(33 - i, q.Count);
-                Assert.AreEqual(i, q.Peek());
-                Assert.AreEqual(i, q.Dequeue());
+                XunitAssert.Equal(33 - i, q.Count);
+                XunitAssert.Equal(i, q.Peek());
+                XunitAssert.Equal(i, q.Dequeue());
             }
 
-            Assert.AreEqual(0, q.Count);
+            XunitAssert.Equal(0, q.Count);
         }
 
         [Test]
@@ -88,12 +89,12 @@ namespace ReactiveTests.Tests
 
             for (var i = 0; i < 16; i++)
             {
-                Assert.AreEqual(i, q.Dequeue());
+                XunitAssert.Equal(i, q.Dequeue());
             }
 
             for (var i = 16; i < 32; i++)
             {
-                Assert.AreEqual(i + 1, q.Dequeue());
+                XunitAssert.Equal(i + 1, q.Dequeue());
             }
         }
 
@@ -107,10 +108,10 @@ namespace ReactiveTests.Tests
             queue.Enqueue(5);
             queue.Enqueue(2);
 
-            Assert.AreEqual(1, queue.Dequeue());
-            Assert.AreEqual(2, queue.Dequeue());
-            Assert.AreEqual(2, queue.Dequeue());
-            Assert.AreEqual(5, queue.Dequeue());
+            XunitAssert.Equal(1, queue.Dequeue());
+            XunitAssert.Equal(2, queue.Dequeue());
+            XunitAssert.Equal(2, queue.Dequeue());
+            XunitAssert.Equal(5, queue.Dequeue());
         }
     }
 }

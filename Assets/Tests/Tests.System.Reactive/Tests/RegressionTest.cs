@@ -12,6 +12,7 @@ using System.Reactive.Subjects;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -132,7 +133,7 @@ namespace ReactiveTests.Tests
         {
             var flag = false;
             var x = Observable.Return(1, Scheduler.CurrentThread).Concat(Observable.Never<int>()).Finally(() => flag = true).First();
-            Assert.AreEqual(1, x);
+            XunitAssert.Equal(1, x);
             Assert.True(flag);
         }
 

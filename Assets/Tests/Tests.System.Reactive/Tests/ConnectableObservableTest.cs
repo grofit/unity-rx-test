@@ -9,6 +9,7 @@ using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -24,10 +25,10 @@ namespace ReactiveTests.Tests
             var co2 = new ConnectableObservable<int>(Observable.Return(1), s2);
 
             co2.Subscribe(x => y = x);
-            Assert.AreNotEqual(1, y);
+            XunitAssert.NotEqual(1, y);
 
             co2.Connect();
-            Assert.AreEqual(1, y);
+            XunitAssert.Equal(1, y);
         }
 
         [Test]

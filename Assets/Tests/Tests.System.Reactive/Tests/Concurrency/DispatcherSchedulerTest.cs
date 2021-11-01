@@ -11,6 +11,7 @@ using System.Threading;
 using System.Windows.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -106,7 +107,7 @@ namespace ReactiveTests.Tests
                     var sch = new DispatcherScheduler(disp);
                     sch.Schedule(() =>
                     {
-                        Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                        XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
                         evt.Set();
                     });
                 });
@@ -162,11 +163,11 @@ namespace ReactiveTests.Tests
 
                 sch.Schedule(delay, () =>
                 {
-                    Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                    XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
 
                     sch.Schedule(delay, () =>
                     {
-                        Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                        XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
                         evt.Set();
                     });
                 });
@@ -188,7 +189,7 @@ namespace ReactiveTests.Tests
                 
                 sch.Schedule(TimeSpan.FromSeconds(0.1), () =>
                 {
-                    Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                    XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
 
                     var d = sch.Schedule(TimeSpan.FromSeconds(0.1), () =>
                     {
@@ -203,7 +204,7 @@ namespace ReactiveTests.Tests
 
                     sch.Schedule(TimeSpan.FromSeconds(0.2), () =>
                     {
-                        Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                        XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
                         evt.Set();
                     });
                 });
@@ -239,7 +240,7 @@ namespace ReactiveTests.Tests
 
                 d.Disposable = sch.SchedulePeriodic(1, TimeSpan.FromSeconds(0.1), n =>
                 {
-                    Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                    XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
 
                     if (n == 3)
                     {
@@ -247,7 +248,7 @@ namespace ReactiveTests.Tests
 
                         sch.Schedule(TimeSpan.FromSeconds(0.2), () =>
                         {
-                            Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId);
+                            XunitAssert.NotEqual(id, Thread.CurrentThread.ManagedThreadId);
                             evt.Set();
                         });
                     }

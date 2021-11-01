@@ -9,6 +9,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 #if HAS_DISPATCHER
 using System.Windows.Threading;
@@ -258,8 +259,8 @@ namespace ReactiveTests.Tests
             results.Messages.AssertEqual(
             );
 
-            Assert.AreEqual(201, s);
-            Assert.AreEqual(1001, d);
+            XunitAssert.Equal(201, s);
+            XunitAssert.Equal(1001, d);
         }
 
         [Test]

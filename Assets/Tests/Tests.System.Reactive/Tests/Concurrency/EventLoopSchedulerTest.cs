@@ -11,6 +11,7 @@ using System.Reactive.Linq;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 #if STRESS
 using ReactiveTests.Stress.Schedulers;
 #endif
@@ -87,7 +88,7 @@ namespace ReactiveTests.Tests
                 gate.Release();
             });
             Assert.True(gate.WaitOne(MaxWaitTime), "Timeout!");
-            Assert.AreNotEqual(Thread.CurrentThread.ManagedThreadId, id);
+            XunitAssert.NotEqual(Thread.CurrentThread.ManagedThreadId, id);
         }
 #endif
 
@@ -153,7 +154,7 @@ namespace ReactiveTests.Tests
 
             results.AssertEqual(0, 1);
 
-            Assert.AreEqual(2, d);
+            XunitAssert.Equal(2, d);
         }
 
         [Test]
@@ -467,7 +468,7 @@ namespace ReactiveTests.Tests
                 countdown.Wait();
             }
 
-            Assert.AreEqual(0, failureCount);
+            XunitAssert.Equal(0, failureCount);
         }
 #endif
     }

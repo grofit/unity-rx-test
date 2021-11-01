@@ -11,6 +11,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -223,7 +224,7 @@ namespace ReactiveTests.Tests
         {
             var _x = -1;
             Observable.Return(42, Scheduler.Immediate).Subscribe((int x) => { _x = x; });
-            Assert.AreEqual(42, _x);
+            XunitAssert.Equal(42, _x);
         }
 
         [Test]
@@ -248,7 +249,7 @@ namespace ReactiveTests.Tests
             var finished = false;
             var _x = -1;
             Observable.Return(42, Scheduler.Immediate).Subscribe((int x) => { _x = x; }, () => { finished = true; });
-            Assert.AreEqual(42, _x);
+            XunitAssert.Equal(42, _x);
             Assert.True(finished);
         }
 
@@ -500,10 +501,10 @@ namespace ReactiveTests.Tests
             xs.Subscribe(_ => { n++; }, ex => { e++; }, () => { c++; }, CancellationToken.None);
             xs.Subscribe(Observer.Create<int>(_ => { n++; }, ex => { e++; }, () => { c++; }), CancellationToken.None);
 
-            Assert.AreEqual(6, i);
-            Assert.AreEqual(5, n);
-            Assert.AreEqual(0, e);
-            Assert.AreEqual(3, c);
+            XunitAssert.Equal(6, i);
+            XunitAssert.Equal(5, n);
+            XunitAssert.Equal(0, e);
+            XunitAssert.Equal(3, c);
         }
 
         [Test]
@@ -534,7 +535,7 @@ namespace ReactiveTests.Tests
 
             scheduler.Start();
 
-            Assert.AreEqual(2, n);
+            XunitAssert.Equal(2, n);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 220)

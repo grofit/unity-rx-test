@@ -12,6 +12,7 @@ using System.Reactive.PlatformServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 using Microsoft.Reactive.Testing;
 
 #if HAS_WINFORMS
@@ -124,7 +125,7 @@ namespace ReactiveTests.Tests
             var ms = new MyScheduler();
             var i = 0;
             Scheduler.Schedule(ms, a => { if (++i < 10) { a(); } });
-            Assert.AreEqual(10, i);
+            XunitAssert.Equal(10, i);
         }
 
         [Test]
@@ -132,7 +133,7 @@ namespace ReactiveTests.Tests
         {
             var ms = new MyScheduler();
             var res = false;
-            Scheduler.ScheduleAction(ms, "state", state => { Assert.AreEqual("state", state); res = true; });
+            Scheduler.ScheduleAction(ms, "state", state => { XunitAssert.Equal("state", state); res = true; });
             Assert.True(res);
         }
 
@@ -155,7 +156,7 @@ namespace ReactiveTests.Tests
             var ms = new MyScheduler(now) { Check = (a, s, t) => { Assert.True(t == TimeSpan.Zero); } };
             Scheduler.Schedule(ms, now, a => { if (++i < 10) { a(now); } });
             Assert.True(ms.WaitCycles == 0);
-            Assert.AreEqual(10, i);
+            XunitAssert.Equal(10, i);
         }
 
         [Test]
@@ -177,7 +178,7 @@ namespace ReactiveTests.Tests
             var i = 0;
             Scheduler.Schedule(ms, TimeSpan.Zero, a => { if (++i < 10) { a(TimeSpan.FromTicks(i)); } });
             Assert.True(ms.WaitCycles == Enumerable.Range(1, 9).Sum());
-            Assert.AreEqual(10, i);
+            XunitAssert.Equal(10, i);
         }
 
         [Test]
@@ -362,7 +363,7 @@ namespace ReactiveTests.Tests
 
             var d = ThreadPoolScheduler.Instance.SchedulePeriodic(42, TimeSpan.FromMilliseconds(50), x =>
             {
-                Assert.AreEqual(42, x);
+                XunitAssert.Equal(42, x);
 
                 if (n++ == 10)
                 {
@@ -1051,7 +1052,7 @@ namespace ReactiveTests.Tests
                     { typeof(ISchedulerLongRunning), x }
                 });
 
-                Assert.AreEqual(x, Scheduler.AsLongRunning(s));
+                XunitAssert.Equal(x, Scheduler.AsLongRunning(s));
             }
 
             {
@@ -1062,7 +1063,7 @@ namespace ReactiveTests.Tests
                     { typeof(IStopwatchProvider), x }
                 });
 
-                Assert.AreEqual(x, Scheduler.AsStopwatchProvider(s));
+                XunitAssert.Equal(x, Scheduler.AsStopwatchProvider(s));
             }
 
             {
@@ -1073,7 +1074,7 @@ namespace ReactiveTests.Tests
                     { typeof(ISchedulerPeriodic), x }
                 });
 
-                Assert.AreEqual(x, Scheduler.AsPeriodic(s));
+                XunitAssert.Equal(x, Scheduler.AsPeriodic(s));
             }
         }
 

@@ -8,6 +8,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -38,7 +39,7 @@ namespace ReactiveTests.Tests
         public void Single_Return()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Return(value).Single());
+            XunitAssert.Equal(value, Observable.Return(value).Single());
         }
 
         [Test]
@@ -69,7 +70,7 @@ namespace ReactiveTests.Tests
         public void SinglePredicate_Range_ReducesToSingle()
         {
             var value = 42;
-            Assert.AreEqual(45, Observable.Range(value, 10).Single(i => i == 45));
+            XunitAssert.Equal(45, Observable.Range(value, 10).Single(i => i == 45));
         }
 
 

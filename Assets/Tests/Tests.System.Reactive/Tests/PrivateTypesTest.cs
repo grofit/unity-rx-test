@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -19,12 +20,12 @@ namespace ReactiveTests.Tests
             {
                 var value = 42;
                 var left = (Either<int, string>.Left)Either<int, string>.CreateLeft(value);
-                Assert.AreEqual(value, left.Value);
+                XunitAssert.Equal(value, left.Value);
             }
             {
                 var value = "42";
                 var right = (Either<int, string>.Right)Either<int, string>.CreateRight(value);
-                Assert.AreEqual(value, right.Value);
+                XunitAssert.Equal(value, right.Value);
             }
         }
 
@@ -84,12 +85,12 @@ namespace ReactiveTests.Tests
             {
                 var left = (Either<int, string>.Left)Either<int, string>.CreateLeft(42);
                 var other = (Either<int, string>.Left)Either<int, string>.CreateLeft(43);
-                Assert.AreNotEqual(left.GetHashCode(), other.GetHashCode());
+                XunitAssert.NotEqual(left.GetHashCode(), other.GetHashCode());
             }
             {
                 var right = (Either<int, string>.Right)Either<int, string>.CreateRight("42");
                 var other = (Either<int, string>.Right)Either<int, string>.CreateRight("43");
-                Assert.AreNotEqual(right.GetHashCode(), other.GetHashCode());
+                XunitAssert.NotEqual(right.GetHashCode(), other.GetHashCode());
             }
         }
 
@@ -112,12 +113,12 @@ namespace ReactiveTests.Tests
             {
                 var value = 42;
                 var left = (Either<int, string>.Left)Either<int, string>.CreateLeft(value);
-                Assert.AreEqual(left.Switch(l => l, r => r.Length), value);
+                XunitAssert.Equal(left.Switch(l => l, r => r.Length), value);
             }
             {
                 var value = "42";
                 var right = (Either<int, string>.Right)Either<int, string>.CreateRight(value);
-                Assert.AreEqual(right.Switch(l => l, r => r.Length), value.Length);
+                XunitAssert.Equal(right.Switch(l => l, r => r.Length), value.Length);
             }
         }
 
@@ -129,14 +130,14 @@ namespace ReactiveTests.Tests
                 var left = (Either<int, string>.Left)Either<int, string>.CreateLeft(value);
                 var res = 0;
                 left.Switch(l => { res = 1; }, r => { res = 2; });
-                Assert.AreEqual(1, res);
+                XunitAssert.Equal(1, res);
             }
             {
                 var value = "42";
                 var right = (Either<int, string>.Right)Either<int, string>.CreateRight(value);
                 var res = 0;
                 right.Switch(l => { res = 1; }, r => { res = 2; });
-                Assert.AreEqual(2, res);
+                XunitAssert.Equal(2, res);
             }
         }
     }

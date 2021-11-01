@@ -9,6 +9,7 @@ using System.Reactive;
 using System.Reactive.Concurrency;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -25,9 +26,9 @@ namespace ReactiveTests.Tests
         {
             var s = new HistoricalScheduler();
 
-            Assert.AreEqual(DateTimeOffset.MinValue, s.Clock);
-            Assert.AreEqual(DateTimeOffset.MinValue, s.Now);
-            Assert.AreEqual(false, s.IsEnabled);
+            XunitAssert.Equal(DateTimeOffset.MinValue, s.Clock);
+            XunitAssert.Equal(DateTimeOffset.MinValue, s.Now);
+            XunitAssert.Equal(false, s.IsEnabled);
         }
 
         [Test]
@@ -49,23 +50,23 @@ namespace ReactiveTests.Tests
 
             s.Start();
 
-            Assert.AreEqual(Time(2), s.Now);
-            Assert.AreEqual(Time(2), s.Clock);
+            XunitAssert.Equal(Time(2), s.Now);
+            XunitAssert.Equal(Time(2), s.Clock);
 
             s.Start();
 
-            Assert.AreEqual(Time(4), s.Now);
-            Assert.AreEqual(Time(4), s.Clock);
+            XunitAssert.Equal(Time(4), s.Now);
+            XunitAssert.Equal(Time(4), s.Clock);
 
             s.Start();
 
-            Assert.AreEqual(Time(6), s.Now);
-            Assert.AreEqual(Time(6), s.Clock);
+            XunitAssert.Equal(Time(6), s.Now);
+            XunitAssert.Equal(Time(6), s.Clock);
 
             s.Start();
 
-            Assert.AreEqual(Time(6), s.Now);
-            Assert.AreEqual(Time(6), s.Clock);
+            XunitAssert.Equal(Time(6), s.Now);
+            XunitAssert.Equal(Time(6), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(1, Time(0)),
@@ -146,8 +147,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(8));
 
-            Assert.AreEqual(Time(8), s.Now);
-            Assert.AreEqual(Time(8), s.Clock);
+            XunitAssert.Equal(Time(8), s.Now);
+            XunitAssert.Equal(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -157,8 +158,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(8));
 
-            Assert.AreEqual(Time(8), s.Now);
-            Assert.AreEqual(Time(8), s.Clock);
+            XunitAssert.Equal(Time(8), s.Now);
+            XunitAssert.Equal(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -171,8 +172,8 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => s.AdvanceTo(Time(4)));
 
-            Assert.AreEqual(Time(8), s.Now);
-            Assert.AreEqual(Time(8), s.Clock);
+            XunitAssert.Equal(Time(8), s.Now);
+            XunitAssert.Equal(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -182,8 +183,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(10));
 
-            Assert.AreEqual(Time(10), s.Now);
-            Assert.AreEqual(Time(10), s.Clock);
+            XunitAssert.Equal(Time(10), s.Now);
+            XunitAssert.Equal(Time(10), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -196,8 +197,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(Time(100));
 
-            Assert.AreEqual(Time(100), s.Now);
-            Assert.AreEqual(Time(100), s.Clock);
+            XunitAssert.Equal(Time(100), s.Now);
+            XunitAssert.Equal(Time(100), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -233,8 +234,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(Time(8) - s.Now);
 
-            Assert.AreEqual(Time(8), s.Now);
-            Assert.AreEqual(Time(8), s.Clock);
+            XunitAssert.Equal(Time(8), s.Now);
+            XunitAssert.Equal(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -247,8 +248,8 @@ namespace ReactiveTests.Tests
 
             ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => s.AdvanceBy(TimeSpan.FromDays(-4)));
 
-            Assert.AreEqual(Time(8), s.Now);
-            Assert.AreEqual(Time(8), s.Clock);
+            XunitAssert.Equal(Time(8), s.Now);
+            XunitAssert.Equal(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -258,8 +259,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(TimeSpan.Zero);
 
-            Assert.AreEqual(Time(8), s.Now);
-            Assert.AreEqual(Time(8), s.Clock);
+            XunitAssert.Equal(Time(8), s.Now);
+            XunitAssert.Equal(Time(8), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -269,8 +270,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(TimeSpan.FromDays(2));
 
-            Assert.AreEqual(Time(10), s.Now);
-            Assert.AreEqual(Time(10), s.Clock);
+            XunitAssert.Equal(Time(10), s.Now);
+            XunitAssert.Equal(Time(10), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -283,8 +284,8 @@ namespace ReactiveTests.Tests
 
             s.AdvanceBy(TimeSpan.FromDays(90));
 
-            Assert.AreEqual(Time(100), s.Now);
-            Assert.AreEqual(Time(100), s.Clock);
+            XunitAssert.Equal(Time(100), s.Now);
+            XunitAssert.Equal(Time(100), s.Clock);
 
             list.AssertEqual(
                 new Timestamped<int>(0, Time(0)),
@@ -302,20 +303,20 @@ namespace ReactiveTests.Tests
         {
             var s = new HistoricalScheduler();
 
-            Assert.AreEqual(false, s.IsEnabled);
+            XunitAssert.Equal(false, s.IsEnabled);
 
             s.Schedule(() =>
             {
-                Assert.AreEqual(true, s.IsEnabled);
+                XunitAssert.Equal(true, s.IsEnabled);
                 s.Stop();
-                Assert.AreEqual(false, s.IsEnabled);
+                XunitAssert.Equal(false, s.IsEnabled);
             });
 
-            Assert.AreEqual(false, s.IsEnabled);
+            XunitAssert.Equal(false, s.IsEnabled);
 
             s.Start();
 
-            Assert.AreEqual(false, s.IsEnabled);
+            XunitAssert.Equal(false, s.IsEnabled);
         }
 
         [Test]
@@ -355,7 +356,7 @@ namespace ReactiveTests.Tests
 
             s.Sleep(TimeSpan.FromDays(1));
 
-            Assert.AreEqual(now + TimeSpan.FromDays(1), s.Clock);
+            XunitAssert.Equal(now + TimeSpan.FromDays(1), s.Clock);
         }
 
         [Test]
@@ -375,7 +376,7 @@ namespace ReactiveTests.Tests
 
             s.AdvanceTo(s.Now + TimeSpan.FromMinutes(5));
 
-            Assert.AreEqual(2, n);
+            XunitAssert.Equal(2, n);
         }
 
         [Test]

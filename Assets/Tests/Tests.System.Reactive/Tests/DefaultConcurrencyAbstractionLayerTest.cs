@@ -9,6 +9,7 @@ using System.Reactive.PlatformServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -205,7 +206,7 @@ namespace ReactiveTests.Tests
 
             value = (int)_domain.GetData("value");
 
-            Assert.AreEqual(newValue, value);
+            XunitAssert.Equal(newValue, value);
         }
 
         [Test]

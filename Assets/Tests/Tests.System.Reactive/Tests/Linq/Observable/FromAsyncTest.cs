@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -53,11 +54,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => n);
             });
 
-            Assert.AreEqual(n, xs.Single());
-            Assert.AreEqual(1, i);
+            XunitAssert.Equal(n, xs.Single());
+            XunitAssert.Equal(1, i);
 
-            Assert.AreEqual(n, xs.Single());
-            Assert.AreEqual(2, i);
+            XunitAssert.Equal(n, xs.Single());
+            XunitAssert.Equal(2, i);
         }
 
         [Test]
@@ -97,11 +98,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => n);
             });
 
-            Assert.AreEqual(n, xs.Single());
-            Assert.AreEqual(1, i);
+            XunitAssert.Equal(n, xs.Single());
+            XunitAssert.Equal(1, i);
 
-            Assert.AreEqual(n, xs.Single());
-            Assert.AreEqual(2, i);
+            XunitAssert.Equal(n, xs.Single());
+            XunitAssert.Equal(2, i);
         }
 
         [Test]
@@ -187,8 +188,8 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.AreEqual(42, x);
-            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
+            XunitAssert.Equal(42, x);
+            XunitAssert.Equal(Thread.CurrentThread.ManagedThreadId, t);
         }
 
         [Test]
@@ -212,8 +213,8 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.AreEqual(42, x);
-            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
+            XunitAssert.Equal(42, x);
+            XunitAssert.Equal(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 
@@ -245,11 +246,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => { });
             });
 
-            Assert.AreEqual(Unit.Default, xs.Single());
-            Assert.AreEqual(1, i);
+            XunitAssert.Equal(Unit.Default, xs.Single());
+            XunitAssert.Equal(1, i);
 
-            Assert.AreEqual(Unit.Default, xs.Single());
-            Assert.AreEqual(2, i);
+            XunitAssert.Equal(Unit.Default, xs.Single());
+            XunitAssert.Equal(2, i);
         }
 
         [Test]
@@ -287,11 +288,11 @@ namespace ReactiveTests.Tests
                 return Task.Factory.StartNew(() => { });
             });
 
-            Assert.AreEqual(Unit.Default, xs.Single());
-            Assert.AreEqual(1, i);
+            XunitAssert.Equal(Unit.Default, xs.Single());
+            XunitAssert.Equal(1, i);
 
-            Assert.AreEqual(Unit.Default, xs.Single());
-            Assert.AreEqual(2, i);
+            XunitAssert.Equal(Unit.Default, xs.Single());
+            XunitAssert.Equal(2, i);
         }
 
         [Test]
@@ -375,7 +376,7 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
+            XunitAssert.Equal(Thread.CurrentThread.ManagedThreadId, t);
         }
 
         [Test]
@@ -397,7 +398,7 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
+            XunitAssert.Equal(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 

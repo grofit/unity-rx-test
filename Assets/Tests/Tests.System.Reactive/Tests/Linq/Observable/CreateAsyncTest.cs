@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -496,10 +497,10 @@ namespace ReactiveTests.Tests
                     OnNext(600, 4)
                 );
 
-                Assert.AreEqual(5, res.Messages.Count);
+                XunitAssert.Equal(5, res.Messages.Count);
 
-                Assert.AreEqual(700, res.Messages[4].Time);
-                Assert.AreEqual(NotificationKind.OnError, res.Messages[4].Value.Kind);
+                XunitAssert.Equal(700, res.Messages[4].Time);
+                XunitAssert.Equal(NotificationKind.OnError, res.Messages[4].Value.Kind);
                 Assert.True(res.Messages[4].Value.Exception is OperationCanceledException);
             });
         }

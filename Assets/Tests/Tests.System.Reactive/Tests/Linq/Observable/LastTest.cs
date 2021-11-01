@@ -8,6 +8,7 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -38,7 +39,7 @@ namespace ReactiveTests.Tests
         public void Last_Return()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Return(value).Last());
+            XunitAssert.Equal(value, Observable.Return(value).Last());
         }
 
         [Test]
@@ -55,14 +56,14 @@ namespace ReactiveTests.Tests
         public void Last_Range()
         {
             var value = 42;
-            Assert.AreEqual(value, Observable.Range(value - 9, 10).Last());
+            XunitAssert.Equal(value, Observable.Range(value - 9, 10).Last());
         }
 
         [Test]
         public void LastPredicate_Range()
         {
             var value = 42;
-            Assert.AreEqual(50, Observable.Range(value, 10).Last(i => i % 2 == 0));
+            XunitAssert.Equal(50, Observable.Range(value, 10).Last(i => i % 2 == 0));
         }
 
     }

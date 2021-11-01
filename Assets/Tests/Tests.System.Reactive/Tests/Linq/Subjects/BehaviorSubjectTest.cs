@@ -7,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -448,89 +449,89 @@ namespace ReactiveTests.Tests
         public void Value_Initial()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.AreEqual(42, s.Value);
+            XunitAssert.Equal(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.AreEqual(42, x);
+            XunitAssert.Equal(42, x);
         }
 
         [Test]
         public void Value_First()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.AreEqual(42, s.Value);
+            XunitAssert.Equal(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.AreEqual(42, x);
+            XunitAssert.Equal(42, x);
 
             s.OnNext(43);
-            Assert.AreEqual(43, s.Value);
+            XunitAssert.Equal(43, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(43, x);
+            XunitAssert.Equal(43, x);
         }
 
         [Test]
         public void Value_Second()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.AreEqual(42, s.Value);
+            XunitAssert.Equal(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.AreEqual(42, x);
+            XunitAssert.Equal(42, x);
 
             s.OnNext(43);
-            Assert.AreEqual(43, s.Value);
+            XunitAssert.Equal(43, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(43, x);
+            XunitAssert.Equal(43, x);
 
             s.OnNext(44);
-            Assert.AreEqual(44, s.Value);
+            XunitAssert.Equal(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(44, x);
+            XunitAssert.Equal(44, x);
         }
 
         [Test]
         public void Value_FrozenAfterOnCompleted()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.AreEqual(42, s.Value);
+            XunitAssert.Equal(42, s.Value);
 
             Assert.True(s.TryGetValue(out var x));
-            Assert.AreEqual(42, x);
+            XunitAssert.Equal(42, x);
 
             s.OnNext(43);
-            Assert.AreEqual(43, s.Value);
+            XunitAssert.Equal(43, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(43, x);
+            XunitAssert.Equal(43, x);
 
             s.OnNext(44);
-            Assert.AreEqual(44, s.Value);
+            XunitAssert.Equal(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(44, x);
+            XunitAssert.Equal(44, x);
 
             s.OnCompleted();
-            Assert.AreEqual(44, s.Value);
+            XunitAssert.Equal(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(44, x);
+            XunitAssert.Equal(44, x);
 
             s.OnNext(1234);
-            Assert.AreEqual(44, s.Value);
+            XunitAssert.Equal(44, s.Value);
 
             Assert.True(s.TryGetValue(out x));
-            Assert.AreEqual(44, x);
+            XunitAssert.Equal(44, x);
         }
 
         [Test]
         public void Value_ThrowsAfterOnError()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.AreEqual(42, s.Value);
+            XunitAssert.Equal(42, s.Value);
 
             s.OnError(new InvalidOperationException());
 
@@ -549,7 +550,7 @@ namespace ReactiveTests.Tests
         public void Value_ThrowsOnDispose()
         {
             var s = new BehaviorSubject<int>(42);
-            Assert.AreEqual(42, s.Value);
+            XunitAssert.Equal(42, s.Value);
 
             s.Dispose();
 

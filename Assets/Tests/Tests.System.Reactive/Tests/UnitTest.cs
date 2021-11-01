@@ -4,6 +4,7 @@
 
 using System.Reactive;
 using NUnit.Framework;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -20,8 +21,8 @@ namespace ReactiveTests.Tests
             Assert.False(u1.Equals(null));
             Assert.True(u1 == u2);
             Assert.False(u1 != u2);
-            Assert.AreEqual(0, u1.GetHashCode());
-            Assert.AreEqual("()", u1.ToString());
+            XunitAssert.Equal(0, u1.GetHashCode());
+            XunitAssert.Equal("()", u1.ToString());
         }
     }
 }
