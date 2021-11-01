@@ -29,7 +29,7 @@ RUN dotnet build
 
 FROM alpine/git AS rxdata-retriver
 WORKDIR /app
-RUN git clone --branch main --depth 1 https://github.com/Cosmic-Shores/Rx.Data.git
+RUN git clone --branch v1.0.2 --depth 1 https://github.com/Cosmic-Shores/Rx.Data.git
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS rxdata-build
 WORKDIR /app/Rx.Data
