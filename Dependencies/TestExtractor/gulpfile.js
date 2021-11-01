@@ -11,6 +11,7 @@ exports.default = () =>
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/AliasesTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableRemotingTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableSafetyTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/obj/**/*.cs",
     ])
     .pipe(replace('[Fact]', '[Test]'))
@@ -20,4 +21,5 @@ exports.default = () =>
     .pipe(replace('Assert.Same(', 'Assert.AreSame('))
     .pipe(replace('Assert.NotSame(', 'Assert.AreNotSame('))
     .pipe(replace('Assert.Empty(', 'CollectionAssert.IsEmpty('))
+    .pipe(replace('[Fact(Skip = "")]', '//[Test, Explicit]'))
     .pipe(dest("../../Assets/Tests/Tests.System.Reactive"));
