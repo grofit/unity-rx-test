@@ -3,6 +3,8 @@ WORKDIR /app/Dependencies
 COPY ./Dependencies ./
 RUN dotnet build
 RUN rm ./bin/Debug/netstandard2.1/System.Runtime.InteropServices.WindowsRuntime.dll
+RUN rm ./bin/Debug/netstandard2.1/Rx.Unity.Dependencies.pdb
+RUN rm ./bin/Debug/netstandard2.1/Rx.Unity.Dependencies.*
 
 
 FROM alpine/git AS rx-retriver
@@ -36,6 +38,7 @@ WORKDIR /app/Rx.Data
 COPY --from=rx-build /app/reactive/Rx.NET/Source/src/System.Reactive/bin/Debug/netstandard2.0 ./src/
 COPY --from=rxdata-retriver /app ../
 COPY ./Patches/Directory.build.props ./src/Directory.build.props
+COPY ./Patches/References.build.props ./src/References.build.props
 RUN dotnet build
 
 

@@ -9,6 +9,7 @@ exports.default = () =>
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/ArgumentValidationTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Aliases.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/AliasesTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/TaskLikeSupportTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableRemotingTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableSafetyTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableTest.cs",
