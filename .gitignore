@@ -71,6 +71,8 @@ sysinfo.txt
 /Assets/Tests/Tests.System.Reactive/obj.meta
 /Assets/Tests/Tests.System.Reactive
 /Assets/Tests/Tests.System.Reactive.meta
+/Assets/Tests/Microsoft.Reactive.Testing
+/Assets/Tests/Microsoft.Reactive.Testing.meta
 
 # Crashlytics generated file
 crashlytics-build.properties
