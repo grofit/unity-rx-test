@@ -1,4 +1,5 @@
 <Project>
+  <Import Project=".\References.build.props" />
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -8,11 +9,4 @@
     <PackageProjectUrl>https://github.com/Cosmic-Shores/Rx.Data</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Cosmic-Shores/Rx.Data</RepositoryUrl>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Reactive">
-      <HintPath>..\..\reactive\Rx.NET\Source\src\System.Reactive\bin\Debug\netstandard2.0\System.Reactive.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

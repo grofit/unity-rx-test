@@ -1,0 +1,7 @@
+<Project>
+  <ItemGroup>
+    <Reference Include="System.Reactive">
+      <HintPath>..\System.Reactive.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

@@ -1,2 +1,2 @@
 cd ./Dependencies
-docker build --output out .
+docker build --output out . --no-cache
