@@ -774,7 +774,7 @@ namespace ReactiveTests.Tests
                 }
             );
 
-            var s = ThreadPoolScheduler.Instance.DisableOptimizations(/* long-running creates a non-threadpool thread */);
+            var s = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.DisableOptimizations(/* long-running creates a non-threadpool thread */);
             var n = Observer.NotifyOn(o, s);
 
             new Thread(() =>

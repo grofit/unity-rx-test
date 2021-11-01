@@ -250,27 +250,27 @@ namespace ReactiveTests.Tests
 
             /* Unmerged change from project 'Tests.System.Reactive(net46)'
             Before:
-                        ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.ScheduleLongRunning(ThreadPoolScheduler.Instance, default(Action<ICancelable>)));
+                        ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.ScheduleLongRunning(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, default(Action<ICancelable>)));
             After:
-                        ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.ScheduleLongRunning(ThreadPoolScheduler.Instance, default));
+                        ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.ScheduleLongRunning(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, default));
             */
-            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.ScheduleLongRunning(ThreadPoolScheduler.Instance, default));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.ScheduleLongRunning(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, default));
         }
 
         [Test]
         public void Scheduler_Periodic_ArgumentChecking()
         {
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(null, TimeSpan.FromSeconds(1), () => { }));
-            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Scheduler.SchedulePeriodic(ThreadPoolScheduler.Instance, TimeSpan.FromSeconds(-1), () => { }));
-            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(ThreadPoolScheduler.Instance, TimeSpan.FromSeconds(1), default));
+            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Scheduler.SchedulePeriodic(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, TimeSpan.FromSeconds(-1), () => { }));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, TimeSpan.FromSeconds(1), default));
 
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(null, 42, TimeSpan.FromSeconds(1), _ => { }));
-            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Scheduler.SchedulePeriodic(ThreadPoolScheduler.Instance, 42, TimeSpan.FromSeconds(-1), _ => { }));
-            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(ThreadPoolScheduler.Instance, 42, TimeSpan.FromSeconds(1), default(Action<int>)));
+            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Scheduler.SchedulePeriodic(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, 42, TimeSpan.FromSeconds(-1), _ => { }));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, 42, TimeSpan.FromSeconds(1), default(Action<int>)));
 
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(null, 42, TimeSpan.FromSeconds(1), _ => _));
-            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Scheduler.SchedulePeriodic(ThreadPoolScheduler.Instance, 42, TimeSpan.FromSeconds(-1), _ => _));
-            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(ThreadPoolScheduler.Instance, 42, TimeSpan.FromSeconds(1), default));
+            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Scheduler.SchedulePeriodic(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, 42, TimeSpan.FromSeconds(-1), _ => _));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.SchedulePeriodic(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, 42, TimeSpan.FromSeconds(1), default));
         }
 #endif
 
@@ -342,7 +342,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var e = new ManualResetEvent(false);
 
-            var d = ThreadPoolScheduler.Instance.SchedulePeriodic(TimeSpan.FromMilliseconds(50), () =>
+            var d = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.SchedulePeriodic(TimeSpan.FromMilliseconds(50), () =>
             {
                 if (n++ == 10)
                 {
@@ -360,7 +360,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var e = new ManualResetEvent(false);
 
-            var d = ThreadPoolScheduler.Instance.SchedulePeriodic(42, TimeSpan.FromMilliseconds(50), x =>
+            var d = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.SchedulePeriodic(42, TimeSpan.FromMilliseconds(50), x =>
             {
                 Assert.AreEqual(42, x);
 
@@ -395,7 +395,7 @@ namespace ReactiveTests.Tests
                 var hln = new HLN();
                 PlatformEnlightenmentProvider.Current = new PEP(hln);
 
-                var s = ThreadPoolScheduler.Instance.DisableOptimizations(typeof(ISchedulerPeriodic));
+                var s = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.DisableOptimizations(typeof(ISchedulerPeriodic));
 
                 var n = 0;
                 var e = new ManualResetEvent(false);
@@ -482,7 +482,7 @@ namespace ReactiveTests.Tests
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.DisableOptimizations(default));
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.DisableOptimizations(default, new Type[0]));
 #if !WINDOWS && !NO_THREAD
-            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.DisableOptimizations(ThreadPoolScheduler.Instance, default));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.DisableOptimizations(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance, default));
 #endif
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.DisableOptimizations(Scheduler.Default).Schedule(42, default));
             ReactiveAssert.Throws<ArgumentNullException>(() => Scheduler.DisableOptimizations(Scheduler.Default).Schedule(42, TimeSpan.FromSeconds(1), default));

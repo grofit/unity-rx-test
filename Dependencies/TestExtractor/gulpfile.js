@@ -22,4 +22,7 @@ exports.default = () =>
     .pipe(replace('Assert.NotSame(', 'Assert.AreNotSame('))
     .pipe(replace('Assert.Empty(', 'CollectionAssert.IsEmpty('))
     .pipe(replace('[Fact(Skip = "")]', '//[Test, Explicit]'))
+    .pipe(replace('ThreadPoolScheduler.Instance', 'Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance'))
+    .pipe(replace(/\[Trait\([^\(]*\)\]/g, '// $&'))
+    
     .pipe(dest("../../Assets/Tests/Tests.System.Reactive"));

@@ -318,7 +318,7 @@ namespace ReactiveTests.Tests
         {
             using var scheduler = new EventLoopScheduler();
 
-            var source = Observable.Range(1, 1000).DelaySubscription(TimeSpan.FromMilliseconds(100), ThreadPoolScheduler.Instance);
+            var source = Observable.Range(1, 1000).DelaySubscription(TimeSpan.FromMilliseconds(100), Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var result = source.Prepend(0, scheduler).Prepend(-1, scheduler)
                 .Timeout(TimeSpan.FromSeconds(5))
@@ -339,7 +339,7 @@ namespace ReactiveTests.Tests
             var scheduler = NewThreadScheduler.Default;
             Assert.True(scheduler is ISchedulerLongRunning, "Not a long-running scheduler!");
 
-            var source = Observable.Range(1, 1000).DelaySubscription(TimeSpan.FromMilliseconds(100), ThreadPoolScheduler.Instance);
+            var source = Observable.Range(1, 1000).DelaySubscription(TimeSpan.FromMilliseconds(100), Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var result = source.Prepend(0, scheduler).Prepend(-1, scheduler)
                 .Timeout(TimeSpan.FromSeconds(5))

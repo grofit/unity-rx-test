@@ -1290,7 +1290,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Int32()
         {
-            var xs = Observable.Return(42, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<int>(xs, long.MaxValue).Average();
 
@@ -1300,7 +1300,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Int64()
         {
-            var xs = Observable.Return(42L, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42L, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<long>(xs, long.MaxValue).Average();
 
@@ -1310,7 +1310,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Double()
         {
-            var xs = Observable.Return(42.0, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42.0, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<double>(xs, long.MaxValue).Average();
 
@@ -1320,7 +1320,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Single()
         {
-            var xs = Observable.Return(42.0f, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42.0f, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<float>(xs, long.MaxValue).Average();
 
@@ -1330,7 +1330,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Decimal()
         {
-            var xs = Observable.Return(42.0m, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42.0m, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<decimal>(xs, long.MaxValue).Average();
 
@@ -1340,7 +1340,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Int32_Nullable()
         {
-            var xs = Observable.Return((int?)42, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return((int?)42, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<int?>(xs, long.MaxValue).Average();
 
@@ -1350,7 +1350,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Int64_Nullable()
         {
-            var xs = Observable.Return((long?)42L, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return((long?)42L, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<long?>(xs, long.MaxValue).Average();
 
@@ -1360,7 +1360,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Double_Nullable()
         {
-            var xs = Observable.Return((double?)42.0, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return((double?)42.0, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<double?>(xs, long.MaxValue).Average();
 
@@ -1370,7 +1370,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Single_Nullable()
         {
-            var xs = Observable.Return((float?)42.0f, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return((float?)42.0f, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<float?>(xs, long.MaxValue).Average();
 
@@ -1380,7 +1380,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Average_InjectOverflow_Decimal_Nullable()
         {
-            var xs = Observable.Return((decimal?)42.0m, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return((decimal?)42.0m, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<decimal?>(xs, long.MaxValue).Average();
 

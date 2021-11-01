@@ -19,15 +19,15 @@ namespace ReactiveTests.Tests
         [Test]
         public void Schedule_ArgumentChecking()
         {
-            ReactiveAssert.Throws<ArgumentNullException>(() => ThreadPoolScheduler.Instance.Schedule(42, default));
-            ReactiveAssert.Throws<ArgumentNullException>(() => ThreadPoolScheduler.Instance.Schedule(42, DateTimeOffset.Now, default));
-            ReactiveAssert.Throws<ArgumentNullException>(() => ThreadPoolScheduler.Instance.Schedule(42, TimeSpan.Zero, default));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.Schedule(42, default));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.Schedule(42, DateTimeOffset.Now, default));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.Schedule(42, TimeSpan.Zero, default));
         }
 
         [Test]
         public void Get_Now()
         {
-            var res = ThreadPoolScheduler.Instance.Now - DateTime.Now;
+            var res = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.Now - DateTime.Now;
             Assert.True(res.Seconds < 1);
         }
 
@@ -35,7 +35,7 @@ namespace ReactiveTests.Tests
         public void ScheduleAction()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var evt = new ManualResetEvent(false);
             nt.Schedule(() => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
@@ -56,7 +56,7 @@ namespace ReactiveTests.Tests
                 }
             }).Start();
 
-            var tp = ThreadPoolScheduler.Instance;
+            var tp = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var N = 100;
             var cd = new CountdownEvent(N);
             for (var i = 0; i < N; i++)
@@ -83,7 +83,7 @@ namespace ReactiveTests.Tests
                 }
             }).Start();
 
-            var tp = ThreadPoolScheduler.Instance;
+            var tp = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var N = 5;
             var e = new ManualResetEvent(false);
             var n = 0;
@@ -100,7 +100,7 @@ namespace ReactiveTests.Tests
         public void ScheduleActionDueRelative()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var evt = new ManualResetEvent(false);
             nt.Schedule(TimeSpan.FromSeconds(0.2), () => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
@@ -110,7 +110,7 @@ namespace ReactiveTests.Tests
         public void ScheduleActionDue0()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var evt = new ManualResetEvent(false);
             nt.Schedule(TimeSpan.FromTicks(0), () => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
@@ -120,7 +120,7 @@ namespace ReactiveTests.Tests
         public void ScheduleActionDueAbsolute()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var evt = new ManualResetEvent(false);
             nt.Schedule(DateTimeOffset.UtcNow + TimeSpan.FromSeconds(0.2), () => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
@@ -130,7 +130,7 @@ namespace ReactiveTests.Tests
         public void ScheduleActionCancel()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var set = false;
             var d = nt.Schedule(TimeSpan.FromSeconds(0.2), () => { Assert.True(false); set = true; });
             d.Dispose();
@@ -143,14 +143,14 @@ namespace ReactiveTests.Tests
         [Test]
         public void ScheduleLongRunning_ArgumentChecking()
         {
-            ReactiveAssert.Throws<ArgumentNullException>(() => ThreadPoolScheduler.Instance.ScheduleLongRunning(42, default));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.ScheduleLongRunning(42, default));
         }
 
         [Test]
         public void ScheduleLongRunning()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
             var evt = new ManualResetEvent(false);
             nt.ScheduleLongRunning(42, (x, cancel) => { Assert.AreNotEqual(id, Thread.CurrentThread.ManagedThreadId); evt.Set(); });
             evt.WaitOne();
@@ -159,7 +159,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void ScheduleLongRunningCancel()
         {
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
 
             var started = new ManualResetEvent(false);
             var stopped = new ManualResetEvent(false);
@@ -189,7 +189,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Stopwatch()
         {
-            var nt = ThreadPoolScheduler.Instance;
+            var nt = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance;
 
             var sw = nt.StartStopwatch();
 
@@ -203,8 +203,8 @@ namespace ReactiveTests.Tests
         [Test]
         public void Periodic_ArgumentChecking()
         {
-            ReactiveAssert.Throws<ArgumentNullException>(() => ThreadPoolScheduler.Instance.SchedulePeriodic(0, TimeSpan.FromSeconds(1), null));
-            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => ThreadPoolScheduler.Instance.SchedulePeriodic(0, TimeSpan.FromSeconds(-1), _ => _));
+            ReactiveAssert.Throws<ArgumentNullException>(() => Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.SchedulePeriodic(0, TimeSpan.FromSeconds(1), null));
+            ReactiveAssert.Throws<ArgumentOutOfRangeException>(() => Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.SchedulePeriodic(0, TimeSpan.FromSeconds(-1), _ => _));
         }
 
         [Test]
@@ -227,7 +227,7 @@ namespace ReactiveTests.Tests
 
             var lst = new List<int>();
 
-            var d = ThreadPoolScheduler.Instance.SchedulePeriodic(0, period, x =>
+            var d = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.SchedulePeriodic(0, period, x =>
             {
                 lock (gate)
                 {
@@ -276,7 +276,7 @@ namespace ReactiveTests.Tests
             var n = 0;
             var fail = false;
 
-            var d = ThreadPoolScheduler.Instance.SchedulePeriodic(0, TimeSpan.FromMilliseconds(50), x =>
+            var d = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.SchedulePeriodic(0, TimeSpan.FromMilliseconds(50), x =>
             {
                 try
                 {
@@ -304,7 +304,7 @@ namespace ReactiveTests.Tests
 #endif
 
 #if DESKTOPCLR
-        [Trait("SkipCI", "true")]
+        // [Trait("SkipCI", "true")]
         [Test]
         public void No_ThreadPool_Starvation_Dispose()
         {
@@ -316,7 +316,7 @@ namespace ReactiveTests.Tests
             {
                 var e = new ManualResetEvent(false);
                 var f = new ManualResetEvent(false);
-                var d = ThreadPoolScheduler.Instance.Schedule(TimeSpan.FromMilliseconds(1), () => { e.Set(); f.WaitOne(); });
+                var d = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.Schedule(TimeSpan.FromMilliseconds(1), () => { e.Set(); f.WaitOne(); });
                 e.WaitOne();
                 d.Dispose();
                 f.Set();

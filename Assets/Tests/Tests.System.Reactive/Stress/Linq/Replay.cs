@@ -25,7 +25,7 @@ namespace ReactiveTests.Stress.Linq
             {
                 for (int i = 100; i <= 10000; i *= 10)
                 {
-                    foreach (var s in new IScheduler[] { Scheduler.Default, TaskPoolScheduler.Default, ThreadPoolScheduler.Instance })
+                    foreach (var s in new IScheduler[] { Scheduler.Default, TaskPoolScheduler.Default, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance })
                     {
                         foreach (var b in new[] { true, false })
                         {

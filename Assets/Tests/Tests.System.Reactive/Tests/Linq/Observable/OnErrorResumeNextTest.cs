@@ -672,7 +672,7 @@ namespace ReactiveTests.Tests
         public void OnErrorResumeNext_TailRecursive2()
         {
             var f = default(Func<int, IObservable<int>>);
-            f = x => Observable.Defer(() => Observable.Throw<int>(new Exception(), ThreadPoolScheduler.Instance).StartWith(x).OnErrorResumeNext(f(x + 1)));
+            f = x => Observable.Defer(() => Observable.Throw<int>(new Exception(), Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance).StartWith(x).OnErrorResumeNext(f(x + 1)));
 
             var lst = new List<int>();
             f(0).Select(x => new StackTrace().FrameCount).Take(10).ForEach(lst.Add);

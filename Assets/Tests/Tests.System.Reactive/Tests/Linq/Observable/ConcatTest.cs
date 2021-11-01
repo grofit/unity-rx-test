@@ -923,7 +923,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Concat_TailRecursive2()
         {
-            IObservable<int> f(int x) => Observable.Defer(() => Observable.Return(x, ThreadPoolScheduler.Instance).Concat(f(x + 1)));
+            IObservable<int> f(int x) => Observable.Defer(() => Observable.Return(x, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance).Concat(f(x + 1)));
             var lst = new List<int>();
             f(0).Select(x => new StackTrace().FrameCount).Take(10).ForEach(lst.Add);
 

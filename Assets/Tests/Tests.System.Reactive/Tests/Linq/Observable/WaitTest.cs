@@ -24,7 +24,7 @@ namespace ReactiveTests.Tests
         public void Wait_Return()
         {
             var x = 42;
-            var xs = Observable.Return(x, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(x, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
             var res = xs.Wait();
             Assert.AreEqual(x, res);
         }
@@ -51,7 +51,7 @@ namespace ReactiveTests.Tests
         public void Wait_Range()
         {
             var n = 42;
-            var xs = Observable.Range(1, n, ThreadPoolScheduler.Instance);
+            var xs = Observable.Range(1, n, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
             var res = xs.Wait();
             Assert.AreEqual(n, res);
         }

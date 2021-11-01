@@ -148,7 +148,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Count_InjectOverflow()
         {
-            var xs = Observable.Return(42, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<int>(xs, int.MaxValue).Count();
 
@@ -446,7 +446,7 @@ namespace ReactiveTests.Tests
         [Test]
         public void Count_Predicate_InjectOverflow()
         {
-            var xs = Observable.Return(42, ThreadPoolScheduler.Instance);
+            var xs = Observable.Return(42, Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
 
             var res = new OverflowInjection<int>(xs, int.MaxValue).Count(_ => true);
 
