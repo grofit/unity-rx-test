@@ -22,7 +22,6 @@ exports.default = () => {
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableExTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/obj/**/*.cs",
     ])
-    .pipe(replace('[Fact]', '[Test]'))
     .pipe(replace('using Xunit;', 'using NUnit.Framework;\r\nusing Rx.Unity.Tests.Helper;'))
     .pipe(replace('Assert.Equal(', 'XunitAssert.Equal('))
     .pipe(replace('Assert.NotEqual(', 'XunitAssert.NotEqual('))
@@ -31,7 +30,7 @@ exports.default = () => {
     .pipe(replace('Assert.Same(', 'Assert.AreSame('))
     .pipe(replace('Assert.NotSame(', 'Assert.AreNotSame('))
     .pipe(replace('Assert.Empty(', 'CollectionAssert.IsEmpty('))
-    .pipe(replace('[Fact(Skip = "")]', '//[Test, Explicit]'))
+    .pipe(replace(/\[Fact([^\]]+)?\]/g, '[Test]'))
     .pipe(replace(/\[Trait\([^\(]*\)\]/g, '// $&'))
     .pipe(replace(/\[Test[^.\w]([^\(]+(?<=\sasync\s)[^\(]+\s{1,}(\w+)\s{0,}\()/gm, '[Test]\r\n        public void $2_Sync() => $2().Wait();\r\n$1'))
     .pipe(threadPoolSchedulerReplacementFilter)
