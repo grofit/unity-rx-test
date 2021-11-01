@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -10,12 +10,10 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
-using System.Reactive.Linq.ObservableImpl;
 
 namespace ReactiveTests.Tests
 {
-    public class ThrottleTest : ReactiveTest
+    public partial class ThrottleTest : ReactiveTest
     {
 
         [Test]
@@ -267,11 +265,6 @@ namespace ReactiveTests.Tests
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 300)
             );
-
-            static void Aot() {
-                _ = new TestScheduler().ScheduleAbsolute<((Throttle<int>._, ulong), Action<(Throttle<int>._, ulong)>)>(((null, default), null), 0L, null);
-                _ = nameof(Aot);
-            }
         }
 
         [Test]

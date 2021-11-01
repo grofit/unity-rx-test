@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -15,22 +15,11 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
-using UniRx.Tests;
-using Rx.Unity;
 
 namespace ReactiveTests.Tests
 {
-    public class DelayTest : ReactiveTest {
-        [SetUp]
-        public void Init() {
-            TestUtil.SetSchedulerForImport();
-        }
-
-        [TearDown]
-        public void Dispose() {
-            ReactiveUnity.SetupPatches();
-        }
+    public partial class DelayTest : ReactiveTest
+    {
 
         [Test]
         public void Delay_ArgumentChecking()
@@ -459,13 +448,13 @@ namespace ReactiveTests.Tests
         [Test]
         public void Delay_TimeSpan_Real_Simple1()
         {
-            Delay_TimeSpan_Real_Simple1_Impl(ThreadPoolScheduler.Instance.DisableOptimizations());
+            Delay_TimeSpan_Real_Simple1_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.DisableOptimizations());
         }
 
         [Test]
         public void Delay_TimeSpan_Real_Simple1_Stopwatch()
         {
-            Delay_TimeSpan_Real_Simple1_Impl(ThreadPoolScheduler.Instance);
+            Delay_TimeSpan_Real_Simple1_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
         }
 #endif
 
@@ -495,13 +484,13 @@ namespace ReactiveTests.Tests
         [Test]
         public void Delay_TimeSpan_Real_Error1()
         {
-            Delay_TimeSpan_Real_Error1_Impl(ThreadPoolScheduler.Instance.DisableOptimizations());
+            Delay_TimeSpan_Real_Error1_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.DisableOptimizations());
         }
 
         [Test]
         public void Delay_TimeSpan_Real_Error1_Stopwatch()
         {
-            Delay_TimeSpan_Real_Error1_Impl(ThreadPoolScheduler.Instance);
+            Delay_TimeSpan_Real_Error1_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
         }
 #endif
 
@@ -533,13 +522,13 @@ namespace ReactiveTests.Tests
         [Test]
         public void Delay_TimeSpan_Real_Error2()
         {
-            Delay_TimeSpan_Real_Error2_Impl(ThreadPoolScheduler.Instance.DisableOptimizations());
+            Delay_TimeSpan_Real_Error2_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.DisableOptimizations());
         }
 
         [Test]
         public void Delay_TimeSpan_Real_Error2_Stopwatch()
         {
-            Delay_TimeSpan_Real_Error2_Impl(ThreadPoolScheduler.Instance);
+            Delay_TimeSpan_Real_Error2_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
         }
 #endif
 
@@ -572,13 +561,13 @@ namespace ReactiveTests.Tests
         [Test]
         public void Delay_TimeSpan_Real_Error3()
         {
-            Delay_TimeSpan_Real_Error3_Impl(ThreadPoolScheduler.Instance.DisableOptimizations());
+            Delay_TimeSpan_Real_Error3_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.DisableOptimizations());
         }
 
         [Test]
         public void Delay_TimeSpan_Real_Error3_Stopwatch()
         {
-            Delay_TimeSpan_Real_Error3_Impl(ThreadPoolScheduler.Instance);
+            Delay_TimeSpan_Real_Error3_Impl(Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance);
         }
 #endif
 
@@ -1414,6 +1403,18 @@ namespace ReactiveTests.Tests
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 450)
             );
+        }
+
+        [Test]
+        public void Delay_Duration_Selector_Immediately()
+        {
+            var list = new List<int>();
+
+            Observable.Range(1, 5)
+                .Delay(_ => Observable.Return(1))
+                .Subscribe(list.Add);
+
+            Assert.AreEqual(new List<int>() { 1, 2, 3, 4, 5 }, list);
         }
 
         [Test]

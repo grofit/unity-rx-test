@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -13,23 +13,11 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
-using Rx.Unity.Concurrency;
-using Rx.Unity;
-using UniRx.Tests;
 
 namespace ReactiveTests.Tests
 {
-    public class TimerTest : ReactiveTest {
-        [SetUp]
-        public void Init() {
-            TestUtil.SetSchedulerForImport();
-        }
-
-        [TearDown]
-        public void Dispose() {
-            ReactiveUnity.SetupPatches();
-        }
+    public partial class TimerTest : ReactiveTest
+    {
 
         [Test]
         public void OneShotTimer_TimeSpan_ArgumentChecking()
@@ -716,7 +704,7 @@ namespace ReactiveTests.Tests
             var err = new Exception();
             var ex = default(Exception);
 
-            var s = ThreadPoolOnlyScheduler.Instance.Catch<Exception>(e =>
+            var s = Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance.Catch<Exception>(e =>
             {
                 Interlocked.Exchange(ref ex, e);
                 end.Set();

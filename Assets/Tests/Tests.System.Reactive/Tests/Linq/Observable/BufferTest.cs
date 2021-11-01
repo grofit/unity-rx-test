@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -10,14 +10,10 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
-using System.Reactive.Linq.ObservableImpl;
-using System.Reactive.Subjects;
-using System.Reactive.Disposables;
 
 namespace ReactiveTests.Tests
 {
-    public class BufferTest : ReactiveTest
+    public partial class BufferTest : ReactiveTest
     {
         #region + Boundary +
 
@@ -834,11 +830,6 @@ namespace ReactiveTests.Tests
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 370)
             );
-
-            static void Aot() {
-                _ = new TestScheduler().ScheduleAbsolute<((Buffer<int>.Ferry._, int), Action<(Buffer<int>.Ferry._, int)>)>(((null, default), null), 0L, null);
-                _ = nameof(Aot);
-            }
         }
 
         [Test]
@@ -1325,11 +1316,6 @@ namespace ReactiveTests.Tests
                 {
                     scheduler.AdvanceBy(TimeSpan.FromMilliseconds(1).Ticks);
                 });
-
-            static void Aot() {
-                _ = new TestScheduler().ScheduleAbsolute<((Window<int>.Ferry._, Subject<int>), Action<(Window<int>.Ferry._, Subject<int>)>)>(((null, null), null), 0L, null);
-                _ = nameof(Aot);
-            }
         }
 
         #endregion

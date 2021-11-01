@@ -14,12 +14,11 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
 using UniRx.Tests;
-using UnityEngine.TestTools;
 
 namespace ReactiveTests.Tests
 {
 
-    public class TaskObservableExtensionsTest : ReactiveTest
+    public partial class TaskObservableExtensionsTest : ReactiveTest
     {
         private readonly Task<int> _doneTask;
 
@@ -28,16 +27,6 @@ namespace ReactiveTests.Tests
             var tcs = new TaskCompletionSource<int>();
             tcs.SetResult(42);
             _doneTask = tcs.Task;
-        }
-
-        [SetUp]
-        public void Init() {
-            TestUtil.SetSchedulerForImport();
-        }
-
-        [TearDown]
-        public void Dispose() {
-            ReactiveUnity.SetupPatches();
         }
 
         #region ToObservable

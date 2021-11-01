@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -10,13 +10,10 @@ using System.Reactive.Linq;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
-using System.Reactive.Linq.ObservableImpl;
 
 namespace ReactiveTests.Tests
 {
-    [Category("Window")]
-    public class WindowTest : ReactiveTest
+    public partial class WindowTest : ReactiveTest
     {
         #region + Observable +
 
@@ -1771,11 +1768,6 @@ namespace ReactiveTests.Tests
             xs.Subscriptions.AssertEqual(
                 Subscribe(200, 370)
             );
-
-            static void Aot() {
-                _ = new TestScheduler().ScheduleAbsolute<((Buffer<int>.TimeSliding._, bool, bool), Action<(Buffer<int>.TimeSliding._, bool, bool)>)>(((null, default, default), null), 0L, null);
-                _ = nameof(Aot);
-            }
         }
 
         [Test]
