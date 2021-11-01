@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -11,11 +11,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
-namespace ReactiveTests.Tests {
-    [Category("async")]
-    public class ForEachAsyncTest : ReactiveTest
+namespace ReactiveTests.Tests
+{
+    public partial class ForEachAsyncTest : ReactiveTest
     {
 
         [Test]
@@ -64,7 +64,7 @@ namespace ReactiveTests.Tests {
                 new Recorded<int>(500, 5)
             );
 
-            Assert.AreEqual(TaskStatus.WaitingForActivation, task.Status);
+            XunitAssert.Equal(TaskStatus.WaitingForActivation, task.Status);
         }
 
         [Test]
@@ -100,7 +100,7 @@ namespace ReactiveTests.Tests {
                 new Recorded<int>(500, 5)
             );
 
-            Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
+            XunitAssert.Equal(TaskStatus.RanToCompletion, task.Status);
         }
 
         [Test]
@@ -138,7 +138,7 @@ namespace ReactiveTests.Tests {
                 new Recorded<int>(500, 5)
             );
 
-            Assert.AreEqual(TaskStatus.Faulted, task.Status);
+            XunitAssert.Equal(TaskStatus.Faulted, task.Status);
             Assert.AreSame(exception, task.Exception.InnerException);
         }
 
@@ -184,7 +184,7 @@ namespace ReactiveTests.Tests {
                 new Recorded<int>(400, 4)
             );
 
-            Assert.AreEqual(TaskStatus.Faulted, task.Status);
+            XunitAssert.Equal(TaskStatus.Faulted, task.Status);
             Assert.AreSame(exception, task.Exception.InnerException);
         }
 
@@ -220,7 +220,7 @@ namespace ReactiveTests.Tests {
                 new Recorded<int>(300, 3)
             );
 
-            Assert.AreEqual(TaskStatus.Canceled, task.Status);
+            XunitAssert.Equal(TaskStatus.Canceled, task.Status);
         }
 
         [Test]
@@ -253,7 +253,7 @@ namespace ReactiveTests.Tests {
             list.AssertEqual(
             );
 
-            Assert.AreEqual(TaskStatus.Canceled, task.Status);
+            XunitAssert.Equal(TaskStatus.Canceled, task.Status);
         }
 
         [Test]
@@ -290,7 +290,7 @@ namespace ReactiveTests.Tests {
                 new Recorded<int>(500, 5)
             );
 
-            Assert.AreEqual(TaskStatus.RanToCompletion, task.Status);
+            XunitAssert.Equal(TaskStatus.RanToCompletion, task.Status);
         }
 
         [Test]
@@ -360,7 +360,7 @@ namespace ReactiveTests.Tests {
 
                 for (var i = 0; i < 10; i++)
                 {
-                    Assert.AreEqual(42, lst[i]);
+                    XunitAssert.Equal(42, lst[i]);
                 }
 
                 Assert.True(done);
@@ -419,7 +419,7 @@ namespace ReactiveTests.Tests {
 
                 for (var i = 0; i < 10; i++)
                 {
-                    Assert.AreEqual(i * 42, lst[i]);
+                    XunitAssert.Equal(i * 42, lst[i]);
                 }
 
                 Assert.True(done);
@@ -502,15 +502,14 @@ namespace ReactiveTests.Tests {
             }
             catch (AggregateException err)
             {
-                Assert.AreEqual(1, err.InnerExceptions.Count);
+                XunitAssert.Equal(1, err.InnerExceptions.Count);
                 Assert.AreSame(ex, err.InnerExceptions[0]);
             }
         }
 
 #if !NO_THREAD
-        // hangs up at runtime (at least in unity)!
-        //[Test]
-        //[Trait("SkipCI", "true")]
+        [Test]
+        // [Trait("SkipCI", "true")]
         public void ForEachAsync_DisposeThrows()
         {
             //
@@ -557,7 +556,7 @@ namespace ReactiveTests.Tests {
                 }
                 catch (AggregateException err)
                 {
-                    Assert.AreEqual(1, err.InnerExceptions.Count);
+                    XunitAssert.Equal(1, err.InnerExceptions.Count);
                     Assert.AreSame(ex, err.InnerExceptions[0]);
                 }
             }
@@ -588,7 +587,7 @@ namespace ReactiveTests.Tests {
             }
             catch (AggregateException err)
             {
-                Assert.AreEqual(1, err.InnerExceptions.Count);
+                XunitAssert.Equal(1, err.InnerExceptions.Count);
                 Assert.AreSame(ex, err.InnerExceptions[0]);
             }
         }

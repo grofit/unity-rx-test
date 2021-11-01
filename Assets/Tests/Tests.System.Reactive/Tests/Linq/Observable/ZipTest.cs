@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -14,13 +14,12 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
 #pragma warning disable IDE0039 // Use local function
-    [Category("Zip")]
-    public class ZipTest : ReactiveTest
+    public partial class ZipTest : ReactiveTest
     {
 
         #region ArgumentChecking
@@ -3839,39 +3838,39 @@ namespace ReactiveTests.Tests
             );
         }
 
-        //[Test, Ignore("Makes Unity hang up")]
-        //public void ZipWithEnumerable_SomeError()
-        //{
-        //    var scheduler = new TestScheduler();
+        [Test]
+        public void ZipWithEnumerable_SomeError()
+        {
+            var scheduler = new TestScheduler();
 
-        //    var ex = new Exception();
+            var ex = new Exception();
 
-        //    var o = scheduler.CreateHotObservable(
-        //        OnNext(150, 1),
-        //        OnNext(215, 2),
-        //        OnCompleted<int>(230)
-        //    );
+            var o = scheduler.CreateHotObservable(
+                OnNext(150, 1),
+                OnNext(215, 2),
+                OnCompleted<int>(230)
+            );
 
-        //    var e = new MockEnumerable<int>(scheduler,
-        //        ThrowEnumerable(false, ex)
-        //    );
+            var e = new MockEnumerable<int>(scheduler,
+                ThrowEnumerable(false, ex)
+            );
 
-        //    var res = scheduler.Start(() =>
-        //        o.Zip(e, (x, y) => x + y)
-        //    );
+            var res = scheduler.Start(() =>
+                o.Zip(e, (x, y) => x + y)
+            );
 
-        //    res.Messages.AssertEqual(
-        //        OnError<int>(215, ex)
-        //    );
+            res.Messages.AssertEqual(
+                OnError<int>(215, ex)
+            );
 
-        //    o.Subscriptions.AssertEqual(
-        //        Subscribe(200, 215)
-        //    );
+            o.Subscriptions.AssertEqual(
+                Subscribe(200, 215)
+            );
 
-        //    e.Subscriptions.AssertEqual(
-        //        Subscribe(200, 215)
-        //    );
-        //}
+            e.Subscriptions.AssertEqual(
+                Subscribe(200, 215)
+            );
+        }
 
         [Test]
         public void ZipWithEnumerable_ErrorSome()
@@ -3907,7 +3906,8 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        public void ZipWithEnumerable_SomeDataBothSides() {
+        public void ZipWithEnumerable_SomeDataBothSides()
+        {
             var scheduler = new TestScheduler();
 
             var ex = new Exception();
@@ -4015,7 +4015,8 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        public void ZipWithEnumerable_SelectorThrows() {
+        public void ZipWithEnumerable_SelectorThrows()
+        {
             var scheduler = new TestScheduler();
 
             var o1 = scheduler.CreateHotObservable(
@@ -4032,8 +4033,10 @@ namespace ReactiveTests.Tests
             var ex = new Exception();
 
             var res = scheduler.Start(() =>
-                o1.Zip(o2, (x, y) => {
-                    if (y == 5) {
+                o1.Zip(o2, (x, y) =>
+                {
+                    if (y == 5)
+                    {
                         throw ex;
                     }
 
@@ -4473,7 +4476,7 @@ namespace ReactiveTests.Tests
                 Observable.Zip(xss)
             );
 
-            Assert.AreEqual(200, started);
+            XunitAssert.Equal(200, started);
 
             res.Messages.AssertEqual(
                 OnNext<IList<int>>(230, l => l.SequenceEqual(new[] { 1, 2, 3 })),
@@ -4580,7 +4583,7 @@ namespace ReactiveTests.Tests
             )
             .Subscribe(v => result = v);
 
-            Assert.AreEqual(7, result);
+            XunitAssert.Equal(7, result);
         }
 
         [Test]
