@@ -52,7 +52,14 @@ class Tasks {
             "!../../../reactiveFork/Rx.NET/Source/src/Microsoft.Reactive.Testing/Properties/AssemblyInfo.cs"
         ])).pipe(dest("../../Assets/Tests/Microsoft.Reactive.Testing"));
     }
+
+    rxDataTestCode() {
+        return src([
+            "../../../System.Reactive.Data/src/Rx.Data.Tests/**/*.cs",
+            "!../../../System.Reactive.Data/src/Rx.Data.Tests/obj/**/*.cs",
+        ]).pipe(dest("../../Assets/Tests/Rx.Data.Tests"));
+    }
 }
 
 const tasks = new Tasks();
-exports.default = parallel(() => tasks.testCode(), () => tasks.testingLibCode());
+exports.default = parallel(() => tasks.testCode(), () => tasks.testingLibCode(), () => tasks.rxDataTestCode());
