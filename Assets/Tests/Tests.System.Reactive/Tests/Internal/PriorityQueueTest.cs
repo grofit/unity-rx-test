@@ -4,7 +4,6 @@
 
 using System.Reactive;
 using NUnit.Framework;
-using UnityEngine.TestTools;
 
 namespace ReactiveTests.Tests
 {

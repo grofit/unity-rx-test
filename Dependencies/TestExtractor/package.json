@@ -1,0 +1,25 @@
+{
+  "name": "rx-unity-testextractor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cosmic-Shores/Rx.Unity.git"
+  },
+  "author": "Jonas Fischer <fijo.com@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cosmic-Shores/Rx.Unity/issues"
+  },
+  "homepage": "https://github.com/Cosmic-Shores/Rx.Unity#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-replace": "^1.1.3"
+  }
+}
