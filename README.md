@@ -13,8 +13,8 @@ This also means that older versions of unity won't be supported (Versions >= 202
 Other than the basic scheduling these are the features I moved over from UniRx:
 
 Assembly: Rx.Data
-- AsUnitObservable()
-- AsSingleUnitObservable()
+- .AsUnitObservable()
+- .AsSingleUnitObservable()
 - .Pairwise() (without overloads)
 - ReactiveProperty
 - ReactiveCollection
