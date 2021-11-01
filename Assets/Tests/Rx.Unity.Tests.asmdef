@@ -15,7 +15,7 @@
         "nunit.framework.dll",
         "Rx.Extendibility.dll",
         "System.Reactive.dll",
-        ""
+        "Rx.Data.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [
