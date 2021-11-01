@@ -4,8 +4,13 @@ const replace = require('gulp-replace');
 exports.default = () =>
     src([
         "../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/**/*.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Internal/HalfSerializerTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/LicenseHeaderTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/ArgumentValidationTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Aliases.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/AliasesTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableRemotingTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableSafetyTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/obj/**/*.cs",
     ])
     .pipe(replace('[Fact]', '[Test]'))
