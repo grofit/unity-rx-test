@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -13,7 +13,7 @@ using System.Threading;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using Rx.Unity.Tests.Helper;
 
 #if HAS_DISPATCHER
 using System.Windows.Threading;
@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace ReactiveTests.Tests
 {
-    public class ObserveOnTest : TestBase
+    public partial class ObserveOnTest : TestBase
     {
         #region + TestBase +
 
@@ -201,7 +201,7 @@ namespace ReactiveTests.Tests
 
     }
 
-    public class ZzzObserveOnReactiveTest : ReactiveTest
+    public partial class ObserveOnReactiveTest : ReactiveTest
     {
         private static TimeSpan MaxWaitTime = TimeSpan.FromSeconds(10);
 
@@ -664,7 +664,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(cde.Wait(MaxWaitTime), "Timeout!");
 
-            Assert.AreEqual(1, threads.Count);
+            XunitAssert.Equal(1, threads.Count);
         }
 
         [Test]
