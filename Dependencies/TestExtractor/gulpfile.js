@@ -12,6 +12,7 @@ exports.default = () =>
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableRemotingTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableSafetyTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableExTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/obj/**/*.cs",
     ])
     .pipe(replace('[Fact]', '[Test]'))
