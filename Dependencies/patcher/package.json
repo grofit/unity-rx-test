@@ -5,8 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "gen-rx-proj": "gulp generateRxProj",
-    "gen-tests": "gulp generateTests"
+    "gen-rx-proj": "gulp generateRxProj --verbose",
+    "gen-tests": "gulp generateTests --verbose"
   },
   "repository": {
     "type": "git",

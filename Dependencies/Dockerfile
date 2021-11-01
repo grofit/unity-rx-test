@@ -55,7 +55,8 @@ RUN npm run gen-tests
 
 
 FROM scratch AS export-stage
-COPY --from=deps-build /app/Dependencies/bin/Debug/netstandard2.1 ./
-COPY --from=rx-build /app/reactive/Rx.NET/Source/src/System.Reactive/bin/Debug/netstandard2.0 ./
-COPY --from=rxdata-build /app/Rx.Data/src/Rx.Extendibility/bin/Debug/netstandard2.0 ./
-COPY --from=rxdata-build /app/Rx.Data/src/Rx.Data/bin/Debug/netstandard2.0 ./
+COPY --from=deps-build /app/Dependencies/bin/Debug/netstandard2.1 ./Dependencies/out/
+COPY --from=rx-build /app/reactive/Rx.NET/Source/src/System.Reactive/bin/Debug/netstandard2.0 ./Dependencies/out/
+COPY --from=rxdata-build /app/Rx.Data/src/Rx.Extendibility/bin/Debug/netstandard2.0 ./Dependencies/out/
+COPY --from=rxdata-build /app/Rx.Data/src/Rx.Data/bin/Debug/netstandard2.0 ./Dependencies/out/
+COPY --from=test-patcher /app/Tests ./Assets/Tests/
