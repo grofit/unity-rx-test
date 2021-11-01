@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class CurrentThreadSchedulerTest
+    public partial class CurrentThreadSchedulerTest
     {
         [Test]
         public void CurrentThread_ArgumentChecking()

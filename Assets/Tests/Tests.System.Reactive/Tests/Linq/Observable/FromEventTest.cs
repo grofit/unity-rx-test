@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class FromEventTest : ReactiveTest
+    public partial class FromEventTest : ReactiveTest
     {
 
         [Test]

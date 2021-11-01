@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class HistoricalSchedulerTest
+    public partial class HistoricalSchedulerTest
     {
         public DateTimeOffset Time(int i)
         {

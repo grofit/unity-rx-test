@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class GetEnumeratorTest : ReactiveTest
+    public partial class GetEnumeratorTest : ReactiveTest
     {
 
         [Test]

@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class RetryWhenTest : ReactiveTest
+    public partial class RetryWhenTest : ReactiveTest
     {
         [Test]
         public void RetryWhen_Observable_ArgumentChecking()

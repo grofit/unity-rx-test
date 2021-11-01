@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class TimeoutTest : ReactiveTest
+    public partial class TimeoutTest : ReactiveTest
     {
 
         [Test]

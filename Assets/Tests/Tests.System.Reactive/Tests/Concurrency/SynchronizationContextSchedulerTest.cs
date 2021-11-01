@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class SynchronizationContextSchedulerTest
+    public partial class SynchronizationContextSchedulerTest
     {
         [Test]
         public void SynchronizationContext_ArgumentChecking()

@@ -8,7 +8,7 @@ using Microsoft.Reactive.Testing;
 
 namespace ReactiveTests
 {
-    public class MockEnumerable<T> : IEnumerable<T>
+    public partial class MockEnumerable<T> : IEnumerable<T>
     {
         public readonly TestScheduler Scheduler;
         public readonly List<Subscription> Subscriptions = new List<Subscription>();

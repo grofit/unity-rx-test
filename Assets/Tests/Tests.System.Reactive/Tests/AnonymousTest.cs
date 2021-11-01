@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class AnonymousTest
+    public partial class AnonymousTest
     {
         [Test]
         public void AnonymousObservable_ArgumentChecking()

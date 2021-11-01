@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class FromAsyncTest : ReactiveTest
+    public partial class FromAsyncTest : ReactiveTest
     {
         private readonly Task<int> _doneTask;
 

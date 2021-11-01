@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class DisposableTests
+    public partial class DisposableTests
     {
         [Test]
         public void AnonymousDisposable_Create()

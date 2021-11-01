@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace ReactiveTests.Stress.Linq
 {
-    public class FromEvent
+    public partial class FromEvent
     {
         private static Lazy<Random> s_rand = new Lazy<Random>();
 

@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class UsingAsyncTest : ReactiveTest
+    public partial class UsingAsyncTest : ReactiveTest
     {
 
         [Test]

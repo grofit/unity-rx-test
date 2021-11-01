@@ -16,7 +16,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class RegressionTest : ReactiveTest
+    public partial class RegressionTest : ReactiveTest
     {
         [Test]
         public void Bug_ConcurrentMerge()

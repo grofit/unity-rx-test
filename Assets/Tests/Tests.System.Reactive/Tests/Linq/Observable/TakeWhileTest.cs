@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class TakeWhileTest : ReactiveTest
+    public partial class TakeWhileTest : ReactiveTest
     {
 
         [Test]

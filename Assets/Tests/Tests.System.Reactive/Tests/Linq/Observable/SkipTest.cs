@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SkipTest : ReactiveTest
+    public partial class SkipTest : ReactiveTest
     {
 
         #region + Count +

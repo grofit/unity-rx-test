@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class TakeLastTest : ReactiveTest
+    public partial class TakeLastTest : ReactiveTest
     {
 
         #region + Count +

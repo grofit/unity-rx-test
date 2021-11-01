@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AllTest : ReactiveTest
+    public partial class AllTest : ReactiveTest
     {
         [Test]
         public void All_ArgumentChecking()

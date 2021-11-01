@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SumTest : ReactiveTest
+    public partial class SumTest : ReactiveTest
     {
         [Test]
         public void Sum_ArgumentChecking()

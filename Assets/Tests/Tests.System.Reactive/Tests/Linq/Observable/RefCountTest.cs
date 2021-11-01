@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class RefCountTest : ReactiveTest
+    public partial class RefCountTest : ReactiveTest
     {
         private sealed class DematerializingConnectableObservable<T> : IConnectableObservable<T>
         {

@@ -15,7 +15,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ToObservableTest : ReactiveTest
+    public partial class ToObservableTest : ReactiveTest
     {
 
         [Test]

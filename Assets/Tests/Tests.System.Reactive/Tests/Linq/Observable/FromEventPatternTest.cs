@@ -17,7 +17,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class FromEventPatternTest : ReactiveTest
+    public partial class FromEventPatternTest : ReactiveTest
     {
 
         #region Strongly typed
@@ -749,10 +749,10 @@ namespace ReactiveTests.Tests
         #endregion
     }
 
-    public class FromEventPattern
+    public partial class FromEventPattern
     {
         [DebuggerDisplay("{Id}")]
-        public class TestEventArgs : EventArgs, IEquatable<TestEventArgs>
+        public partial class TestEventArgs : EventArgs, IEquatable<TestEventArgs>
         {
             public int Id { get; set; }
 
@@ -845,7 +845,7 @@ namespace ReactiveTests.Tests
 
     public delegate void MyAction(int x);
 
-    public class FromEvent
+    public partial class FromEvent
     {
         public event Action A;
 
@@ -881,7 +881,7 @@ namespace ReactiveTests.Tests
 #pragma warning restore 67
     }
 
-    public class FromEventPattern_VarianceCheck
+    public partial class FromEventPattern_VarianceCheck
     {
 #pragma warning disable 67
         public event EventHandler<EventArgs> E1;

@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class LetTest : ReactiveTest
+    public partial class LetTest : ReactiveTest
     {
         #region Let
 

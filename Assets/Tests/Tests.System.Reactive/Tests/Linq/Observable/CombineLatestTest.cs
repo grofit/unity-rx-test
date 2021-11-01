@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 #pragma warning disable IDE0039 // Use local function
-    public class CombineLatestTest : ReactiveTest
+    public partial class CombineLatestTest : ReactiveTest
     {
 
         #region ArgumentChecking

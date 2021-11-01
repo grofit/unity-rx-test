@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace ReactiveTests
 {
-    public class TestBase
+    public partial class TestBase
     {
         public void RunAsync(Action<Waiter> a)
         {
@@ -17,7 +17,7 @@ namespace ReactiveTests
         }
     }
 
-    public class Waiter
+    public partial class Waiter
     {
         private ManualResetEvent _evt = new ManualResetEvent(false);
 
@@ -33,7 +33,7 @@ namespace ReactiveTests
     }
 
     [AttributeUsage(AttributeTargets.Method)]
-    public class AsynchronousAttribute : Attribute
+    public partial class AsynchronousAttribute : Attribute
     {
     }
 }

@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class NotificationTest : ReactiveTest
+    public partial class NotificationTest : ReactiveTest
     {
         #region ToObservable
 

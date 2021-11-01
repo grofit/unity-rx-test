@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class GroupByTest : ReactiveTest
+    public partial class GroupByTest : ReactiveTest
     {
         #region + GroupBy +
 

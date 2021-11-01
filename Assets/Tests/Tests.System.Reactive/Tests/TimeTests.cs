@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class TimeTests
+    public partial class TimeTests
     {
         [Test]
         public void TimeInterval_Ctor_Properties()

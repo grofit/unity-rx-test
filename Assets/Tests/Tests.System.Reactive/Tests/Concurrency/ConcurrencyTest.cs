@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class ConcurrencyTest
+    public partial class ConcurrencyTest
     {
         [Test]
         public void CurrentScheduler_EnsureTrampoline()

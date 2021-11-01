@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ToLookupTest : ReactiveTest
+    public partial class ToLookupTest : ReactiveTest
     {
 
         [Test]

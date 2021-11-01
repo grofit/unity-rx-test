@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class WhereTest : ReactiveTest
+    public partial class WhereTest : ReactiveTest
     {
 
         [Test]

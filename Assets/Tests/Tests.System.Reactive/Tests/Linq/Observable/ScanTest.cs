@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ScanTest : ReactiveTest
+    public partial class ScanTest : ReactiveTest
     {
 
         [Test]

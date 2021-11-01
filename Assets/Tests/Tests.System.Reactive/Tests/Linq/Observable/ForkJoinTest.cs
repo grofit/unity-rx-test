@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ForkJoinTest : ReactiveTest
+    public partial class ForkJoinTest : ReactiveTest
     {
 
         [Test]

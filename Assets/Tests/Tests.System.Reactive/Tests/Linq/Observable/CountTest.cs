@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class CountTest : ReactiveTest
+    public partial class CountTest : ReactiveTest
     {
         [Test]
         public void Count_ArgumentChecking()

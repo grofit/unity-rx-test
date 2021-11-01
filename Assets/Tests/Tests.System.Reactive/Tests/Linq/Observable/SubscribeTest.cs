@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SubscribeTest : ReactiveTest
+    public partial class SubscribeTest : ReactiveTest
     {
 
         [Test]

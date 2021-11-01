@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace ReactiveTests
 {
 
-    public class ScheduledItemTest : ReactiveTest
+    public partial class ScheduledItemTest : ReactiveTest
     {
         [Test]
         public void ArgumentChecking()

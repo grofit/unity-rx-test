@@ -13,7 +13,7 @@ using System.Reactive.Linq;
 
 namespace ReactiveTests.Stress.Linq
 {
-    public class Replay
+    public partial class Replay
     {
         /// <summary>
         /// Tests the Replay operator with different schedulers, supporting ISchedulerLongRunning and otherwise.

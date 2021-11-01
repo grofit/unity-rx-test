@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
     
-    public class DispatcherSchedulerTest : TestBase
+    public partial class DispatcherSchedulerTest : TestBase
     {
         [Test]
         public void Ctor_ArgumentChecking()

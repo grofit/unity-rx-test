@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ExceptionHelperTest
+    public partial class ExceptionHelperTest
     {
         private Exception _errors;
 

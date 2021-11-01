@@ -12,7 +12,7 @@ namespace ReactiveTests.Tests
 {
 #if SIGNED
 
-    public class ImmutableListTest
+    public partial class ImmutableListTest
     {
         [Test]
         public void ImmutableList_Basics()

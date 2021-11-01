@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class CollectTest : ReactiveTest
+    public partial class CollectTest : ReactiveTest
     {
 
         [Test]

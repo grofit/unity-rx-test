@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SynchronizeTest : TestBase
+    public partial class SynchronizeTest : TestBase
     {
         [Test]
         public void Synchronize_ArgumentChecking()

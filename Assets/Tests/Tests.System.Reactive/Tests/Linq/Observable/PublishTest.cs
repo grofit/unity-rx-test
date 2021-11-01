@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class PublishTest : ReactiveTest
+    public partial class PublishTest : ReactiveTest
     {
         [Test]
         public void Publish_Cold_Zip()

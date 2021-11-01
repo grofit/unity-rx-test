@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SingleOrAsyncTestTest : ReactiveTest
+    public partial class SingleOrAsyncTestTest : ReactiveTest
     {
 
         [Test]

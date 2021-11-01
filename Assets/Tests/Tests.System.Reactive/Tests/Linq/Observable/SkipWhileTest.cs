@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SkipWhileTest : ReactiveTest
+    public partial class SkipWhileTest : ReactiveTest
     {
 
         [Test]

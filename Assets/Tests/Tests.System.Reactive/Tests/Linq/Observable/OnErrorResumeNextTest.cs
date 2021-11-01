@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class OnErrorResumeNextTest : ReactiveTest
+    public partial class OnErrorResumeNextTest : ReactiveTest
     {
 
         [Test]

@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 #if !NO_THREAD
-    public class NewThreadSchedulerTest
+    public partial class NewThreadSchedulerTest
     {
         [Test]
         public void NewThread_ArgumentChecking()

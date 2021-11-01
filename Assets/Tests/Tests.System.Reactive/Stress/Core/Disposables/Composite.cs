@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace ReactiveTests.Stress.Disposables
 {
-    public class Composite
+    public partial class Composite
     {
         /// <summary>
         /// Allocates a CompositeDisposable and performs random Add and Remove operations. Checks that all contained disposables get properly disposed.

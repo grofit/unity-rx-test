@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class JoinTest : ReactiveTest
+    public partial class JoinTest : ReactiveTest
     {
 
         [Test]

@@ -16,7 +16,7 @@ namespace ReactiveTests.Tests
 {
     #region + Count +
 
-    public class SkipLastTest : ReactiveTest
+    public partial class SkipLastTest : ReactiveTest
     {
 
         [Test]

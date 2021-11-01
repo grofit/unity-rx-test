@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class TaskPoolSchedulerTest
+    public partial class TaskPoolSchedulerTest
     {
         [Test]
         public void TaskPool_ArgumentChecking()

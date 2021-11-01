@@ -17,7 +17,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ConcatTest : ReactiveTest
+    public partial class ConcatTest : ReactiveTest
     {
 
         [Test]

@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class TimestampTest : ReactiveTest
+    public partial class TimestampTest : ReactiveTest
     {
 
         [Test]

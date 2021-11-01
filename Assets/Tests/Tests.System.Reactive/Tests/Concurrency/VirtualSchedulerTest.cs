@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class VirtualSchedulerTest
+    public partial class VirtualSchedulerTest
     {
         private class VirtualSchedulerTestScheduler : VirtualTimeScheduler<string, char>
         {

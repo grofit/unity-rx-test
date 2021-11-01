@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace ReactiveTests.Stress.Disposables
 {
-    public class Serial
+    public partial class Serial
     {
         /// <summary>
         /// Allocates a SerialDisposable and performs random assignment operations. Checks that all contained disposables get properly disposed.

@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace ReactiveTests.Stress.Disposables
 {
-    public class RefCount
+    public partial class RefCount
     {
         /// <summary>
         /// Disposes the primary disposable first, allocates a number of dependents on different threads, and disposes them on different threads.

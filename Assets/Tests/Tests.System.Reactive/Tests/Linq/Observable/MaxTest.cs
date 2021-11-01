@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class MaxTest : ReactiveTest
+    public partial class MaxTest : ReactiveTest
     {
         [Test]
         public void Max_ArgumentChecking()

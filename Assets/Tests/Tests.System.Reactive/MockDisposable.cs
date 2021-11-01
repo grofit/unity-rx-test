@@ -8,7 +8,7 @@ using Microsoft.Reactive.Testing;
 
 namespace ReactiveTests
 {
-    public class MockDisposable : List<long>, IDisposable
+    public partial class MockDisposable : List<long>, IDisposable
     {
         private TestScheduler _scheduler;
 

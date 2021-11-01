@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class FirstOrDefaultAsyncTest : ReactiveTest
+    public partial class FirstOrDefaultAsyncTest : ReactiveTest
     {
         [Test]
         public void FirstOrDefaultAsync_ArgumentChecking()

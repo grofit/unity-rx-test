@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AppendPrependTest : ReactiveTest
+    public partial class AppendPrependTest : ReactiveTest
     {
         [Test]
         public void AppendPrepend()

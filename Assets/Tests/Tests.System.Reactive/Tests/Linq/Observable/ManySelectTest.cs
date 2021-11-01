@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 #pragma warning disable IDE0039 // Use local function
-    public class ManySelectTest : ReactiveTest
+    public partial class ManySelectTest : ReactiveTest
     {
 
         [Test]

@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class UnitTest
+    public partial class UnitTest
     {
         [Test]
         public void Unit()

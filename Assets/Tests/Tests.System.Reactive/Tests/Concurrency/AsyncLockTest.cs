@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class AsyncLockTest
+    public partial class AsyncLockTest
     {
         [Test]
         public void Wait_ArgumentChecking()

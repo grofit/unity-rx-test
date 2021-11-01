@@ -10,7 +10,7 @@ using System.Reactive.Linq;
 
 namespace ReactiveTests.Stress.Linq
 {
-    public class Delay
+    public partial class Delay
     {
         /// <summary>
         /// Tests OnError messages are propagated all the time.

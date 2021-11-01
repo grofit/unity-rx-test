@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace ReactiveTests.Stress.Disposables
 {
-    public class SingleAssignment
+    public partial class SingleAssignment
     {
         /// <summary>
         /// Allocates a SingleAssignmentDisposable and assigns a disposable object at a random time. Also disposes the container at a random time.

@@ -16,7 +16,7 @@ using Microsoft.Reactive.Testing;
 namespace ReactiveTests.Tests
 {
     
-    public class ControlSchedulerTest
+    public partial class ControlSchedulerTest
     {
         [Test]
         public void Ctor_ArgumentChecking()

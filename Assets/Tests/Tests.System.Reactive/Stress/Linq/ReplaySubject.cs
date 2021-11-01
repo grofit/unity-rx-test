@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ReactiveTests.Stress.Linq
 {
-    public class ReplaySubject
+    public partial class ReplaySubject
     {
         /// <summary>
         /// Tests the ReplaySubject with concurrent subscribers.

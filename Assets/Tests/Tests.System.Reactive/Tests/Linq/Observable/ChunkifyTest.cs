@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ChunkifyTest : ReactiveTest
+    public partial class ChunkifyTest : ReactiveTest
     {
 
         [Test]

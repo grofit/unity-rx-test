@@ -15,7 +15,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SelectManyTest : ReactiveTest
+    public partial class SelectManyTest : ReactiveTest
     {
 
         [Test]

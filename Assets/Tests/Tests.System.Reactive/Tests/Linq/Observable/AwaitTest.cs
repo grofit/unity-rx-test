@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AwaitTest : ReactiveTest
+    public partial class AwaitTest : ReactiveTest
     {
         [Test]
         public void Await_ArgumentChecking()

@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class PriorityQueueTest
+    public partial class PriorityQueueTest
     {
         [Test]
         public void Enqueue_dequeue()

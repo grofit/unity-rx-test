@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AutoConnectTest : ReactiveTest
+    public partial class AutoConnectTest : ReactiveTest
     {
         [Test]
         public void AutoConnect_Basic()

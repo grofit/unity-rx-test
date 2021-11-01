@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class ImmediateSchedulerTest
+    public partial class ImmediateSchedulerTest
     {
         [Test]
         public void Immediate_Now()

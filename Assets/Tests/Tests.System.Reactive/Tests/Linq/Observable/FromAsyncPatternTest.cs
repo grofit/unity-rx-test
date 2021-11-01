@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 #pragma warning disable IDE0039 // Use local function
-    public class FromAsyncPatternTest : ReactiveTest
+    public partial class FromAsyncPatternTest : ReactiveTest
     {
         private readonly Task<int> _doneTask;
 

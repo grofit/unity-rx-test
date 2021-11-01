@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AnyTest : ReactiveTest
+    public partial class AnyTest : ReactiveTest
     {
         [Test]
         public void Any_ArgumentChecking()

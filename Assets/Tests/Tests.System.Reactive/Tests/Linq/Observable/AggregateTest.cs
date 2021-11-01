@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AggregateTest : ReactiveTest
+    public partial class AggregateTest : ReactiveTest
     {
         [Test]
         public void Aggregate_ArgumentChecking()

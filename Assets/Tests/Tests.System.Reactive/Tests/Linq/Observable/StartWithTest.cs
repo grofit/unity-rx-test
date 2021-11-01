@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class StartWithTest : ReactiveTest
+    public partial class StartWithTest : ReactiveTest
     {
 
         [Test]

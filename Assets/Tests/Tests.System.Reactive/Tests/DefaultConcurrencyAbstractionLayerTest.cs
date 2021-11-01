@@ -14,7 +14,7 @@ namespace ReactiveTests.Tests
 {
 
     [Serializable]
-    public class DefaultConcurrencyAbstractionLayerTest
+    public partial class DefaultConcurrencyAbstractionLayerTest
     {
         private AppDomain _domain;
 
@@ -344,7 +344,7 @@ namespace ReactiveTests.Tests
         }
     }
 
-    public class MarshalByRefCell<T> : MarshalByRefObject
+    public partial class MarshalByRefCell<T> : MarshalByRefObject
     {
         public T Value;
         public override object InitializeLifetimeService()
@@ -353,7 +353,7 @@ namespace ReactiveTests.Tests
         }
     }
 
-    public class MarshalByRefAction : MarshalByRefObject
+    public partial class MarshalByRefAction : MarshalByRefObject
     {
         private readonly Action _action;
 

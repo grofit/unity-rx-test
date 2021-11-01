@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class AverageTest : ReactiveTest
+    public partial class AverageTest : ReactiveTest
     {
         [Test]
         public void Average_ArgumentChecking()

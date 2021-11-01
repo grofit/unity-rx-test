@@ -15,7 +15,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class RangeTest : ReactiveTest
+    public partial class RangeTest : ReactiveTest
     {
 
         [Test]

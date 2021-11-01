@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class PublishLastTest : ReactiveTest
+    public partial class PublishLastTest : ReactiveTest
     {
 
         [Test]

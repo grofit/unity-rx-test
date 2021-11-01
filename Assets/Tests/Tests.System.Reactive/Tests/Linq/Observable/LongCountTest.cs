@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class LongCountTest : ReactiveTest
+    public partial class LongCountTest : ReactiveTest
     {
 
         [Test]

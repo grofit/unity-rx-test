@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class MaterializeTest : ReactiveTest
+    public partial class MaterializeTest : ReactiveTest
     {
 
         [Test]

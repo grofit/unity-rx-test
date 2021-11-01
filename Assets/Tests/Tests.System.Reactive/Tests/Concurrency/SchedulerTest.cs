@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace ReactiveTests.Tests
 {
 
-    public class SchedulerTest : ReactiveTest
+    public partial class SchedulerTest : ReactiveTest
     {
         #region IScheduler
 

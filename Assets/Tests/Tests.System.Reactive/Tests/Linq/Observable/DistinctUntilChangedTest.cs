@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class DistinctUntilChangedTest : ReactiveTest
+    public partial class DistinctUntilChangedTest : ReactiveTest
     {
 
         [Test]

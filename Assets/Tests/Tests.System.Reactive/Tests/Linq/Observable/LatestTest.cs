@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class LatestTest : ReactiveTest
+    public partial class LatestTest : ReactiveTest
     {
 
         [Test]

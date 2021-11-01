@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class EventPatternSourceBaseTest
+    public partial class EventPatternSourceBaseTest
     {
         [Test]
         public void ArgumentChecking()

@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class MaxByTest : ReactiveTest
+    public partial class MaxByTest : ReactiveTest
     {
         #region + MaxBy +
 

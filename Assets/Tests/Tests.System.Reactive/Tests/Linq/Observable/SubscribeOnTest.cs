@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace ReactiveTests.Tests
 {
-    public class SubscribeOnTest : TestBase
+    public partial class SubscribeOnTest : TestBase
     {
 
         #region + TestBase +
@@ -227,7 +227,7 @@ namespace ReactiveTests.Tests
 
     }
 
-    public class SubscribeOnReactiveTest : ReactiveTest
+    public partial class SubscribeOnReactiveTest : ReactiveTest
     {
 
         [Test]

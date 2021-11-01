@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class ToListTest : ReactiveTest
+    public partial class ToListTest : ReactiveTest
     {
 
         [Test]

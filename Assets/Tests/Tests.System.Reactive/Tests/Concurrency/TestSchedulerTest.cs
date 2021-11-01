@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace ReactiveTests.Tests
 {
 
-    public class TestSchedulerTest
+    public partial class TestSchedulerTest
     {
         [Test]
         public void Test_ArgumentChecking()

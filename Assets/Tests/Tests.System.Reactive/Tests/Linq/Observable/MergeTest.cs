@@ -17,7 +17,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class MergeTest : ReactiveTest
+    public partial class MergeTest : ReactiveTest
     {
 
         [Test]

@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class IgnoreElementsTest : ReactiveTest
+    public partial class IgnoreElementsTest : ReactiveTest
     {
 
         [Test]

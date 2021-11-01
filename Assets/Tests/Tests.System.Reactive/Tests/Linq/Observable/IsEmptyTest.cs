@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class IsEmptyTest : ReactiveTest
+    public partial class IsEmptyTest : ReactiveTest
     {
 
         [Test]

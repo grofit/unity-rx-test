@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace ReactiveTests.Tests
 {
-    public class SkipUntilTest : ReactiveTest
+    public partial class SkipUntilTest : ReactiveTest
     {
         #region + Observable +
         [Test]
