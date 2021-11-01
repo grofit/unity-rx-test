@@ -1,0 +1,11 @@
+{
+    "name": "com.rx.unity.gen",
+    "displayName": "Reactive extensions for unity (generated)",
+    "version": "1.0.0",
+    "unity": "2021.2",
+    "author": {
+        "name": "Jonas Fischer",
+        "email": "cosmicshoresdev@gmail.com",
+        "url": "https://github.com/Cosmic-Shores/Rx.Unity"
+    }
+}
