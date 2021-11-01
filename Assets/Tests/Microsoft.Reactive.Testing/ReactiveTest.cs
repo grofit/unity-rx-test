@@ -1,9 +1,7 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
-using NUnit.Framework;
-using UnityEngine.TestTools;
 using System;
 using System.Reactive;
 
@@ -12,7 +10,6 @@ namespace Microsoft.Reactive.Testing
     /// <summary>
     /// Base class to write unit tests for applications and libraries built using Reactive Extensions.
     /// </summary>
-    [TestFixture]
     public class ReactiveTest
     {
         /// <summary>
@@ -29,13 +26,6 @@ namespace Microsoft.Reactive.Testing
         /// Default virtual time used to dispose subscriptions in <see cref="ReactiveTest"/>-based unit tests.
         /// </summary>
         public const long Disposed = 1000;
-
-        [OneTimeSetUp]
-        public void SetupOnce() {
-            System.Threading.ThreadPool.GetAvailableThreads(out var availableWorker, out var availableIoCompletion);
-            System.Threading.ThreadPool.GetMaxThreads(out var maxWorker, out var maxIoCompletion);
-            UnityEngine.Debug.LogWarningFormat("Worker: {0} / {1} ; IoCompletion: {2} / {3}", availableWorker, maxWorker, availableIoCompletion, maxIoCompletion);
-        }
 
         /// <summary>
         /// Factory method for an OnNext notification record at a given time with a given value.
