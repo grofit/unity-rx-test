@@ -33,6 +33,7 @@ exports.default = () => {
     .pipe(replace('Assert.Empty(', 'CollectionAssert.IsEmpty('))
     .pipe(replace('[Fact(Skip = "")]', '//[Test, Explicit]'))
     .pipe(replace(/\[Trait\([^\(]*\)\]/g, '// $&'))
+    .pipe(replace(/\[Test[^.\w]([^\(]+(?<=\sasync\s)[^\(]+\s{1,}(\w+)\s{0,}\()/gm, '[Test]\r\n        public void $2_Sync() => $2().Wait();\r\n$1'))
     .pipe(threadPoolSchedulerReplacementFilter)
     .pipe(replace('ThreadPoolScheduler.Instance', 'Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance'))
     .pipe(threadPoolSchedulerReplacementFilter.restore)

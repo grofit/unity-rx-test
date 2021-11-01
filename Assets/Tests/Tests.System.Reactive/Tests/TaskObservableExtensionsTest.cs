@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -8,12 +8,11 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
-using Rx.Unity;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
-using UniRx.Tests;
+using Rx.Unity.Tests.Helper;
 
 namespace ReactiveTests.Tests
 {
@@ -386,8 +385,8 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.AreEqual(42, x);
-            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
+            XunitAssert.Equal(42, x);
+            XunitAssert.Equal(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 
@@ -744,7 +743,7 @@ namespace ReactiveTests.Tests
 
             e.WaitOne();
 
-            Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, t);
+            XunitAssert.Equal(Thread.CurrentThread.ManagedThreadId, t);
         }
 #endif
 
@@ -779,7 +778,7 @@ namespace ReactiveTests.Tests
             Assert.True(continuation.IsFaulted);
             Assert.True(continuation.Exception.InnerExceptions.Count == 1 && continuation.Exception.InnerExceptions[0] is InvalidOperationException);
 
-            Assert.AreEqual(1, scheduler.Clock);
+            XunitAssert.Equal(1, scheduler.Clock);
         }
 
         [Test]
@@ -793,9 +792,9 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.True(continuation.IsCompleted);
-            Assert.AreEqual(5, continuation.Result);
+            XunitAssert.Equal(5, continuation.Result);
 
-            Assert.AreEqual(1, scheduler.Clock);
+            XunitAssert.Equal(1, scheduler.Clock);
         }
 
         [Test]
@@ -814,7 +813,7 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.True(continuation.IsCompleted);
-            Assert.AreEqual(3, continuation.Result);
+            XunitAssert.Equal(3, continuation.Result);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(0, 200)
@@ -840,8 +839,8 @@ namespace ReactiveTests.Tests
             Assert.True(continuation.IsFaulted);
             var ag = continuation.Exception;
             Assert.NotNull(ag);
-            Assert.AreEqual(1, ag.InnerExceptions.Count);
-            Assert.AreEqual(ex, ag.InnerExceptions[0]);
+            XunitAssert.Equal(1, ag.InnerExceptions.Count);
+            XunitAssert.Equal(ex, ag.InnerExceptions[0]);
 
             xs.Subscriptions.AssertEqual(
                 Subscribe(0, 200)
@@ -887,9 +886,9 @@ namespace ReactiveTests.Tests
             scheduler.Start();
 
             Assert.True(continuation.IsCompleted);
-            Assert.AreEqual(5, continuation.Result);
+            XunitAssert.Equal(5, continuation.Result);
 
-            Assert.AreEqual(1, scheduler.Clock);
+            XunitAssert.Equal(1, scheduler.Clock);
         }
 
         [Test]
@@ -923,7 +922,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(task.IsFaulted);
             Assert.True(task.Exception.InnerException is InvalidOperationException);
-            Assert.AreEqual("failure", task.Exception.InnerException.Message);
+            XunitAssert.Equal("failure", task.Exception.InnerException.Message);
         }
 
         [Test]
@@ -964,7 +963,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(task.IsCompleted);
 
-            Assert.AreEqual("state", task.AsyncState);
+            XunitAssert.Equal("state", task.AsyncState);
         }
 
         [Test]
@@ -982,8 +981,8 @@ namespace ReactiveTests.Tests
 
             Assert.True(task.IsFaulted);
             Assert.True(task.Exception.InnerException is InvalidOperationException);
-            Assert.AreEqual("failure", task.Exception.InnerException.Message);
-            Assert.AreEqual("state", task.AsyncState);
+            XunitAssert.Equal("failure", task.Exception.InnerException.Message);
+            XunitAssert.Equal("state", task.AsyncState);
         }
 
         [Test]
@@ -1006,7 +1005,7 @@ namespace ReactiveTests.Tests
             Assert.False(scheduler.HasTask);
 
             Assert.True(task.IsCanceled);
-            Assert.AreEqual("state", task.AsyncState);
+            XunitAssert.Equal("state", task.AsyncState);
         }
 
         [Test]
@@ -1040,7 +1039,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(task.IsFaulted);
             Assert.True(task.Exception.InnerException is InvalidOperationException);
-            Assert.AreEqual("failure", task.Exception.InnerException.Message);
+            XunitAssert.Equal("failure", task.Exception.InnerException.Message);
         }
 
         [Test]
@@ -1062,7 +1061,7 @@ namespace ReactiveTests.Tests
             Assert.False(scheduler.HasTask);
 
             Assert.True(task.IsCanceled);
-            Assert.AreEqual(new TaskCanceledException(task).CancellationToken, cts.Token);
+            XunitAssert.Equal(new TaskCanceledException(task).CancellationToken, cts.Token);
         }
 
         [Test]
@@ -1080,7 +1079,7 @@ namespace ReactiveTests.Tests
 
             Assert.True(task.IsCompleted);
 
-            Assert.AreEqual("state", task.AsyncState);
+            XunitAssert.Equal("state", task.AsyncState);
         }
 
         [Test]
@@ -1098,8 +1097,8 @@ namespace ReactiveTests.Tests
 
             Assert.True(task.IsFaulted);
             Assert.True(task.Exception.InnerException is InvalidOperationException);
-            Assert.AreEqual("failure", task.Exception.InnerException.Message);
-            Assert.AreEqual("state", task.AsyncState);
+            XunitAssert.Equal("failure", task.Exception.InnerException.Message);
+            XunitAssert.Equal("state", task.AsyncState);
         }
 
         [Test]
@@ -1121,8 +1120,8 @@ namespace ReactiveTests.Tests
             Assert.False(scheduler.HasTask);
 
             Assert.True(task.IsCanceled);
-            Assert.AreEqual("state", task.AsyncState);
-            Assert.AreEqual(new TaskCanceledException(task).CancellationToken, cts.Token);
+            XunitAssert.Equal("state", task.AsyncState);
+            XunitAssert.Equal(new TaskCanceledException(task).CancellationToken, cts.Token);
         }
 
         sealed class OneshotScheduler : IScheduler
@@ -1171,22 +1170,23 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("Task")]
-        public void ToTask_Scheduler_Dispose_Can_Propagate() {
-            ToTask_Scheduler_Dispose_Can_PropagateAsync().Wait();
-        }
+        public void ToTask_Scheduler_Dispose_Can_Propagate_Sync() => ToTask_Scheduler_Dispose_Can_Propagate().Wait();
 
-        private async Task ToTask_Scheduler_Dispose_Can_PropagateAsync() {
-            async Task asyncMethod() {
+        public async Task ToTask_Scheduler_Dispose_Can_Propagate()
+        {
+            async Task asyncMethod()
+            {
                 await Task.Delay(500);
                 Console.WriteLine("Done");
             }
 
             var count = 0;
 
-            var observable = Observable.Create<long>(observer => {
+            var observable = Observable.Create<long>(observer =>
+            {
                 var d = Observable.Interval(TimeSpan.FromMilliseconds(200)).Subscribe(observer);
-                return new CompositeDisposable(d, Disposable.Create(() => {
+                return new CompositeDisposable(d, Disposable.Create(() =>
+                {
                     Interlocked.Increment(ref count);
                 }));
             })
@@ -1198,7 +1198,7 @@ namespace ReactiveTests.Tests
 
             Thread.Sleep(500);
 
-            Assert.AreEqual(1, Volatile.Read(ref count));
+            XunitAssert.Equal(1, Volatile.Read(ref count));
         }
 
         #endregion
