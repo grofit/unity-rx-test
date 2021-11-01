@@ -22,6 +22,7 @@
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-filter": "^7.0.0",
+    "gulp-print": "^5.0.2",
     "gulp-replace": "^1.1.3"
   }
 }

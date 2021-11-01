@@ -1,6 +1,8 @@
-const { src, dest, parallel, task } = require("gulp");
+const { src, dest, parallel } = require("gulp");
 const replace = require("gulp-replace");
 const filter = require("gulp-filter");
+const print = require('gulp-print').default;
+const path = require('path');
 
 class Tasks {
     patchRxMainCsProj() {
@@ -20,43 +22,55 @@ class Tasks {
     testCode() {
         const threadPoolSchedulerReplacementFilter = filter([
             "**",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Concurrency/SchedulerTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Concurrency/ThreadPoolSchedulerTest.cs",
+            "!Tests/Concurrency/SchedulerTest.cs",
+            "!Tests/Concurrency/ThreadPoolSchedulerTest.cs",
         ], {restore: true});
-        return this.xunit2nunitTransformer(src([
-            "../reactive/Rx.NET/Source/tests/Tests.System.Reactive/**/*.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Internal/HalfSerializerTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/LicenseHeaderTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/ArgumentValidationTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Aliases.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/AliasesTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/TaskLikeSupportTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableRemotingTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/ObservableSafetyTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Linq/QbservableExTest.cs",
-            "!../reactive/Rx.NET/Source/tests/Tests.System.Reactive/obj/**/*.cs",
-        ]))
+        return this.xunit2nunitTransformer(src("./**/*.cs", {
+            cwd: path.join(__dirname, "../reactive/Rx.NET/Source/tests/Tests.System.Reactive"),
+            ignore: [
+                "Tests/Internal/HalfSerializerTest.cs",
+                "Tests/LicenseHeaderTest.cs",
+                "Tests/ArgumentValidationTest.cs",
+                "Tests/Aliases.cs",
+                "Tests/AliasesTest.cs",
+                "Tests/TaskLikeSupportTest.cs",
+                "Tests/Linq/ObservableRemotingTest.cs",
+                "Tests/Linq/ObservableSafetyTest.cs",
+                "Tests/Linq/QbservableTest.cs",
+                "Tests/Linq/QbservableExTest.cs",
+                "obj/**/*.cs"
+            ],
+            nocase: true
+        })
+        .pipe(print(filepath => `built: ${filepath}`)))
         .pipe(threadPoolSchedulerReplacementFilter)
         .pipe(replace("ThreadPoolScheduler.Instance", "Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance"))
         .pipe(threadPoolSchedulerReplacementFilter.restore)
         .pipe(replace("public class ", "public partial class "))
-        .pipe(dest("../Tests/Tests.System.Reactive"));
+        .pipe(dest(path.join(__dirname, "../Tests/Tests.System.Reactive")));
     }
 
     testingLibCode() {
-        return this.xunit2nunitTransformer(src([
-            "../reactive/Rx.NET/Source/src/Microsoft.Reactive.Testing/**/*.cs",
-            "!../reactive/Rx.NET/Source/src/Microsoft.Reactive.Testing/obj/**/*.cs",
-            "!../reactive/Rx.NET/Source/src/Microsoft.Reactive.Testing/Properties/AssemblyInfo.cs"
-        ])).pipe(dest("../Tests/Microsoft.Reactive.Testing"));
+        return this.xunit2nunitTransformer(src("**/*.cs", {
+            cwd: path.join(__dirname, "../reactive/Rx.NET/Source/src/Microsoft.Reactive.Testing"),
+            ignore: [
+                "obj/**/*.cs",
+                "Properties/AssemblyInfo.cs"
+            ],
+            nocase: true
+        }))
+        .pipe(print(filepath => `built: ${filepath}`))
+        .pipe(dest(path.join(__dirname, "../Tests/Microsoft.Reactive.Testing")));
     }
 
     rxDataTestCode() {
-        return src([
-            "../Rx.Data/src/Rx.Data.Tests/**/*.cs",
-            "!../Rx.Data/src/Rx.Data.Tests/obj/**/*.cs",
-        ]).pipe(dest("../Tests/Rx.Data.Tests"));
+        return src("**/*.cs", {
+            cwd: path.join(__dirname, "../Rx.Data/src/Rx.Data.Tests"),
+            ignores: "obj/**/*.cs",
+            nocase: true
+        })
+        .pipe(print(filepath => `built: ${filepath}`))
+        .pipe(dest(path.join(__dirname, "../Tests/Rx.Data.Tests")));
     }
 
     xunit2nunitTransformer(source) {
