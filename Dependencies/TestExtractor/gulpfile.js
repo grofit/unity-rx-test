@@ -1,8 +1,14 @@
 const { src, dest } = require('gulp');
 const replace = require('gulp-replace');
+const filter = require('gulp-filter');
 
-exports.default = () =>
-    src([
+exports.default = () => {
+    const threadPoolSchedulerReplacementFilter = filter([
+        "**",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Concurrency/SchedulerTest.cs",
+        "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Concurrency/ThreadPoolSchedulerTest.cs",
+    ], {restore: true});
+    return src([
         "../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/**/*.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/Internal/HalfSerializerTest.cs",
         "!../../../reactiveFork/Rx.NET/Source/tests/Tests.System.Reactive/Tests/LicenseHeaderTest.cs",
@@ -25,6 +31,9 @@ exports.default = () =>
     .pipe(replace('Assert.Empty(', 'CollectionAssert.IsEmpty('))
     .pipe(replace('[Fact(Skip = "")]', '//[Test, Explicit]'))
     .pipe(replace(/\[Trait\([^\(]*\)\]/g, '// $&'))
+    .pipe(threadPoolSchedulerReplacementFilter)
     .pipe(replace('ThreadPoolScheduler.Instance', 'Rx.Unity.Concurrency.ThreadPoolOnlyScheduler.Instance'))
+    .pipe(threadPoolSchedulerReplacementFilter.restore)
     .pipe(replace('public class ', 'public partial class '))    
     .pipe(dest("../../Assets/Tests/Tests.System.Reactive"));
+};
