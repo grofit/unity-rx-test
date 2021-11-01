@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ReactiveTests.Dummies;
 using NUnit.Framework;
-using UnityEngine.TestTools;
 
 namespace ReactiveTests.Tests
 {
@@ -1719,7 +1718,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void Merge_TaskWithCompletionSource_RanToCompletion_Async()
         {
             var tcss = new TaskCompletionSource<int>[2];
@@ -1764,7 +1762,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void Merge_TaskWithCompletionSource_Faulted_Async()
         {
             var tcss = new TaskCompletionSource<int>[3];
@@ -1815,7 +1812,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void Merge_TaskWithCompletionSource_Canceled_Async()
         {
             var tcss = new TaskCompletionSource<int>[3];

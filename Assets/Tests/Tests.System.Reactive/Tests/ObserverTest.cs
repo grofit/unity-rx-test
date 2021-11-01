@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT License.
 // See the LICENSE file in the project root for more information. 
 
@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
-using UnityEngine.TestTools;
 
 namespace ReactiveTests.Tests
 {
@@ -527,7 +526,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void Observer_Synchronize_AsyncLock_NonReentrant1()
         {
             var res = false;
@@ -557,7 +555,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void Observer_Synchronize_AsyncLock_NonReentrant2()
         {
             var res = false;
@@ -587,7 +584,6 @@ namespace ReactiveTests.Tests
         }
 
         [Test]
-        [Category("async")]
         public void Observer_Synchronize_AsyncLock()
         {
             {
